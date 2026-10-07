@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>معرفی دوستان</title>
+    <title>بچو ته خط</title>
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -15,19 +17,24 @@
 
         body {
             font-family: Tahoma, Arial, sans-serif;
-            background: #f4f5f7;
-            color: #222;
+            background: #f6f7f9;
+            color: #202124;
         }
+
+
+        /* ---------------- HEADER ---------------- */
 
         header {
             background: #ffffff;
+            padding: 55px 20px 45px;
             text-align: center;
-            padding: 45px 20px;
-            border-bottom: 1px solid #e5e5e5;
+            border-bottom: 1px solid #e8e8e8;
         }
 
         header h1 {
-            font-size: 32px;
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -1px;
             margin-bottom: 12px;
         }
 
@@ -36,349 +43,674 @@
             font-size: 15px;
         }
 
+
+        /* ---------------- MAIN ---------------- */
+
         main {
-            max-width: 1100px;
-            margin: 45px auto;
-            padding: 0 20px;
+            max-width: 1150px;
+            margin: 55px auto;
+            padding: 0 22px;
         }
 
-        .title {
+
+        .section-title {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 40px;
         }
 
-        .title h2 {
-            font-size: 26px;
+        .section-title h2 {
+            font-size: 28px;
             margin-bottom: 10px;
         }
 
-        .title p {
+        .section-title p {
             color: #777;
+            font-size: 14px;
         }
+
+
+        /* ---------------- CARDS ---------------- */
 
         .friends {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
         }
+
 
         .friend {
-            background: white;
-            border-radius: 18px;
+            background: #ffffff;
+            border-radius: 22px;
             overflow: hidden;
-            box-shadow: 0 6px 25px rgba(0,0,0,0.08);
-            transition: 0.3s;
+
+            border: 1px solid #eeeeee;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.05);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
         }
+
 
         .friend:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.13);
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 18px 40px rgba(0, 0, 0, 0.10);
         }
 
-        .friend img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            display: block;
+
+        /* ---------------- IMAGE ---------------- */
+
+        .photo {
+            padding: 14px;
+            background: #fafafa;
         }
+
+        .photo img {
+            width: 100%;
+            height: 310px;
+
+            object-fit: cover;
+
+            display: block;
+
+            border-radius: 16px;
+        }
+
+
+        /* ---------------- INFO ---------------- */
 
         .info {
-            padding: 22px;
+            padding: 24px;
             text-align: center;
         }
 
+
         .info h3 {
-            font-size: 21px;
-            margin-bottom: 12px;
+            font-size: 22px;
+            margin-bottom: 10px;
         }
 
-        .info p {
+
+        .short-info {
             color: #777;
-            line-height: 1.8;
             font-size: 14px;
-            margin-bottom: 18px;
+            line-height: 2;
+
+            margin-bottom: 20px;
         }
 
-        button {
+
+        /* ---------------- BUTTON ---------------- */
+
+        .info button {
+            width: 100%;
+
             border: none;
+
             background: #222;
             color: white;
-            padding: 11px 24px;
-            border-radius: 10px;
-            cursor: pointer;
+
+            padding: 13px;
+
+            border-radius: 12px;
+
             font-family: inherit;
             font-size: 14px;
+
+            cursor: pointer;
+
+            transition: 0.25s;
         }
 
-        button:hover {
+
+        .info button:hover {
             background: #444;
         }
 
-        /* پنجره معرفی */
+
+        /* ---------------- MODAL ---------------- */
 
         .modal {
             display: none;
+
             position: fixed;
-            z-index: 1000;
+
             inset: 0;
-            background: rgba(0,0,0,0.65);
+
+            z-index: 1000;
+
+            background: rgba(0, 0, 0, 0.55);
+
             align-items: center;
             justify-content: center;
+
             padding: 20px;
         }
 
+
         .modal-content {
-            background: white;
-            width: 100%;
-            max-width: 450px;
-            border-radius: 20px;
-            padding: 30px;
             position: relative;
-            text-align: right;
-            animation: show 0.25s ease;
+
+            width: 100%;
+            max-width: 470px;
+
+            background: white;
+
+            border-radius: 24px;
+
+            padding: 35px 30px;
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.20);
+
+            animation: modalShow 0.25s ease;
         }
 
-        @keyframes show {
+
+        @keyframes modalShow {
+
             from {
-                transform: scale(0.9);
                 opacity: 0;
+                transform: translateY(20px) scale(0.97);
             }
 
             to {
-                transform: scale(1);
                 opacity: 1;
+                transform: translateY(0) scale(1);
             }
+
         }
+
 
         .close {
             position: absolute;
-            left: 18px;
-            top: 12px;
-            font-size: 28px;
+
+            left: 20px;
+            top: 15px;
+
+            width: 35px;
+            height: 35px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #f2f2f2;
+
+            color: #555;
+
+            font-size: 22px;
+
             cursor: pointer;
-            color: #777;
+
+            transition: 0.2s;
         }
+
+
+        .close:hover {
+            background: #e5e5e5;
+        }
+
 
         .modal-content h2 {
-            margin-bottom: 20px;
             text-align: center;
+
+            font-size: 25px;
+
+            margin-bottom: 25px;
         }
+
 
         .details {
-            line-height: 2.2;
-            color: #444;
+            background: #f7f7f7;
+
+            border-radius: 15px;
+
+            padding: 20px;
+
+            line-height: 2.4;
+
+            font-size: 14px;
         }
 
+
+        .details b {
+            color: #222;
+        }
+
+
+        /* ---------------- FOOTER ---------------- */
+
         footer {
-            margin-top: 60px;
-            background: #222;
-            color: #aaa;
+            margin-top: 70px;
+
+            background: white;
+
+            border-top: 1px solid #eeeeee;
+
             text-align: center;
-            padding: 25px;
+
+            padding: 30px 15px;
+
+            color: #888;
+
             font-size: 13px;
         }
 
+
+        /* ---------------- MOBILE ---------------- */
+
+        @media (max-width: 850px) {
+
+            .friends {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+
         @media (max-width: 600px) {
 
-            header h1 {
-                font-size: 26px;
+            header {
+                padding: 40px 18px;
             }
 
-            .friend img {
-                height: 250px;
+
+            header h1 {
+                font-size: 32px;
             }
+
+
+            main {
+                margin: 35px auto;
+                padding: 0 15px;
+            }
+
+
+            .section-title {
+                margin-bottom: 25px;
+            }
+
+
+            .section-title h2 {
+                font-size: 23px;
+            }
+
+
+            .friends {
+                grid-template-columns: 1fr;
+
+                gap: 22px;
+            }
+
+
+            .photo img {
+                height: 330px;
+            }
+
+
+            .info {
+                padding: 22px;
+            }
+
+
+            .modal-content {
+                padding: 30px 20px;
+            }
+
         }
+
     </style>
 </head>
 
+
 <body>
 
+
+<!-- HEADER -->
+
 <header>
-    <h1>دوستان من</h1>
-    <p>معرفی کوتاهی از دوستان و رفقا</p>
+
+    <h1>بچو ته خط</h1>
+
+    <p>
+        یه معرفی ساده از بچه‌های ته خط
+    </p>
+
 </header>
 
 
+
+<!-- MAIN -->
+
 <main>
 
-    <div class="title">
-        <h2>معرفی دوستان</h2>
-        <p>برای دیدن مشخصات هر شخص روی «مشاهده معرفی» بزنید.</p>
+
+    <div class="section-title">
+
+        <h2>
+            بچه‌های ته خط
+        </h2>
+
+        <p>
+            برای دیدن اطلاعات هر نفر روی «مشاهده معرفی» بزنید.
+        </p>
+
     </div>
 
 
+
     <div class="friends">
+
 
         <!-- سجاد -->
 
         <div class="friend">
 
-            <img src="images/ChatGPT%20Image%20Aug%2023%2C%202026%2C%2003_13_17%20PM.jpg"
-                 alt="سجاد حسنی تبار">
+            <div class="photo">
+
+                <img
+                    src="images/ChatGPT%20Image%20Aug%2023%2C%202026%2C%2003_13_17%20PM.jpg"
+                    alt="سجاد حسنی تبار">
+
+            </div>
+
 
             <div class="info">
 
-                <h3>سجاد حسنی تبار</h3>
+                <h3>
+                    سجاد حسنی تبار
+                </h3>
 
-                <p>
+                <div class="short-info">
                     ۱۷ ساله<br>
                     بازیکن فوتسال
-                </p>
+                </div>
 
                 <button onclick="showInfo('sajad')">
                     مشاهده معرفی
                 </button>
 
             </div>
+
         </div>
+
 
 
         <!-- یوسف -->
 
         <div class="friend">
 
-            <img src="images/yoosef.jpg"
-                 alt="یوسف سالاری">
+            <div class="photo">
+
+                <img
+                    src="images/yoosef.jpg"
+                    alt="یوسف سالاری">
+
+            </div>
+
 
             <div class="info">
 
-                <h3>یوسف سالاری</h3>
+                <h3>
+                    یوسف سالاری
+                </h3>
 
-                <p>
+                <div class="short-info">
                     ۱۶ ساله<br>
                     بازیکن فوتسال
-                </p>
+                </div>
 
                 <button onclick="showInfo('yoosef')">
                     مشاهده معرفی
                 </button>
 
             </div>
+
         </div>
+
 
 
         <!-- احمد -->
 
         <div class="friend">
 
-            <img src="images/aahmad.jpg"
-                 alt="احمد اسماعیل زاده">
+            <div class="photo">
+
+                <img
+                    src="images/aahmad.jpg"
+                    alt="احمد اسماعیل زاده">
+
+            </div>
+
 
             <div class="info">
 
-                <h3>احمد اسماعیل زاده</h3>
+                <h3>
+                    احمد اسماعیل زاده
+                </h3>
 
-                <p>
+                <div class="short-info">
                     ۱۷ ساله<br>
                     بازیکن فوتسال
-                </p>
+                </div>
 
                 <button onclick="showInfo('ahmad')">
                     مشاهده معرفی
                 </button>
 
             </div>
+
         </div>
+
 
     </div>
 
 </main>
 
 
-<!-- پنجره اطلاعات -->
+
+<!-- MODAL -->
 
 <div class="modal" id="modal">
 
+
     <div class="modal-content">
 
-        <span class="close" onclick="closeInfo()">×</span>
+
+        <span class="close" onclick="closeInfo()">
+            ×
+        </span>
+
 
         <h2 id="modalName"></h2>
 
-        <div class="details" id="modalDetails"></div>
+
+        <div
+            class="details"
+            id="modalDetails">
+        </div>
+
 
     </div>
 
 </div>
 
 
+
+<!-- FOOTER -->
+
 <footer>
-    سایت معرفی دوستان
+
+    بچو ته خط
+
 </footer>
+
 
 
 <script>
 
+
 function showInfo(person) {
 
-    const modal = document.getElementById("modal");
-    const name = document.getElementById("modalName");
-    const details = document.getElementById("modalDetails");
+
+    const modal =
+        document.getElementById("modal");
+
+
+    const name =
+        document.getElementById("modalName");
+
+
+    const details =
+        document.getElementById("modalDetails");
+
+
 
     if (person === "sajad") {
 
-        name.innerText = "سجاد حسنی تبار";
+
+        name.innerText =
+            "سجاد حسنی تبار";
+
 
         details.innerHTML = `
-            <b>سن:</b> ۱۷ سال<br>
-            <b>تاریخ تولد:</b> ۱۳۸۸/۸/۱۴<br>
-            <b>مدرسه:</b> قائم آل محمد<br>
-            <b>پایه تحصیلی:</b> یازدهم<br>
-            <b>پست مورد علاقه در فوتسال:</b> مدافع / دروازه‌بان
+
+            <b>سن:</b>
+            ۱۷ سال
+            <br>
+
+            <b>تاریخ تولد:</b>
+            ۱۳۸۸/۸/۱۴
+            <br>
+
+            <b>مدرسه:</b>
+            قائم آل محمد
+            <br>
+
+            <b>پایه تحصیلی:</b>
+            یازدهم
+            <br>
+
+            <b>پست مورد علاقه در فوتسال:</b>
+            مدافع / دروازه‌بان
+
         `;
 
     }
+
+
 
     else if (person === "yoosef") {
 
-        name.innerText = "یوسف سالاری";
+
+        name.innerText =
+            "یوسف سالاری";
+
 
         details.innerHTML = `
-            <b>سن:</b> ۱۶ سال<br>
-            <b>تاریخ تولد:</b> ۱۳۸۸/۹/۴<br>
-            <b>مدرسه:</b> حوزه<br>
-            <b>پایه تحصیلی:</b> پایه دو<br>
-            <b>پست مورد علاقه در فوتسال:</b> مهاجم
+
+            <b>سن:</b>
+            ۱۶ سال
+            <br>
+
+            <b>تاریخ تولد:</b>
+            ۱۳۸۸/۹/۴
+            <br>
+
+            <b>مدرسه:</b>
+            حوزه
+            <br>
+
+            <b>پایه تحصیلی:</b>
+            پایه دو
+            <br>
+
+            <b>پست مورد علاقه در فوتسال:</b>
+            مهاجم
+
         `;
 
     }
+
+
 
     else if (person === "ahmad") {
 
-        name.innerText = "احمد اسماعیل زاده";
+
+        name.innerText =
+            "احمد اسماعیل زاده";
+
 
         details.innerHTML = `
-            <b>سن:</b> ۱۷ سال<br>
-            <b>تاریخ تولد:</b> ۱۳۸۸/۱۱/۶<br>
-            <b>مدرسه:</b> قائم آل محمد<br>
-            <b>پایه تحصیلی:</b> یازدهم<br>
-            <b>پست مورد علاقه در فوتسال:</b> هافبک
+
+            <b>سن:</b>
+            ۱۷ سال
+            <br>
+
+            <b>تاریخ تولد:</b>
+            ۱۳۸۸/۱۱/۶
+            <br>
+
+            <b>مدرسه:</b>
+            قائم آل محمد
+            <br>
+
+            <b>پایه تحصیلی:</b>
+            یازدهم
+            <br>
+
+            <b>پست مورد علاقه در فوتسال:</b>
+            هافبک
+
         `;
 
     }
 
-    modal.style.display = "flex";
+
+
+    modal.style.display =
+        "flex";
+
 }
+
 
 
 function closeInfo() {
 
-    document.getElementById("modal").style.display = "none";
+    document.getElementById("modal").style.display =
+        "none";
 
 }
+
 
 
 window.onclick = function(event) {
 
-    const modal = document.getElementById("modal");
+    const modal =
+        document.getElementById("modal");
+
 
     if (event.target === modal) {
-        modal.style.display = "none";
+
+        modal.style.display =
+            "none";
+
     }
 
 }
 
+
 </script>
 
+
 </body>
+
 </html>
