@@ -8,28 +8,27 @@
 
     <style>
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         body {
             font-family: Tahoma, Arial, sans-serif;
-            background: #f5f6f8;
+            background: #f4f5f7;
             color: #222;
         }
 
-        /* Header */
         header {
             background: #ffffff;
-            padding: 35px 20px;
             text-align: center;
+            padding: 45px 20px;
             border-bottom: 1px solid #e5e5e5;
         }
 
         header h1 {
             font-size: 32px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         header p {
@@ -37,31 +36,29 @@
             font-size: 15px;
         }
 
-        /* Main */
         main {
             max-width: 1100px;
             margin: 45px auto;
             padding: 0 20px;
         }
 
-        .section-title {
+        .title {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
-        .section-title h2 {
-            font-size: 25px;
-            margin-bottom: 8px;
+        .title h2 {
+            font-size: 26px;
+            margin-bottom: 10px;
         }
 
-        .section-title p {
+        .title p {
             color: #777;
         }
 
-        /* Friends */
         .friends {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
         }
 
@@ -69,76 +66,126 @@
             background: white;
             border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.08);
             transition: 0.3s;
         }
 
         .friend:hover {
             transform: translateY(-7px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.13);
         }
 
         .friend img {
             width: 100%;
-            height: 260px;
+            height: 280px;
             object-fit: cover;
             display: block;
         }
 
-        .friend-info {
-            padding: 20px;
+        .info {
+            padding: 22px;
             text-align: center;
         }
 
-        .friend-info h3 {
-            font-size: 20px;
-            margin-bottom: 8px;
+        .info h3 {
+            font-size: 21px;
+            margin-bottom: 12px;
         }
 
-        .friend-info p {
+        .info p {
             color: #777;
-            font-size: 14px;
             line-height: 1.8;
-            margin-bottom: 15px;
+            font-size: 14px;
+            margin-bottom: 18px;
         }
 
-        .button {
-            display: inline-block;
-            text-decoration: none;
+        button {
+            border: none;
             background: #222;
             color: white;
-            padding: 10px 22px;
+            padding: 11px 24px;
             border-radius: 10px;
+            cursor: pointer;
+            font-family: inherit;
             font-size: 14px;
-            transition: 0.2s;
         }
 
-        .button:hover {
+        button:hover {
             background: #444;
         }
 
-        /* Footer */
+        /* پنجره معرفی */
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            inset: 0;
+            background: rgba(0,0,0,0.65);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            width: 100%;
+            max-width: 450px;
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            text-align: right;
+            animation: show 0.25s ease;
+        }
+
+        @keyframes show {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            position: absolute;
+            left: 18px;
+            top: 12px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #777;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .details {
+            line-height: 2.2;
+            color: #444;
+        }
+
         footer {
             margin-top: 60px;
             background: #222;
             color: #aaa;
             text-align: center;
-            padding: 25px 15px;
+            padding: 25px;
             font-size: 13px;
         }
 
-        /* Mobile */
         @media (max-width: 600px) {
+
             header h1 {
                 font-size: 26px;
             }
 
-            main {
-                margin-top: 30px;
-            }
-
             .friend img {
-                height: 240px;
+                height: 250px;
             }
         }
     </style>
@@ -146,101 +193,192 @@
 
 <body>
 
-    <header>
-        <h1>دوستان من</h1>
-        <p>یه معرفی ساده از آدم‌هایی که کنار هم خاطره ساختیم.</p>
-    </header>
+<header>
+    <h1>دوستان من</h1>
+    <p>معرفی کوتاهی از دوستان و رفقا</p>
+</header>
 
 
-    <main>
+<main>
 
-        <div class="section-title">
-            <h2>معرفی دوستان</h2>
-            <p>برای آشنایی بیشتر روی «مشاهده معرفی» بزن.</p>
+    <div class="title">
+        <h2>معرفی دوستان</h2>
+        <p>برای دیدن مشخصات هر شخص روی «مشاهده معرفی» بزنید.</p>
+    </div>
+
+
+    <div class="friends">
+
+        <!-- سجاد -->
+
+        <div class="friend">
+
+            <img src="images/ChatGPT%20Image%20Aug%2023%2C%202026%2C%2003_13_17%20PM.jpg"
+                 alt="سجاد حسنی تبار">
+
+            <div class="info">
+
+                <h3>سجاد حسنی تبار</h3>
+
+                <p>
+                    ۱۷ ساله<br>
+                    بازیکن فوتسال
+                </p>
+
+                <button onclick="showInfo('sajad')">
+                    مشاهده معرفی
+                </button>
+
+            </div>
         </div>
 
 
-        <div class="friends">
+        <!-- یوسف -->
 
-            <!-- دوست اول -->
-            <div class="friend">
-                <img src="images/friend1.jpg" alt="دوست اول">
+        <div class="friend">
 
-                <div class="friend-info">
-                    <h3>نام دوست اول</h3>
+            <img src="images/yoosef.jpg"
+                 alt="یوسف سالاری">
 
-                    <p>
-                        اطلاعات کوتاه درباره این شخص
-                    </p>
+            <div class="info">
 
-                    <a href="#" class="button">
-                        مشاهده معرفی
-                    </a>
-                </div>
+                <h3>یوسف سالاری</h3>
+
+                <p>
+                    ۱۶ ساله<br>
+                    بازیکن فوتسال
+                </p>
+
+                <button onclick="showInfo('yoosef')">
+                    مشاهده معرفی
+                </button>
+
             </div>
-
-
-            <!-- دوست دوم -->
-            <div class="friend">
-                <img src="images/friend2.jpg" alt="دوست دوم">
-
-                <div class="friend-info">
-                    <h3>نام دوست دوم</h3>
-
-                    <p>
-                        اطلاعات کوتاه درباره این شخص
-                    </p>
-
-                    <a href="#" class="button">
-                        مشاهده معرفی
-                    </a>
-                </div>
-            </div>
-
-
-            <!-- دوست سوم -->
-            <div class="friend">
-                <img src="images/friend3.jpg" alt="دوست سوم">
-
-                <div class="friend-info">
-                    <h3>نام دوست سوم</h3>
-
-                    <p>
-                        اطلاعات کوتاه درباره این شخص
-                    </p>
-
-                    <a href="#" class="button">
-                        مشاهده معرفی
-                    </a>
-                </div>
-            </div>
-
-
-            <!-- دوست چهارم -->
-            <div class="friend">
-                <img src="images/friend4.jpg" alt="دوست چهارم">
-
-                <div class="friend-info">
-                    <h3>نام دوست چهارم</h3>
-
-                    <p>
-                        اطلاعات کوتاه درباره این شخص
-                    </p>
-
-                    <a href="#" class="button">
-                        مشاهده معرفی
-                    </a>
-                </div>
-            </div>
-
         </div>
 
-    </main>
+
+        <!-- احمد -->
+
+        <div class="friend">
+
+            <img src="images/aahmad.jpg"
+                 alt="احمد اسماعیل زاده">
+
+            <div class="info">
+
+                <h3>احمد اسماعیل زاده</h3>
+
+                <p>
+                    ۱۷ ساله<br>
+                    بازیکن فوتسال
+                </p>
+
+                <button onclick="showInfo('ahmad')">
+                    مشاهده معرفی
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+
+</main>
 
 
-    <footer>
-        ساخته شده برای معرفی دوستان ❤️
-    </footer>
+<!-- پنجره اطلاعات -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-content">
+
+        <span class="close" onclick="closeInfo()">×</span>
+
+        <h2 id="modalName"></h2>
+
+        <div class="details" id="modalDetails"></div>
+
+    </div>
+
+</div>
+
+
+<footer>
+    سایت معرفی دوستان
+</footer>
+
+
+<script>
+
+function showInfo(person) {
+
+    const modal = document.getElementById("modal");
+    const name = document.getElementById("modalName");
+    const details = document.getElementById("modalDetails");
+
+    if (person === "sajad") {
+
+        name.innerText = "سجاد حسنی تبار";
+
+        details.innerHTML = `
+            <b>سن:</b> ۱۷ سال<br>
+            <b>تاریخ تولد:</b> ۱۳۸۸/۸/۱۴<br>
+            <b>مدرسه:</b> قائم آل محمد<br>
+            <b>پایه تحصیلی:</b> یازدهم<br>
+            <b>پست مورد علاقه در فوتسال:</b> مدافع / دروازه‌بان
+        `;
+
+    }
+
+    else if (person === "yoosef") {
+
+        name.innerText = "یوسف سالاری";
+
+        details.innerHTML = `
+            <b>سن:</b> ۱۶ سال<br>
+            <b>تاریخ تولد:</b> ۱۳۸۸/۹/۴<br>
+            <b>مدرسه:</b> حوزه<br>
+            <b>پایه تحصیلی:</b> پایه دو<br>
+            <b>پست مورد علاقه در فوتسال:</b> مهاجم
+        `;
+
+    }
+
+    else if (person === "ahmad") {
+
+        name.innerText = "احمد اسماعیل زاده";
+
+        details.innerHTML = `
+            <b>سن:</b> ۱۷ سال<br>
+            <b>تاریخ تولد:</b> ۱۳۸۸/۱۱/۶<br>
+            <b>مدرسه:</b> قائم آل محمد<br>
+            <b>پایه تحصیلی:</b> یازدهم<br>
+            <b>پست مورد علاقه در فوتسال:</b> هافبک
+        `;
+
+    }
+
+    modal.style.display = "flex";
+}
+
+
+function closeInfo() {
+
+    document.getElementById("modal").style.display = "none";
+
+}
+
+
+window.onclick = function(event) {
+
+    const modal = document.getElementById("modal");
+
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+
+}
+
+</script>
 
 </body>
 </html>
