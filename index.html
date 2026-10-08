@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -8,8 +7,6 @@
   <title>بچو ته خط</title>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -17,248 +14,154 @@
     }
 
     body {
-      font-family: "Vazirmatn", Tahoma, sans-serif;
-      background:
-        radial-gradient(circle at 10% 15%, rgba(41, 180, 110, .12), transparent 25%),
-        radial-gradient(circle at 90% 80%, rgba(0, 145, 255, .10), transparent 25%),
-        #070b10;
-      color: #fff;
+      font-family: Tahoma, Arial, sans-serif;
       min-height: 100vh;
-      overflow-x: hidden;
+      color: #fff;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(30, 255, 120, .08), transparent 25%),
+        radial-gradient(circle at 80% 80%, rgba(0, 180, 255, .07), transparent 25%),
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px),
+        #07100c;
+      background-size: auto, auto, 45px 45px, 45px 45px, auto;
     }
 
     body::before {
       content: "";
       position: fixed;
-      inset: 0;
+      width: 520px;
+      height: 520px;
+      border: 1px solid rgba(255,255,255,.045);
+      border-radius: 50%;
+      left: -180px;
+      top: 120px;
       pointer-events: none;
-      opacity: .18;
-      background:
-        linear-gradient(90deg, transparent 49.8%, rgba(255,255,255,.12) 50%, transparent 50.2%),
-        linear-gradient(0deg, transparent 49.8%, rgba(255,255,255,.08) 50%, transparent 50.2%);
-      background-size: 120px 120px;
-      mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-      z-index: -2;
     }
 
     body::after {
       content: "";
       position: fixed;
-      width: 600px;
-      height: 600px;
-      border: 1px solid rgba(66, 220, 133, .08);
+      width: 420px;
+      height: 420px;
+      border: 1px solid rgba(255,255,255,.035);
       border-radius: 50%;
-      left: -250px;
-      top: 25%;
-      box-shadow:
-        0 0 0 80px rgba(66,220,133,.025),
-        0 0 0 160px rgba(66,220,133,.02);
+      right: -160px;
+      bottom: 50px;
       pointer-events: none;
-      z-index: -1;
     }
 
     .container {
-      width: min(1250px, 92%);
+      width: min(1180px, 92%);
       margin: auto;
     }
 
+    /* HEADER */
+
     header {
-      margin-top: 28px;
-      padding: 38px 30px;
-      border-radius: 30px;
-      background:
-        linear-gradient(135deg, rgba(20,30,39,.96), rgba(10,17,23,.93));
-      border: 1px solid rgba(255,255,255,.08);
-      box-shadow:
-        0 25px 70px rgba(0,0,0,.35),
-        inset 0 1px 0 rgba(255,255,255,.05);
-      position: relative;
-      overflow: hidden;
+      padding: 55px 0 35px;
+      text-align: center;
     }
 
-    header::before {
-      content: "";
-      position: absolute;
-      width: 280px;
-      height: 280px;
-      border: 1px solid rgba(71,220,133,.13);
-      border-radius: 50%;
-      left: -100px;
-      top: -120px;
-      box-shadow:
-        0 0 0 45px rgba(71,220,133,.025),
-        0 0 0 90px rgba(71,220,133,.018);
-    }
-
-    header::after {
-      content: "⚽";
-      position: absolute;
-      left: 35px;
-      bottom: -22px;
-      font-size: 95px;
-      opacity: .045;
-      transform: rotate(-18deg);
-    }
-
-    .header-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .mini-title {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 13px;
-      border-radius: 50px;
-      background: rgba(53, 207, 119, .09);
-      border: 1px solid rgba(53, 207, 119, .18);
-      color: #72e5a0;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    .mini-title span {
-      width: 7px;
-      height: 7px;
-      background: #53df91;
-      border-radius: 50%;
-      box-shadow: 0 0 12px #53df91;
+    .logo {
+      display: inline-block;
+      padding: 10px 22px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      color: #75f7a4;
+      font-size: 14px;
+      margin-bottom: 18px;
     }
 
     h1 {
-      font-size: clamp(38px, 6vw, 70px);
-      line-height: 1.1;
+      font-size: clamp(32px, 5vw, 58px);
       font-weight: 900;
       letter-spacing: -2px;
-      background: linear-gradient(135deg, #fff 20%, #8df0b5 90%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      width: fit-content;
+      margin-bottom: 12px;
     }
 
-    .header-text {
-      margin-top: 12px;
-      color: #aab5bd;
+    .subtitle {
+      color: #aeb9b3;
       font-size: 15px;
       line-height: 2;
-      max-width: 650px;
-    }
-
-    .header-bottom {
-      margin-top: 25px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      flex-wrap: wrap;
     }
 
     .count-badge {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255,255,255,.045);
-      border: 1px solid rgba(255,255,255,.08);
-      padding: 10px 15px;
-      border-radius: 14px;
-      color: #dce4e8;
+      display: inline-block;
+      margin-top: 18px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: rgba(75, 220, 120, .09);
+      border: 1px solid rgba(75, 220, 120, .2);
+      color: #8bf8ae;
       font-size: 14px;
     }
 
-    .count-number {
-      color: #6ce99c;
-      font-weight: 900;
-      font-size: 18px;
-    }
-
-    .search-section {
-      margin: 28px 0 35px;
-    }
+    /* SEARCH */
 
     .search-box {
+      margin: 15px auto 38px;
+      max-width: 650px;
       position: relative;
     }
 
-    .search-icon {
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #84919b;
-      font-size: 20px;
-      pointer-events: none;
-    }
-
-    #searchInput {
+    .search-box input {
       width: 100%;
-      height: 62px;
-      border: 1px solid rgba(255,255,255,.09);
-      outline: none;
+      padding: 17px 22px;
       border-radius: 18px;
-      padding: 0 55px 0 60px;
-      background: rgba(17,25,32,.82);
-      color: white;
-      font-family: inherit;
+      border: 1px solid rgba(255,255,255,.1);
+      outline: none;
+      background: rgba(255,255,255,.055);
+      color: #fff;
       font-size: 15px;
-      transition: .3s;
-      box-shadow: 0 12px 35px rgba(0,0,0,.15);
+      text-align: right;
+      transition: .25s;
     }
 
-    #searchInput::placeholder {
-      color: #68757e;
+    .search-box input::placeholder {
+      color: #89938e;
     }
 
-    #searchInput:focus {
-      border-color: rgba(82,224,143,.5);
-      box-shadow:
-        0 0 0 4px rgba(82,224,143,.06),
-        0 15px 40px rgba(0,0,0,.25);
+    .search-box input:focus {
+      border-color: rgba(90, 245, 140, .45);
+      box-shadow: 0 0 25px rgba(70, 240, 130, .08);
     }
 
-    #clearSearch {
-      position: absolute;
-      left: 18px;
-      top: 50%;
-      transform: translateY(-50%);
-      border: 0;
-      background: rgba(255,255,255,.06);
-      color: #9ca8ae;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      font-size: 16px;
-    }
+    /* GRID */
 
     .people-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      padding-bottom: 60px;
+      padding-bottom: 70px;
     }
 
+    /* CARD */
+
     .person-card {
-      background:
-        linear-gradient(145deg, rgba(20,29,37,.97), rgba(10,16,21,.97));
-      border: 1px solid rgba(255,255,255,.075);
-      border-radius: 25px;
-      padding: 13px;
-      overflow: hidden;
       position: relative;
-      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
-      cursor: pointer;
+      overflow: hidden;
+      border-radius: 24px;
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.075),
+        rgba(255,255,255,.025)
+      );
+      border: 1px solid rgba(255,255,255,.09);
+      box-shadow: 0 20px 45px rgba(0,0,0,.25);
+      transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
       animation: cardIn .55s ease both;
     }
 
     .person-card:hover {
-      transform: translateY(-9px);
-      border-color: rgba(82,224,143,.32);
+      transform: translateY(-8px);
+      border-color: rgba(100, 245, 145, .28);
       box-shadow:
         0 25px 55px rgba(0,0,0,.38),
-        0 0 35px rgba(61,205,126,.06);
+        0 0 30px rgba(70,230,120,.06);
     }
 
     @keyframes cardIn {
@@ -272,36 +175,34 @@
       }
     }
 
-    .photo-frame {
-      position: relative;
-      padding: 5px;
-      border-radius: 21px;
-      background: linear-gradient(145deg, #31413a, #14231c, #27332e);
-    }
+    /* PHOTO */
 
-    .photo-frame::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 21px;
-      background: linear-gradient(135deg, rgba(111,241,159,.45), transparent 40%);
-      pointer-events: none;
+    .photo-frame {
+      margin: 14px;
+      padding: 7px;
+      border-radius: 20px;
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,.16),
+        rgba(255,255,255,.035)
+      );
+      border: 1px solid rgba(255,255,255,.08);
     }
 
     .photo-wrapper {
-      height: 300px;
-      border-radius: 17px;
-      overflow: hidden;
       position: relative;
-      background: #10171c;
+      height: 300px;
+      overflow: hidden;
+      border-radius: 15px;
+      background: #111;
     }
 
     .photo-wrapper img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
       display: block;
-      transition: transform .55s ease;
+      object-fit: cover;
+      transition: transform .5s ease;
     }
 
     .person-card:hover .photo-wrapper img {
@@ -310,246 +211,288 @@
 
     .photo-overlay {
       position: absolute;
-      inset: auto 0 0;
-      height: 42%;
-      background: linear-gradient(to top, rgba(0,0,0,.72), transparent);
+      inset: 0;
+      background:
+        linear-gradient(
+          to top,
+          rgba(0,0,0,.65),
+          transparent 45%
+        );
       pointer-events: none;
     }
 
     .position-tag {
       position: absolute;
-      right: 14px;
-      bottom: 13px;
+      right: 12px;
+      bottom: 12px;
       padding: 7px 11px;
       border-radius: 10px;
-      background: rgba(5,10,13,.72);
-      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.62);
+      border: 1px solid rgba(255,255,255,.14);
       backdrop-filter: blur(8px);
-      color: #d9ffe7;
-      font-size: 11px;
-      font-weight: 700;
+      color: #a4ffbd;
+      font-size: 12px;
     }
 
+    /* CARD INFO */
+
     .card-info {
-      padding: 17px 8px 8px;
+      padding: 2px 19px 20px;
     }
 
     .person-name {
-      font-size: 20px;
-      font-weight: 800;
-      color: #f4f7f8;
-      margin-bottom: 7px;
+      font-size: 21px;
+      font-weight: 900;
+      margin-bottom: 8px;
     }
 
     .person-age {
-      color: #85929a;
+      color: #9ca9a2;
       font-size: 13px;
-      margin-bottom: 16px;
+      margin-bottom: 17px;
     }
 
     .profile-button {
       width: 100%;
-      height: 44px;
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 13px;
-      background: rgba(255,255,255,.045);
-      color: #dce5e8;
-      font-family: inherit;
-      font-weight: 700;
+      border: none;
       cursor: pointer;
-      transition: .3s;
+      padding: 13px;
+      border-radius: 13px;
+      color: #07100c;
+      background: #7df4a3;
+      font-weight: 800;
+      font-size: 14px;
+      transition: .25s;
     }
 
     .profile-button:hover {
-      background: rgba(72,218,133,.1);
-      border-color: rgba(72,218,133,.25);
-      color: #83eaaa;
+      background: #a0ffc0;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(80,240,130,.12);
     }
+
+    /* NO RESULT */
 
     .no-result {
       display: none;
       text-align: center;
-      padding: 70px 20px;
-      color: #8d9aa2;
+      padding: 50px 20px 90px;
+      color: #87928c;
     }
 
-    .no-result-icon {
-      font-size: 45px;
-      margin-bottom: 15px;
-      opacity: .5;
-    }
-
-    .no-result h3 {
-      color: #dce3e6;
-      margin-bottom: 8px;
-    }
+    /* MODAL */
 
     .modal {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,.72);
-      backdrop-filter: blur(12px);
-      display: none;
+      z-index: 1000;
+      display: flex;
       align-items: center;
       justify-content: center;
       padding: 20px;
-      z-index: 1000;
+      background: rgba(0,0,0,.78);
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      visibility: hidden;
+      transition: .25s;
     }
 
     .modal.show {
-      display: flex;
-      animation: modalBg .25s ease;
-    }
-
-    @keyframes modalBg {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      opacity: 1;
+      visibility: visible;
     }
 
     .modal-box {
-      width: min(850px, 100%);
+      position: relative;
+      width: min(680px, 100%);
       max-height: 92vh;
       overflow-y: auto;
+      padding: 25px;
+      border-radius: 28px;
       background:
-        linear-gradient(145deg, #172129, #0b1116);
+        linear-gradient(
+          145deg,
+          #15201a,
+          #0b110e
+        );
       border: 1px solid rgba(255,255,255,.1);
-      border-radius: 30px;
-      padding: 22px;
-      position: relative;
-      box-shadow: 0 35px 100px rgba(0,0,0,.65);
-      animation: modalIn .35s ease;
+      box-shadow: 0 30px 100px rgba(0,0,0,.55);
+      transform: translateY(20px) scale(.97);
+      transition: .3s;
     }
 
-    @keyframes modalIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px) scale(.97);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+    .modal.show .modal-box {
+      transform: translateY(0) scale(1);
     }
 
     .close {
       position: absolute;
-      left: 20px;
-      top: 20px;
-      width: 40px;
-      height: 40px;
-      border-radius: 13px;
-      border: 1px solid rgba(255,255,255,.1);
-      background: rgba(0,0,0,.25);
-      color: #d4dde0;
-      cursor: pointer;
-      font-size: 20px;
       z-index: 5;
-      transition: .25s;
-    }
-
-    .close:hover {
-      background: rgba(255,70,70,.12);
-      color: #ff8b8b;
+      left: 17px;
+      top: 15px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.35);
+      color: #fff;
+      cursor: pointer;
+      font-size: 25px;
+      line-height: 1;
     }
 
     .modal-top {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 28px;
+      display: flex;
       align-items: center;
+      gap: 20px;
+      margin-bottom: 25px;
+      padding-left: 40px;
     }
 
     .modal-image {
-      height: 340px;
-      border-radius: 22px;
-      overflow: hidden;
+      width: 135px;
+      height: 155px;
+      flex-shrink: 0;
       padding: 5px;
-      background: linear-gradient(145deg, #55df91, #1a3326, #26323b);
+      border-radius: 20px;
+      background: linear-gradient(135deg, #76f39d, rgba(255,255,255,.08));
     }
 
     .modal-image img {
       width: 100%;
       height: 100%;
-      border-radius: 18px;
       object-fit: cover;
-      display: block;
-    }
-
-    .modal-title {
-      padding-left: 35px;
+      border-radius: 15px;
     }
 
     .modal-small {
-      color: #65df98;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 10px;
+      color: #78ef9d;
+      font-size: 12px;
+      margin-bottom: 8px;
     }
 
-    #modalName {
-      font-size: clamp(28px, 5vw, 42px);
-      font-weight: 900;
-      line-height: 1.3;
-      margin-bottom: 12px;
+    .modal-title h2 {
+      font-size: 28px;
+      margin-bottom: 9px;
     }
 
-    #modalPosition {
-      color: #a9b5ba;
+    .modal-title p {
+      color: #a7b2ac;
       font-size: 14px;
+      line-height: 1.8;
     }
+
+    /* DETAILS */
 
     .details {
-      margin-top: 28px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+      gap: 11px;
     }
 
     .detail {
-      padding: 18px;
-      background: rgba(255,255,255,.035);
+      padding: 15px;
+      border-radius: 15px;
+      background: rgba(255,255,255,.045);
       border: 1px solid rgba(255,255,255,.065);
-      border-radius: 17px;
     }
 
     .detail-label {
       display: block;
-      color: #728087;
+      color: #7f8c85;
       font-size: 11px;
       margin-bottom: 7px;
     }
 
     .detail-value {
-      color: #e9eef0;
-      font-weight: 700;
+      display: block;
+      color: #f0f5f2;
       font-size: 14px;
+      font-weight: 700;
     }
+
+    /* BIRTHDAY TIMER */
+
+    .birthday-box {
+      margin-top: 15px;
+      padding: 20px;
+      border-radius: 20px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(125,244,163,.10),
+          rgba(255,255,255,.025)
+        );
+      border: 1px solid rgba(125,244,163,.18);
+      text-align: center;
+    }
+
+    .birthday-title {
+      color: #8df7ac;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .birthday-date {
+      color: #8e9993;
+      font-size: 12px;
+      margin-bottom: 17px;
+    }
+
+    .birthday-timer {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .time-unit {
+      padding: 12px 5px;
+      border-radius: 13px;
+      background: rgba(0,0,0,.2);
+      border: 1px solid rgba(255,255,255,.055);
+    }
+
+    .time-number {
+      display: block;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .time-label {
+      color: #7f8b84;
+      font-size: 10px;
+    }
+
+    .birthday-message {
+      color: #8df7ac;
+      font-size: 16px;
+      font-weight: 900;
+      padding: 10px;
+    }
+
+    /* FOOTER */
 
     footer {
       text-align: center;
-      padding: 0 0 30px;
-      color: #56636b;
+      color: #68746d;
       font-size: 12px;
+      padding: 10px 20px 35px;
     }
 
-    @media (max-width: 700px) {
+    /* RESPONSIVE */
 
-      .container {
-        width: 94%;
+    @media (max-width: 900px) {
+      .people-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
+    }
 
+    @media (max-width: 600px) {
       header {
-        margin-top: 14px;
-        padding: 28px 20px;
-        border-radius: 24px;
-      }
-
-      h1 {
-        font-size: 42px;
-      }
-
-      .header-text {
-        font-size: 13px;
+        padding-top: 35px;
       }
 
       .people-grid {
@@ -561,145 +504,76 @@
         height: 330px;
       }
 
-      .modal {
-        padding: 10px;
-      }
-
       .modal-box {
-        border-radius: 23px;
-        padding: 15px;
+        padding: 18px;
       }
 
       .modal-top {
-        grid-template-columns: 1fr;
-        gap: 18px;
+        flex-direction: column;
+        text-align: center;
+        padding-left: 0;
       }
 
       .modal-image {
-        height: 330px;
-      }
-
-      .modal-title {
-        padding: 0 5px 5px;
-        text-align: center;
+        width: 145px;
+        height: 165px;
       }
 
       .details {
         grid-template-columns: 1fr;
       }
 
-      .close {
-        left: 13px;
-        top: 13px;
-      }
-    }
-
-    @media (min-width: 701px) and (max-width: 1050px) {
-
-      .people-grid {
+      .birthday-timer {
         grid-template-columns: repeat(2, 1fr);
       }
 
+      .modal-title h2 {
+        font-size: 24px;
+      }
     }
-
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #080d11;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #26343b;
-      border-radius: 20px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: #3e5149;
-    }
-
   </style>
 </head>
 
 <body>
 
-  <main class="container">
+  <div class="container">
 
     <header>
+      <div class="logo">⚽ تیم رفاقت</div>
 
-      <div class="header-content">
+      <h1>بچو ته خط</h1>
 
-        <div class="mini-title">
-          <span></span>
-          معرفی بچه‌های تیم
-        </div>
+      <p class="subtitle">
+        یه جمع رفیق، یه تیم، کلی خاطره...
+      </p>
 
-        <h1>بچو ته خط</h1>
-
-        <p class="header-text">
-          یه جمع دوستانه، یه تیم فوتسال و کلی رفیق.
-          اینجا می‌تونی با بچه‌های تیم بیشتر آشنا بشی.
-        </p>
-
-        <div class="header-bottom">
-
-          <div class="count-badge">
-            <span class="count-number">۹</span>
-            نفر در لیست
-          </div>
-
-          <div class="count-badge">
-            ⚽ فوتسال و رفاقت
-          </div>
-
-        </div>
-
+      <div class="count-badge">
+        ۹ نفر
       </div>
-
     </header>
 
 
-    <section class="search-section">
-
-      <div class="search-box">
-
-        <span class="search-icon">⌕</span>
-
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="جستجو بین اسم، مدرسه، پایه یا پست..."
-          autocomplete="off"
-        >
-
-        <button id="clearSearch" onclick="clearSearch()">×</button>
-
-      </div>
-
-    </section>
-
-
-    <section class="people-grid" id="peopleGrid"></section>
-
-
-    <div class="no-result" id="noResult">
-
-      <div class="no-result-icon">⚽</div>
-
-      <h3>چیزی پیدا نشد</h3>
-
-      <p>اسم یا مشخصات دیگه‌ای رو امتحان کن.</p>
-
+    <div class="search-box">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="جستجو بین اسم، مدرسه، پایه یا پست فوتسال..."
+      >
     </div>
 
 
-    <footer>
-      بچو ته خط • رفاقت، فوتبال، خاطره
-    </footer>
+    <main>
+      <div class="people-grid" id="peopleGrid"></div>
 
-  </main>
+      <div class="no-result" id="noResult">
+        کسی با این مشخصات پیدا نشد.
+      </div>
+    </main>
 
+  </div>
+
+
+  <!-- MODAL -->
 
   <div class="modal" id="modal">
 
@@ -710,13 +584,10 @@
       <div class="modal-top">
 
         <div class="modal-image">
-
           <img id="modalImage" src="" alt="">
-
         </div>
 
         <div class="modal-title">
-
           <div class="modal-small">
             پروفایل بازیکن
           </div>
@@ -724,7 +595,6 @@
           <h2 id="modalName"></h2>
 
           <p id="modalPosition"></p>
-
         </div>
 
       </div>
@@ -759,12 +629,60 @@
 
       </div>
 
+
+      <!-- BIRTHDAY TIMER -->
+
+      <div class="birthday-box">
+
+        <div class="birthday-title">
+          🎂 شمارش معکوس تا تولد بعدی
+        </div>
+
+        <div class="birthday-date" id="birthdayDate">
+          در حال محاسبه...
+        </div>
+
+        <div class="birthday-timer" id="birthdayTimer">
+
+          <div class="time-unit">
+            <span class="time-number" id="timerDays">۰</span>
+            <span class="time-label">روز</span>
+          </div>
+
+          <div class="time-unit">
+            <span class="time-number" id="timerHours">۰</span>
+            <span class="time-label">ساعت</span>
+          </div>
+
+          <div class="time-unit">
+            <span class="time-number" id="timerMinutes">۰</span>
+            <span class="time-label">دقیقه</span>
+          </div>
+
+          <div class="time-unit">
+            <span class="time-number" id="timerSeconds">۰</span>
+            <span class="time-label">ثانیه</span>
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
 
   </div>
 
 
+  <footer>
+    بچو ته خط • رفاقت، فوتبال، خاطره
+  </footer>
+
+
   <script>
+
+    /* =========================
+       PEOPLE
+    ========================= */
 
     const people = [
 
@@ -861,11 +779,20 @@
     ];
 
 
-    const grid = document.getElementById("peopleGrid");
-    const searchInput = document.getElementById("searchInput");
-    const clearButton = document.getElementById("clearSearch");
-    const noResult = document.getElementById("noResult");
+    /* =========================
+       ELEMENTS
+    ========================= */
 
+    const grid = document.getElementById("peopleGrid");
+    const noResult = document.getElementById("noResult");
+    const searchInput = document.getElementById("searchInput");
+
+    let birthdayInterval = null;
+
+
+    /* =========================
+       RENDER PEOPLE
+    ========================= */
 
     function renderPeople(list) {
 
@@ -903,6 +830,7 @@
 
           </div>
 
+
           <div class="card-info">
 
             <div class="person-name">
@@ -932,15 +860,16 @@
     }
 
 
+    /* =========================
+       MODAL
+    ========================= */
+
     function showInfo(index) {
 
       const person = people[index];
 
-      document.getElementById("modalImage").src =
-        person.image;
-
-      document.getElementById("modalImage").alt =
-        person.name;
+      document.getElementById("modalImage").src = person.image;
+      document.getElementById("modalImage").alt = person.name;
 
       document.getElementById("modalName").textContent =
         person.name;
@@ -963,9 +892,16 @@
       document.getElementById("modalFutsal").textContent =
         person.futsal;
 
+
       document.getElementById("modal").classList.add("show");
 
       document.body.style.overflow = "hidden";
+
+
+      /* شروع تایمر تولد */
+
+      startBirthdayTimer(person.birth);
+
     }
 
 
@@ -974,78 +910,385 @@
       document.getElementById("modal").classList.remove("show");
 
       document.body.style.overflow = "";
-    }
 
-
-    function clearSearch() {
-
-      searchInput.value = "";
-
-      clearButton.style.display = "none";
-
-      renderPeople(people);
-
-      searchInput.focus();
-    }
-
-
-    searchInput.addEventListener("input", function() {
-
-      const value =
-        this.value.trim().toLowerCase();
-
-      clearButton.style.display =
-        value ? "block" : "none";
-
-      if (!value) {
-
-        renderPeople(people);
-
-        return;
+      if (birthdayInterval) {
+        clearInterval(birthdayInterval);
+        birthdayInterval = null;
       }
 
-
-      const filtered = people.filter(person => {
-
-        const text = `
-
-          ${person.name}
-          ${person.school}
-          ${person.grade}
-          ${person.futsal}
-          ${person.age}
-          ${person.birth}
-
-        `.toLowerCase();
-
-        return text.includes(value);
-
-      });
+    }
 
 
-      renderPeople(filtered);
+    /* بستن با کلیک بیرون */
 
-    });
-
-
-    document.getElementById("modal")
-      .addEventListener("click", function(e) {
+    document.getElementById("modal").addEventListener(
+      "click",
+      function(e) {
 
         if (e.target === this) {
           closeModal();
         }
 
-      });
+      }
+    );
 
 
-    document.addEventListener("keydown", function(e) {
+    /* بستن با ESC */
 
-      if (e.key === "Escape") {
-        closeModal();
+    document.addEventListener(
+      "keydown",
+      function(e) {
+
+        if (e.key === "Escape") {
+          closeModal();
+        }
+
+      }
+    );
+
+
+    /* =========================
+       SEARCH
+    ========================= */
+
+    searchInput.addEventListener(
+      "input",
+      function() {
+
+        const query = this.value.trim().toLowerCase();
+
+        if (!query) {
+          renderPeople(people);
+          return;
+        }
+
+        const filtered = people.filter(person => {
+
+          return (
+
+            person.name.toLowerCase().includes(query) ||
+
+            person.school.toLowerCase().includes(query) ||
+
+            person.grade.toLowerCase().includes(query) ||
+
+            person.futsal.toLowerCase().includes(query) ||
+
+            person.age.toLowerCase().includes(query) ||
+
+            person.birth.toLowerCase().includes(query)
+
+          );
+
+        });
+
+        renderPeople(filtered);
+
+      }
+    );
+
+
+    /* =========================
+       JALALI → GREGORIAN
+    ========================= */
+
+    function jalaliToGregorian(jy, jm, jd) {
+
+      jy = Number(jy);
+      jm = Number(jm);
+      jd = Number(jd);
+
+      let gy;
+
+      if (jy > 979) {
+        gy = 1600;
+        jy -= 979;
+      } else {
+        gy = 621;
       }
 
-    });
+      let days =
+        365 * jy +
+        Math.floor(jy / 33) * 8 +
+        Math.floor(((jy % 33) + 3) / 4) +
+        78 +
+        jd;
 
+      if (jm < 7) {
+        days += (jm - 1) * 31;
+      } else {
+        days += (jm - 7) * 30 + 186;
+      }
+
+      gy += 400 * Math.floor(days / 146097);
+
+      days %= 146097;
+
+      if (days > 36524) {
+
+        gy += Math.floor((days - 1) / 36524);
+
+        days = (days - 1) % 36524;
+
+        if (days >= 365) {
+          days++;
+        }
+      }
+
+      let gd = days;
+
+      let gyYear = 400 * Math.floor(gd / 1461);
+
+      gd %= 1461;
+
+      if (gd > 365) {
+
+        gyYear += Math.floor((gd - 1) / 365);
+
+        gd = (gd - 1) % 365;
+      }
+
+      gy += gyYear;
+
+      let leap = (
+        gy % 4 === 0 &&
+        (gy % 100 !== 0 || gy % 400 === 0)
+      );
+
+      const monthDays = [
+        0,
+        31,
+        leap ? 29 : 28,
+        31,
+        30,
+        31,
+        30,
+        31,
+        31,
+        30,
+        31,
+        30,
+        31
+      ];
+
+      let gm = 1;
+
+      while (
+        gm <= 12 &&
+        gd >= monthDays[gm]
+      ) {
+
+        gd -= monthDays[gm];
+
+        gm++;
+
+      }
+
+      const day = gd + 1;
+
+      return {
+        year: gy,
+        month: gm,
+        day: day
+      };
+
+    }
+
+
+    /* =========================
+       PERSIAN NUMBERS
+    ========================= */
+
+    function persianNumber(number) {
+
+      const numbers = [
+        "۰","۱","۲","۳","۴",
+        "۵","۶","۷","۸","۹"
+      ];
+
+      return String(number)
+        .replace(/\d/g, digit => numbers[digit]);
+
+    }
+
+
+    /* =========================
+       BIRTHDAY TIMER
+    ========================= */
+
+    function startBirthdayTimer(birthDate) {
+
+      if (birthdayInterval) {
+        clearInterval(birthdayInterval);
+      }
+
+
+      const parts = birthDate
+        .replace(/۰/g, "0")
+        .replace(/۱/g, "1")
+        .replace(/۲/g, "2")
+        .replace(/۳/g, "3")
+        .replace(/۴/g, "4")
+        .replace(/۵/g, "5")
+        .replace(/۶/g, "6")
+        .replace(/۷/g, "7")
+        .replace(/۸/g, "8")
+        .replace(/۹/g, "9")
+        .split("/");
+
+
+      const birthYear = Number(parts[0]);
+      const birthMonth = Number(parts[1]);
+      const birthDay = Number(parts[2]);
+
+
+      function updateTimer() {
+
+        const now = new Date();
+
+        /*
+          امسال شمسی را تقریبی به دست می‌آوریم.
+          برای تعیین سال تولد بعدی،
+          ابتدا از سال میلادی فعلی استفاده می‌کنیم.
+        */
+
+        const currentGregorianYear = now.getFullYear();
+
+        /*
+          تبدیل شروع سال شمسی جاری.
+          از اختلاف معمول 621/622 استفاده می‌کنیم
+          و سپس تاریخ تولد را بررسی می‌کنیم.
+        */
+
+        let currentJalaliYear =
+          currentGregorianYear - 621;
+
+
+        const birthdayThisYear =
+          jalaliToGregorian(
+            currentJalaliYear,
+            birthMonth,
+            birthDay
+          );
+
+
+        let birthday = new Date(
+          birthdayThisYear.year,
+          birthdayThisYear.month - 1,
+          birthdayThisYear.day,
+          0,
+          0,
+          0
+        );
+
+
+        /*
+          اگر تولد امسال گذشته باشد،
+          تولد سال بعد را انتخاب می‌کنیم.
+        */
+
+        if (birthday <= now) {
+
+          currentJalaliYear++;
+
+          const nextBirthday =
+            jalaliToGregorian(
+              currentJalaliYear,
+              birthMonth,
+              birthDay
+            );
+
+          birthday = new Date(
+            nextBirthday.year,
+            nextBirthday.month - 1,
+            nextBirthday.day,
+            0,
+            0,
+            0
+          );
+
+        }
+
+
+        let difference =
+          birthday.getTime() - now.getTime();
+
+
+        if (difference <= 0) {
+          return;
+        }
+
+
+        const totalSeconds =
+          Math.floor(difference / 1000);
+
+
+        const days =
+          Math.floor(totalSeconds / 86400);
+
+
+        const hours =
+          Math.floor(
+            (totalSeconds % 86400) / 3600
+          );
+
+
+        const minutes =
+          Math.floor(
+            (totalSeconds % 3600) / 60
+          );
+
+
+        const seconds =
+          totalSeconds % 60;
+
+
+        document.getElementById("timerDays")
+          .textContent = persianNumber(days);
+
+        document.getElementById("timerHours")
+          .textContent = persianNumber(
+            String(hours).padStart(2, "0")
+          );
+
+        document.getElementById("timerMinutes")
+          .textContent = persianNumber(
+            String(minutes).padStart(2, "0")
+          );
+
+        document.getElementById("timerSeconds")
+          .textContent = persianNumber(
+            String(seconds).padStart(2, "0")
+          );
+
+
+        document.getElementById("birthdayDate")
+          .textContent =
+          "تولد بعدی: " +
+          persianNumber(currentJalaliYear) +
+          "/" +
+          persianNumber(
+            String(birthMonth).padStart(2, "0")
+          ) +
+          "/" +
+          persianNumber(
+            String(birthDay).padStart(2, "0")
+          );
+
+      }
+
+
+      updateTimer();
+
+      birthdayInterval =
+        setInterval(updateTimer, 1000);
+
+    }
+
+
+    /* =========================
+       START
+    ========================= */
 
     renderPeople(people);
 
@@ -1053,4 +1296,3 @@
 
 </body>
 </html>
-```
