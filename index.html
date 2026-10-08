@@ -464,6 +464,15 @@
       font-size: 13px;
     }
 
+    .random-timer {
+      margin-top: 6px;
+
+      color: var(--accent);
+
+      font-size: 12px;
+      font-weight: 900;
+    }
+
     /* =========================
        GAME ENTRY
     ========================= */
@@ -708,12 +717,7 @@
     }
 
     .teams {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
-      gap: 24px;
+      display: block;
     }
 
     .team-card {
@@ -774,6 +778,9 @@
           #151f2d,
           #0c1623
         );
+
+      max-width: 700px;
+      margin: auto;
     }
 
     .game-pitch {
@@ -999,6 +1006,10 @@
 
       border:
         1px solid var(--border);
+
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .bench-title {
@@ -1268,10 +1279,6 @@
       #peopleGrid {
         grid-template-columns:
           repeat(2, 1fr);
-      }
-
-      .teams {
-        grid-template-columns: 1fr;
       }
 
     }
@@ -1604,6 +1611,10 @@
         font-size: 13px;
       }
 
+      .random-timer {
+        font-size: 11px;
+      }
+
     }
 
     /* =========================
@@ -1748,6 +1759,13 @@
             id="randomResultAge"
           ></div>
 
+          <div
+            class="random-timer"
+            id="randomTimer"
+          >
+            ۵ ثانیه
+          </div>
+
         </div>
 
       </section>
@@ -1843,11 +1861,11 @@
           <div class="team-header">
 
             <h3 class="team-name">
-              تیم یک
+              تیم یک ⚔️ تیم دو
             </h3>
 
             <div class="team-number">
-              ۱
+              ۱۰
             </div>
 
           </div>
@@ -1856,46 +1874,7 @@
 
             <div
               class="game-pitch"
-              id="teamOnePitch"
-            >
-
-              <div class="game-pitch-center"></div>
-
-              <div class="game-pitch-dot"></div>
-
-              <div class="game-penalty top"></div>
-
-              <div class="game-penalty bottom"></div>
-
-              <div class="game-goal top"></div>
-
-              <div class="game-goal bottom"></div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-        <section class="team-card">
-
-          <div class="team-header">
-
-            <h3 class="team-name">
-              تیم دو
-            </h3>
-
-            <div class="team-number">
-              ۲
-            </div>
-
-          </div>
-
-          <div class="game-pitch-wrapper">
-
-            <div
-              class="game-pitch"
-              id="teamTwoPitch"
+              id="gamePitch"
             >
 
               <div class="game-pitch-center"></div>
@@ -1917,7 +1896,7 @@
           <div class="bench">
 
             <div class="bench-title">
-              🪑 نیمکت — تعویضی تیم دو
+              🪑 نیمکت — تعویضی
             </div>
 
             <div
@@ -2303,6 +2282,9 @@
     const randomResultAge =
       document.getElementById("randomResultAge");
 
+    const randomTimer =
+      document.getElementById("randomTimer");
+
     const benchAmirali =
       document.getElementById("benchAmirali");
 
@@ -2668,6 +2650,7 @@
     ================================================== */
 
     let randomPlayerTimeout = null;
+    let randomPlayerCountdown = null;
 
     randomPlayerButton.addEventListener(
       "click",
@@ -2675,6 +2658,10 @@
 
         clearTimeout(
           randomPlayerTimeout
+        );
+
+        clearInterval(
+          randomPlayerCountdown
         );
 
         const randomIndex =
@@ -2692,13 +2679,39 @@
         randomResultAge.textContent =
           `سن: ${person.age} سال`;
 
+        let remainingTime = 5;
+
+        randomTimer.textContent =
+          `⏱️ ${remainingTime} ثانیه`;
+
         randomResult.classList.add(
           "show"
         );
 
+        randomPlayerCountdown =
+          setInterval(
+            () => {
+
+              remainingTime--;
+
+              if (remainingTime > 0) {
+
+                randomTimer.textContent =
+                  `⏱️ ${remainingTime} ثانیه`;
+
+              }
+
+            },
+            1000
+          );
+
         randomPlayerTimeout =
           setTimeout(
             () => {
+
+              clearInterval(
+                randomPlayerCountdown
+              );
 
               randomResult.classList.remove(
                 "show"
@@ -2709,6 +2722,9 @@
 
               randomResultAge.textContent =
                 "";
+
+              randomTimer.textContent =
+                "۵ ثانیه";
 
             },
             5000
@@ -2831,23 +2847,20 @@
     }
 
     /* ==================================================
-       ساخت ترکیب تیم‌ها
+       ساخت ترکیب روی یک زمین
     ================================================== */
 
     function buildGameTeams() {
 
-      const teamOnePitch =
+      const gamePitch =
         document.getElementById(
-          "teamOnePitch"
+          "gamePitch"
         );
 
-      const teamTwoPitch =
-        document.getElementById(
-          "teamTwoPitch"
-        );
+      /* تیم یک - نیمه پایین */
 
       addGamePlayer(
-        teamOnePitch,
+        gamePitch,
         "علیرضا مختاری",
         50,
         91,
@@ -2855,74 +2868,76 @@
       );
 
       addGamePlayer(
-        teamOnePitch,
+        gamePitch,
         "عرفان بابائی",
         30,
-        68,
+        72,
         "دفاع"
       );
 
       addGamePlayer(
-        teamOnePitch,
+        gamePitch,
         "امیر عباس فیروز",
         70,
-        68,
+        72,
         "دفاع"
       );
 
       addGamePlayer(
-        teamOnePitch,
+        gamePitch,
         "طاها شبان",
         35,
-        28,
+        58,
         "مهاجم"
       );
 
       addGamePlayer(
-        teamOnePitch,
+        gamePitch,
         "یوسف سالاری",
         65,
-        28,
+        58,
         "مهاجم"
       );
 
+      /* تیم دو - نیمه بالا */
+
       addGamePlayer(
-        teamTwoPitch,
+        gamePitch,
         "سجاد حسنی تبار",
         50,
-        91,
+        9,
         "دروازه‌بان"
       );
 
       addGamePlayer(
-        teamTwoPitch,
+        gamePitch,
         "عادل نصیری",
         30,
-        68,
+        28,
         "دفاع"
       );
 
       addGamePlayer(
-        teamTwoPitch,
+        gamePitch,
         "متین جوان",
         70,
-        68,
+        28,
         "دفاع"
       );
 
       addGamePlayer(
-        teamTwoPitch,
+        gamePitch,
         "احسان آرام",
         35,
-        28,
+        42,
         "جلو"
       );
 
       addGamePlayer(
-        teamTwoPitch,
+        gamePitch,
         "احمد اسماعیل زاده",
         65,
-        28,
+        42,
         "جلو"
       );
 
