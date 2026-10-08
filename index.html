@@ -418,8 +418,6 @@
       transform: scale(.97);
     }
 
-    /* نتیجه بازیکن تصادفی */
-
     .random-result {
       display: none;
 
@@ -625,10 +623,6 @@
       line-height: 1.7;
     }
 
-    /* =========================
-       EMPTY
-    ========================= */
-
     .empty {
       grid-column: 1 / -1;
 
@@ -709,16 +703,7 @@
       font-size: 13px;
     }
 
-    .teams {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
-      gap: 24px;
-    }
-
-    .team-card {
+    .single-team-card {
       padding: 15px;
 
       border:
@@ -731,7 +716,7 @@
       box-shadow: var(--shadow);
     }
 
-    .team-header {
+    .single-team-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -739,33 +724,21 @@
       margin-bottom: 14px;
     }
 
-    .team-name {
+    .single-team-title {
       margin: 0;
 
       font-size: 20px;
-
       font-weight: 900;
     }
 
-    .team-number {
-      width: 36px;
-      height: 36px;
-
-      border-radius: 11px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background:
-        rgba(54,209,124,.13);
-
-      color: var(--accent);
-
-      font-weight: 900;
+    .five-v-five {
+      color: var(--muted);
+      font-size: 12px;
     }
 
-    /* زمین */
+    /* =========================
+       ONE PITCH
+    ========================= */
 
     .game-pitch-wrapper {
       padding: 10px;
@@ -785,7 +758,7 @@
 
       width: 100%;
 
-      aspect-ratio: 9 / 16;
+      aspect-ratio: 16 / 9;
 
       overflow: hidden;
 
@@ -793,7 +766,7 @@
 
       background:
         repeating-linear-gradient(
-          0deg,
+          90deg,
           #16814d 0,
           #16814d 9%,
           #1a8d55 9%,
@@ -809,18 +782,18 @@
 
       position: absolute;
 
-      left: 0;
-      right: 0;
+      top: 0;
+      bottom: 0;
 
-      top: 50%;
+      left: 50%;
 
-      height: 2px;
+      width: 2px;
 
       background:
         rgba(255,255,255,.82);
 
       transform:
-        translateY(-50%);
+        translateX(-50%);
     }
 
     .game-pitch-center {
@@ -829,7 +802,7 @@
       left: 50%;
       top: 50%;
 
-      width: 23%;
+      width: 15%;
 
       aspect-ratio: 1;
 
@@ -862,55 +835,58 @@
     .game-penalty {
       position: absolute;
 
-      left: 25%;
-      width: 50%;
-      height: 13%;
+      top: 25%;
+
+      width: 13%;
+      height: 50%;
 
       border:
         2px solid rgba(255,255,255,.82);
     }
 
-    .game-penalty.top {
-      top: -1px;
+    .game-penalty.left {
+      left: -1px;
 
-      border-top: 0;
+      border-left: 0;
 
       border-radius:
-        0 0 35% 35%;
+        0 35% 35% 0;
     }
 
-    .game-penalty.bottom {
-      bottom: -1px;
+    .game-penalty.right {
+      right: -1px;
 
-      border-bottom: 0;
+      border-right: 0;
 
       border-radius:
-        35% 35% 0 0;
+        35% 0 0 35%;
     }
 
     .game-goal {
       position: absolute;
 
-      left: 39%;
+      top: 39%;
 
-      width: 22%;
-      height: 3%;
+      width: 3%;
+      height: 22%;
 
       border:
         2px solid rgba(255,255,255,.85);
     }
 
-    .game-goal.top {
-      top: -3px;
+    .game-goal.left {
+      left: -3px;
 
-      border-top: 0;
+      border-left: 0;
     }
 
-    .game-goal.bottom {
-      bottom: -3px;
+    .game-goal.right {
+      right: -3px;
 
-      border-bottom: 0;
+      border-right: 0;
     }
+
+    /* بازیکنان */
 
     .game-player {
       position: absolute;
@@ -918,7 +894,7 @@
       transform:
         translate(-50%, -50%);
 
-      width: 75px;
+      width: 82px;
 
       display: flex;
       flex-direction: column;
@@ -939,8 +915,8 @@
     }
 
     .game-player img {
-      width: 48px;
-      height: 48px;
+      width: 50px;
+      height: 50px;
 
       object-fit: cover;
 
@@ -956,7 +932,7 @@
     }
 
     .game-player-name {
-      max-width: 75px;
+      max-width: 82px;
 
       margin-top: 5px;
 
@@ -966,7 +942,7 @@
       border-radius: 7px;
 
       background:
-        rgba(0,0,0,.72);
+        rgba(0,0,0,.76);
 
       color: white;
 
@@ -979,6 +955,8 @@
       overflow: hidden;
 
       text-overflow: ellipsis;
+
+      text-align: center;
     }
 
     .game-player-role {
@@ -991,14 +969,33 @@
       opacity: .9;
     }
 
-    /* نیمکت */
+    /* رنگ‌بندی تیم‌ها */
 
-    .bench {
-      margin-top: 15px;
+    .team-one-player img {
+      border-color: #ffd54a;
+    }
 
-      padding: 12px;
+    .team-two-player img {
+      border-color: #5db8ff;
+    }
 
-      border-radius: 16px;
+    /* =========================
+       تعویضی کنار زمین
+    ========================= */
+
+    .substitute-area {
+      margin-top: 16px;
+
+      display: flex;
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 14px;
+
+      padding: 13px;
+
+      border-radius: 17px;
 
       background:
         rgba(127,127,127,.08);
@@ -1007,9 +1004,7 @@
         1px solid var(--border);
     }
 
-    .bench-title {
-      margin-bottom: 9px;
-
+    .substitute-title {
       color: var(--muted);
 
       font-size: 11px;
@@ -1017,7 +1012,7 @@
       font-weight: 800;
     }
 
-    .bench-player {
+    .substitute-player {
       display: flex;
       align-items: center;
 
@@ -1026,24 +1021,27 @@
       cursor: pointer;
     }
 
-    .bench-player img {
-      width: 42px;
-      height: 42px;
+    .substitute-player img {
+      width: 46px;
+      height: 46px;
 
       border-radius: 50%;
 
       object-fit: cover;
 
       border:
-        2px solid var(--accent);
+        3px solid #5db8ff;
+
+      box-shadow:
+        0 5px 14px rgba(0,0,0,.25);
     }
 
-    .bench-name {
+    .substitute-name {
       font-size: 13px;
       font-weight: 900;
     }
 
-    .bench-role {
+    .substitute-role {
       margin-top: 3px;
 
       color: var(--muted);
@@ -1276,8 +1274,13 @@
           repeat(2, 1fr);
       }
 
-      .teams {
-        grid-template-columns: 1fr;
+      .game-player {
+        width: 70px;
+      }
+
+      .game-player img {
+        width: 45px;
+        height: 45px;
       }
 
     }
@@ -1452,7 +1455,7 @@
         line-height: 1.6;
       }
 
-      /* GAME PAGE */
+      /* GAME */
 
       .game-page-header {
         align-items: flex-start;
@@ -1473,35 +1476,41 @@
         font-size: 10px;
       }
 
-      .team-card {
-        padding: 11px;
+      .single-team-card {
+        padding: 10px;
 
         border-radius: 18px;
       }
 
-      .team-name {
+      .single-team-title {
         font-size: 17px;
       }
 
-      .game-pitch-wrapper {
-        padding: 7px;
+      .five-v-five {
+        font-size: 10px;
+      }
 
-        border-radius: 16px;
+      .game-pitch-wrapper {
+        padding: 6px;
+
+        border-radius: 15px;
       }
 
       .game-pitch {
-        border-radius: 12px;
+        border-radius: 11px;
 
         border-width: 2px;
+
+        aspect-ratio: 4 / 3;
       }
 
       .game-player {
-        width: 60px;
+        width: 59px;
       }
 
       .game-player img {
-        width: 38px;
-        height: 38px;
+        width: 36px;
+        height: 36px;
 
         border-width: 2px;
       }
@@ -1519,24 +1528,31 @@
         display: none;
       }
 
-      .bench {
-        margin-top: 10px;
+      .substitute-area {
+        flex-wrap: wrap;
 
-        padding: 9px;
+        gap: 8px;
 
-        border-radius: 13px;
+        padding: 10px;
       }
 
-      .bench-player img {
-        width: 36px;
-        height: 36px;
+      .substitute-title {
+        width: 100%;
+        text-align: center;
       }
 
-      .bench-name {
+      .substitute-player img {
+        width: 38px;
+        height: 38px;
+
+        border-width: 2px;
+      }
+
+      .substitute-name {
         font-size: 11px;
       }
 
-      .bench-role {
+      .substitute-role {
         font-size: 9px;
       }
 
@@ -1616,10 +1632,6 @@
 
     }
 
-    /* =========================
-       SMALL MOBILE
-    ========================= */
-
     @media (max-width: 360px) {
 
       #peopleGrid {
@@ -1655,7 +1667,7 @@
 <body>
 
   <!-- =========================
-       دکمه حالت شب و روز
+       THEME
   ========================= -->
 
   <button
@@ -1667,7 +1679,7 @@
 
 
   <!-- ==================================================
-       صفحه اصلی
+       HOME PAGE
   ================================================== -->
 
   <div id="homePage">
@@ -1743,7 +1755,7 @@
       </section>
 
 
-      <!-- RANDOM PLAYER -->
+      <!-- RANDOM -->
 
       <section class="random-section">
 
@@ -1782,7 +1794,7 @@
       </section>
 
 
-      <!-- ورود به زمین -->
+      <!-- GAME ENTRY -->
 
       <section class="game-entry">
 
@@ -1830,7 +1842,7 @@
 
 
   <!-- ==================================================
-       صفحه زمین بازی
+       GAME PAGE
   ================================================== -->
 
   <div id="gamePage">
@@ -1879,158 +1891,94 @@
       </div>
 
 
-      <div class="teams">
+      <!-- یک زمین برای هر دو تیم -->
 
+      <section class="single-team-card">
 
-        <!-- =========================
-             تیم یک
-        ========================= -->
+        <div class="single-team-header">
 
-        <section class="team-card">
+          <h3 class="single-team-title">
+            ⚽ زمین مسابقه
+          </h3>
 
-          <div class="team-header">
-
-            <h3 class="team-name">
-              تیم یک
-            </h3>
-
-            <div class="team-number">
-              ۱
-            </div>
-
+          <div class="five-v-five">
+            ۵ × ۵
           </div>
 
+        </div>
 
-          <div class="game-pitch-wrapper">
+
+        <div class="game-pitch-wrapper">
+
+          <div
+            class="game-pitch"
+            id="mainPitch"
+          >
 
             <div
-              class="game-pitch"
-              id="teamOnePitch"
-            >
-
-              <div
-                class="game-pitch-center"
-              ></div>
-
-              <div
-                class="game-pitch-dot"
-              ></div>
-
-              <div
-                class="game-penalty top"
-              ></div>
-
-              <div
-                class="game-penalty bottom"
-              ></div>
-
-              <div
-                class="game-goal top"
-              ></div>
-
-              <div
-                class="game-goal bottom"
-              ></div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        <!-- =========================
-             تیم دو
-        ========================= -->
-
-        <section class="team-card">
-
-          <div class="team-header">
-
-            <h3 class="team-name">
-              تیم دو
-            </h3>
-
-            <div class="team-number">
-              ۲
-            </div>
-
-          </div>
-
-
-          <div class="game-pitch-wrapper">
+              class="game-pitch-center"
+            ></div>
 
             <div
-              class="game-pitch"
-              id="teamTwoPitch"
-            >
+              class="game-pitch-dot"
+            ></div>
 
-              <div
-                class="game-pitch-center"
-              ></div>
+            <div
+              class="game-penalty left"
+            ></div>
 
-              <div
-                class="game-pitch-dot"
-              ></div>
+            <div
+              class="game-penalty right"
+            ></div>
 
-              <div
-                class="game-penalty top"
-              ></div>
+            <div
+              class="game-goal left"
+            ></div>
 
-              <div
-                class="game-penalty bottom"
-              ></div>
-
-              <div
-                class="game-goal top"
-              ></div>
-
-              <div
-                class="game-goal bottom"
-              ></div>
-
-            </div>
+            <div
+              class="game-goal right"
+            ></div>
 
           </div>
 
+        </div>
 
-          <!-- نیمکت تیم دو -->
 
-          <div class="bench">
+        <!-- تعویضی -->
 
-            <div class="bench-title">
-              🪑 نیمکت — تعویضی تیم دو
-            </div>
+        <div class="substitute-area">
 
-            <div
-              class="bench-player"
-              id="benchAmirali"
+          <div class="substitute-title">
+            🪑 تعویضی تیم دو
+          </div>
+
+          <div
+            class="substitute-player"
+            id="substituteAmirali"
+          >
+
+            <img
+              src="images/amiralia.jpg"
+              alt="امیر علی آرامش"
             >
 
-              <img
-                src="images/amiralia.jpg"
-                alt="امیر علی آرامش"
-              >
+            <div>
 
-              <div>
+              <div class="substitute-name">
+                امیر علی آرامش
+              </div>
 
-                <div class="bench-name">
-                  امیر علی آرامش
-                </div>
-
-                <div class="bench-role">
-                  تعویضی
-                </div>
-
+              <div class="substitute-role">
+                بازیکن تعویضی
               </div>
 
             </div>
 
           </div>
 
-        </section>
+        </div>
 
-      </div>
+      </section>
 
     </main>
 
@@ -2185,7 +2133,7 @@
   <script>
 
     /* ==================================================
-       اطلاعات افراد
+       PEOPLE DATA
     ================================================== */
 
     const people = [
@@ -2459,18 +2407,27 @@
         "randomResultAge"
       );
 
-    const benchAmirali =
+    const mainPitch =
       document.getElementById(
-        "benchAmirali"
+        "mainPitch"
+      );
+
+    const substituteAmirali =
+      document.getElementById(
+        "substituteAmirali"
       );
 
 
     let selectedPerson = null;
     let timerInterval = null;
 
+    /* تایمر بازیکن تصادفی */
+
+    let randomPlayerTimeout = null;
+
 
     /* ==================================================
-       نمایش افراد
+       RENDER PEOPLE
     ================================================== */
 
     function renderPeople(
@@ -2552,7 +2509,7 @@
 
 
     /* ==================================================
-       جستجو
+       SEARCH
     ================================================== */
 
     searchInput.addEventListener(
@@ -2583,7 +2540,7 @@
 
 
     /* ==================================================
-       تاریخ شمسی
+       PERSIAN DATE
     ================================================== */
 
     function getPersianDate(
@@ -2634,7 +2591,7 @@
 
 
     /* ==================================================
-       تولد بعدی
+       NEXT BIRTHDAY
     ================================================== */
 
     function getNextBirthday(
@@ -2706,7 +2663,7 @@
 
 
     /* ==================================================
-       شمارش معکوس
+       COUNTDOWN
     ================================================== */
 
     function getCountdown(
@@ -2794,7 +2751,7 @@
 
 
     /* ==================================================
-       لیست تولدها
+       BIRTHDAYS
     ================================================== */
 
     function renderBirthdays() {
@@ -2881,7 +2838,7 @@
 
 
     /* ==================================================
-       باز و بسته شدن تولدها
+       BIRTHDAY TOGGLE
     ================================================== */
 
     birthdayToggle.addEventListener(
@@ -2920,12 +2877,24 @@
 
 
     /* ==================================================
-       بازیکن تصادفی
+       RANDOM PLAYER
+       نمایش فقط ۵ ثانیه
     ================================================== */
 
     randomPlayerButton.addEventListener(
       "click",
       () => {
+
+        /*
+          اگر از قبل تایمر وجود داشته باشد
+          پاکش می‌کنیم تا ۵ ثانیه از انتخاب
+          جدید حساب شود.
+        */
+
+        clearTimeout(
+          randomPlayerTimeout
+        );
+
 
         const randomIndex =
           Math.floor(
@@ -2950,12 +2919,37 @@
           "show"
         );
 
+
+        /*
+          بعد از ۵ ثانیه نتیجه حذف می‌شود.
+        */
+
+        randomPlayerTimeout =
+          setTimeout(
+            () => {
+
+              randomResult.classList.remove(
+                "show"
+              );
+
+
+              randomResultName.textContent =
+                "";
+
+
+              randomResultAge.textContent =
+                "";
+
+            },
+            5000
+          );
+
       }
     );
 
 
     /* ==================================================
-       صفحه زمین بازی
+       GAME PAGE
     ================================================== */
 
     enterGameButton.addEventListener(
@@ -3001,7 +2995,7 @@
 
 
     /* ==================================================
-       پیدا کردن شخص
+       FIND PERSON
     ================================================== */
 
     function findPerson(
@@ -3017,7 +3011,7 @@
 
 
     /* ==================================================
-       اضافه کردن بازیکن به زمین
+       ADD PLAYER TO ONE PITCH
     ================================================== */
 
     function addGamePlayer(
@@ -3025,7 +3019,8 @@
       personName,
       x,
       y,
-      role
+      role,
+      teamClass
     ) {
 
       const person =
@@ -3046,7 +3041,7 @@
 
 
       player.className =
-        "game-player";
+        `game-player ${teamClass}`;
 
 
       player.style.left =
@@ -3098,151 +3093,152 @@
 
 
     /* ==================================================
-       ساخت ترکیب تیم‌ها
+       BUILD ONE PITCH
     ================================================== */
 
     function buildGameTeams() {
 
-      const teamOnePitch =
-        document.getElementById(
-          "teamOnePitch"
-        );
-
-      const teamTwoPitch =
-        document.getElementById(
-          "teamTwoPitch"
-        );
-
-
       /*
-        تیم یک
+        زمین افقی است.
 
-        دروازبان:
+        تیم یک از سمت چپ:
+
+        دروازه‌بان:
         علیرضا مختاری
 
-        دفاع عقب:
-        عرفان
-        امیر عباس
+        دفاع:
+        عرفان بابائی
+        امیر عباس فیروز
 
         جلو:
-        طاها
-        یوسف
+        طاها شبان
+        یوسف سالاری
       */
 
 
       addGamePlayer(
-        teamOnePitch,
+        mainPitch,
         "علیرضا مختاری",
+        7,
         50,
-        91,
-        "دروازه‌بان"
+        "دروازه‌بان",
+        "team-one-player"
       );
 
 
       addGamePlayer(
-        teamOnePitch,
+        mainPitch,
         "عرفان بابائی",
-        30,
-        68,
-        "دفاع"
-      );
-
-
-      addGamePlayer(
-        teamOnePitch,
-        "امیر عباس فیروز",
-        70,
-        68,
-        "دفاع"
-      );
-
-
-      addGamePlayer(
-        teamOnePitch,
-        "طاها شبان",
+        25,
         35,
-        28,
-        "مهاجم"
+        "دفاع",
+        "team-one-player"
       );
 
 
       addGamePlayer(
-        teamOnePitch,
-        "یوسف سالاری",
+        mainPitch,
+        "امیر عباس فیروز",
+        25,
         65,
-        28,
-        "مهاجم"
+        "دفاع",
+        "team-one-player"
+      );
+
+
+      addGamePlayer(
+        mainPitch,
+        "طاها شبان",
+        41,
+        35,
+        "مهاجم",
+        "team-one-player"
+      );
+
+
+      addGamePlayer(
+        mainPitch,
+        "یوسف سالاری",
+        41,
+        65,
+        "مهاجم",
+        "team-one-player"
       );
 
 
       /*
-        تیم دو
+        تیم دو از سمت راست:
 
-        دروازبان:
+        دروازه‌بان:
         سجاد حسنی تبار
 
-        دفاع عقب:
-        عادل
-        متین
+        دفاع:
+        عادل نصیری
+        متین جوان
 
         جلو:
-        احسان
-        احمد
+        احسان آرام
+        احمد اسماعیل زاده
       */
 
 
       addGamePlayer(
-        teamTwoPitch,
+        mainPitch,
         "سجاد حسنی تبار",
+        93,
         50,
-        91,
-        "دروازه‌بان"
+        "دروازه‌بان",
+        "team-two-player"
       );
 
 
       addGamePlayer(
-        teamTwoPitch,
+        mainPitch,
         "عادل نصیری",
-        30,
-        68,
-        "دفاع"
-      );
-
-
-      addGamePlayer(
-        teamTwoPitch,
-        "متین جوان",
-        70,
-        68,
-        "دفاع"
-      );
-
-
-      addGamePlayer(
-        teamTwoPitch,
-        "احسان آرام",
+        75,
         35,
-        28,
-        "جلو"
+        "دفاع",
+        "team-two-player"
       );
 
 
       addGamePlayer(
-        teamTwoPitch,
-        "احمد اسماعیل زاده",
+        mainPitch,
+        "متین جوان",
+        75,
         65,
-        28,
-        "جلو"
+        "دفاع",
+        "team-two-player"
+      );
+
+
+      addGamePlayer(
+        mainPitch,
+        "احسان آرام",
+        59,
+        35,
+        "جلو",
+        "team-two-player"
+      );
+
+
+      addGamePlayer(
+        mainPitch,
+        "احمد اسماعیل زاده",
+        59,
+        65,
+        "جلو",
+        "team-two-player"
       );
 
     }
 
 
     /* ==================================================
-       کلیک روی امیر علی از نیمکت
+       SUBSTITUTE
     ================================================== */
 
-    benchAmirali.addEventListener(
+    substituteAmirali.addEventListener(
       "click",
       () => {
 
@@ -3255,7 +3251,11 @@
 
 
         if (index !== -1) {
-          openProfile(index);
+
+          openProfile(
+            index
+          );
+
         }
 
       }
@@ -3263,7 +3263,7 @@
 
 
     /* ==================================================
-       باز کردن پروفایل
+       OPEN PROFILE
     ================================================== */
 
     function openProfile(
@@ -3334,7 +3334,7 @@
 
 
     /* ==================================================
-       تایمر تولد
+       PROFILE BIRTHDAY TIMER
     ================================================== */
 
     function updateTimer() {
@@ -3373,7 +3373,7 @@
 
 
     /* ==================================================
-       بستن پروفایل
+       CLOSE PROFILE
     ================================================== */
 
     function closeProfile() {
@@ -3437,7 +3437,7 @@
 
 
     /* ==================================================
-       حالت شب / روز
+       THEME
     ================================================== */
 
     function applyTheme(
@@ -3606,7 +3606,7 @@
 
 
     /* ==================================================
-       تم ذخیره شده
+       SAVED THEME
     ================================================== */
 
     const savedTheme =
@@ -3633,7 +3633,7 @@
 
 
     /* ==================================================
-       شروع سایت
+       START
     ================================================== */
 
     renderPeople();
