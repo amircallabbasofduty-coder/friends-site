@@ -5,7 +5,727 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#07101d">
   <title>بچو ته خط</title>
+/* ================= PENALTY ENTRY ================= */
 
+.penalty-entry{
+  margin:30px auto;
+  max-width:850px;
+  padding:26px;
+  border-radius:24px;
+  background:linear-gradient(145deg,#151a22,#202733);
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 15px 45px rgba(0,0,0,.25);
+  display:flex;
+  align-items:center;
+  gap:20px;
+  color:white;
+}
+
+.penalty-entry-icon{
+  width:70px;
+  height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:20px;
+  background:rgba(255,255,255,.08);
+  font-size:38px;
+  flex-shrink:0;
+}
+
+.penalty-entry-content{
+  flex:1;
+}
+
+.penalty-entry h2{
+  margin:0 0 6px;
+  font-size:23px;
+}
+
+.penalty-entry p{
+  margin:0;
+  opacity:.72;
+}
+
+.penalty-main-btn{
+  border:0;
+  border-radius:15px;
+  padding:14px 22px;
+  background:#19b86b;
+  color:white;
+  font-size:16px;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:0 8px 25px rgba(25,184,107,.25);
+  transition:.2s;
+  white-space:nowrap;
+}
+
+.penalty-main-btn:hover{
+  transform:translateY(-2px);
+}
+
+.penalty-main-btn:active{
+  transform:scale(.97);
+}
+
+
+/* موبایل */
+
+@media(max-width:700px){
+
+  .penalty-entry{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .penalty-entry-content{
+    width:100%;
+  }
+
+  .penalty-main-btn{
+    width:100%;
+  }
+
+}
+
+/* ================= PENALTY PAGE ================= */
+
+#penaltyPage{
+  display:none;
+  min-height:100vh;
+  background:
+    radial-gradient(
+      circle at 50% 10%,
+      rgba(60,170,110,.12),
+      transparent 35%
+    ),
+    var(--bg);
+}
+
+#penaltyPage.active{
+  display:block;
+}
+
+.penalty-page-header{
+  position:sticky;
+  top:0;
+  z-index:50;
+
+  padding:16px 22px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  background:rgba(10,14,20,.78);
+  backdrop-filter:blur(16px);
+
+  border-bottom:
+    1px solid rgba(255,255,255,.08);
+}
+
+.penalty-page-title{
+  font-size:24px;
+  font-weight:900;
+}
+
+.penalty-page-subtitle{
+  margin-top:3px;
+  opacity:.6;
+}
+
+.penalty-back-btn{
+  border:
+    1px solid rgba(255,255,255,.12);
+
+  background:
+    rgba(255,255,255,.07);
+
+  color:inherit;
+
+  padding:11px 17px;
+
+  border-radius:13px;
+
+  cursor:pointer;
+
+  font-weight:700;
+}
+
+.penalty-main{
+  width:min(1000px,94%);
+  margin:auto;
+  padding:25px 0 50px;
+}
+
+
+/* ================= SCORE ================= */
+
+.penalty-top{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-bottom:15px;
+}
+
+.penalty-score-box,
+.penalty-round-box{
+  min-width:110px;
+
+  padding:12px 20px;
+
+  border-radius:17px;
+
+  text-align:center;
+
+  background:
+    rgba(255,255,255,.07);
+
+  border:
+    1px solid rgba(255,255,255,.08);
+}
+
+.penalty-score-box span,
+.penalty-round-box span{
+  display:block;
+  opacity:.6;
+  font-size:13px;
+}
+
+.penalty-score-box strong,
+.penalty-round-box strong{
+  display:block;
+  font-size:27px;
+  margin-top:3px;
+}
+
+
+/* ================= INSTRUCTION ================= */
+
+.penalty-instruction{
+  text-align:center;
+
+  margin:15px 0;
+
+  font-weight:700;
+
+  opacity:.85;
+}
+
+
+/* ================= 3D SCENE ================= */
+
+.penalty3d-scene{
+  position:relative;
+
+  width:100%;
+  max-width:900px;
+
+  height:570px;
+
+  margin:auto;
+
+  overflow:hidden;
+
+  border-radius:28px;
+
+  perspective:1000px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #92b8d4 0%,
+      #c3d5df 35%,
+      #4b963e 35%,
+      #256b2c 100%
+    );
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.35),
+    inset 0 0 100px rgba(0,0,0,.2);
+
+  touch-action:none;
+}
+
+
+/* ================= SKY ================= */
+
+.penalty-sky{
+  position:absolute;
+
+  inset:
+    0 0 63% 0;
+
+  background:
+    radial-gradient(
+      circle at 70% 30%,
+      rgba(255,255,255,.7),
+      transparent 10%
+    ),
+    linear-gradient(
+      #78a9ca,
+      #c8dce5
+    );
+}
+
+
+/* ================= GOAL ================= */
+
+.penalty-goal3d{
+  position:absolute;
+
+  width:58%;
+  height:42%;
+
+  left:21%;
+  top:14%;
+
+  z-index:5;
+
+  transform:
+    perspective(800px)
+    rotateX(3deg);
+}
+
+.penalty-goal-frame{
+  position:absolute;
+
+  background:
+    linear-gradient(
+      90deg,
+      #eee,
+      #fff,
+      #cfcfcf
+    );
+
+  box-shadow:
+    0 3px 6px rgba(0,0,0,.25);
+
+  z-index:4;
+}
+
+.frame-top{
+  width:100%;
+  height:11px;
+
+  top:0;
+  left:0;
+}
+
+.frame-left{
+  width:11px;
+  height:100%;
+
+  left:0;
+  top:0;
+}
+
+.frame-right{
+  width:11px;
+  height:100%;
+
+  right:0;
+  top:0;
+}
+
+
+/* ================= NET ================= */
+
+.penalty-net{
+  position:absolute;
+
+  inset:8px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.45) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      rgba(255,255,255,.45) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    24px 20px;
+
+  transform:
+    perspective(500px)
+    rotateX(-8deg);
+
+  transform-origin:top;
+
+  opacity:.72;
+
+  transition:.15s;
+}
+
+.penalty-net.hit{
+  animation:
+    penaltyNetHit .55s ease-out;
+}
+
+@keyframes penaltyNetHit{
+
+  0%{
+    transform:
+      perspective(500px)
+      rotateX(-8deg)
+      translateZ(0);
+  }
+
+  35%{
+    transform:
+      perspective(500px)
+      rotateX(-8deg)
+      translateZ(35px)
+      scale(.96);
+  }
+
+  100%{
+    transform:
+      perspective(500px)
+      rotateX(-8deg)
+      translateZ(0);
+  }
+
+}
+
+
+/* ================= GOAL SHADOW ================= */
+
+.penalty-goal-shadow{
+  position:absolute;
+
+  left:12%;
+  right:12%;
+
+  bottom:-25px;
+
+  height:28px;
+
+  border-radius:50%;
+
+  background:
+    rgba(0,0,0,.3);
+
+  filter:blur(10px);
+}
+
+
+/* ================= KEEPER ================= */
+
+.penalty-keeper3d{
+  position:absolute;
+
+  z-index:12;
+
+  left:50%;
+  top:25%;
+
+  width:80px;
+  height:150px;
+
+  transform:
+    translateX(-50%);
+
+  transform-origin:
+    center bottom;
+}
+
+.keeper-head{
+  position:absolute;
+
+  width:31px;
+  height:31px;
+
+  left:25px;
+  top:0;
+
+  border-radius:50%;
+
+  background:#c88c62;
+
+  box-shadow:
+    inset -5px -5px 8px rgba(0,0,0,.2);
+}
+
+.keeper-body{
+  position:absolute;
+
+  width:50px;
+  height:85px;
+
+  left:15px;
+  top:29px;
+
+  border-radius:
+    18px 18px 10px 10px;
+
+  background:
+    linear-gradient(
+      100deg,
+      #194a8c,
+      #236fc7,
+      #123b73
+    );
+
+  box-shadow:
+    0 7px 12px rgba(0,0,0,.25);
+}
+
+.keeper-arm{
+  position:absolute;
+
+  width:15px;
+  height:72px;
+
+  top:3px;
+
+  border-radius:12px;
+
+  background:#236fc7;
+
+  transform-origin:top;
+}
+
+.keeper-arm.left{
+  left:-12px;
+  transform:rotate(20deg);
+}
+
+.keeper-arm.right{
+  right:-12px;
+  transform:rotate(-20deg);
+}
+
+.keeper-leg{
+  position:absolute;
+
+  width:18px;
+  height:58px;
+
+  top:77px;
+
+  border-radius:12px;
+
+  background:#16365f;
+}
+
+.keeper-leg.left{
+  left:8px;
+  transform:rotate(5deg);
+}
+
+.keeper-leg.right{
+  right:8px;
+  transform:rotate(-5deg);
+}
+
+
+/* ================= BALL ================= */
+
+.penalty-ball3d{
+  position:absolute;
+
+  width:43px;
+  height:43px;
+
+  left:50%;
+  bottom:13%;
+
+  z-index:20;
+
+  border-radius:50%;
+
+  transform:
+    translateX(-50%);
+
+  background:
+    radial-gradient(
+      circle at 32% 27%,
+      #fff 0 12%,
+      transparent 13%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      #fff 0 58%,
+      #d7d7d7 70%,
+      #777 100%
+    );
+
+  box-shadow:
+    8px 12px 18px rgba(0,0,0,.35),
+    inset -7px -7px 10px rgba(0,0,0,.2);
+}
+
+.ball-pattern{
+  position:absolute;
+
+  width:12px;
+  height:12px;
+
+  left:15px;
+  top:14px;
+
+  border-radius:50%;
+
+  background:#222;
+
+  box-shadow:
+    13px -8px 0 -3px #222,
+    -10px 8px 0 -3px #222,
+    9px 11px 0 -4px #222;
+}
+
+
+/* ================= FIELD ================= */
+
+.penalty-ground{
+  position:absolute;
+
+  inset:35% 0 0;
+
+  overflow:hidden;
+
+  z-index:1;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,.025) 0,
+      rgba(255,255,255,.025) 70px,
+      transparent 70px,
+      transparent 140px
+    ),
+    linear-gradient(
+      #3f8737,
+      #1f5c25
+    );
+
+  transform:
+    perspective(700px)
+    rotateX(17deg);
+
+  transform-origin:top;
+}
+
+.penalty-box{
+  position:absolute;
+
+  width:55%;
+  height:55%;
+
+  left:22.5%;
+  top:0;
+
+  border:
+    3px solid rgba(255,255,255,.75);
+
+  border-top:0;
+}
+
+.penalty-center-line{
+  position:absolute;
+
+  width:10px;
+  height:10px;
+
+  border-radius:50%;
+
+  background:white;
+
+  left:calc(50% - 5px);
+  top:55%;
+}
+
+
+/* ================= DRAWING CANVAS ================= */
+
+.penalty-trajectory-canvas{
+  position:absolute;
+
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  z-index:30;
+
+  cursor:crosshair;
+
+  touch-action:none;
+}
+
+
+/* ================= RESULT ================= */
+
+.penalty-result3d{
+  min-height:45px;
+
+  text-align:center;
+
+  font-size:21px;
+
+  font-weight:900;
+
+  margin:18px 0;
+}
+
+.penalty-restart-btn{
+  display:block;
+
+  margin:0 auto;
+
+  border:0;
+
+  border-radius:14px;
+
+  padding:13px 25px;
+
+  background:
+    rgba(255,255,255,.09);
+
+  color:inherit;
+
+  font-size:15px;
+
+  font-weight:800;
+
+  cursor:pointer;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:700px){
+
+  .penalty3d-scene{
+    height:500px;
+    border-radius:20px;
+  }
+
+  .penalty-goal3d{
+    width:72%;
+    left:14%;
+  }
+
+  .penalty-page-header{
+    padding:13px;
+  }
+
+  .penalty-page-title{
+    font-size:20px;
+  }
+
+  .penalty-back-btn{
+    padding:9px 12px;
+  }
+
+}
+  
   <style>
     :root {
       --bg: #07101d;
@@ -2366,176 +3086,187 @@
            🏆 جام پنالتی
       ================================================== -->
 
-      <section class="penalty-section">
+     <section class="penalty-entry">
+  <div class="penalty-entry-icon">⚽</div>
 
-        <div class="penalty-header">
+  <div class="penalty-entry-content">
+    <h2>🏆 جام پنالتی بچو ته خط</h2>
+    <p>۳ ضربه بزن؛ مسیر توپ رو خودت با دست یا ماوس بکش!</p>
+  </div>
 
-          <div class="penalty-title">
-            🏆 جام پنالتی بچو ته خط
-          </div>
+  <button id="openPenaltyButton" class="penalty-main-btn">
+    ⚽ شروع جام پنالتی
+  </button>
+</section>
 
-          <div class="penalty-subtitle">
-            قدرت شوت را تنظیم کن، هدف بگیر و با یک شوت توپ را به گوشه دروازه بفرست!
-          </div>
+      <!-- ================= PENALTY PAGE ================= -->
 
-        </div>
+<div id="penaltyPage" class="penalty-page">
 
-        <div class="penalty-scoreboard">
+  <div class="penalty-page-header">
 
-          <div class="penalty-score-box">
+    <div>
+      <div class="penalty-page-title">
+        🏆 جام پنالتی
+      </div>
 
-            <div class="penalty-score-label">
-              ⚽ گل
-            </div>
+      <div class="penalty-page-subtitle">
+        بچو ته خط ⚽
+      </div>
+    </div>
 
-            <div
-              class="penalty-score-number"
-              id="penaltyScore"
-            >
-              0
-            </div>
+    <button
+      id="backPenaltyHomeButton"
+      class="penalty-back-btn">
+      → صفحه اصلی
+    </button>
 
-          </div>
+  </div>
 
-          <div class="penalty-score-box">
 
-            <div class="penalty-score-label">
-              🎯 ضربه
-            </div>
+  <main class="penalty-main">
 
-            <div
-              class="penalty-score-number"
-              id="penaltyShot"
-            >
-              1
-            </div>
+    <!-- امتیاز -->
 
-          </div>
+    <div class="penalty-top">
 
-        </div>
+      <div class="penalty-score-box">
+        <span>گل</span>
+        <strong id="penaltyScore3D">0</strong>
+      </div>
 
-        <div
-          class="penalty-round"
-          id="penaltyRound"
-        >
-          ضربه ۱ از ۵
-        </div>
+      <div class="penalty-round-box">
+        <span>ضربه</span>
+        <strong id="penaltyShot3D">1 / 3</strong>
+      </div>
 
-        <div
-          class="penalty-field"
-          id="penaltyField"
-        >
+    </div>
 
-          <div class="penalty-goal"></div>
 
-          <div
-            class="penalty-keeper"
-            id="penaltyKeeper"
-          >
+    <!-- راهنما -->
 
-            <div class="keeper-head"></div>
-            <div class="keeper-body"></div>
+    <div
+      id="penaltyInstruction"
+      class="penalty-instruction">
 
-          </div>
+      با انگشت یا ماوس مسیر شوت رو روی زمین بکش و رها کن 🎯
 
-          <div
-            class="penalty-aim"
-            id="penaltyAim"
-          ></div>
+    </div>
 
-          <div
-            class="penalty-ball"
-            id="penaltyBall"
-          ></div>
 
-        </div>
+    <!-- صحنه بازی -->
 
-        <div
-          class="penalty-message"
-          id="penaltyMessage"
-        >
-          اول گوشه شوت را انتخاب کن.
-        </div>
+    <div
+      id="penalty3dScene"
+      class="penalty3d-scene">
 
-        <div class="penalty-controls">
 
-          <button
-            class="penalty-control"
-            type="button"
-            data-direction="left"
-          >
-            ↖️ گوشه چپ
-          </button>
+      <!-- آسمان -->
 
-          <button
-            class="penalty-control"
-            type="button"
-            data-direction="center"
-          >
-            ⬆️ وسط
-          </button>
+      <div class="penalty-sky"></div>
 
-          <button
-            class="penalty-control"
-            type="button"
-            data-direction="right"
-          >
-            ↗️ گوشه راست
-          </button>
 
-        </div>
+      <!-- دروازه -->
 
-        <div class="penalty-power-wrap">
+      <div
+        id="penaltyGoal3D"
+        class="penalty-goal3d">
 
-          <div class="penalty-power-head">
+        <div class="penalty-goal-frame frame-top"></div>
 
-            <span>
-              💥 قدرت شوت
-            </span>
+        <div class="penalty-goal-frame frame-left"></div>
 
-            <span
-              class="penalty-power-value"
-              id="penaltyPowerValue"
-            >
-              75%
-            </span>
-
-          </div>
-
-          <input
-            class="penalty-power"
-            id="penaltyPower"
-            type="range"
-            min="35"
-            max="100"
-            value="75"
-          >
-
-        </div>
-
-        <button
-          class="penalty-shoot"
-          id="penaltyShoot"
-          type="button"
-        >
-          ⚽ شوت کن!
-        </button>
-
-        <button
-          class="penalty-reset"
-          id="penaltyReset"
-          type="button"
-        >
-          🔄 شروع دوباره
-        </button>
+        <div class="penalty-goal-frame frame-right"></div>
 
         <div
-          class="penalty-result"
-          id="penaltyResult"
-        ></div>
+          id="penaltyNet"
+          class="penalty-net">
+        </div>
 
-      </section>
+        <div class="penalty-goal-shadow"></div>
 
+      </div>
+
+
+      <!-- دروازه بان -->
+
+      <div
+        id="penaltyKeeper3D"
+        class="penalty-keeper3d">
+
+        <div class="keeper-head"></div>
+
+        <div class="keeper-body">
+
+          <div class="keeper-arm left"></div>
+
+          <div class="keeper-arm right"></div>
+
+          <div class="keeper-leg left"></div>
+
+          <div class="keeper-leg right"></div>
+
+        </div>
+
+      </div>
+
+
+      <!-- توپ -->
+
+      <div
+        id="penaltyBall3D"
+        class="penalty-ball3d">
+
+        <div class="ball-pattern"></div>
+
+      </div>
+
+
+      <!-- مسیر رسم شده توسط کاربر -->
+
+      <canvas
+        id="penaltyTrajectoryCanvas"
+        class="penalty-trajectory-canvas">
+      </canvas>
+
+
+      <!-- زمین -->
+
+      <div class="penalty-ground">
+
+        <div class="penalty-box"></div>
+
+        <div class="penalty-center-line"></div>
+
+        <div class="penalty-shadow"></div>
+
+      </div>
+
+    </div>
+
+
+    <!-- نتیجه -->
+
+    <div
+      id="penaltyResult3D"
+      class="penalty-result3d">
+    </div>
+
+
+    <!-- شروع دوباره -->
+
+    <button
+      id="penaltyRestart3D"
+      class="penalty-restart-btn">
+
+      🔄 شروع دوباره
+
+    </button>
+
+  </main>
+
+</div>
+      
       <section class="game-entry">
 
         <button
@@ -4736,6 +5467,58 @@
 
     resetPenaltyGame();
 
+/* ================= PENALTY PAGE NAVIGATION ================= */
+
+const openPenaltyButton =
+  document.getElementById("openPenaltyButton");
+
+const backPenaltyHomeButton =
+  document.getElementById("backPenaltyHomeButton");
+
+const penaltyPage =
+  document.getElementById("penaltyPage");
+
+
+openPenaltyButton.addEventListener("click", () => {
+
+  // مخفی کردن صفحه اصلی
+  document.getElementById("homePage").style.display = "none";
+
+  // اگر صفحه بازی تیم‌ها باز بود، آن را هم ببند
+  const gamePage =
+    document.getElementById("gamePage");
+
+  if(gamePage){
+    gamePage.style.display = "none";
+    gamePage.classList.remove("active");
+  }
+
+  // نمایش صفحه پنالتی
+  penaltyPage.classList.add("active");
+
+  window.scrollTo({
+    top:0,
+    behavior:"instant"
+  });
+
+});
+
+
+backPenaltyHomeButton.addEventListener("click", () => {
+
+  // بستن صفحه پنالتی
+  penaltyPage.classList.remove("active");
+
+  // نمایش دوباره صفحه اصلی
+  document.getElementById("homePage").style.display = "";
+
+  window.scrollTo({
+    top:0,
+    behavior:"instant"
+  });
+
+});
+    
   </script>
 
 </body>
