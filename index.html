@@ -102,7 +102,7 @@
     ========================= */
 
     header {
-      padding: 55px 0 35px;
+      padding: 55px 0 30px;
       text-align: center;
     }
 
@@ -169,6 +169,246 @@
       color: #8bf8ae;
 
       font-size: 14px;
+    }
+
+
+    /* =========================
+       BIRTHDAY SECTION
+    ========================= */
+
+    .birthday-section {
+      margin:
+        10px auto 32px;
+
+      max-width: 760px;
+    }
+
+
+    .birthday-toggle {
+      width: 100%;
+
+      border: none;
+
+      cursor: pointer;
+
+      padding: 18px 22px;
+
+      border-radius: 18px;
+
+      color: #fff;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(125,244,163,.13),
+          rgba(255,255,255,.045)
+        );
+
+      border:
+        1px solid
+        rgba(125,244,163,.18);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      font-family: inherit;
+
+      font-size: 15px;
+
+      font-weight: 800;
+
+      transition: .25s;
+    }
+
+
+    .birthday-toggle:hover {
+      background:
+        linear-gradient(
+          135deg,
+          rgba(125,244,163,.18),
+          rgba(255,255,255,.06)
+        );
+
+      border-color:
+        rgba(125,244,163,.3);
+
+      transform:
+        translateY(-2px);
+    }
+
+
+    .birthday-toggle-right {
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+    }
+
+
+    .birthday-icon {
+      width: 36px;
+      height: 36px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 11px;
+
+      background:
+        rgba(125,244,163,.1);
+
+      font-size: 18px;
+    }
+
+
+    .birthday-arrow {
+      transition: .3s;
+
+      color: #8fa099;
+
+      font-size: 17px;
+    }
+
+
+    .birthday-section.open
+    .birthday-arrow {
+      transform:
+        rotate(180deg);
+    }
+
+
+    .birthday-list {
+      max-height: 0;
+
+      overflow: hidden;
+
+      opacity: 0;
+
+      transition:
+        max-height .4s ease,
+        opacity .3s ease;
+
+      margin-top: 0;
+    }
+
+
+    .birthday-section.open
+    .birthday-list {
+      max-height: 800px;
+
+      opacity: 1;
+
+      margin-top: 12px;
+    }
+
+
+    .birthday-list-inner {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 8px;
+
+      padding: 8px;
+    }
+
+
+    .birthday-person {
+      width: 100%;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding: 15px 17px;
+
+      border-radius: 15px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.07);
+
+      background:
+        rgba(255,255,255,.035);
+
+      color: #fff;
+
+      cursor: pointer;
+
+      font-family: inherit;
+
+      text-align: right;
+
+      transition: .25s;
+    }
+
+
+    .birthday-person:hover {
+      background:
+        rgba(125,244,163,.08);
+
+      border-color:
+        rgba(125,244,163,.2);
+
+      transform:
+        translateX(-3px);
+    }
+
+
+    .birthday-person-left {
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+    }
+
+
+    .birthday-rank {
+      width: 30px;
+      height: 30px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 9px;
+
+      background:
+        rgba(125,244,163,.09);
+
+      color: #86f7aa;
+
+      font-size: 12px;
+
+      font-weight: 900;
+    }
+
+
+    .birthday-name {
+      font-size: 14px;
+
+      font-weight: 800;
+    }
+
+
+    .birthday-countdown {
+      color: #89958e;
+
+      font-size: 11px;
+
+      white-space: nowrap;
     }
 
 
@@ -891,6 +1131,16 @@
         font-size: 24px;
       }
 
+
+      .birthday-person {
+        padding: 13px;
+      }
+
+
+      .birthday-countdown {
+        font-size: 10px;
+      }
+
     }
 
   </style>
@@ -931,6 +1181,55 @@
 
 
 
+    <!-- =========================
+         NEAREST BIRTHDAYS
+    ========================= -->
+
+    <section
+      class="birthday-section"
+      id="birthdaySection"
+    >
+
+
+      <button
+        class="birthday-toggle"
+        onclick="toggleBirthdayList()"
+      >
+
+        <div class="birthday-toggle-right">
+
+          <div class="birthday-icon">
+            🎂
+          </div>
+
+          <span>
+            نزدیک‌ترین تولدها
+          </span>
+
+        </div>
+
+
+        <span class="birthday-arrow">
+          ▼
+        </span>
+
+      </button>
+
+
+
+      <div class="birthday-list">
+
+        <div
+          class="birthday-list-inner"
+          id="birthdayList"
+        ></div>
+
+      </div>
+
+    </section>
+
+
+
     <!-- SEARCH -->
 
     <div class="search-box">
@@ -968,7 +1267,9 @@
 
 
 
-  <!-- MODAL -->
+  <!-- =========================
+       MODAL
+  ========================= -->
 
   <div
     class="modal"
@@ -986,8 +1287,6 @@
       </button>
 
 
-
-      <!-- PROFILE -->
 
       <div class="modal-top">
 
@@ -1103,7 +1402,7 @@
 
 
 
-      <!-- BIRTHDAY -->
+      <!-- BIRTHDAY TIMER -->
 
       <div class="birthday-box">
 
@@ -1214,7 +1513,6 @@
 
     const people = [
 
-
       {
         name: "سجاد حسنی تبار",
         age: "۱۷ سال",
@@ -1224,7 +1522,6 @@
         futsal: "مدافع / دروازه‌بان",
         image: "images/ChatGPT%20Image%20Aug%2023%2C%202026%2C%2003_13_17%20PM.jpg"
       },
-
 
       {
         name: "یوسف سالاری",
@@ -1236,7 +1533,6 @@
         image: "images/yoosef.jpg"
       },
 
-
       {
         name: "احمد اسماعیل زاده",
         age: "۱۷ سال",
@@ -1246,7 +1542,6 @@
         futsal: "هافبک",
         image: "images/aahmad.jpg"
       },
-
 
       {
         name: "طاها شبان",
@@ -1258,7 +1553,6 @@
         image: "images/taha.jpg"
       },
 
-
       {
         name: "علیرضا مختاری",
         age: "۱۶ سال",
@@ -1268,7 +1562,6 @@
         futsal: "دروازه‌بان",
         image: "images/alireza.jfif"
       },
-
 
       {
         name: "احسان آرام",
@@ -1280,7 +1573,6 @@
         image: "images/ehsan.jpg"
       },
 
-
       {
         name: "امیر عباس فیروز",
         age: "۱۶ سال",
@@ -1290,7 +1582,6 @@
         futsal: "دروازه‌بان / دفاع / هافبک / مهاجم",
         image: "images/amirabbas.jpg"
       },
-
 
       {
         name: "عرفان بابائی",
@@ -1302,7 +1593,6 @@
         image: "images/erfan.jpg"
       },
 
-
       {
         name: "عادل نصیری",
         age: "۱۶ سال",
@@ -1312,7 +1602,6 @@
         futsal: "دفاع",
         image: "images/aadel.jpg"
       }
-
 
     ];
 
@@ -1341,6 +1630,379 @@
 
 
     let birthdayInterval = null;
+
+
+
+    /* ==========================================
+       اعداد فارسی → انگلیسی
+    ========================================== */
+
+    function toEnglishNumbers(value) {
+
+      return String(value)
+        .replace(
+          /[۰-۹]/g,
+          digit =>
+            "۰۱۲۳۴۵۶۷۸۹"
+              .indexOf(digit)
+        );
+
+    }
+
+
+
+    /* ==========================================
+       اعداد انگلیسی → فارسی
+    ========================================== */
+
+    function persianNumber(value) {
+
+      const numbers = [
+        "۰","۱","۲","۳","۴",
+        "۵","۶","۷","۸","۹"
+      ];
+
+
+      return String(value)
+        .replace(
+          /\d/g,
+          digit =>
+            numbers[digit]
+        );
+
+    }
+
+
+
+    /* ==========================================
+       تاریخ شمسی واقعی مرورگر
+    ========================================== */
+
+    function getJalaliDate(date) {
+
+      const formatter =
+        new Intl.DateTimeFormat(
+          "en-US-u-ca-persian",
+          {
+            year: "numeric",
+            month: "numeric",
+            day: "numeric"
+          }
+        );
+
+
+      const parts =
+        formatter.formatToParts(date);
+
+
+      let year;
+      let month;
+      let day;
+
+
+      parts.forEach(
+        part => {
+
+          if (part.type === "year") {
+            year =
+              Number(part.value);
+          }
+
+
+          if (part.type === "month") {
+            month =
+              Number(part.value);
+          }
+
+
+          if (part.type === "day") {
+            day =
+              Number(part.value);
+          }
+
+        }
+      );
+
+
+      return {
+        year,
+        month,
+        day
+      };
+
+    }
+
+
+
+    /* ==========================================
+       پیدا کردن تولد بعدی
+    ========================================== */
+
+    function findNextBirthday(
+      birthMonth,
+      birthDay
+    ) {
+
+      const now =
+        new Date();
+
+
+      for (
+        let i = 0;
+        i <= 370;
+        i++
+      ) {
+
+        const candidate =
+          new Date(now);
+
+
+        candidate.setHours(
+          0,
+          0,
+          0,
+          0
+        );
+
+
+        candidate.setDate(
+          candidate.getDate() + i
+        );
+
+
+        const jalali =
+          getJalaliDate(
+            candidate
+          );
+
+
+        if (
+          jalali.month === birthMonth &&
+          jalali.day === birthDay
+        ) {
+
+          return candidate;
+
+        }
+
+      }
+
+
+      return null;
+
+    }
+
+
+
+    /* ==========================================
+       محاسبه تولد بعدی یک شخص
+    ========================================== */
+
+    function getNextBirthdayInfo(person) {
+
+      const parts =
+        toEnglishNumbers(
+          person.birth
+        ).split("/");
+
+
+      const birthMonth =
+        Number(parts[1]);
+
+
+      const birthDay =
+        Number(parts[2]);
+
+
+      const nextBirthday =
+        findNextBirthday(
+          birthMonth,
+          birthDay
+        );
+
+
+      return nextBirthday;
+
+    }
+
+
+
+    /* ==========================================
+       نمایش لیست نزدیک‌ترین تولدها
+    ========================================== */
+
+    function renderBirthdayList() {
+
+      const birthdayList =
+        document.getElementById(
+          "birthdayList"
+        );
+
+
+      const now =
+        new Date();
+
+
+      const sortedPeople =
+        people
+          .map(
+            (person, index) => {
+
+              const nextBirthday =
+                getNextBirthdayInfo(
+                  person
+                );
+
+
+              return {
+                person,
+                index,
+                nextBirthday
+              };
+
+            }
+          )
+          .sort(
+            (a, b) =>
+              a.nextBirthday -
+              b.nextBirthday
+          );
+
+
+      birthdayList.innerHTML = "";
+
+
+      sortedPeople.forEach(
+        (item, position) => {
+
+
+          const difference =
+            item.nextBirthday.getTime()
+            -
+            now.getTime();
+
+
+          const totalDays =
+            Math.floor(
+              difference /
+              86400000
+            );
+
+
+          let countdownText;
+
+
+          if (
+            totalDays === 0
+          ) {
+
+            countdownText =
+              "امروز 🎉";
+
+          }
+
+          else if (
+            totalDays === 1
+          ) {
+
+            countdownText =
+              "فردا";
+
+          }
+
+          else {
+
+            countdownText =
+              persianNumber(
+                totalDays
+              ) +
+              " روز دیگر";
+
+          }
+
+
+          const button =
+            document.createElement(
+              "button"
+            );
+
+
+          button.className =
+            "birthday-person";
+
+
+          button.onclick =
+            function() {
+
+              showInfo(
+                item.index
+              );
+
+            };
+
+
+          button.innerHTML = `
+
+            <div class="birthday-person-left">
+
+              <span class="birthday-rank">
+                ${persianNumber(position + 1)}
+              </span>
+
+              <span class="birthday-name">
+                ${item.person.name}
+              </span>
+
+            </div>
+
+            <span class="birthday-countdown">
+              ${countdownText}
+            </span>
+
+          `;
+
+
+          birthdayList.appendChild(
+            button
+          );
+
+        }
+      );
+
+    }
+
+
+
+    /* ==========================================
+       باز و بسته کردن لیست تولدها
+    ========================================== */
+
+    function toggleBirthdayList() {
+
+      const section =
+        document.getElementById(
+          "birthdaySection"
+        );
+
+
+      const isOpen =
+        section.classList.contains(
+          "open"
+        );
+
+
+      if (!isOpen) {
+
+        renderBirthdayList();
+
+      }
+
+
+      section.classList.toggle(
+        "open"
+      );
+
+    }
 
 
 
@@ -1420,7 +2082,9 @@
           `;
 
 
-          grid.appendChild(card);
+          grid.appendChild(
+            card
+          );
 
         }
       );
@@ -1502,7 +2166,9 @@
 
       document.getElementById(
         "modal"
-      ).classList.add("show");
+      ).classList.add(
+        "show"
+      );
 
 
       document.body.style.overflow =
@@ -1525,7 +2191,9 @@
 
       document.getElementById(
         "modal"
-      ).classList.remove("show");
+      ).classList.remove(
+        "show"
+      );
 
 
       document.body.style.overflow =
@@ -1538,7 +2206,8 @@
           birthdayInterval
         );
 
-        birthdayInterval = null;
+        birthdayInterval =
+          null;
 
       }
 
@@ -1547,7 +2216,7 @@
 
 
     /* ==========================================
-       کلیک بیرون پروفایل
+       کلیک بیرون مودال
     ========================================== */
 
     document.getElementById(
@@ -1556,8 +2225,12 @@
       "click",
       function(event) {
 
-        if (event.target === this) {
+        if (
+          event.target === this
+        ) {
+
           closeModal();
+
         }
 
       }
@@ -1566,15 +2239,19 @@
 
 
     /* ==========================================
-       دکمه ESC
+       ESC
     ========================================== */
 
     document.addEventListener(
       "keydown",
       function(event) {
 
-        if (event.key === "Escape") {
+        if (
+          event.key === "Escape"
+        ) {
+
           closeModal();
+
         }
 
       }
@@ -1599,7 +2276,9 @@
 
         if (!query) {
 
-          renderPeople(people);
+          renderPeople(
+            people
+          );
 
           return;
 
@@ -1652,194 +2331,12 @@
           );
 
 
-        renderPeople(filtered);
+        renderPeople(
+          filtered
+        );
 
       }
     );
-
-
-
-    /* ==========================================
-       تبدیل اعداد فارسی
-    ========================================== */
-
-    function toEnglishNumbers(value) {
-
-      return String(value)
-        .replace(
-          /[۰-۹]/g,
-          digit =>
-            "۰۱۲۳۴۵۶۷۸۹"
-              .indexOf(digit)
-        );
-
-    }
-
-
-
-    /* ==========================================
-       تبدیل اعداد به فارسی
-    ========================================== */
-
-    function persianNumber(value) {
-
-      const numbers = [
-        "۰","۱","۲","۳","۴",
-        "۵","۶","۷","۸","۹"
-      ];
-
-
-      return String(value)
-        .replace(
-          /\d/g,
-          digit =>
-            numbers[digit]
-        );
-
-    }
-
-
-
-    /* ==========================================
-       گرفتن تاریخ شمسی واقعی
-       
-       اینجا از تقویم فارسی خود مرورگر
-       استفاده می‌کنیم.
-    ========================================== */
-
-    function getJalaliDate(date) {
-
-      const formatter =
-        new Intl.DateTimeFormat(
-          "en-US-u-ca-persian",
-          {
-            year: "numeric",
-            month: "numeric",
-            day: "numeric"
-          }
-        );
-
-
-      const parts =
-        formatter.formatToParts(date);
-
-
-      let year;
-      let month;
-      let day;
-
-
-      parts.forEach(
-        part => {
-
-          if (part.type === "year") {
-            year =
-              Number(part.value);
-          }
-
-
-          if (part.type === "month") {
-            month =
-              Number(part.value);
-          }
-
-
-          if (part.type === "day") {
-            day =
-              Number(part.value);
-          }
-
-        }
-      );
-
-
-      return {
-        year,
-        month,
-        day
-      };
-
-    }
-
-
-
-    /* ==========================================
-       پیدا کردن تولد بعدی
-    ========================================== */
-
-    function findNextBirthday(
-      birthMonth,
-      birthDay
-    ) {
-
-
-      const now =
-        new Date();
-
-
-      /*
-        از امروز شروع می‌کنیم
-        و روز به روز جلو می‌رویم.
-      */
-
-      for (
-        let i = 0;
-        i <= 370;
-        i++
-      ) {
-
-
-        const candidate =
-          new Date(now);
-
-
-        /*
-          ساعت روز کاندید را
-          روی نیمه شب می‌گذاریم.
-        */
-
-        candidate.setHours(
-          0,
-          0,
-          0,
-          0
-        );
-
-
-        candidate.setDate(
-          candidate.getDate() + i
-        );
-
-
-        /*
-          تاریخ شمسی این روز
-        */
-
-        const jalali =
-          getJalaliDate(
-            candidate
-          );
-
-
-        /*
-          آیا این روز تولد است؟
-        */
-
-        if (
-          jalali.month === birthMonth &&
-          jalali.day === birthDay
-        ) {
-
-          return candidate;
-
-        }
-
-      }
-
-
-      return null;
-
-    }
 
 
 
@@ -1852,10 +2349,6 @@
     ) {
 
 
-      /*
-        تایمر قبلی
-      */
-
       if (birthdayInterval) {
 
         clearInterval(
@@ -1867,10 +2360,6 @@
 
       }
 
-
-      /*
-        جدا کردن تاریخ تولد
-      */
 
       const parts =
         toEnglishNumbers(
@@ -1886,10 +2375,6 @@
         Number(parts[2]);
 
 
-      /*
-        اولین تولد بعدی
-      */
-
       let nextBirthday =
         findNextBirthday(
           birthMonth,
@@ -1897,21 +2382,16 @@
         );
 
 
-
       function updateTimer() {
 
-
-        /*
-          همین لحظه واقعی
-        */
 
         const now =
           new Date();
 
 
         /*
-          اگر تولد رسیده،
-          تولد بعدی را دوباره پیدا کن.
+          اگر زمان تولد بعدی گذشته باشد،
+          تولد سال بعد پیدا می‌شود.
         */
 
         if (
@@ -1933,20 +2413,11 @@
         }
 
 
-        /*
-          فاصله دقیق از همین لحظه
-          تا تولد
-        */
-
         const difference =
           nextBirthday.getTime()
           -
           now.getTime();
 
-
-        /*
-          کل ثانیه‌ها
-        */
 
         const totalSeconds =
           Math.max(
@@ -1957,10 +2428,6 @@
           );
 
 
-        /*
-          روز
-        */
-
         const days =
           Math.floor(
             totalSeconds /
@@ -1968,46 +2435,35 @@
           );
 
 
-        /*
-          ساعت
-        */
-
         const hours =
           Math.floor(
-            (totalSeconds %
-              86400) /
-            3600
+            (
+              totalSeconds %
+              86400
+            ) / 3600
           );
 
-
-        /*
-          دقیقه
-        */
 
         const minutes =
           Math.floor(
-            (totalSeconds %
-              3600) /
-            60
+            (
+              totalSeconds %
+              3600
+            ) / 60
           );
 
-
-        /*
-          ثانیه
-        */
 
         const seconds =
           totalSeconds %
           60;
 
 
-
-        /* نمایش */
-
         document.getElementById(
           "timerDays"
         ).textContent =
-          persianNumber(days);
+          persianNumber(
+            days
+          );
 
 
         document.getElementById(
@@ -2036,10 +2492,6 @@
               .padStart(2, "0")
           );
 
-
-        /*
-          نمایش تاریخ تولد بعدی
-        */
 
         const birthdayJalali =
           getJalaliDate(
@@ -2076,17 +2528,8 @@
       }
 
 
-
-      /*
-        اجرای فوری
-      */
-
       updateTimer();
 
-
-      /*
-        آپدیت هر ثانیه
-      */
 
       birthdayInterval =
         setInterval(
@@ -2102,7 +2545,9 @@
        شروع سایت
     ========================================== */
 
-    renderPeople(people);
+    renderPeople(
+      people
+    );
 
   </script>
 
