@@ -169,6 +169,7 @@
         opacity: 0;
         transform: translateY(20px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -355,7 +356,11 @@
       flex-shrink: 0;
       padding: 5px;
       border-radius: 20px;
-      background: linear-gradient(135deg, #76f39d, rgba(255,255,255,.08));
+      background: linear-gradient(
+        135deg,
+        #76f39d,
+        rgba(255,255,255,.08)
+      );
     }
 
     .modal-image img {
@@ -411,7 +416,7 @@
       font-weight: 700;
     }
 
-    /* BIRTHDAY TIMER */
+    /* BIRTHDAY */
 
     .birthday-box {
       margin-top: 15px;
@@ -429,7 +434,7 @@
 
     .birthday-title {
       color: #8df7ac;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 800;
       margin-bottom: 8px;
     }
@@ -466,13 +471,6 @@
       font-size: 10px;
     }
 
-    .birthday-message {
-      color: #8df7ac;
-      font-size: 16px;
-      font-weight: 900;
-      padding: 10px;
-    }
-
     /* FOOTER */
 
     footer {
@@ -485,12 +483,15 @@
     /* RESPONSIVE */
 
     @media (max-width: 900px) {
+
       .people-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
     }
 
     @media (max-width: 600px) {
+
       header {
         padding-top: 35px;
       }
@@ -530,18 +531,28 @@
       .modal-title h2 {
         font-size: 24px;
       }
+
     }
+
   </style>
 </head>
+
 
 <body>
 
   <div class="container">
 
-    <header>
-      <div class="logo">⚽ تیم رفاقت</div>
+    <!-- HEADER -->
 
-      <h1>بچو ته خط</h1>
+    <header>
+
+      <div class="logo">
+        ⚽ تیم رفاقت
+      </div>
+
+      <h1>
+        بچو ته خط
+      </h1>
 
       <p class="subtitle">
         یه جمع رفیق، یه تیم، کلی خاطره...
@@ -550,24 +561,39 @@
       <div class="count-badge">
         ۹ نفر
       </div>
+
     </header>
 
 
+    <!-- SEARCH -->
+
     <div class="search-box">
+
       <input
         type="text"
         id="searchInput"
         placeholder="جستجو بین اسم، مدرسه، پایه یا پست فوتسال..."
       >
+
     </div>
 
 
-    <main>
-      <div class="people-grid" id="peopleGrid"></div>
+    <!-- PEOPLE -->
 
-      <div class="no-result" id="noResult">
+    <main>
+
+      <div
+        class="people-grid"
+        id="peopleGrid"
+      ></div>
+
+      <div
+        class="no-result"
+        id="noResult"
+      >
         کسی با این مشخصات پیدا نشد.
       </div>
+
     </main>
 
   </div>
@@ -575,19 +601,38 @@
 
   <!-- MODAL -->
 
-  <div class="modal" id="modal">
+  <div
+    class="modal"
+    id="modal"
+  >
 
     <div class="modal-box">
 
-      <button class="close" onclick="closeModal()">×</button>
+      <button
+        class="close"
+        onclick="closeModal()"
+      >
+        ×
+      </button>
+
+
+      <!-- PROFILE TOP -->
 
       <div class="modal-top">
 
         <div class="modal-image">
-          <img id="modalImage" src="" alt="">
+
+          <img
+            id="modalImage"
+            src=""
+            alt=""
+          >
+
         </div>
 
+
         <div class="modal-title">
+
           <div class="modal-small">
             پروفایل بازیکن
           </div>
@@ -595,36 +640,83 @@
           <h2 id="modalName"></h2>
 
           <p id="modalPosition"></p>
+
         </div>
 
       </div>
 
 
+      <!-- DETAILS -->
+
       <div class="details">
 
         <div class="detail">
-          <span class="detail-label">سن</span>
-          <span class="detail-value" id="modalAge"></span>
+
+          <span class="detail-label">
+            سن
+          </span>
+
+          <span
+            class="detail-value"
+            id="modalAge"
+          ></span>
+
         </div>
 
-        <div class="detail">
-          <span class="detail-label">تاریخ تولد</span>
-          <span class="detail-value" id="modalBirth"></span>
-        </div>
 
         <div class="detail">
-          <span class="detail-label">مدرسه / محل تحصیل</span>
-          <span class="detail-value" id="modalSchool"></span>
+
+          <span class="detail-label">
+            تاریخ تولد
+          </span>
+
+          <span
+            class="detail-value"
+            id="modalBirth"
+          ></span>
+
         </div>
 
-        <div class="detail">
-          <span class="detail-label">پایه</span>
-          <span class="detail-value" id="modalGrade"></span>
-        </div>
 
         <div class="detail">
-          <span class="detail-label">پست فوتسال</span>
-          <span class="detail-value" id="modalFutsal"></span>
+
+          <span class="detail-label">
+            مدرسه / محل تحصیل
+          </span>
+
+          <span
+            class="detail-value"
+            id="modalSchool"
+          ></span>
+
+        </div>
+
+
+        <div class="detail">
+
+          <span class="detail-label">
+            پایه
+          </span>
+
+          <span
+            class="detail-value"
+            id="modalGrade"
+          ></span>
+
+        </div>
+
+
+        <div class="detail">
+
+          <span class="detail-label">
+            پست فوتسال
+          </span>
+
+          <span
+            class="detail-value"
+            id="modalFutsal"
+          ></span>
+
         </div>
 
       </div>
@@ -638,30 +730,81 @@
           🎂 شمارش معکوس تا تولد بعدی
         </div>
 
-        <div class="birthday-date" id="birthdayDate">
+
+        <div
+          class="birthday-date"
+          id="birthdayDate"
+        >
           در حال محاسبه...
         </div>
 
-        <div class="birthday-timer" id="birthdayTimer">
+
+        <div
+          class="birthday-timer"
+          id="birthdayTimer"
+        >
 
           <div class="time-unit">
-            <span class="time-number" id="timerDays">۰</span>
-            <span class="time-label">روز</span>
+
+            <span
+              class="time-number"
+              id="timerDays"
+            >
+              ۰
+            </span>
+
+            <span class="time-label">
+              روز
+            </span>
+
           </div>
 
-          <div class="time-unit">
-            <span class="time-number" id="timerHours">۰</span>
-            <span class="time-label">ساعت</span>
-          </div>
 
           <div class="time-unit">
-            <span class="time-number" id="timerMinutes">۰</span>
-            <span class="time-label">دقیقه</span>
+
+            <span
+              class="time-number"
+              id="timerHours"
+            >
+              ۰
+            </span>
+
+            <span class="time-label">
+              ساعت
+            </span>
+
           </div>
 
+
           <div class="time-unit">
-            <span class="time-number" id="timerSeconds">۰</span>
-            <span class="time-label">ثانیه</span>
+
+            <span
+              class="time-number"
+              id="timerMinutes"
+            >
+              ۰
+            </span>
+
+            <span class="time-label">
+              دقیقه
+            </span>
+
+          </div>
+
+
+          <div class="time-unit">
+
+            <span
+              class="time-number"
+              id="timerSeconds"
+            >
+              ۰
+            </span>
+
+            <span class="time-label">
+              ثانیه
+            </span>
+
           </div>
 
         </div>
@@ -673,6 +816,8 @@
   </div>
 
 
+  <!-- FOOTER -->
+
   <footer>
     بچو ته خط • رفاقت، فوتبال، خاطره
   </footer>
@@ -680,9 +825,9 @@
 
   <script>
 
-    /* =========================
-       PEOPLE
-    ========================= */
+    /* ==========================================
+       اطلاعات افراد
+    ========================================== */
 
     const people = [
 
@@ -696,6 +841,7 @@
         image: "images/ChatGPT%20Image%20Aug%2023%2C%202026%2C%2003_13_17%20PM.jpg"
       },
 
+
       {
         name: "یوسف سالاری",
         age: "۱۶ سال",
@@ -705,6 +851,7 @@
         futsal: "مهاجم",
         image: "images/yoosef.jpg"
       },
+
 
       {
         name: "احمد اسماعیل زاده",
@@ -716,6 +863,7 @@
         image: "images/aahmad.jpg"
       },
 
+
       {
         name: "طاها شبان",
         age: "۱۶ سال",
@@ -725,6 +873,7 @@
         futsal: "مهاجم / وینگر چپ",
         image: "images/taha.jpg"
       },
+
 
       {
         name: "علیرضا مختاری",
@@ -736,6 +885,7 @@
         image: "images/alireza.jfif"
       },
 
+
       {
         name: "احسان آرام",
         age: "۱۶ سال",
@@ -745,6 +895,7 @@
         futsal: "مهاجم / هافبک",
         image: "images/ehsan.jpg"
       },
+
 
       {
         name: "امیر عباس فیروز",
@@ -756,6 +907,7 @@
         image: "images/amirabbas.jpg"
       },
 
+
       {
         name: "عرفان بابائی",
         age: "۱۵ سال",
@@ -765,6 +917,7 @@
         futsal: "دفاع راست / دفاع وسط",
         image: "images/erfan.jpg"
       },
+
 
       {
         name: "عادل نصیری",
@@ -779,34 +932,48 @@
     ];
 
 
-    /* =========================
-       ELEMENTS
-    ========================= */
+    /* ==========================================
+       المنت‌ها
+    ========================================== */
 
-    const grid = document.getElementById("peopleGrid");
-    const noResult = document.getElementById("noResult");
-    const searchInput = document.getElementById("searchInput");
+    const grid =
+      document.getElementById("peopleGrid");
+
+    const noResult =
+      document.getElementById("noResult");
+
+    const searchInput =
+      document.getElementById("searchInput");
 
     let birthdayInterval = null;
 
 
-    /* =========================
-       RENDER PEOPLE
-    ========================= */
+    /* ==========================================
+       نمایش افراد
+    ========================================== */
 
     function renderPeople(list) {
 
       grid.innerHTML = "";
 
+
       list.forEach((person, index) => {
 
-        const originalIndex = people.indexOf(person);
+        const originalIndex =
+          people.indexOf(person);
 
-        const card = document.createElement("article");
 
-        card.className = "person-card";
+        const card =
+          document.createElement("article");
 
-        card.style.animationDelay = `${index * 0.06}s`;
+
+        card.className =
+          "person-card";
+
+
+        card.style.animationDelay =
+          `${index * 0.06}s`;
+
 
         card.innerHTML = `
 
@@ -849,91 +1016,130 @@
             </button>
 
           </div>
+
         `;
+
 
         grid.appendChild(card);
 
       });
 
+
       noResult.style.display =
-        list.length === 0 ? "block" : "none";
+        list.length === 0
+          ? "block"
+          : "none";
+
     }
 
 
-    /* =========================
-       MODAL
-    ========================= */
+    /* ==========================================
+       باز کردن پروفایل
+    ========================================== */
 
     function showInfo(index) {
 
-      const person = people[index];
+      const person =
+        people[index];
 
-      document.getElementById("modalImage").src = person.image;
-      document.getElementById("modalImage").alt = person.name;
+
+      document.getElementById("modalImage").src =
+        person.image;
+
+
+      document.getElementById("modalImage").alt =
+        person.name;
+
 
       document.getElementById("modalName").textContent =
         person.name;
 
+
       document.getElementById("modalPosition").textContent =
         "پست فوتسال: " + person.futsal;
+
 
       document.getElementById("modalAge").textContent =
         person.age;
 
+
       document.getElementById("modalBirth").textContent =
         person.birth;
+
 
       document.getElementById("modalSchool").textContent =
         person.school;
 
+
       document.getElementById("modalGrade").textContent =
         person.grade;
+
 
       document.getElementById("modalFutsal").textContent =
         person.futsal;
 
 
-      document.getElementById("modal").classList.add("show");
+      document.getElementById("modal")
+        .classList.add("show");
 
-      document.body.style.overflow = "hidden";
 
+      document.body.style.overflow =
+        "hidden";
 
-      /* شروع تایمر تولد */
 
       startBirthdayTimer(person.birth);
 
     }
 
 
+    /* ==========================================
+       بستن پروفایل
+    ========================================== */
+
     function closeModal() {
 
-      document.getElementById("modal").classList.remove("show");
+      document.getElementById("modal")
+        .classList.remove("show");
 
-      document.body.style.overflow = "";
+
+      document.body.style.overflow =
+        "";
+
 
       if (birthdayInterval) {
-        clearInterval(birthdayInterval);
-        birthdayInterval = null;
+
+        clearInterval(
+          birthdayInterval
+        );
+
+        birthdayInterval =
+          null;
+
       }
 
     }
 
 
-    /* بستن با کلیک بیرون */
+    /* ==========================================
+       کلیک بیرون مودال
+    ========================================== */
 
-    document.getElementById("modal").addEventListener(
-      "click",
-      function(e) {
+    document.getElementById("modal")
+      .addEventListener(
+        "click",
+        function(e) {
 
-        if (e.target === this) {
-          closeModal();
+          if (e.target === this) {
+            closeModal();
+          }
+
         }
-
-      }
-    );
+      );
 
 
-    /* بستن با ESC */
+    /* ==========================================
+       دکمه ESC
+    ========================================== */
 
     document.addEventListener(
       "keydown",
@@ -947,40 +1153,72 @@
     );
 
 
-    /* =========================
-       SEARCH
-    ========================= */
+    /* ==========================================
+       جستجو
+    ========================================== */
 
     searchInput.addEventListener(
       "input",
       function() {
 
-        const query = this.value.trim().toLowerCase();
+        const query =
+          this.value
+            .trim()
+            .toLowerCase();
+
 
         if (!query) {
+
           renderPeople(people);
+
           return;
+
         }
 
-        const filtered = people.filter(person => {
 
-          return (
+        const filtered =
+          people.filter(person => {
 
-            person.name.toLowerCase().includes(query) ||
+            return (
 
-            person.school.toLowerCase().includes(query) ||
+              person.name
+                .toLowerCase()
+                .includes(query)
 
-            person.grade.toLowerCase().includes(query) ||
+              ||
 
-            person.futsal.toLowerCase().includes(query) ||
+              person.school
+                .toLowerCase()
+                .includes(query)
 
-            person.age.toLowerCase().includes(query) ||
+              ||
 
-            person.birth.toLowerCase().includes(query)
+              person.grade
+                .toLowerCase()
+                .includes(query)
 
-          );
+              ||
 
-        });
+              person.futsal
+                .toLowerCase()
+                .includes(query)
+
+              ||
+
+              person.age
+                .toLowerCase()
+                .includes(query)
+
+              ||
+
+              person.birth
+                .toLowerCase()
+                .includes(query)
+
+            );
+
+          });
+
 
         renderPeople(filtered);
 
@@ -988,230 +1226,519 @@
     );
 
 
-    /* =========================
-       JALALI → GREGORIAN
-    ========================= */
+    /* ==========================================
+       تبدیل اعداد فارسی به انگلیسی
+    ========================================== */
 
-    function jalaliToGregorian(jy, jm, jd) {
+    function toEnglishNumbers(value) {
+
+      return String(value)
+        .replace(/[۰-۹]/g, d =>
+          "۰۱۲۳۴۵۶۷۸۹".indexOf(d)
+        );
+
+    }
+
+
+    /* ==========================================
+       تبدیل شمسی به میلادی
+    ========================================== */
+
+    function jalaliToGregorian(
+      jy,
+      jm,
+      jd
+    ) {
 
       jy = Number(jy);
       jm = Number(jm);
       jd = Number(jd);
 
+
       let gy;
 
+
       if (jy > 979) {
+
         gy = 1600;
+
         jy -= 979;
+
       } else {
+
         gy = 621;
+
       }
+
 
       let days =
         365 * jy +
         Math.floor(jy / 33) * 8 +
-        Math.floor(((jy % 33) + 3) / 4) +
+        Math.floor(
+          ((jy % 33) + 3) / 4
+        ) +
         78 +
         jd;
 
+
       if (jm < 7) {
-        days += (jm - 1) * 31;
+
+        days +=
+          (jm - 1) * 31;
+
       } else {
-        days += (jm - 7) * 30 + 186;
+
+        days +=
+          (jm - 7) * 30 + 186;
+
       }
 
-      gy += 400 * Math.floor(days / 146097);
+
+      gy +=
+        400 *
+        Math.floor(
+          days / 146097
+        );
+
 
       days %= 146097;
 
+
       if (days > 36524) {
 
-        gy += Math.floor((days - 1) / 36524);
+        gy +=
+          Math.floor(
+            (days - 1) / 36524
+          );
 
-        days = (days - 1) % 36524;
+
+        days =
+          (days - 1) % 36524;
+
 
         if (days >= 365) {
           days++;
         }
+
       }
 
-      let gd = days;
 
-      let gyYear = 400 * Math.floor(gd / 1461);
+      let gy2 =
+        400 *
+        Math.floor(
+          days / 1461
+        );
 
-      gd %= 1461;
 
-      if (gd > 365) {
+      days %= 1461;
 
-        gyYear += Math.floor((gd - 1) / 365);
 
-        gd = (gd - 1) % 365;
+      if (days > 365) {
+
+        gy2 +=
+          Math.floor(
+            (days - 1) / 365
+          );
+
+
+        days =
+          (days - 1) % 365;
+
       }
 
-      gy += gyYear;
 
-      let leap = (
+      gy += gy2;
+
+
+      const gd =
+        days + 1;
+
+
+      const leap =
         gy % 4 === 0 &&
-        (gy % 100 !== 0 || gy % 400 === 0)
-      );
+        (
+          gy % 100 !== 0 ||
+          gy % 400 === 0
+        );
+
 
       const monthDays = [
-        0,
+
         31,
-        leap ? 29 : 28,
+
+        leap
+          ? 29
+          : 28,
+
         31,
+
         30,
+
         31,
+
         30,
+
         31,
+
         31,
+
         30,
+
         31,
+
         30,
+
         31
+
       ];
 
-      let gm = 1;
+
+      let gm = 0;
+
+      let day = gd;
+
 
       while (
-        gm <= 12 &&
-        gd >= monthDays[gm]
+        gm < 12 &&
+        day > monthDays[gm]
       ) {
 
-        gd -= monthDays[gm];
+        day -=
+          monthDays[gm];
 
         gm++;
 
       }
 
-      const day = gd + 1;
 
       return {
+
         year: gy,
-        month: gm,
+
+        month: gm + 1,
+
         day: day
+
       };
 
     }
 
 
-    /* =========================
-       PERSIAN NUMBERS
-    ========================= */
+    /* ==========================================
+       تبدیل میلادی به شمسی
+    ========================================== */
 
-    function persianNumber(number) {
+    function gregorianToJalali(
+      gy,
+      gm,
+      gd
+    ) {
 
-      const numbers = [
-        "۰","۱","۲","۳","۴",
-        "۵","۶","۷","۸","۹"
+      gy = Number(gy);
+      gm = Number(gm);
+      gd = Number(gd);
+
+
+      const gDaysInMonth = [
+
+        0,
+
+        31,
+
+        59,
+
+        90,
+
+        120,
+
+        151,
+
+        181,
+
+        212,
+
+        243,
+
+        273,
+
+        304,
+
+        334
+
       ];
 
-      return String(number)
-        .replace(/\d/g, digit => numbers[digit]);
+
+      const gy2 =
+        gy + 1;
+
+
+      let days =
+        355666 +
+        365 * gy +
+        Math.floor(gy2 / 4) -
+        Math.floor(gy2 / 100) +
+        Math.floor(gy2 / 400) +
+        gd +
+        gDaysInMonth[gm - 1];
+
+
+      if (
+        gm > 2 &&
+        gy % 4 === 0 &&
+        (
+          gy % 100 !== 0 ||
+          gy % 400 === 0
+        )
+      ) {
+
+        days++;
+
+      }
+
+
+      let jy =
+        -1595 +
+        33 *
+        Math.floor(
+          days / 12053
+        );
+
+
+      days %= 12053;
+
+
+      jy +=
+        4 *
+        Math.floor(
+          days / 1461
+        );
+
+
+      days %= 1461;
+
+
+      if (days > 365) {
+
+        jy +=
+          Math.floor(
+            (days - 1) / 365
+          );
+
+
+        days =
+          (days - 1) % 365;
+
+      }
+
+
+      let jm;
+
+      let jd;
+
+
+      if (days < 186) {
+
+        jm =
+          1 +
+          Math.floor(
+            days / 31
+          );
+
+
+        jd =
+          1 +
+          days % 31;
+
+      } else {
+
+        jm =
+          7 +
+          Math.floor(
+            (days - 186) / 30
+          );
+
+
+        jd =
+          1 +
+          (days - 186) % 30;
+
+      }
+
+
+      return {
+
+        year: jy,
+
+        month: jm,
+
+        day: jd
+
+      };
 
     }
 
 
-    /* =========================
-       BIRTHDAY TIMER
-    ========================= */
+    /* ==========================================
+       اعداد فارسی
+    ========================================== */
 
-    function startBirthdayTimer(birthDate) {
+    function persianNumber(value) {
+
+      const numbers = [
+        "۰",
+        "۱",
+        "۲",
+        "۳",
+        "۴",
+        "۵",
+        "۶",
+        "۷",
+        "۸",
+        "۹"
+      ];
+
+
+      return String(value)
+        .replace(
+          /\d/g,
+          digit =>
+            numbers[digit]
+        );
+
+    }
+
+
+    /* ==========================================
+       تایمر تولد
+    ========================================== */
+
+    function startBirthdayTimer(
+      birthDate
+    ) {
 
       if (birthdayInterval) {
-        clearInterval(birthdayInterval);
+
+        clearInterval(
+          birthdayInterval
+        );
+
       }
 
 
-      const parts = birthDate
-        .replace(/۰/g, "0")
-        .replace(/۱/g, "1")
-        .replace(/۲/g, "2")
-        .replace(/۳/g, "3")
-        .replace(/۴/g, "4")
-        .replace(/۵/g, "5")
-        .replace(/۶/g, "6")
-        .replace(/۷/g, "7")
-        .replace(/۸/g, "8")
-        .replace(/۹/g, "9")
-        .split("/");
+      const parts =
+        toEnglishNumbers(
+          birthDate
+        ).split("/");
 
 
-      const birthYear = Number(parts[0]);
-      const birthMonth = Number(parts[1]);
-      const birthDay = Number(parts[2]);
+      const birthMonth =
+        Number(parts[1]);
+
+
+      const birthDay =
+        Number(parts[2]);
 
 
       function updateTimer() {
 
-        const now = new Date();
-
         /*
-          امسال شمسی را تقریبی به دست می‌آوریم.
-          برای تعیین سال تولد بعدی،
-          ابتدا از سال میلادی فعلی استفاده می‌کنیم.
+          تاریخ و ساعت واقعی همین لحظه
+          از دستگاه کاربر گرفته می‌شود.
         */
 
-        const currentGregorianYear = now.getFullYear();
+        const now =
+          new Date();
+
 
         /*
-          تبدیل شروع سال شمسی جاری.
-          از اختلاف معمول 621/622 استفاده می‌کنیم
-          و سپس تاریخ تولد را بررسی می‌کنیم.
+          پیدا کردن تاریخ شمسی امروز
         */
 
-        let currentJalaliYear =
-          currentGregorianYear - 621;
+        const todayJalali =
+          gregorianToJalali(
+            now.getFullYear(),
+            now.getMonth() + 1,
+            now.getDate()
+          );
 
 
-        const birthdayThisYear =
+        /*
+          سال شمسی فعلی
+        */
+
+        let birthdayYear =
+          todayJalali.year;
+
+
+        /*
+          تبدیل تولد امسال
+          به میلادی
+        */
+
+        let birthdayGregorian =
           jalaliToGregorian(
-            currentJalaliYear,
+            birthdayYear,
             birthMonth,
             birthDay
           );
 
 
-        let birthday = new Date(
-          birthdayThisYear.year,
-          birthdayThisYear.month - 1,
-          birthdayThisYear.day,
-          0,
-          0,
-          0
-        );
-
-
         /*
-          اگر تولد امسال گذشته باشد،
-          تولد سال بعد را انتخاب می‌کنیم.
+          تولد دقیقاً در ساعت ۰۰:۰۰:۰۰
         */
 
-        if (birthday <= now) {
-
-          currentJalaliYear++;
-
-          const nextBirthday =
-            jalaliToGregorian(
-              currentJalaliYear,
-              birthMonth,
-              birthDay
-            );
-
-          birthday = new Date(
-            nextBirthday.year,
-            nextBirthday.month - 1,
-            nextBirthday.day,
+        let birthday =
+          new Date(
+            birthdayGregorian.year,
+            birthdayGregorian.month - 1,
+            birthdayGregorian.day,
+            0,
             0,
             0,
             0
           );
 
+
+        /*
+          اگر تولد امسال گذشته،
+          تولد سال بعد را بگیر.
+        */
+
+        if (birthday <= now) {
+
+          birthdayYear++;
+
+
+          birthdayGregorian =
+            jalaliToGregorian(
+              birthdayYear,
+              birthMonth,
+              birthDay
+            );
+
+
+          birthday =
+            new Date(
+              birthdayGregorian.year,
+              birthdayGregorian.month - 1,
+              birthdayGregorian.day,
+              0,
+              0,
+              0,
+              0
+            );
+
         }
 
 
-        let difference =
-          birthday.getTime() - now.getTime();
+        /*
+          اختلاف دقیق از همین الان
+          تا تولد
+        */
+
+        const difference =
+          birthday.getTime() -
+          now.getTime();
 
 
         if (difference <= 0) {
@@ -1220,22 +1747,28 @@
 
 
         const totalSeconds =
-          Math.floor(difference / 1000);
+          Math.floor(
+            difference / 1000
+          );
 
 
         const days =
-          Math.floor(totalSeconds / 86400);
+          Math.floor(
+            totalSeconds / 86400
+          );
 
 
         const hours =
           Math.floor(
-            (totalSeconds % 86400) / 3600
+            (totalSeconds % 86400) /
+            3600
           );
 
 
         const minutes =
           Math.floor(
-            (totalSeconds % 3600) / 60
+            (totalSeconds % 3600) /
+            60
           );
 
 
@@ -1243,52 +1776,1972 @@
           totalSeconds % 60;
 
 
-        document.getElementById("timerDays")
-          .textContent = persianNumber(days);
+        /*
+          نمایش تایمر
+        */
 
-        document.getElementById("timerHours")
-          .textContent = persianNumber(
-            String(hours).padStart(2, "0")
+        document.getElementById(
+          "timerDays"
+        ).textContent =
+          persianNumber(days);
+
+
+        document.getElementById(
+          "timerHours"
+        ).textContent =
+          persianNumber(
+            String(hours)
+              .padStart(2, "0")
           );
 
-        document.getElementById("timerMinutes")
-          .textContent = persianNumber(
-            String(minutes).padStart(2, "0")
+
+        document.getElementById(
+          "timerMinutes"
+        ).textContent =
+          persianNumber(
+            String(minutes)
+              .padStart(2, "0")
           );
 
-        document.getElementById("timerSeconds")
-          .textContent = persianNumber(
-            String(seconds).padStart(2, "0")
+
+        document.getElementById(
+          "timerSeconds"
+        ).textContent =
+          persianNumber(
+            String(seconds)
+              .padStart(2, "0")
           );
 
 
-        document.getElementById("birthdayDate")
-          .textContent =
+        /*
+          نمایش تاریخ تولد بعدی
+        */
+
+        document.getElementById(
+          "birthdayDate"
+        ).textContent =
+
           "تولد بعدی: " +
-          persianNumber(currentJalaliYear) +
-          "/" +
+
           persianNumber(
-            String(birthMonth).padStart(2, "0")
+            birthdayYear
           ) +
+
           "/" +
+
           persianNumber(
-            String(birthDay).padStart(2, "0")
+            String(birthMonth)
+              .padStart(2, "0")
+          ) +
+
+          "/" +
+
+          persianNumber(
+            String(birthDay)
+              .padStart(2, "0")
           );
 
       }
 
 
+      /*
+        یک بار فوری اجرا شود
+      */
+
       updateTimer();
 
+
+      /*
+        سپس هر ثانیه آپدیت شود
+      */
+
       birthdayInterval =
-        setInterval(updateTimer, 1000);
+        setInterval(
+          updateTimer,
+          1000
+        );
 
     }
 
 
-    /* =========================
-       START
-    ========================= */
+    /* ==========================================
+       شروع سایت
+    ========================================== */
+
+    renderPeople(people);
+
+  </script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>بچو ته خط</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      min-height: 100vh;
+      color: #fff;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(30, 255, 120, .08), transparent 25%),
+        radial-gradient(circle at 80% 80%, rgba(0, 180, 255, .07), transparent 25%),
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px),
+        #07100c;
+      background-size: auto, auto, 45px 45px, 45px 45px, auto;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      width: 520px;
+      height: 520px;
+      border: 1px solid rgba(255,255,255,.045);
+      border-radius: 50%;
+      left: -180px;
+      top: 120px;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      border: 1px solid rgba(255,255,255,.035);
+      border-radius: 50%;
+      right: -160px;
+      bottom: 50px;
+      pointer-events: none;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    /* HEADER */
+
+    header {
+      padding: 55px 0 35px;
+      text-align: center;
+    }
+
+    .logo {
+      display: inline-block;
+      padding: 10px 22px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      color: #75f7a4;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 58px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      color: #aeb9b3;
+      font-size: 15px;
+      line-height: 2;
+    }
+
+    .count-badge {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: rgba(75, 220, 120, .09);
+      border: 1px solid rgba(75, 220, 120, .2);
+      color: #8bf8ae;
+      font-size: 14px;
+    }
+
+    /* SEARCH */
+
+    .search-box {
+      margin: 15px auto 38px;
+      max-width: 650px;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 17px 22px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.1);
+      outline: none;
+      background: rgba(255,255,255,.055);
+      color: #fff;
+      font-size: 15px;
+      text-align: right;
+      transition: .25s;
+    }
+
+    .search-box input::placeholder {
+      color: #89938e;
+    }
+
+    .search-box input:focus {
+      border-color: rgba(90, 245, 140, .45);
+      box-shadow: 0 0 25px rgba(70, 240, 130, .08);
+    }
+
+    /* GRID */
+
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding-bottom: 70px;
+    }
+
+    /* CARD */
+
+    .person-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.075),
+        rgba(255,255,255,.025)
+      );
+      border: 1px solid rgba(255,255,255,.09);
+      box-shadow: 0 20px 45px rgba(0,0,0,.25);
+      transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+      animation: cardIn .55s ease both;
+    }
+
+    .person-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(100, 245, 145, .28);
+      box-shadow:
+        0 25px 55px rgba(0,0,0,.38),
+        0 0 30px rgba(70,230,120,.06);
+    }
+
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* PHOTO */
+
+    .photo-frame {
+      margin: 14px;
+      padding: 7px;
+      border-radius: 20px;
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,.16),
+        rgba(255,255,255,.035)
+      );
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .photo-wrapper {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+      border-radius: 15px;
+      background: #111;
+    }
+
+    .photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+
+    .person-card:hover .photo-wrapper img {
+      transform: scale(1.045);
+    }
+
+    .photo-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to top,
+          rgba(0,0,0,.65),
+          transparent 45%
+        );
+      pointer-events: none;
+    }
+
+    .position-tag {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      padding: 7px 11px;
+      border-radius: 10px;
+      background: rgba(0,0,0,.62);
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(8px);
+      color: #a4ffbd;
+      font-size: 12px;
+    }
+
+    /* CARD INFO */
+
+    .card-info {
+      padding: 2px 19px 20px;
+    }
+
+    .person-name {
+      font-size: 21px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .person-age {
+      color: #9ca9a2;
+      font-size: 13px;
+      margin-bottom: 17px;
+    }
+
+    .profile-button {
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      padding: 13px;
+      border-radius: 13px;
+      color: #07100c;
+      background: #7df4a3;
+      font-weight: 800;
+      font-size: 14px;
+      transition: .25s;
+    }
+
+    .profile-button:hover {
+      background: #a0ffc0;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(80,240,130,.12);
+    }
+
+    /* NO RESULT */
+
+    .no-result {
+      display: none;
+      text-align: center;
+      padding: 50px 20px 90px;
+      color: #87928c;
+    }
+
+    /* MODAL */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0,0,0,.78);
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      visibility: hidden;
+      transition: .25s;
+    }
+
+    .modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-box {
+      position: relative;
+      width: min(680px, 100%);
+      max-height: 92vh;
+      overflow-y: auto;
+      padding: 25px;
+      border-radius: 28px;
+      background:
+        linear-gradient(
+          145deg,
+          #15201a,
+          #0b110e
+        );
+      border: 1px solid rgba(255,255,255,.1);
+      box-shadow: 0 30px 100px rgba(0,0,0,.55);
+      transform: translateY(20px) scale(.97);
+      transition: .3s;
+    }
+
+    .modal.show .modal-box {
+      transform: translateY(0) scale(1);
+    }
+
+    .close {
+      position: absolute;
+      z-index: 5;
+      left: 17px;
+      top: 15px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.35);
+      color: #fff;
+      cursor: pointer;
+      font-size: 25px;
+      line-height: 1;
+    }
+
+    .modal-top {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 25px;
+      padding-left: 40px;
+    }
+
+    .modal-image {
+      width: 135px;
+      height: 155px;
+      flex-shrink: 0;
+      padding: 5px;
+      border-radius: 20px;
+      background: linear-gradient(
+        135deg,
+        #76f39d,
+        rgba(255,255,255,.08)
+      );
+    }
+
+    .modal-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+    .modal-small {
+      color: #78ef9d;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .modal-title h2 {
+      font-size: 28px;
+      margin-bottom: 9px;
+    }
+
+    .modal-title p {
+      color: #a7b2ac;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* DETAILS */
+
+    .details {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 11px;
+    }
+
+    .detail {
+      padding: 15px;
+      border-radius: 15px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.065);
+    }
+
+    .detail-label {
+      display: block;
+      color: #7f8c85;
+      font-size: 11px;
+      margin-bottom: 7px;
+    }
+
+    .detail-value {
+      display: block;
+      color: #f0f5f2;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* BIRTHDAY */
+
+    .birthday-box {
+      margin-top: 15px;
+      padding: 20px;
+      border-radius: 20px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(125,244,163,.10),
+          rgba(255,255,255,.025)
+        );
+      border: 1px solid rgba(125,244,163,.18);
+      text-align: center;
+    }
+
+    .birthday-title {
+      color: #8df7ac;
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .birthday-date {
+      color: #8e9993;
+      font-size: 12px;
+      margin-bottom: 17px;
+    }
+
+    .birthday-timer {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .time-unit {
+      padding: 12px 5px;
+      border-radius: 13px;
+      background: rgba(0,0,0,.2);
+      border: 1px solid rgba(255,255,255,.055);
+    }
+
+    .time-number {
+      display: block;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .time-label {
+      color: #7f8b84;
+      font-size: 10px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      text-align: center;
+      color: #68746d;
+      font-size: 12px;
+      padding: 10px 20px 35px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+
+      .people-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      header {
+        padding-top: 35px;
+      }
+
+      .people-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .photo-wrapper {
+        height: 330px;
+      }
+
+      .modal-box {
+        padding: 18px;
+      }
+
+      .modal-top {
+        flex-direction: column;
+        text-align: center;
+        padding-left: 0;
+      }
+
+      .modal-image {
+        width: 145px;
+        height: 165px;
+      }
+
+      .details {
+        grid-template-columns: 1fr;
+      }
+
+      .birthday-timer {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .modal-title h2 {
+        font-size: 24px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <div class="container">
+
+    <!-- HEADER -->
+
+    <header>
+
+      <div class="logo">
+        ⚽ تیم رفاقت
+      </div>
+
+      <h1>
+        بچو ته خط
+      </h1>
+
+      <p class="subtitle">
+        یه جمع رفیق، یه تیم، کلی خاطره...
+      </p>
+
+      <div class="count-badge">
+        ۹ نفر
+      </div>
+
+    </header>
+
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="جستجو بین اسم، مدرسه، پایه یا پست فوتسال..."
+      >
+
+    </div>
+
+
+    <!-- PEOPLE -->
+
+    <main>
+
+      <div
+        class="people-grid"
+        id="peopleGrid"
+      ></div>
+
+      <div
+        class="no-result"
+        id="noResult"
+      >
+        کسی با این مشخصات پیدا نشد.
+      </div>
+
+    </main>
+
+  </div>
+
+
+  <!-- MODAL -->
+
+  <div
+    class="modal"
+    id="modal"
+  >
+
+    <div class="modal-box">
+
+      <button
+        class="close"
+        onclick="closeModal()"
+      >
+        ×
+      </button>
+
+
+      <!-- PROFILE TOP -->
+
+      <div class="modal-top">
+
+        <div class="modal-image">
+
+          <img
+            id="modalImage"
+            src=""
+            alt=""
+          >
+
+        </div>
+
+
+        <div class="modal-title">
+
+          <div class="modal-small">
+            پروفایل بازیکن
+          </div>
+
+          <h2 id="modalName"></h2>
+
+          <p id="modalPosition"></p>
+
+        </div>
+
+      </div>
+
+
+      <!-- DETAILS -->
+
+      <div class="details">
+
+        <div class="detail">
+
+          <span class="detail-label">
+            سن
+          </span>
+
+          <span
+            class="detail-value"
+            id="modalAge"
+          ></span>
+
+        </div>
+
+
+        <div class="detail">
+
+          <span class="detail-label">
+            تاریخ تولد
+          </span>
+
+          <span
+            class="detail-value"
+            id="modalBirth"
+          ></span>
+
+        </div>
+
+
+        <div class="detail">
+
+          <span class="detail-label">
+            مدرسه / محل تحصیل
+          </span>
+
+          <span
+            class="detail-value"
+            id="modalSchool"
+          ></span>
+
+        </div>
+
+
+        <div class="detail">
+
+          <span class="detail-label">
+            پایه
+          </span>
+
+          <span
+            class="detail-value"
+            id="modalGrade"
+          ></span>
+
+        </div>
+
+
+        <div class="detail">
+
+          <span class="detail-label">
+            پست فوتسال
+          </span>
+
+          <span
+            class="detail-value"
+            id="modalFutsal"
+          ></span>
+
+        </div>
+
+      </div>
+
+
+      <!-- BIRTHDAY TIMER -->
+
+      <div class="birthday-box">
+
+        <div class="birthday-title">
+          🎂 شمارش معکوس تا تولد بعدی
+        </div>
+
+
+        <div
+          class="birthday-date"
+          id="birthdayDate"
+        >
+          در حال محاسبه...
+        </div>
+
+
+        <div
+          class="birthday-timer"
+          id="birthdayTimer"
+        >
+
+          <div class="time-unit">
+
+            <span
+              class="time-number"
+              id="timerDays"
+            >
+              ۰
+            </span>
+
+            <span class="time-label">
+              روز
+            </span>
+
+          </div>
+
+
+          <div class="time-unit">
+
+            <span
+              class="time-number"
+              id="timerHours"
+            >
+              ۰
+            </span>
+
+            <span class="time-label">
+              ساعت
+            </span>
+
+          </div>
+
+
+          <div class="time-unit">
+
+            <span
+              class="time-number"
+              id="timerMinutes"
+            >
+              ۰
+            </span>
+
+            <span class="time-label">
+              دقیقه
+            </span>
+
+          </div>
+
+
+          <div class="time-unit">
+
+            <span
+              class="time-number"
+              id="timerSeconds"
+            >
+              ۰
+            </span>
+
+            <span class="time-label">
+              ثانیه
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+    بچو ته خط • رفاقت، فوتبال، خاطره
+  </footer>
+
+
+  <script>
+
+    /* ==========================================
+       اطلاعات افراد
+    ========================================== */
+
+    const people = [
+
+      {
+        name: "سجاد حسنی تبار",
+        age: "۱۷ سال",
+        birth: "۱۳۸۸/۸/۱۴",
+        school: "قائم آل محمد",
+        grade: "یازدهم",
+        futsal: "مدافع / دروازه‌بان",
+        image: "images/ChatGPT%20Image%20Aug%2023%2C%202026%2C%2003_13_17%20PM.jpg"
+      },
+
+
+      {
+        name: "یوسف سالاری",
+        age: "۱۶ سال",
+        birth: "۱۳۸۸/۰۹/۰۴",
+        school: "حوزه",
+        grade: "پایه دو",
+        futsal: "مهاجم",
+        image: "images/yoosef.jpg"
+      },
+
+
+      {
+        name: "احمد اسماعیل زاده",
+        age: "۱۷ سال",
+        birth: "۱۳۸۸/۱۱/۰۶",
+        school: "قائم آل محمد",
+        grade: "یازدهم",
+        futsal: "هافبک",
+        image: "images/aahmad.jpg"
+      },
+
+
+      {
+        name: "طاها شبان",
+        age: "۱۶ سال",
+        birth: "۱۳۸۹/۹/۱۵",
+        school: "قائم آل محمد",
+        grade: "دهم",
+        futsal: "مهاجم / وینگر چپ",
+        image: "images/taha.jpg"
+      },
+
+
+      {
+        name: "علیرضا مختاری",
+        age: "۱۶ سال",
+        birth: "۱۳۸۸/۹/۱۴",
+        school: "قائم آل محمد",
+        grade: "یازدهم",
+        futsal: "دروازه‌بان",
+        image: "images/alireza.jfif"
+      },
+
+
+      {
+        name: "احسان آرام",
+        age: "۱۶ سال",
+        birth: "۱۳۸۹/۴/۲۴",
+        school: "قائم آل محمد",
+        grade: "یازدهم",
+        futsal: "مهاجم / هافبک",
+        image: "images/ehsan.jpg"
+      },
+
+
+      {
+        name: "امیر عباس فیروز",
+        age: "۱۶ سال",
+        birth: "۱۳۸۹/۱/۱۴",
+        school: "قائم آل محمد",
+        grade: "یازدهم",
+        futsal: "دروازه‌بان / دفاع / هافبک / مهاجم",
+        image: "images/amirabbas.jpg"
+      },
+
+
+      {
+        name: "عرفان بابائی",
+        age: "۱۵ سال",
+        birth: "۱۳۹۰/۴/۲۹",
+        school: "قائم آل محمد",
+        grade: "دهم",
+        futsal: "دفاع راست / دفاع وسط",
+        image: "images/erfan.jpg"
+      },
+
+
+      {
+        name: "عادل نصیری",
+        age: "۱۶ سال",
+        birth: "۱۳۸۹/۵/۱۰",
+        school: "خاتم",
+        grade: "یازدهم",
+        futsal: "دفاع",
+        image: "images/aadel.jpg"
+      }
+
+    ];
+
+
+    /* ==========================================
+       المنت‌ها
+    ========================================== */
+
+    const grid =
+      document.getElementById("peopleGrid");
+
+    const noResult =
+      document.getElementById("noResult");
+
+    const searchInput =
+      document.getElementById("searchInput");
+
+    let birthdayInterval = null;
+
+
+    /* ==========================================
+       نمایش افراد
+    ========================================== */
+
+    function renderPeople(list) {
+
+      grid.innerHTML = "";
+
+
+      list.forEach((person, index) => {
+
+        const originalIndex =
+          people.indexOf(person);
+
+
+        const card =
+          document.createElement("article");
+
+
+        card.className =
+          "person-card";
+
+
+        card.style.animationDelay =
+          `${index * 0.06}s`;
+
+
+        card.innerHTML = `
+
+          <div class="photo-frame">
+
+            <div class="photo-wrapper">
+
+              <img
+                src="${person.image}"
+                alt="${person.name}"
+                loading="lazy"
+              >
+
+              <div class="photo-overlay"></div>
+
+              <div class="position-tag">
+                ${person.futsal}
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="card-info">
+
+            <div class="person-name">
+              ${person.name}
+            </div>
+
+            <div class="person-age">
+              ${person.age} • ${person.grade}
+            </div>
+
+            <button
+              class="profile-button"
+              onclick="showInfo(${originalIndex})"
+            >
+              مشاهده پروفایل
+            </button>
+
+          </div>
+
+        `;
+
+
+        grid.appendChild(card);
+
+      });
+
+
+      noResult.style.display =
+        list.length === 0
+          ? "block"
+          : "none";
+
+    }
+
+
+    /* ==========================================
+       باز کردن پروفایل
+    ========================================== */
+
+    function showInfo(index) {
+
+      const person =
+        people[index];
+
+
+      document.getElementById("modalImage").src =
+        person.image;
+
+
+      document.getElementById("modalImage").alt =
+        person.name;
+
+
+      document.getElementById("modalName").textContent =
+        person.name;
+
+
+      document.getElementById("modalPosition").textContent =
+        "پست فوتسال: " + person.futsal;
+
+
+      document.getElementById("modalAge").textContent =
+        person.age;
+
+
+      document.getElementById("modalBirth").textContent =
+        person.birth;
+
+
+      document.getElementById("modalSchool").textContent =
+        person.school;
+
+
+      document.getElementById("modalGrade").textContent =
+        person.grade;
+
+
+      document.getElementById("modalFutsal").textContent =
+        person.futsal;
+
+
+      document.getElementById("modal")
+        .classList.add("show");
+
+
+      document.body.style.overflow =
+        "hidden";
+
+
+      startBirthdayTimer(person.birth);
+
+    }
+
+
+    /* ==========================================
+       بستن پروفایل
+    ========================================== */
+
+    function closeModal() {
+
+      document.getElementById("modal")
+        .classList.remove("show");
+
+
+      document.body.style.overflow =
+        "";
+
+
+      if (birthdayInterval) {
+
+        clearInterval(
+          birthdayInterval
+        );
+
+        birthdayInterval =
+          null;
+
+      }
+
+    }
+
+
+    /* ==========================================
+       کلیک بیرون مودال
+    ========================================== */
+
+    document.getElementById("modal")
+      .addEventListener(
+        "click",
+        function(e) {
+
+          if (e.target === this) {
+            closeModal();
+          }
+
+        }
+      );
+
+
+    /* ==========================================
+       دکمه ESC
+    ========================================== */
+
+    document.addEventListener(
+      "keydown",
+      function(e) {
+
+        if (e.key === "Escape") {
+          closeModal();
+        }
+
+      }
+    );
+
+
+    /* ==========================================
+       جستجو
+    ========================================== */
+
+    searchInput.addEventListener(
+      "input",
+      function() {
+
+        const query =
+          this.value
+            .trim()
+            .toLowerCase();
+
+
+        if (!query) {
+
+          renderPeople(people);
+
+          return;
+
+        }
+
+
+        const filtered =
+          people.filter(person => {
+
+            return (
+
+              person.name
+                .toLowerCase()
+                .includes(query)
+
+              ||
+
+              person.school
+                .toLowerCase()
+                .includes(query)
+
+              ||
+
+              person.grade
+                .toLowerCase()
+                .includes(query)
+
+              ||
+
+              person.futsal
+                .toLowerCase()
+                .includes(query)
+
+              ||
+
+              person.age
+                .toLowerCase()
+                .includes(query)
+
+              ||
+
+              person.birth
+                .toLowerCase()
+                .includes(query)
+
+            );
+
+          });
+
+
+        renderPeople(filtered);
+
+      }
+    );
+
+
+    /* ==========================================
+       تبدیل اعداد فارسی به انگلیسی
+    ========================================== */
+
+    function toEnglishNumbers(value) {
+
+      return String(value)
+        .replace(/[۰-۹]/g, d =>
+          "۰۱۲۳۴۵۶۷۸۹".indexOf(d)
+        );
+
+    }
+
+
+    /* ==========================================
+       تبدیل شمسی به میلادی
+    ========================================== */
+
+    function jalaliToGregorian(
+      jy,
+      jm,
+      jd
+    ) {
+
+      jy = Number(jy);
+      jm = Number(jm);
+      jd = Number(jd);
+
+
+      let gy;
+
+
+      if (jy > 979) {
+
+        gy = 1600;
+
+        jy -= 979;
+
+      } else {
+
+        gy = 621;
+
+      }
+
+
+      let days =
+        365 * jy +
+        Math.floor(jy / 33) * 8 +
+        Math.floor(
+          ((jy % 33) + 3) / 4
+        ) +
+        78 +
+        jd;
+
+
+      if (jm < 7) {
+
+        days +=
+          (jm - 1) * 31;
+
+      } else {
+
+        days +=
+          (jm - 7) * 30 + 186;
+
+      }
+
+
+      gy +=
+        400 *
+        Math.floor(
+          days / 146097
+        );
+
+
+      days %= 146097;
+
+
+      if (days > 36524) {
+
+        gy +=
+          Math.floor(
+            (days - 1) / 36524
+          );
+
+
+        days =
+          (days - 1) % 36524;
+
+
+        if (days >= 365) {
+          days++;
+        }
+
+      }
+
+
+      let gy2 =
+        400 *
+        Math.floor(
+          days / 1461
+        );
+
+
+      days %= 1461;
+
+
+      if (days > 365) {
+
+        gy2 +=
+          Math.floor(
+            (days - 1) / 365
+          );
+
+
+        days =
+          (days - 1) % 365;
+
+      }
+
+
+      gy += gy2;
+
+
+      const gd =
+        days + 1;
+
+
+      const leap =
+        gy % 4 === 0 &&
+        (
+          gy % 100 !== 0 ||
+          gy % 400 === 0
+        );
+
+
+      const monthDays = [
+
+        31,
+
+        leap
+          ? 29
+          : 28,
+
+        31,
+
+        30,
+
+        31,
+
+        30,
+
+        31,
+
+        31,
+
+        30,
+
+        31,
+
+        30,
+
+        31
+
+      ];
+
+
+      let gm = 0;
+
+      let day = gd;
+
+
+      while (
+        gm < 12 &&
+        day > monthDays[gm]
+      ) {
+
+        day -=
+          monthDays[gm];
+
+        gm++;
+
+      }
+
+
+      return {
+
+        year: gy,
+
+        month: gm + 1,
+
+        day: day
+
+      };
+
+    }
+
+
+    /* ==========================================
+       تبدیل میلادی به شمسی
+    ========================================== */
+
+    function gregorianToJalali(
+      gy,
+      gm,
+      gd
+    ) {
+
+      gy = Number(gy);
+      gm = Number(gm);
+      gd = Number(gd);
+
+
+      const gDaysInMonth = [
+
+        0,
+
+        31,
+
+        59,
+
+        90,
+
+        120,
+
+        151,
+
+        181,
+
+        212,
+
+        243,
+
+        273,
+
+        304,
+
+        334
+
+      ];
+
+
+      const gy2 =
+        gy + 1;
+
+
+      let days =
+        355666 +
+        365 * gy +
+        Math.floor(gy2 / 4) -
+        Math.floor(gy2 / 100) +
+        Math.floor(gy2 / 400) +
+        gd +
+        gDaysInMonth[gm - 1];
+
+
+      if (
+        gm > 2 &&
+        gy % 4 === 0 &&
+        (
+          gy % 100 !== 0 ||
+          gy % 400 === 0
+        )
+      ) {
+
+        days++;
+
+      }
+
+
+      let jy =
+        -1595 +
+        33 *
+        Math.floor(
+          days / 12053
+        );
+
+
+      days %= 12053;
+
+
+      jy +=
+        4 *
+        Math.floor(
+          days / 1461
+        );
+
+
+      days %= 1461;
+
+
+      if (days > 365) {
+
+        jy +=
+          Math.floor(
+            (days - 1) / 365
+          );
+
+
+        days =
+          (days - 1) % 365;
+
+      }
+
+
+      let jm;
+
+      let jd;
+
+
+      if (days < 186) {
+
+        jm =
+          1 +
+          Math.floor(
+            days / 31
+          );
+
+
+        jd =
+          1 +
+          days % 31;
+
+      } else {
+
+        jm =
+          7 +
+          Math.floor(
+            (days - 186) / 30
+          );
+
+
+        jd =
+          1 +
+          (days - 186) % 30;
+
+      }
+
+
+      return {
+
+        year: jy,
+
+        month: jm,
+
+        day: jd
+
+      };
+
+    }
+
+
+    /* ==========================================
+       اعداد فارسی
+    ========================================== */
+
+    function persianNumber(value) {
+
+      const numbers = [
+        "۰",
+        "۱",
+        "۲",
+        "۳",
+        "۴",
+        "۵",
+        "۶",
+        "۷",
+        "۸",
+        "۹"
+      ];
+
+
+      return String(value)
+        .replace(
+          /\d/g,
+          digit =>
+            numbers[digit]
+        );
+
+    }
+
+
+    /* ==========================================
+       تایمر تولد
+    ========================================== */
+
+    function startBirthdayTimer(
+      birthDate
+    ) {
+
+      if (birthdayInterval) {
+
+        clearInterval(
+          birthdayInterval
+        );
+
+      }
+
+
+      const parts =
+        toEnglishNumbers(
+          birthDate
+        ).split("/");
+
+
+      const birthMonth =
+        Number(parts[1]);
+
+
+      const birthDay =
+        Number(parts[2]);
+
+
+      function updateTimer() {
+
+        /*
+          تاریخ و ساعت واقعی همین لحظه
+          از دستگاه کاربر گرفته می‌شود.
+        */
+
+        const now =
+          new Date();
+
+
+        /*
+          پیدا کردن تاریخ شمسی امروز
+        */
+
+        const todayJalali =
+          gregorianToJalali(
+            now.getFullYear(),
+            now.getMonth() + 1,
+            now.getDate()
+          );
+
+
+        /*
+          سال شمسی فعلی
+        */
+
+        let birthdayYear =
+          todayJalali.year;
+
+
+        /*
+          تبدیل تولد امسال
+          به میلادی
+        */
+
+        let birthdayGregorian =
+          jalaliToGregorian(
+            birthdayYear,
+            birthMonth,
+            birthDay
+          );
+
+
+        /*
+          تولد دقیقاً در ساعت ۰۰:۰۰:۰۰
+        */
+
+        let birthday =
+          new Date(
+            birthdayGregorian.year,
+            birthdayGregorian.month - 1,
+            birthdayGregorian.day,
+            0,
+            0,
+            0,
+            0
+          );
+
+
+        /*
+          اگر تولد امسال گذشته،
+          تولد سال بعد را بگیر.
+        */
+
+        if (birthday <= now) {
+
+          birthdayYear++;
+
+
+          birthdayGregorian =
+            jalaliToGregorian(
+              birthdayYear,
+              birthMonth,
+              birthDay
+            );
+
+
+          birthday =
+            new Date(
+              birthdayGregorian.year,
+              birthdayGregorian.month - 1,
+              birthdayGregorian.day,
+              0,
+              0,
+              0,
+              0
+            );
+
+        }
+
+
+        /*
+          اختلاف دقیق از همین الان
+          تا تولد
+        */
+
+        const difference =
+          birthday.getTime() -
+          now.getTime();
+
+
+        if (difference <= 0) {
+          return;
+        }
+
+
+        const totalSeconds =
+          Math.floor(
+            difference / 1000
+          );
+
+
+        const days =
+          Math.floor(
+            totalSeconds / 86400
+          );
+
+
+        const hours =
+          Math.floor(
+            (totalSeconds % 86400) /
+            3600
+          );
+
+
+        const minutes =
+          Math.floor(
+            (totalSeconds % 3600) /
+            60
+          );
+
+
+        const seconds =
+          totalSeconds % 60;
+
+
+        /*
+          نمایش تایمر
+        */
+
+        document.getElementById(
+          "timerDays"
+        ).textContent =
+          persianNumber(days);
+
+
+        document.getElementById(
+          "timerHours"
+        ).textContent =
+          persianNumber(
+            String(hours)
+              .padStart(2, "0")
+          );
+
+
+        document.getElementById(
+          "timerMinutes"
+        ).textContent =
+          persianNumber(
+            String(minutes)
+              .padStart(2, "0")
+          );
+
+
+        document.getElementById(
+          "timerSeconds"
+        ).textContent =
+          persianNumber(
+            String(seconds)
+              .padStart(2, "0")
+          );
+
+
+        /*
+          نمایش تاریخ تولد بعدی
+        */
+
+        document.getElementById(
+          "birthdayDate"
+        ).textContent =
+
+          "تولد بعدی: " +
+
+          persianNumber(
+            birthdayYear
+          ) +
+
+          "/" +
+
+          persianNumber(
+            String(birthMonth)
+              .padStart(2, "0")
+          ) +
+
+          "/" +
+
+          persianNumber(
+            String(birthDay)
+              .padStart(2, "0")
+          );
+
+      }
+
+
+      /*
+        یک بار فوری اجرا شود
+      */
+
+      updateTimer();
+
+
+      /*
+        سپس هر ثانیه آپدیت شود
+      */
+
+      birthdayInterval =
+        setInterval(
+          updateTimer,
+          1000
+        );
+
+    }
+
+
+    /* ==========================================
+       شروع سایت
+    ========================================== */
 
     renderPeople(people);
 
