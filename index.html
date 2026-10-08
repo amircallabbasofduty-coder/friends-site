@@ -418,8 +418,6 @@
       transform: scale(.97);
     }
 
-    /* نتیجه بازیکن تصادفی */
-
     .random-result {
       display: none;
 
@@ -765,8 +763,6 @@
       font-weight: 900;
     }
 
-    /* زمین */
-
     .game-pitch-wrapper {
       padding: 10px;
 
@@ -990,8 +986,6 @@
 
       opacity: .9;
     }
-
-    /* نیمکت */
 
     .bench {
       margin-top: 15px;
@@ -1452,8 +1446,6 @@
         line-height: 1.6;
       }
 
-      /* GAME PAGE */
-
       .game-page-header {
         align-items: flex-start;
       }
@@ -1539,8 +1531,6 @@
       .bench-role {
         font-size: 9px;
       }
-
-      /* MODAL */
 
       .modal {
         padding: 0;
@@ -1651,12 +1641,7 @@
   </style>
 </head>
 
-
 <body>
-
-  <!-- =========================
-       دکمه حالت شب و روز
-  ========================= -->
 
   <button
     id="themeToggle"
@@ -1665,15 +1650,9 @@
     ☀️
   </button>
 
-
-  <!-- ==================================================
-       صفحه اصلی
-  ================================================== -->
-
   <div id="homePage">
 
     <header>
-
       <div class="header-box">
 
         <div class="logo">
@@ -1689,13 +1668,9 @@
         </div>
 
       </div>
-
     </header>
 
-
     <main>
-
-      <!-- SEARCH -->
 
       <div class="search-wrap">
 
@@ -1708,9 +1683,6 @@
         >
 
       </div>
-
-
-      <!-- BIRTHDAYS -->
 
       <section
         class="birthday-section"
@@ -1741,7 +1713,6 @@
         ></div>
 
       </section>
-
 
       <!-- RANDOM PLAYER -->
 
@@ -1781,9 +1752,6 @@
 
       </section>
 
-
-      <!-- ورود به زمین -->
-
       <section class="game-entry">
 
         <button
@@ -1819,19 +1787,11 @@
 
       </section>
 
-
-      <!-- PEOPLE -->
-
       <section id="peopleGrid"></section>
 
     </main>
 
   </div>
-
-
-  <!-- ==================================================
-       صفحه زمین بازی
-  ================================================== -->
 
   <div id="gamePage">
 
@@ -1855,7 +1815,6 @@
 
     </header>
 
-
     <main>
 
       <div class="game-page-header">
@@ -1873,18 +1832,11 @@
 
       </div>
 
-
       <div class="game-description">
         ترکیب ۵ به ۵ بچه‌ها در زمین فوتسال
       </div>
 
-
       <div class="teams">
-
-
-        <!-- =========================
-             تیم یک
-        ========================= -->
 
         <section class="team-card">
 
@@ -1900,7 +1852,6 @@
 
           </div>
 
-
           <div class="game-pitch-wrapper">
 
             <div
@@ -1908,40 +1859,23 @@
               id="teamOnePitch"
             >
 
-              <div
-                class="game-pitch-center"
-              ></div>
+              <div class="game-pitch-center"></div>
 
-              <div
-                class="game-pitch-dot"
-              ></div>
+              <div class="game-pitch-dot"></div>
 
-              <div
-                class="game-penalty top"
-              ></div>
+              <div class="game-penalty top"></div>
 
-              <div
-                class="game-penalty bottom"
-              ></div>
+              <div class="game-penalty bottom"></div>
 
-              <div
-                class="game-goal top"
-              ></div>
+              <div class="game-goal top"></div>
 
-              <div
-                class="game-goal bottom"
-              ></div>
+              <div class="game-goal bottom"></div>
 
             </div>
 
           </div>
 
         </section>
-
-
-        <!-- =========================
-             تیم دو
-        ========================= -->
 
         <section class="team-card">
 
@@ -1957,7 +1891,6 @@
 
           </div>
 
-
           <div class="game-pitch-wrapper">
 
             <div
@@ -1965,36 +1898,21 @@
               id="teamTwoPitch"
             >
 
-              <div
-                class="game-pitch-center"
-              ></div>
+              <div class="game-pitch-center"></div>
 
-              <div
-                class="game-pitch-dot"
-              ></div>
+              <div class="game-pitch-dot"></div>
 
-              <div
-                class="game-penalty top"
-              ></div>
+              <div class="game-penalty top"></div>
 
-              <div
-                class="game-penalty bottom"
-              ></div>
+              <div class="game-penalty bottom"></div>
 
-              <div
-                class="game-goal top"
-              ></div>
+              <div class="game-goal top"></div>
 
-              <div
-                class="game-goal bottom"
-              ></div>
+              <div class="game-goal bottom"></div>
 
             </div>
 
           </div>
-
-
-          <!-- نیمکت تیم دو -->
 
           <div class="bench">
 
@@ -2036,11 +1954,6 @@
 
   </div>
 
-
-  <!-- ==================================================
-       PROFILE MODAL
-  ================================================== -->
-
   <div
     class="modal"
     id="profileModal"
@@ -2055,7 +1968,6 @@
         ✕
       </button>
 
-
       <img
         id="profileImage"
         class="profile-image"
@@ -2063,14 +1975,12 @@
         alt=""
       >
 
-
       <div class="profile-content">
 
         <h2
           class="profile-name"
           id="profileName"
         ></h2>
-
 
         <div class="profile-grid">
 
@@ -2087,7 +1997,6 @@
 
           </div>
 
-
           <div class="detail">
 
             <span class="detail-label">
@@ -2100,7 +2009,6 @@
             ></span>
 
           </div>
-
 
           <div class="detail">
 
@@ -2115,7 +2023,6 @@
 
           </div>
 
-
           <div class="detail">
 
             <span class="detail-label">
@@ -2129,7 +2036,6 @@
 
           </div>
 
-
           <div class="detail full">
 
             <span class="detail-label">
@@ -2142,7 +2048,6 @@
             ></span>
 
           </div>
-
 
           <div class="detail full">
 
@@ -2158,7 +2063,6 @@
           </div>
 
         </div>
-
 
         <div class="birthday-timer">
 
@@ -2181,12 +2085,7 @@
 
   </div>
 
-
   <script>
-
-    /* ==================================================
-       اطلاعات افراد
-    ================================================== */
 
     const people = [
 
@@ -2329,153 +2228,92 @@
 
     ];
 
-
-    /* ==================================================
-       ELEMENTS
-    ================================================== */
-
     const homePage =
-      document.getElementById(
-        "homePage"
-      );
+      document.getElementById("homePage");
 
     const gamePage =
-      document.getElementById(
-        "gamePage"
-      );
+      document.getElementById("gamePage");
 
     const enterGameButton =
-      document.getElementById(
-        "enterGameButton"
-      );
+      document.getElementById("enterGameButton");
 
     const backHomeButton =
-      document.getElementById(
-        "backHomeButton"
-      );
+      document.getElementById("backHomeButton");
 
     const peopleGrid =
-      document.getElementById(
-        "peopleGrid"
-      );
+      document.getElementById("peopleGrid");
 
     const searchInput =
-      document.getElementById(
-        "searchInput"
-      );
+      document.getElementById("searchInput");
 
     const birthdaySection =
-      document.getElementById(
-        "birthdaySection"
-      );
+      document.getElementById("birthdaySection");
 
     const birthdayToggle =
-      document.getElementById(
-        "birthdayToggle"
-      );
+      document.getElementById("birthdayToggle");
 
     const birthdayList =
-      document.getElementById(
-        "birthdayList"
-      );
+      document.getElementById("birthdayList");
 
     const modal =
-      document.getElementById(
-        "profileModal"
-      );
+      document.getElementById("profileModal");
 
     const closeModal =
-      document.getElementById(
-        "closeModal"
-      );
+      document.getElementById("closeModal");
 
     const profileImage =
-      document.getElementById(
-        "profileImage"
-      );
+      document.getElementById("profileImage");
 
     const profileName =
-      document.getElementById(
-        "profileName"
-      );
+      document.getElementById("profileName");
 
     const profileAge =
-      document.getElementById(
-        "profileAge"
-      );
+      document.getElementById("profileAge");
 
     const profileBirth =
-      document.getElementById(
-        "profileBirth"
-      );
+      document.getElementById("profileBirth");
 
     const profileSchool =
-      document.getElementById(
-        "profileSchool"
-      );
+      document.getElementById("profileSchool");
 
     const profileGrade =
-      document.getElementById(
-        "profileGrade"
-      );
+      document.getElementById("profileGrade");
 
     const profileField =
-      document.getElementById(
-        "profileField"
-      );
+      document.getElementById("profileField");
 
     const profileFutsal =
-      document.getElementById(
-        "profileFutsal"
-      );
+      document.getElementById("profileFutsal");
 
     const birthdayTimer =
-      document.getElementById(
-        "birthdayTimer"
-      );
+      document.getElementById("birthdayTimer");
 
     const themeToggle =
-      document.getElementById(
-        "themeToggle"
-      );
+      document.getElementById("themeToggle");
 
     const randomPlayerButton =
-      document.getElementById(
-        "randomPlayerButton"
-      );
+      document.getElementById("randomPlayerButton");
 
     const randomResult =
-      document.getElementById(
-        "randomResult"
-      );
+      document.getElementById("randomResult");
 
     const randomResultName =
-      document.getElementById(
-        "randomResultName"
-      );
+      document.getElementById("randomResultName");
 
     const randomResultAge =
-      document.getElementById(
-        "randomResultAge"
-      );
+      document.getElementById("randomResultAge");
 
     const benchAmirali =
-      document.getElementById(
-        "benchAmirali"
-      );
-
+      document.getElementById("benchAmirali");
 
     let selectedPerson = null;
     let timerInterval = null;
-
 
     /* ==================================================
        نمایش افراد
     ================================================== */
 
-    function renderPeople(
-      list = people
-    ) {
+    function renderPeople(list = people) {
 
       peopleGrid.innerHTML = "";
 
@@ -2490,66 +2328,50 @@
         return;
       }
 
+      list.forEach(person => {
 
-      list.forEach(
-        person => {
+        const originalIndex =
+          people.indexOf(person);
 
-          const originalIndex =
-            people.indexOf(person);
+        const card =
+          document.createElement("article");
 
+        card.className =
+          "person-card";
 
-          const card =
-            document.createElement(
-              "article"
-            );
+        card.innerHTML = `
 
+          <img
+            class="person-image"
+            src="${person.image}"
+            alt="${person.name}"
+            loading="lazy"
+          >
 
-          card.className =
-            "person-card";
+          <div class="person-info">
 
+            <h2 class="person-name">
+              ${person.name}
+            </h2>
 
-          card.innerHTML = `
-
-            <img
-              class="person-image"
-              src="${person.image}"
-              alt="${person.name}"
-              loading="lazy"
-            >
-
-            <div class="person-info">
-
-              <h2 class="person-name">
-                ${person.name}
-              </h2>
-
-              <div class="person-position">
-                ⚽ ${person.futsal}
-              </div>
-
+            <div class="person-position">
+              ⚽ ${person.futsal}
             </div>
 
-          `;
+          </div>
 
+        `;
 
-          card.addEventListener(
-            "click",
-            () =>
-              openProfile(
-                originalIndex
-              )
-          );
+        card.addEventListener(
+          "click",
+          () => openProfile(originalIndex)
+        );
 
+        peopleGrid.appendChild(card);
 
-          peopleGrid.appendChild(
-            card
-          );
-
-        }
-      );
+      });
 
     }
-
 
     /* ==================================================
        جستجو
@@ -2564,7 +2386,6 @@
             .trim()
             .toLowerCase();
 
-
         const filtered =
           people.filter(
             person =>
@@ -2573,22 +2394,16 @@
                 .includes(value)
           );
 
-
-        renderPeople(
-          filtered
-        );
+        renderPeople(filtered);
 
       }
     );
-
 
     /* ==================================================
        تاریخ شمسی
     ================================================== */
 
-    function getPersianDate(
-      date
-    ) {
+    function getPersianDate(date) {
 
       const formatter =
         new Intl.DateTimeFormat(
@@ -2600,52 +2415,40 @@
           }
         );
 
-
       const parts =
-        formatter.formatToParts(
-          date
-        );
-
+        formatter.formatToParts(date);
 
       const result = {};
 
+      parts.forEach(part => {
 
-      parts.forEach(
-        part => {
+        if (
+          part.type === "year" ||
+          part.type === "month" ||
+          part.type === "day"
+        ) {
 
-          if (
-            part.type === "year" ||
-            part.type === "month" ||
-            part.type === "day"
-          ) {
-
-            result[part.type] =
-              Number(part.value);
-
-          }
+          result[part.type] =
+            Number(part.value);
 
         }
-      );
 
+      });
 
       return result;
 
     }
 
-
     /* ==================================================
        تولد بعدی
     ================================================== */
 
-    function getNextBirthday(
-      person
-    ) {
+    function getNextBirthday(person) {
 
       const birthParts =
         person.birth
           .split("/")
           .map(Number);
-
 
       const birthMonth =
         birthParts[1];
@@ -2653,10 +2456,8 @@
       const birthDay =
         birthParts[2];
 
-
       const now =
         new Date();
-
 
       for (
         let i = 0;
@@ -2667,7 +2468,6 @@
         const candidate =
           new Date(now);
 
-
         candidate.setHours(
           0,
           0,
@@ -2675,17 +2475,12 @@
           0
         );
 
-
         candidate.setDate(
           candidate.getDate() + i
         );
 
-
         const persian =
-          getPersianDate(
-            candidate
-          );
-
+          getPersianDate(candidate);
 
         if (
           persian.month === birthMonth &&
@@ -2699,62 +2494,49 @@
 
       }
 
-
       return null;
 
     }
-
 
     /* ==================================================
        شمارش معکوس
     ================================================== */
 
-    function getCountdown(
-      target
-    ) {
+    function getCountdown(target) {
 
       const now =
         new Date();
 
-
       let diff =
         target - now;
-
 
       if (diff < 0) {
         diff = 0;
       }
-
 
       const day =
         Math.floor(
           diff / 86400000
         );
 
-
       diff %= 86400000;
-
 
       const hour =
         Math.floor(
           diff / 3600000
         );
 
-
       diff %= 3600000;
-
 
       const minute =
         Math.floor(
           diff / 60000
         );
 
-
       const second =
         Math.floor(
           (diff % 60000) / 1000
         );
-
 
       return {
         day,
@@ -2765,16 +2547,10 @@
 
     }
 
-
-    function getShortCountdown(
-      target
-    ) {
+    function getShortCountdown(target) {
 
       const c =
-        getCountdown(
-          target
-        );
-
+        getCountdown(target);
 
       if (c.day > 0) {
         return `${c.day} روز`;
@@ -2792,7 +2568,6 @@
 
     }
 
-
     /* ==================================================
        لیست تولدها
     ================================================== */
@@ -2803,44 +2578,30 @@
         people
           .map(
             (person, index) => ({
-
               person,
               index,
-
               date:
-                getNextBirthday(
-                  person
-                )
-
+                getNextBirthday(person)
             })
           )
-
           .filter(
             item => item.date
           )
-
           .sort(
             (a, b) =>
               a.date - b.date
           );
 
-
-      birthdayList.innerHTML =
-        "";
-
+      birthdayList.innerHTML = "";
 
       sorted.forEach(
         (item, position) => {
 
           const row =
-            document.createElement(
-              "div"
-            );
-
+            document.createElement("div");
 
           row.className =
             "birthday-row";
-
 
           row.innerHTML = `
 
@@ -2853,32 +2614,23 @@
             </div>
 
             <div class="birthday-countdown">
-              ${getShortCountdown(
-                item.date
-              )}
+              ${getShortCountdown(item.date)}
             </div>
 
           `;
 
-
           row.addEventListener(
             "click",
             () =>
-              openProfile(
-                item.index
-              )
+              openProfile(item.index)
           );
 
-
-          birthdayList.appendChild(
-            row
-          );
+          birthdayList.appendChild(row);
 
         }
       );
 
     }
-
 
     /* ==================================================
        باز و بسته شدن تولدها
@@ -2888,104 +2640,82 @@
       "click",
       () => {
 
-        birthdaySection.classList.toggle(
-          "open"
-        );
-
+        birthdaySection.classList.toggle("open");
 
         const icon =
           document.getElementById(
             "birthdayOpenIcon"
           );
 
-
         if (
-          birthdaySection.classList.contains(
-            "open"
-          )
+          birthdaySection.classList.contains("open")
         ) {
 
-          icon.textContent =
-            "−";
+          icon.textContent = "−";
 
         } else {
 
-          icon.textContent =
-            "+";
+          icon.textContent = "+";
 
         }
 
       }
     );
 
+    /* ==================================================
+       بازیکن تصادفی
+       تایمر ۵ ثانیه‌ای
+    ================================================== */
 
-    ```javascript
-/* ==================================================
-   بازیکن تصادفی
-================================================== */
+    let randomPlayerTimeout = null;
 
-let randomPlayerTimeout = null;
+    randomPlayerButton.addEventListener(
+      "click",
+      () => {
 
-randomPlayerButton.addEventListener(
-  "click",
-  () => {
+        clearTimeout(
+          randomPlayerTimeout
+        );
 
-    /* اگر تایمر قبلی وجود داشت، متوقفش کن */
-    clearTimeout(
-      randomPlayerTimeout
-    );
-
-
-    const randomIndex =
-      Math.floor(
-        Math.random() *
-        people.length
-      );
-
-
-    const person =
-      people[randomIndex];
-
-
-    randomResultName.textContent =
-      person.name;
-
-
-    randomResultAge.textContent =
-      `سن: ${person.age} سال`;
-
-
-    randomResult.classList.add(
-      "show"
-    );
-
-
-    /* بعد از ۵ ثانیه نتیجه حذف شود */
-    randomPlayerTimeout =
-      setTimeout(
-        () => {
-
-          randomResult.classList.remove(
-            "show"
+        const randomIndex =
+          Math.floor(
+            Math.random() *
+            people.length
           );
 
+        const person =
+          people[randomIndex];
 
-          randomResultName.textContent =
-            "";
+        randomResultName.textContent =
+          person.name;
 
+        randomResultAge.textContent =
+          `سن: ${person.age} سال`;
 
-          randomResultAge.textContent =
-            "";
+        randomResult.classList.add(
+          "show"
+        );
 
+        randomPlayerTimeout =
+          setTimeout(
+            () => {
 
-        },
-        5000
-      );
+              randomResult.classList.remove(
+                "show"
+              );
 
-  }
-);
-```
+              randomResultName.textContent =
+                "";
 
+              randomResultAge.textContent =
+                "";
+
+            },
+            5000
+          );
+
+      }
+    );
 
     /* ==================================================
        صفحه زمین بازی
@@ -2995,13 +2725,9 @@ randomPlayerButton.addEventListener(
       "click",
       () => {
 
-        homePage.classList.add(
-          "hidden"
-        );
+        homePage.classList.add("hidden");
 
-        gamePage.classList.add(
-          "active"
-        );
+        gamePage.classList.add("active");
 
         window.scrollTo({
           top: 0,
@@ -3010,19 +2736,14 @@ randomPlayerButton.addEventListener(
 
       }
     );
-
 
     backHomeButton.addEventListener(
       "click",
       () => {
 
-        gamePage.classList.remove(
-          "active"
-        );
+        gamePage.classList.remove("active");
 
-        homePage.classList.remove(
-          "hidden"
-        );
+        homePage.classList.remove("hidden");
 
         window.scrollTo({
           top: 0,
@@ -3032,14 +2753,11 @@ randomPlayerButton.addEventListener(
       }
     );
 
-
     /* ==================================================
        پیدا کردن شخص
     ================================================== */
 
-    function findPerson(
-      name
-    ) {
+    function findPerson(name) {
 
       return people.find(
         person =>
@@ -3047,7 +2765,6 @@ randomPlayerButton.addEventListener(
       );
 
     }
-
 
     /* ==================================================
        اضافه کردن بازیکن به زمین
@@ -3062,33 +2779,23 @@ randomPlayerButton.addEventListener(
     ) {
 
       const person =
-        findPerson(
-          personName
-        );
-
+        findPerson(personName);
 
       if (!person) {
         return;
       }
 
-
       const player =
-        document.createElement(
-          "div"
-        );
-
+        document.createElement("div");
 
       player.className =
         "game-player";
 
-
       player.style.left =
         x + "%";
 
-
       player.style.top =
         y + "%";
-
 
       player.innerHTML = `
 
@@ -3107,28 +2814,21 @@ randomPlayerButton.addEventListener(
 
       `;
 
-
       player.addEventListener(
         "click",
         () => {
 
           const index =
-            people.indexOf(
-              person
-            );
+            people.indexOf(person);
 
           openProfile(index);
 
         }
       );
 
-
-      pitchElement.appendChild(
-        player
-      );
+      pitchElement.appendChild(player);
 
     }
-
 
     /* ==================================================
        ساخت ترکیب تیم‌ها
@@ -3146,23 +2846,6 @@ randomPlayerButton.addEventListener(
           "teamTwoPitch"
         );
 
-
-      /*
-        تیم یک
-
-        دروازبان:
-        علیرضا مختاری
-
-        دفاع عقب:
-        عرفان
-        امیر عباس
-
-        جلو:
-        طاها
-        یوسف
-      */
-
-
       addGamePlayer(
         teamOnePitch,
         "علیرضا مختاری",
@@ -3170,7 +2853,6 @@ randomPlayerButton.addEventListener(
         91,
         "دروازه‌بان"
       );
-
 
       addGamePlayer(
         teamOnePitch,
@@ -3180,7 +2862,6 @@ randomPlayerButton.addEventListener(
         "دفاع"
       );
 
-
       addGamePlayer(
         teamOnePitch,
         "امیر عباس فیروز",
@@ -3188,7 +2869,6 @@ randomPlayerButton.addEventListener(
         68,
         "دفاع"
       );
-
 
       addGamePlayer(
         teamOnePitch,
@@ -3198,7 +2878,6 @@ randomPlayerButton.addEventListener(
         "مهاجم"
       );
 
-
       addGamePlayer(
         teamOnePitch,
         "یوسف سالاری",
@@ -3206,23 +2885,6 @@ randomPlayerButton.addEventListener(
         28,
         "مهاجم"
       );
-
-
-      /*
-        تیم دو
-
-        دروازبان:
-        سجاد حسنی تبار
-
-        دفاع عقب:
-        عادل
-        متین
-
-        جلو:
-        احسان
-        احمد
-      */
-
 
       addGamePlayer(
         teamTwoPitch,
@@ -3232,7 +2894,6 @@ randomPlayerButton.addEventListener(
         "دروازه‌بان"
       );
 
-
       addGamePlayer(
         teamTwoPitch,
         "عادل نصیری",
@@ -3240,7 +2901,6 @@ randomPlayerButton.addEventListener(
         68,
         "دفاع"
       );
-
 
       addGamePlayer(
         teamTwoPitch,
@@ -3250,7 +2910,6 @@ randomPlayerButton.addEventListener(
         "دفاع"
       );
 
-
       addGamePlayer(
         teamTwoPitch,
         "احسان آرام",
@@ -3258,7 +2917,6 @@ randomPlayerButton.addEventListener(
         28,
         "جلو"
       );
-
 
       addGamePlayer(
         teamTwoPitch,
@@ -3269,7 +2927,6 @@ randomPlayerButton.addEventListener(
       );
 
     }
-
 
     /* ==================================================
        کلیک روی امیر علی از نیمکت
@@ -3286,7 +2943,6 @@ randomPlayerButton.addEventListener(
               "امیر علی آرامش"
           );
 
-
         if (index !== -1) {
           openProfile(index);
         }
@@ -3294,29 +2950,23 @@ randomPlayerButton.addEventListener(
       }
     );
 
-
     /* ==================================================
        باز کردن پروفایل
     ================================================== */
 
-    function openProfile(
-      index
-    ) {
+    function openProfile(index) {
 
       const person =
         people[index];
 
-
       selectedPerson =
         person;
-
 
       profileImage.src =
         person.image;
 
       profileImage.alt =
         person.name;
-
 
       profileName.textContent =
         person.name;
@@ -3339,23 +2989,16 @@ randomPlayerButton.addEventListener(
       profileFutsal.textContent =
         person.futsal;
 
-
-      modal.classList.add(
-        "show"
-      );
-
+      modal.classList.add("show");
 
       document.body.style.overflow =
         "hidden";
 
-
       updateTimer();
-
 
       clearInterval(
         timerInterval
       );
-
 
       timerInterval =
         setInterval(
@@ -3364,7 +3007,6 @@ randomPlayerButton.addEventListener(
         );
 
     }
-
 
     /* ==================================================
        تایمر تولد
@@ -3376,12 +3018,10 @@ randomPlayerButton.addEventListener(
         return;
       }
 
-
       const target =
         getNextBirthday(
           selectedPerson
         );
-
 
       if (!target) {
 
@@ -3392,18 +3032,13 @@ randomPlayerButton.addEventListener(
 
       }
 
-
       const c =
-        getCountdown(
-          target
-        );
-
+        getCountdown(target);
 
       birthdayTimer.textContent =
         `${c.day} روز، ${c.hour} ساعت، ${c.minute} دقیقه و ${c.second} ثانیه`;
 
     }
-
 
     /* ==================================================
        بستن پروفایل
@@ -3411,31 +3046,24 @@ randomPlayerButton.addEventListener(
 
     function closeProfile() {
 
-      modal.classList.remove(
-        "show"
-      );
-
+      modal.classList.remove("show");
 
       document.body.style.overflow =
         "";
 
-
       clearInterval(
         timerInterval
       );
-
 
       selectedPerson =
         null;
 
     }
 
-
     closeModal.addEventListener(
       "click",
       closeProfile
     );
-
 
     modal.addEventListener(
       "click",
@@ -3452,7 +3080,6 @@ randomPlayerButton.addEventListener(
       }
     );
 
-
     document.addEventListener(
       "keydown",
       event => {
@@ -3468,30 +3095,24 @@ randomPlayerButton.addEventListener(
       }
     );
 
-
     /* ==================================================
        حالت شب / روز
     ================================================== */
 
-    function applyTheme(
-      theme
-    ) {
+    function applyTheme(theme) {
 
       const light =
         theme === "light";
-
 
       document.body.classList.toggle(
         "light",
         light
       );
 
-
       themeToggle.textContent =
         light
           ? "🌙"
           : "☀️";
-
 
       themeToggle.setAttribute(
         "aria-label",
@@ -3502,22 +3123,18 @@ randomPlayerButton.addEventListener(
 
     }
 
-
     function getThemePosition() {
 
       const rect =
         themeToggle.getBoundingClientRect();
 
-
       const x =
         rect.left +
         rect.width / 2;
 
-
       const y =
         rect.top +
         rect.height / 2;
-
 
       const radius =
         Math.hypot(
@@ -3531,7 +3148,6 @@ randomPlayerButton.addEventListener(
           )
         );
 
-
       return {
         x,
         y,
@@ -3540,7 +3156,6 @@ randomPlayerButton.addEventListener(
 
     }
 
-
     async function changeTheme() {
 
       const currentLight =
@@ -3548,31 +3163,25 @@ randomPlayerButton.addEventListener(
           "light"
         );
 
-
       const nextTheme =
         currentLight
           ? "dark"
           : "light";
-
 
       localStorage.setItem(
         "friendsSiteTheme",
         nextTheme
       );
 
-
       if (
         !document.startViewTransition
       ) {
 
-        applyTheme(
-          nextTheme
-        );
+        applyTheme(nextTheme);
 
         return;
 
       }
-
 
       const {
         x,
@@ -3581,21 +3190,16 @@ randomPlayerButton.addEventListener(
       } =
         getThemePosition();
 
-
       const transition =
         document.startViewTransition(
           () => {
 
-            applyTheme(
-              nextTheme
-            );
+            applyTheme(nextTheme);
 
           }
         );
 
-
       await transition.ready;
-
 
       document.documentElement.animate(
 
@@ -3620,9 +3224,7 @@ randomPlayerButton.addEventListener(
 
         {
           duration: 500,
-
           easing: "ease-out",
-
           pseudoElement:
             "::view-transition-new(root)"
         }
@@ -3631,12 +3233,10 @@ randomPlayerButton.addEventListener(
 
     }
 
-
     themeToggle.addEventListener(
       "click",
       changeTheme
     );
-
 
     /* ==================================================
        تم ذخیره شده
@@ -3647,23 +3247,17 @@ randomPlayerButton.addEventListener(
         "friendsSiteTheme"
       );
 
-
     if (
       savedTheme === "light"
     ) {
 
-      applyTheme(
-        "light"
-      );
+      applyTheme("light");
 
     } else {
 
-      applyTheme(
-        "dark"
-      );
+      applyTheme("dark");
 
     }
-
 
     /* ==================================================
        شروع سایت
