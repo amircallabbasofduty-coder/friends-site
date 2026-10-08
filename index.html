@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -26,7 +27,6 @@
       overflow-x: hidden;
     }
 
-    /* پس‌زمینه فوتبالی */
     body::before {
       content: "";
       position: fixed;
@@ -62,7 +62,6 @@
       margin: auto;
     }
 
-    /* هدر */
     header {
       margin-top: 28px;
       padding: 38px 30px;
@@ -174,7 +173,6 @@
       font-size: 18px;
     }
 
-    /* سرچ */
     .search-section {
       margin: 28px 0 35px;
     }
@@ -235,7 +233,6 @@
       font-size: 16px;
     }
 
-    /* کارت‌ها */
     .people-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -369,7 +366,6 @@
       color: #83eaaa;
     }
 
-    /* نتیجه جستجو */
     .no-result {
       display: none;
       text-align: center;
@@ -388,7 +384,6 @@
       margin-bottom: 8px;
     }
 
-    /* مودال */
     .modal {
       position: fixed;
       inset: 0;
@@ -537,8 +532,8 @@
       font-size: 12px;
     }
 
-    /* موبایل */
     @media (max-width: 700px) {
+
       .container {
         width: 94%;
       }
@@ -600,12 +595,13 @@
     }
 
     @media (min-width: 701px) and (max-width: 1050px) {
+
       .people-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
     }
 
-    /* اسکرول بار */
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -622,6 +618,7 @@
     ::-webkit-scrollbar-thumb:hover {
       background: #3e5149;
     }
+
   </style>
 </head>
 
@@ -629,8 +626,8 @@
 
   <main class="container">
 
-    <!-- هدر -->
     <header>
+
       <div class="header-content">
 
         <div class="mini-title">
@@ -646,20 +643,23 @@
         </p>
 
         <div class="header-bottom">
+
           <div class="count-badge">
-            <span class="count-number" id="totalCount">۷</span>
+            <span class="count-number">۹</span>
             نفر در لیست
           </div>
 
           <div class="count-badge">
             ⚽ فوتسال و رفاقت
           </div>
+
         </div>
 
       </div>
+
     </header>
 
-    <!-- جستجو -->
+
     <section class="search-section">
 
       <div class="search-box">
@@ -679,14 +679,20 @@
 
     </section>
 
-    <!-- افراد -->
+
     <section class="people-grid" id="peopleGrid"></section>
 
+
     <div class="no-result" id="noResult">
+
       <div class="no-result-icon">⚽</div>
+
       <h3>چیزی پیدا نشد</h3>
+
       <p>اسم یا مشخصات دیگه‌ای رو امتحان کن.</p>
+
     </div>
+
 
     <footer>
       بچو ته خط • رفاقت، فوتبال، خاطره
@@ -695,7 +701,6 @@
   </main>
 
 
-  <!-- مودال -->
   <div class="modal" id="modal">
 
     <div class="modal-box">
@@ -705,7 +710,9 @@
       <div class="modal-top">
 
         <div class="modal-image">
+
           <img id="modalImage" src="" alt="">
+
         </div>
 
         <div class="modal-title">
@@ -721,6 +728,7 @@
         </div>
 
       </div>
+
 
       <div class="details">
 
@@ -828,6 +836,26 @@
         grade: "یازدهم",
         futsal: "دروازه‌بان / دفاع / هافبک / مهاجم",
         image: "images/amirabbas.jpg"
+      },
+
+      {
+        name: "عرفان بابائی",
+        age: "۱۵ سال",
+        birth: "۱۳۹۰/۴/۲۹",
+        school: "قائم آل محمد",
+        grade: "دهم",
+        futsal: "دفاع راست / دفاع وسط",
+        image: "images/erfan.jpg"
+      },
+
+      {
+        name: "عادل نصیری",
+        age: "۱۶ سال",
+        birth: "۱۳۸۹/۵/۱۰",
+        school: "خاتم",
+        grade: "یازدهم",
+        futsal: "دفاع",
+        image: "images/aadel.jpg"
       }
 
     ];
@@ -844,6 +872,8 @@
       grid.innerHTML = "";
 
       list.forEach((person, index) => {
+
+        const originalIndex = people.indexOf(person);
 
         const card = document.createElement("article");
 
@@ -885,7 +915,7 @@
 
             <button
               class="profile-button"
-              onclick="showInfo(${index})"
+              onclick="showInfo(${originalIndex})"
             >
               مشاهده پروفایل
             </button>
@@ -897,7 +927,8 @@
 
       });
 
-      noResult.style.display = list.length === 0 ? "block" : "none";
+      noResult.style.display =
+        list.length === 0 ? "block" : "none";
     }
 
 
@@ -905,10 +936,14 @@
 
       const person = people[index];
 
-      document.getElementById("modalImage").src = person.image;
-      document.getElementById("modalImage").alt = person.name;
+      document.getElementById("modalImage").src =
+        person.image;
 
-      document.getElementById("modalName").textContent = person.name;
+      document.getElementById("modalImage").alt =
+        person.name;
+
+      document.getElementById("modalName").textContent =
+        person.name;
 
       document.getElementById("modalPosition").textContent =
         "پست فوتسال: " + person.futsal;
@@ -956,7 +991,8 @@
 
     searchInput.addEventListener("input", function() {
 
-      const value = this.value.trim().toLowerCase();
+      const value =
+        this.value.trim().toLowerCase();
 
       clearButton.style.display =
         value ? "block" : "none";
@@ -968,32 +1004,38 @@
         return;
       }
 
+
       const filtered = people.filter(person => {
 
         const text = `
+
           ${person.name}
           ${person.school}
           ${person.grade}
           ${person.futsal}
           ${person.age}
           ${person.birth}
+
         `.toLowerCase();
 
         return text.includes(value);
+
       });
+
 
       renderPeople(filtered);
 
     });
 
 
-    document.getElementById("modal").addEventListener("click", function(e) {
+    document.getElementById("modal")
+      .addEventListener("click", function(e) {
 
-      if (e.target === this) {
-        closeModal();
-      }
+        if (e.target === this) {
+          closeModal();
+        }
 
-    });
+      });
 
 
     document.addEventListener("keydown", function(e) {
@@ -1011,3 +1053,4 @@
 
 </body>
 </html>
+```
