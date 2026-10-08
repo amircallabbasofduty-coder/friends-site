@@ -418,6 +418,12 @@
       transform: scale(.97);
     }
 
+    .random-button:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
     .random-result {
       display: none;
 
@@ -462,6 +468,15 @@
       color: var(--muted);
 
       font-size: 13px;
+    }
+
+    .random-countdown {
+      margin-top: 8px;
+
+      color: var(--accent);
+
+      font-size: 12px;
+      font-weight: 900;
     }
 
     /* ==================================================
@@ -1251,15 +1266,12 @@
     }
 
     .teams {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
-      gap: 24px;
+      display: block;
     }
 
     .team-card {
+      width: 100%;
+
       padding: 15px;
 
       border:
@@ -1324,7 +1336,11 @@
 
       width: 100%;
 
-      aspect-ratio: 9 / 16;
+      max-width: 850px;
+
+      margin: auto;
+
+      aspect-ratio: 16 / 9;
 
       overflow: hidden;
 
@@ -1368,7 +1384,7 @@
       left: 50%;
       top: 50%;
 
-      width: 23%;
+      width: 15%;
 
       aspect-ratio: 1;
 
@@ -1401,9 +1417,9 @@
     .game-penalty {
       position: absolute;
 
-      left: 25%;
-      width: 50%;
-      height: 13%;
+      left: 32%;
+      width: 36%;
+      height: 18%;
 
       border:
         2px solid rgba(255,255,255,.82);
@@ -1430,10 +1446,10 @@
     .game-goal {
       position: absolute;
 
-      left: 39%;
+      left: 42%;
 
-      width: 22%;
-      height: 3%;
+      width: 16%;
+      height: 4%;
 
       border:
         2px solid rgba(255,255,255,.85);
@@ -1530,62 +1546,52 @@
       opacity: .9;
     }
 
-    .bench {
-      margin-top: 15px;
+    .game-team-label {
+      position: absolute;
 
-      padding: 12px;
+      z-index: 4;
 
-      border-radius: 16px;
+      padding: 5px 9px;
 
-      background:
-        rgba(127,127,127,.08);
+      border-radius: 9px;
 
-      border:
-        1px solid var(--border);
+      background: rgba(0,0,0,.58);
+
+      color: white;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      pointer-events: none;
     }
 
-    .bench-title {
-      margin-bottom: 9px;
+    .game-team-label.one {
+      right: 12px;
+      top: 12px;
+    }
+
+    .game-team-label.two {
+      right: 12px;
+      bottom: 12px;
+    }
+
+    .game-sub-label {
+      margin-top: 12px;
+
+      padding: 10px 12px;
+
+      border-radius: 13px;
+
+      background: rgba(54,209,124,.08);
+
+      border: 1px solid rgba(54,209,124,.15);
 
       color: var(--muted);
 
       font-size: 11px;
 
-      font-weight: 800;
-    }
-
-    .bench-player {
-      display: flex;
-      align-items: center;
-
-      gap: 10px;
-
-      cursor: pointer;
-    }
-
-    .bench-player img {
-      width: 42px;
-      height: 42px;
-
-      border-radius: 50%;
-
-      object-fit: cover;
-
-      border:
-        2px solid var(--accent);
-    }
-
-    .bench-name {
-      font-size: 13px;
-      font-weight: 900;
-    }
-
-    .bench-role {
-      margin-top: 3px;
-
-      color: var(--muted);
-
-      font-size: 10px;
+      text-align: center;
     }
 
     /* =========================
@@ -1813,10 +1819,6 @@
           repeat(2, 1fr);
       }
 
-      .teams {
-        grid-template-columns: 1fr;
-      }
-
     }
 
     /* =========================
@@ -1927,6 +1929,10 @@
 
       .random-button {
         width: 100%;
+      }
+
+      .random-countdown {
+        font-size: 11px;
       }
 
       /* پنالتی موبایل */
@@ -2098,6 +2104,8 @@
         border-radius: 12px;
 
         border-width: 2px;
+
+        aspect-ratio: 10 / 14;
       }
 
       .game-player {
@@ -2124,25 +2132,9 @@
         display: none;
       }
 
-      .bench {
-        margin-top: 10px;
-
-        padding: 9px;
-
-        border-radius: 13px;
-      }
-
-      .bench-player img {
-        width: 36px;
-        height: 36px;
-      }
-
-      .bench-name {
-        font-size: 11px;
-      }
-
-      .bench-role {
-        font-size: 9px;
+      .game-team-label {
+        font-size: 7px;
+        padding: 4px 6px;
       }
 
       .modal {
@@ -2359,6 +2351,11 @@
           <div
             class="random-result-age"
             id="randomResultAge"
+          ></div>
+
+          <div
+            class="random-countdown"
+            id="randomCountdown"
           ></div>
 
         </div>
@@ -2620,7 +2617,7 @@
       </div>
 
       <div class="game-description">
-        ترکیب ۵ به ۵ بچه‌ها در زمین فوتسال
+        ترکیب بچه‌ها در یک زمین فوتسال
       </div>
 
       <div class="teams">
@@ -2630,11 +2627,11 @@
           <div class="team-header">
 
             <h3 class="team-name">
-              تیم یک
+              ترکیب بازی
             </h3>
 
             <div class="team-number">
-              ۱
+              ⚽
             </div>
 
           </div>
@@ -2658,79 +2655,20 @@
 
               <div class="game-goal bottom"></div>
 
-            </div>
+              <div class="game-team-label one">
+                تیم یک
+              </div>
 
-          </div>
-
-        </section>
-
-        <section class="team-card">
-
-          <div class="team-header">
-
-            <h3 class="team-name">
-              تیم دو
-            </h3>
-
-            <div class="team-number">
-              ۲
-            </div>
-
-          </div>
-
-          <div class="game-pitch-wrapper">
-
-            <div
-              class="game-pitch"
-              id="teamTwoPitch"
-            >
-
-              <div class="game-pitch-center"></div>
-
-              <div class="game-pitch-dot"></div>
-
-              <div class="game-penalty top"></div>
-
-              <div class="game-penalty bottom"></div>
-
-              <div class="game-goal top"></div>
-
-              <div class="game-goal bottom"></div>
-
-            </div>
-
-          </div>
-
-          <div class="bench">
-
-            <div class="bench-title">
-              🪑 نیمکت — تعویضی تیم دو
-            </div>
-
-            <div
-              class="bench-player"
-              id="benchAmirali"
-            >
-
-              <img
-                src="images/amiralia.jpg"
-                alt="امیر علی آرامش"
-              >
-
-              <div>
-
-                <div class="bench-name">
-                  امیر علی آرامش
-                </div>
-
-                <div class="bench-role">
-                  تعویضی
-                </div>
-
+              <div class="game-team-label two">
+                تیم دو
               </div>
 
             </div>
 
+          </div>
+
+          <div class="game-sub-label">
+            🔄 امیر علی آرامش — تعویضی وارد زمین شده
           </div>
 
         </section>
@@ -3090,8 +3028,8 @@
     const randomResultAge =
       document.getElementById("randomResultAge");
 
-    const benchAmirali =
-      document.getElementById("benchAmirali");
+    const randomCountdown =
+      document.getElementById("randomCountdown");
 
     let selectedPerson = null;
     let timerInterval = null;
@@ -3455,13 +3393,29 @@
     ================================================== */
 
     let randomPlayerTimeout = null;
+    let randomPlayerInterval = null;
 
     randomPlayerButton.addEventListener(
       "click",
       () => {
 
+        /*
+          اگر نتیجه قبلی هنوز نمایش داده می‌شود،
+          اجازه انتخاب دوباره داده نمی‌شود.
+        */
+
+        if (
+          randomResult.classList.contains("show")
+        ) {
+          return;
+        }
+
         clearTimeout(
           randomPlayerTimeout
+        );
+
+        clearInterval(
+          randomPlayerInterval
         );
 
         const randomIndex =
@@ -3479,13 +3433,47 @@
         randomResultAge.textContent =
           `سن: ${person.age} سال`;
 
+        let secondsLeft = 5;
+
+        randomCountdown.textContent =
+          `⏳ نمایش تا ${secondsLeft} ثانیه`;
+
         randomResult.classList.add(
           "show"
         );
 
+        randomPlayerButton.disabled =
+          true;
+
+        randomPlayerButton.textContent =
+          "⏳ صبر کن...";
+
+        randomPlayerInterval =
+          setInterval(
+            () => {
+
+              secondsLeft--;
+
+              if (
+                secondsLeft > 0
+              ) {
+
+                randomCountdown.textContent =
+                  `⏳ نمایش تا ${secondsLeft} ثانیه`;
+
+              }
+
+            },
+            1000
+          );
+
         randomPlayerTimeout =
           setTimeout(
             () => {
+
+              clearInterval(
+                randomPlayerInterval
+              );
 
               randomResult.classList.remove(
                 "show"
@@ -3496,6 +3484,15 @@
 
               randomResultAge.textContent =
                 "";
+
+              randomCountdown.textContent =
+                "";
+
+              randomPlayerButton.disabled =
+                false;
+
+              randomPlayerButton.textContent =
+                "🎲 انتخاب بازیکن";
 
             },
             5000
@@ -3762,11 +3759,6 @@
 
       }
 
-      /*
-       قدرت بالاتر یعنی توپ
-       کمی بالاتر و سریع‌تر می‌رود.
-      */
-
       const heightBonus =
         (power - 50) * .055;
 
@@ -3831,12 +3823,6 @@
           power
         );
 
-      /*
-       فیزیک ساده‌شده توپ:
-       قدرت بالاتر = حرکت سریع‌تر
-       و کمی تغییر ارتفاع مقصد.
-      */
-
       const duration =
         Math.max(
           310,
@@ -3859,12 +3845,6 @@
           const keeperCaught =
             direction ===
             keeperDirection;
-
-          /*
-           قدرت خیلی زیاد باعث می‌شود
-           گاهی توپ از دست دروازه‌بان
-           عبور کند.
-          */
 
           const powerBreak =
             power >= 91 &&
@@ -4170,11 +4150,6 @@
           ((event.clientY - rect.top) /
             rect.height) * 100;
 
-        /*
-          فقط محدوده دروازه
-          برای هدف‌گیری قابل انتخاب است.
-        */
-
         if (
           y > 42 ||
           x < 15 ||
@@ -4327,124 +4302,118 @@
     }
 
     /* ==================================================
-       ساخت ترکیب تیم‌ها
+       ساخت ترکیب روی یک زمین
     ================================================== */
 
     function buildGameTeams() {
 
-      const teamOnePitch =
+      const gamePitch =
         document.getElementById(
           "teamOnePitch"
         );
 
-      const teamTwoPitch =
-        document.getElementById(
-          "teamTwoPitch"
-        );
+      /*
+       تیم یک
+    */
 
       addGamePlayer(
-        teamOnePitch,
+        gamePitch,
         "علیرضا مختاری",
         50,
-        91,
-        "دروازه‌بان"
+        92,
+        "دروازه‌بان — تیم یک"
       );
 
       addGamePlayer(
-        teamOnePitch,
+        gamePitch,
         "عرفان بابائی",
         30,
-        68,
-        "دفاع"
+        76,
+        "دفاع — تیم یک"
       );
 
       addGamePlayer(
-        teamOnePitch,
+        gamePitch,
         "امیر عباس فیروز",
         70,
-        68,
-        "دفاع"
+        76,
+        "دفاع — تیم یک"
       );
 
       addGamePlayer(
-        teamOnePitch,
+        gamePitch,
         "طاها شبان",
         35,
-        28,
-        "مهاجم"
+        64,
+        "مهاجم — تیم یک"
       );
 
       addGamePlayer(
-        teamOnePitch,
+        gamePitch,
         "یوسف سالاری",
         65,
-        28,
-        "مهاجم"
+        64,
+        "مهاجم — تیم یک"
       );
 
+      /*
+       تیم دو
+      */
+
       addGamePlayer(
-        teamTwoPitch,
+        gamePitch,
         "سجاد حسنی تبار",
         50,
-        91,
-        "دروازه‌بان"
+        8,
+        "دروازه‌بان — تیم دو"
       );
 
       addGamePlayer(
-        teamTwoPitch,
+        gamePitch,
         "عادل نصیری",
         30,
-        68,
-        "دفاع"
+        24,
+        "دفاع — تیم دو"
       );
 
       addGamePlayer(
-        teamTwoPitch,
+        gamePitch,
         "متین جوان",
         70,
-        68,
-        "دفاع"
+        24,
+        "دفاع — تیم دو"
       );
 
       addGamePlayer(
-        teamTwoPitch,
+        gamePitch,
         "احسان آرام",
         35,
-        28,
-        "جلو"
+        36,
+        "جلو — تیم دو"
       );
 
       addGamePlayer(
-        teamTwoPitch,
+        gamePitch,
         "احمد اسماعیل زاده",
         65,
-        28,
-        "جلو"
+        36,
+        "جلو — تیم دو"
+      );
+
+      /*
+       امیر علی که قبلاً تعویضی بود،
+       حالا داخل زمین قرار گرفته است.
+      */
+
+      addGamePlayer(
+        gamePitch,
+        "امیر علی آرامش",
+        50,
+        50,
+        "تعویضی — وارد زمین"
       );
 
     }
-
-    /* ==================================================
-       کلیک روی امیر علی از نیمکت
-    ================================================== */
-
-    benchAmirali.addEventListener(
-      "click",
-      () => {
-
-        const index =
-          people.findIndex(
-            person =>
-              person.name ===
-              "امیر علی آرامش"
-          );
-
-        if (index !== -1) {
-          openProfile(index);
-        }
-
-      }
-    );
 
     /* ==================================================
        باز کردن پروفایل
