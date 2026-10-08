@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -13,10 +14,43 @@
       padding: 0;
     }
 
+    :root {
+      --bg: #07111f;
+      --header: rgba(3, 8, 16, 0.72);
+      --text: #ffffff;
+      --muted: #aab7c7;
+      --card: rgba(255,255,255,0.055);
+      --card-hover: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.09);
+      --input: rgba(255,255,255,0.07);
+      --modal: #101a29;
+      --detail: rgba(255,255,255,0.045);
+    }
+
+    body.light-mode {
+      --bg: #eef2f7;
+      --header: rgba(255,255,255,0.82);
+      --text: #172033;
+      --muted: #687386;
+      --card: rgba(255,255,255,0.78);
+      --card-hover: rgba(255,255,255,0.96);
+      --border: rgba(0,0,0,0.08);
+      --input: rgba(255,255,255,0.88);
+      --modal: #ffffff;
+      --detail: #f2f4f7;
+    }
+
+    html {
+      background: var(--bg);
+    }
+
     body {
       font-family: Tahoma, Arial, sans-serif;
       background:
-        linear-gradient(rgba(5, 10, 18, 0.88), rgba(5, 10, 18, 0.94)),
+        linear-gradient(
+          rgba(5, 10, 18, 0.88),
+          rgba(5, 10, 18, 0.94)
+        ),
         repeating-linear-gradient(
           90deg,
           rgba(255,255,255,0.025) 0,
@@ -24,10 +58,22 @@
           transparent 1px,
           transparent 70px
         ),
-        #07111f;
-      color: #fff;
+        var(--bg);
+
+      color: var(--text);
       min-height: 100vh;
-      transition: background 0.4s ease, color 0.4s ease;
+      transition:
+        background-color 0.35s ease,
+        color 0.35s ease;
+    }
+
+    body.light-mode {
+      background:
+        linear-gradient(
+          rgba(245,247,250,0.94),
+          rgba(238,242,247,0.97)
+        ),
+        var(--bg);
     }
 
     body::before {
@@ -35,43 +81,134 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
+
       background:
-        linear-gradient(90deg, transparent 49.8%, rgba(255,255,255,0.035) 50%, transparent 50.2%),
-        linear-gradient(0deg, transparent 49.8%, rgba(255,255,255,0.025) 50%, transparent 50.2%);
+        linear-gradient(
+          90deg,
+          transparent 49.8%,
+          rgba(255,255,255,0.035) 50%,
+          transparent 50.2%
+        ),
+        linear-gradient(
+          0deg,
+          transparent 49.8%,
+          rgba(255,255,255,0.025) 50%,
+          transparent 50.2%
+        );
+
       opacity: 0.7;
       z-index: -1;
+      transition: opacity 0.4s ease;
     }
 
-    /* ================= HEADER ================= */
+    body.light-mode::before {
+      opacity: 0.12;
+    }
+
+
+    /* =====================================================
+       افکت تغییر تم دایره‌ای
+    ===================================================== */
+
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation: none;
+      mix-blend-mode: normal;
+    }
+
+    ::view-transition-new(root) {
+      clip-path: circle(
+        0px at var(--theme-x) var(--theme-y)
+      );
+
+      animation:
+        theme-circle-expand 0.65s
+        cubic-bezier(0.22, 1, 0.36, 1)
+        forwards;
+    }
+
+    @keyframes theme-circle-expand {
+      to {
+        clip-path: circle(
+          var(--theme-radius) at
+          var(--theme-x) var(--theme-y)
+        );
+      }
+    }
+
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
 
     header {
       position: relative;
       padding: 45px 20px 35px;
       text-align: center;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      background: rgba(3, 8, 16, 0.72);
+
+      border-bottom: 1px solid var(--border);
+
+      background: var(--header);
+
       backdrop-filter: blur(12px);
+
+      transition:
+        background 0.35s ease,
+        border-color 0.35s ease;
     }
 
     .theme-toggle {
       position: absolute;
       left: 20px;
       top: 20px;
-      border: 1px solid rgba(255,255,255,0.15);
-      background: rgba(255,255,255,0.08);
-      color: white;
+
       width: 48px;
       height: 48px;
+
       border-radius: 50%;
+
+      border: 1px solid var(--border);
+
+      background: rgba(255,255,255,0.08);
+
+      color: var(--text);
+
       cursor: pointer;
+
       font-size: 21px;
-      transition: 0.3s;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+
+      transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
     }
 
     .theme-toggle:hover {
-      transform: rotate(15deg) scale(1.08);
-      background: rgba(255,255,255,0.15);
+      transform: scale(1.08);
+      background: rgba(255,255,255,0.14);
     }
+
+    .theme-toggle:active {
+      transform: scale(0.92);
+    }
+
+    .theme-toggle-icon {
+      display: block;
+      transition:
+        transform 0.35s ease,
+        opacity 0.25s ease;
+    }
+
+    .theme-toggle.switching .theme-toggle-icon {
+      transform: rotate(180deg) scale(0.7);
+    }
+
 
     .logo {
       font-size: 42px;
@@ -81,71 +218,115 @@
     }
 
     .subtitle {
-      color: #aab7c7;
+      color: var(--muted);
       font-size: 15px;
+      transition: color 0.35s ease;
     }
 
-    /* ================= MAIN ================= */
+
+    /* =====================================================
+       MAIN
+    ===================================================== */
 
     .container {
       width: min(1200px, 92%);
       margin: 30px auto 60px;
     }
 
-    /* ================= SEARCH ================= */
+
+    /* =====================================================
+       SEARCH
+    ===================================================== */
 
     .search-box {
       margin: 25px auto 30px;
       max-width: 650px;
-      position: relative;
     }
 
     .search-box input {
       width: 100%;
+
       padding: 17px 22px;
+
       border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.12);
+
+      border: 1px solid var(--border);
+
       outline: none;
-      background: rgba(255,255,255,0.07);
-      color: white;
+
+      background: var(--input);
+
+      color: var(--text);
+
       font-size: 16px;
-      transition: 0.3s;
+
+      transition:
+        background 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.3s ease;
     }
 
     .search-box input::placeholder {
-      color: #8c9aaa;
+      color: var(--muted);
     }
 
     .search-box input:focus {
-      border-color: rgba(255,255,255,0.3);
-      background: rgba(255,255,255,0.1);
-      box-shadow: 0 0 25px rgba(255,255,255,0.04);
+      border-color: rgba(120,140,170,0.45);
+
+      box-shadow:
+        0 0 25px rgba(100,130,170,0.08);
     }
 
-    /* ================= BIRTHDAY SECTION ================= */
+
+    /* =====================================================
+       BIRTHDAY
+    ===================================================== */
 
     .birthday-section {
       margin: 0 auto 35px;
+
       max-width: 850px;
-      border: 1px solid rgba(255,255,255,0.09);
-      background: rgba(255,255,255,0.045);
+
+      border: 1px solid var(--border);
+
+      background: var(--card);
+
       border-radius: 22px;
+
       overflow: hidden;
+
       backdrop-filter: blur(10px);
+
+      transition:
+        background 0.35s ease,
+        border-color 0.35s ease;
     }
 
     .birthday-toggle {
       width: 100%;
+
       border: none;
+
       background: transparent;
-      color: white;
+
+      color: var(--text);
+
       padding: 18px 22px;
+
       display: flex;
+
       justify-content: space-between;
+
       align-items: center;
+
       cursor: pointer;
+
       font-size: 17px;
+
       font-weight: bold;
+
+      font-family: inherit;
     }
 
     .birthday-toggle-right {
@@ -157,17 +338,21 @@
     .birthday-icon {
       width: 40px;
       height: 40px;
+
       border-radius: 13px;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       background: rgba(255,255,255,0.08);
+
       font-size: 21px;
     }
 
     .birthday-arrow {
       transition: transform 0.35s ease;
-      color: #aeb9c8;
+      color: var(--muted);
     }
 
     .birthday-section.open .birthday-arrow {
@@ -177,7 +362,9 @@
     .birthday-list {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.45s ease;
+
+      transition:
+        max-height 0.45s ease;
     }
 
     .birthday-section.open .birthday-list {
@@ -190,17 +377,31 @@
 
     .birthday-person {
       width: 100%;
+
       border: none;
+
       background: rgba(255,255,255,0.035);
-      color: white;
+
+      color: var(--text);
+
       margin-top: 7px;
+
       padding: 14px 16px;
+
       border-radius: 14px;
+
       display: flex;
+
       justify-content: space-between;
+
       align-items: center;
+
       cursor: pointer;
-      transition: 0.25s;
+
+      transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+
       font-family: inherit;
     }
 
@@ -218,12 +419,17 @@
     .birthday-rank {
       width: 30px;
       height: 30px;
+
       border-radius: 9px;
+
       background: rgba(255,255,255,0.08);
+
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #cbd5e1;
+
+      color: var(--muted);
+
       font-size: 13px;
     }
 
@@ -232,52 +438,81 @@
     }
 
     .birthday-countdown {
-      color: #9eabba;
+      color: var(--muted);
       font-size: 13px;
     }
 
-    /* ================= PEOPLE GRID ================= */
+
+    /* =====================================================
+       PEOPLE
+    ===================================================== */
 
     .people-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
       gap: 24px;
     }
 
     .person-card {
-      background: rgba(255,255,255,0.055);
-      border: 1px solid rgba(255,255,255,0.09);
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
       border-radius: 24px;
+
       overflow: hidden;
+
       cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.35s ease,
+        border-color 0.35s ease;
+
       backdrop-filter: blur(10px);
     }
 
     .person-card:hover {
       transform: translateY(-8px);
-      background: rgba(255,255,255,0.075);
-      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+
+      background: var(--card-hover);
+
+      box-shadow:
+        0 18px 45px rgba(0,0,0,0.25);
     }
 
     .photo-frame {
       margin: 14px;
+
       border-radius: 18px;
+
       overflow: hidden;
+
       height: 310px;
+
       background: #101927;
-      border: 1px solid rgba(255,255,255,0.1);
+
+      border: 1px solid var(--border);
     }
 
     .photo-frame img {
       width: 100%;
       height: 100%;
+
       object-fit: cover;
+
       display: block;
-      transition: transform 0.5s ease;
+
+      transition:
+        transform 0.5s ease;
     }
 
-    .person-card:hover .photo-frame img {
+    .person-card:hover
+    .photo-frame img {
       transform: scale(1.05);
     }
 
@@ -292,21 +527,30 @@
     }
 
     .person-position {
-      color: #9caabd;
+      color: var(--muted);
       font-size: 14px;
     }
 
-    /* ================= MODAL ================= */
+
+    /* =====================================================
+       MODAL
+    ===================================================== */
 
     .modal {
       position: fixed;
       inset: 0;
+
       background: rgba(0,0,0,0.75);
+
       backdrop-filter: blur(8px);
+
       display: none;
+
       align-items: center;
       justify-content: center;
+
       padding: 20px;
+
       z-index: 1000;
     }
 
@@ -316,49 +560,76 @@
 
     .modal-content {
       width: min(700px, 100%);
+
       max-height: 90vh;
+
       overflow-y: auto;
-      background: #101a29;
-      border: 1px solid rgba(255,255,255,0.1);
+
+      background: var(--modal);
+
+      color: var(--text);
+
+      border: 1px solid var(--border);
+
       border-radius: 28px;
+
       padding: 25px;
+
       position: relative;
-      animation: modalIn 0.25s ease;
+
+      animation:
+        modalIn 0.25s ease;
     }
 
     @keyframes modalIn {
       from {
         opacity: 0;
-        transform: scale(0.95) translateY(15px);
+        transform:
+          scale(0.95)
+          translateY(15px);
       }
+
       to {
         opacity: 1;
-        transform: scale(1) translateY(0);
+        transform:
+          scale(1)
+          translateY(0);
       }
     }
 
     .close-modal {
       position: absolute;
+
       left: 18px;
       top: 18px;
+
       width: 40px;
       height: 40px;
+
       border-radius: 50%;
+
       border: none;
+
       background: rgba(255,255,255,0.08);
-      color: white;
+
+      color: var(--text);
+
       cursor: pointer;
+
       font-size: 22px;
-      z-index: 3;
     }
 
     .modal-photo {
       width: 190px;
       height: 220px;
+
       border-radius: 20px;
+
       overflow: hidden;
+
       margin: 10px auto 20px;
-      border: 1px solid rgba(255,255,255,0.1);
+
+      border: 1px solid var(--border);
     }
 
     .modal-photo img {
@@ -375,20 +646,31 @@
 
     .details {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
       gap: 12px;
     }
 
     .detail-box {
       padding: 16px;
-      background: rgba(255,255,255,0.045);
+
+      background: var(--detail);
+
       border-radius: 16px;
+
+      transition:
+        background 0.35s ease;
     }
 
     .detail-label {
       display: block;
-      color: #8998aa;
+
+      color: var(--muted);
+
       font-size: 12px;
+
       margin-bottom: 7px;
     }
 
@@ -399,15 +681,24 @@
 
     .birthday-timer {
       margin-top: 18px;
+
       padding: 18px;
+
       text-align: center;
+
       border-radius: 18px;
-      background: rgba(255,255,255,0.05);
+
+      background: var(--detail);
+
+      transition:
+        background 0.35s ease;
     }
 
     .birthday-timer-title {
-      color: #9caabd;
+      color: var(--muted);
+
       font-size: 13px;
+
       margin-bottom: 9px;
     }
 
@@ -416,137 +707,40 @@
       font-weight: bold;
     }
 
-    /* ================= NO RESULT ================= */
+
+    /* =====================================================
+       NO RESULT
+    ===================================================== */
 
     .no-result {
       grid-column: 1 / -1;
+
       text-align: center;
+
       padding: 50px 20px;
-      color: #8998aa;
+
+      color: var(--muted);
     }
 
-    /* ================= LIGHT MODE ================= */
 
-    body.light-mode {
-      background:
-        linear-gradient(rgba(245,247,250,0.94), rgba(238,242,247,0.97)),
-        #eef2f7;
-      color: #172033;
-    }
-
-    body.light-mode::before {
-      opacity: 0.15;
-    }
-
-    body.light-mode header {
-      background: rgba(255,255,255,0.82);
-      border-bottom-color: rgba(0,0,0,0.07);
-    }
-
-    body.light-mode .subtitle {
-      color: #667085;
-    }
-
-    body.light-mode .theme-toggle {
-      color: #172033;
-      background: rgba(0,0,0,0.05);
-      border-color: rgba(0,0,0,0.08);
-    }
-
-    body.light-mode .search-box input {
-      background: rgba(255,255,255,0.85);
-      color: #172033;
-      border-color: rgba(0,0,0,0.1);
-    }
-
-    body.light-mode .search-box input::placeholder {
-      color: #8993a3;
-    }
-
-    body.light-mode .birthday-section {
-      background: rgba(255,255,255,0.75);
-      border-color: rgba(0,0,0,0.08);
-    }
-
-    body.light-mode .birthday-toggle,
-    body.light-mode .birthday-person {
-      color: #172033;
-    }
-
-    body.light-mode .birthday-person {
-      background: rgba(0,0,0,0.025);
-    }
-
-    body.light-mode .birthday-person:hover {
-      background: rgba(0,0,0,0.06);
-    }
-
-    body.light-mode .birthday-icon,
-    body.light-mode .birthday-rank {
-      background: rgba(0,0,0,0.055);
-    }
-
-    body.light-mode .birthday-countdown,
-    body.light-mode .birthday-arrow {
-      color: #687386;
-    }
-
-    body.light-mode .person-card {
-      background: rgba(255,255,255,0.78);
-      border-color: rgba(0,0,0,0.08);
-      box-shadow: 0 10px 30px rgba(30,40,60,0.06);
-    }
-
-    body.light-mode .person-card:hover {
-      background: rgba(255,255,255,0.95);
-      box-shadow: 0 18px 40px rgba(30,40,60,0.12);
-    }
-
-    body.light-mode .photo-frame {
-      background: #e7ebf0;
-      border-color: rgba(0,0,0,0.08);
-    }
-
-    body.light-mode .person-position {
-      color: #687386;
-    }
-
-    body.light-mode .modal {
-      background: rgba(20,28,40,0.45);
-    }
-
-    body.light-mode .modal-content {
-      background: #ffffff;
-      color: #172033;
-      border-color: rgba(0,0,0,0.08);
-    }
-
-    body.light-mode .close-modal {
-      background: rgba(0,0,0,0.06);
-      color: #172033;
-    }
-
-    body.light-mode .detail-box,
-    body.light-mode .birthday-timer {
-      background: #f2f4f7;
-    }
-
-    body.light-mode .detail-label,
-    body.light-mode .birthday-timer-title {
-      color: #7a8494;
-    }
-
-    /* ================= RESPONSIVE ================= */
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
 
     @media (max-width: 900px) {
+
       .people-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+          repeat(2, 1fr);
       }
+
     }
 
     @media (max-width: 600px) {
+
       header {
-        padding: 75px 15px 30px;
+        padding:
+          75px 15px 30px;
       }
 
       .logo {
@@ -595,63 +789,119 @@
       .birthday-countdown {
         font-size: 12px;
       }
+
     }
+
+
+    /* =====================================================
+       کاهش حرکت برای دستگاه‌هایی که این گزینه را فعال دارند
+    ===================================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+
+    }
+
   </style>
 </head>
+
 
 <body>
 
   <!-- ================= HEADER ================= -->
 
   <header>
+
     <button
       class="theme-toggle"
       id="themeToggle"
-      onclick="toggleTheme()"
-      title="تغییر حالت نمایش"
+      aria-label="تغییر حالت شب و روز"
+      title="تغییر حالت شب و روز"
     >
-      🌙
+      <span
+        class="theme-toggle-icon"
+        id="themeToggleIcon"
+      >
+        🌙
+      </span>
     </button>
 
-    <div class="logo">⚽ بچو ته خط</div>
-    <div class="subtitle">یه جمع معمولی نیستیم؛ یه تیمیم.</div>
+
+    <div class="logo">
+      ⚽ بچو ته خط
+    </div>
+
+    <div class="subtitle">
+      یه جمع معمولی نیستیم؛ یه تیمیم.
+    </div>
+
   </header>
 
 
+  <!-- ================= MAIN ================= -->
+
   <main class="container">
+
 
     <!-- ================= SEARCH ================= -->
 
     <div class="search-box">
+
       <input
         type="text"
         id="searchInput"
         placeholder="🔍 اسم، مدرسه یا پست بازیکن رو جستجو کن..."
       >
+
     </div>
 
 
     <!-- ================= BIRTHDAYS ================= -->
 
-    <section class="birthday-section" id="birthdaySection">
+    <section
+      class="birthday-section"
+      id="birthdaySection"
+    >
 
       <button
         class="birthday-toggle"
-        onclick="toggleBirthdayList()"
+        id="birthdayToggle"
       >
+
         <div class="birthday-toggle-right">
-          <div class="birthday-icon">🎂</div>
-          <span>نزدیک‌ترین تولدها</span>
+
+          <div class="birthday-icon">
+            🎂
+          </div>
+
+          <span>
+            نزدیک‌ترین تولدها
+          </span>
+
         </div>
 
-        <span class="birthday-arrow">▼</span>
+
+        <span class="birthday-arrow">
+          ▼
+        </span>
+
       </button>
 
+
       <div class="birthday-list">
+
         <div
           class="birthday-list-inner"
           id="birthdayList"
         ></div>
+
       </div>
 
     </section>
@@ -672,35 +922,40 @@
   <div
     class="modal"
     id="profileModal"
-    onclick="handleModalClick(event)"
   >
 
     <div class="modal-content">
 
       <button
         class="close-modal"
-        onclick="closeModal()"
+        id="closeModal"
       >
         ×
       </button>
 
+
       <div class="modal-photo">
+
         <img
           id="modalImage"
           src=""
           alt=""
         >
+
       </div>
+
 
       <h2
         class="modal-name"
         id="modalName"
       ></h2>
 
+
       <div
         class="details"
         id="modalDetails"
       ></div>
+
 
       <div class="birthday-timer">
 
@@ -737,7 +992,8 @@
         school: "قائم آل محمد",
         grade: "یازدهم",
         futsal: "مدافع / دروازه‌بان",
-        image: "images/ChatGPT%20Image%20Aug%2023%2C%202026%2C%2003_13_17%20PM.jpg"
+        image:
+          "images/ChatGPT%20Image%20Aug%2023%2C%202026%2C%2003_13_17%20PM.jpg"
       },
 
       {
@@ -747,7 +1003,8 @@
         school: "حوزه",
         grade: "پایه دو",
         futsal: "مهاجم",
-        image: "images/yoosef.jpg"
+        image:
+          "images/yoosef.jpg"
       },
 
       {
@@ -757,7 +1014,8 @@
         school: "قائم آل محمد",
         grade: "یازدهم",
         futsal: "هافبک",
-        image: "images/aahmad.jpg"
+        image:
+          "images/aahmad.jpg"
       },
 
       {
@@ -767,7 +1025,8 @@
         school: "قائم آل محمد",
         grade: "دهم",
         futsal: "مهاجم / وینگر چپ",
-        image: "images/taha.jpg"
+        image:
+          "images/taha.jpg"
       },
 
       {
@@ -777,7 +1036,8 @@
         school: "قائم آل محمد",
         grade: "یازدهم",
         futsal: "دروازه‌بان",
-        image: "images/alireza.jfif"
+        image:
+          "images/alireza.jfif"
       },
 
       {
@@ -787,7 +1047,8 @@
         school: "قائم آل محمد",
         grade: "یازدهم",
         futsal: "مهاجم / هافبک",
-        image: "images/ehsan.jpg"
+        image:
+          "images/ehsan.jpg"
       },
 
       {
@@ -796,8 +1057,10 @@
         birth: "1389/1/14",
         school: "قائم آل محمد",
         grade: "یازدهم",
-        futsal: "دروازه‌بان / دفاع / هافبک / مهاجم",
-        image: "images/amirabbas.jpg"
+        futsal:
+          "دروازه‌بان / دفاع / هافبک / مهاجم",
+        image:
+          "images/amirabbas.jpg"
       },
 
       {
@@ -806,8 +1069,10 @@
         birth: "1390/4/29",
         school: "قائم آل محمد",
         grade: "دهم",
-        futsal: "دفاع راست / دفاع وسط",
-        image: "images/erfan.jpg"
+        futsal:
+          "دفاع راست / دفاع وسط",
+        image:
+          "images/erfan.jpg"
       },
 
       {
@@ -816,15 +1081,17 @@
         birth: "1389/5/10",
         school: "خاتم",
         grade: "یازدهم",
-        futsal: "دفاع",
-        image: "images/aadel.jpg"
+        futsal:
+          "دفاع",
+        image:
+          "images/aadel.jpg"
       }
 
     ];
 
 
     /* =====================================================
-       تبدیل اعداد
+       اعداد فارسی
     ===================================================== */
 
     function toEnglishNumbers(value) {
@@ -842,33 +1109,41 @@
 
     function persianNumber(number) {
 
-      return String(number).replace(/\d/g, function(d) {
-        return "۰۱۲۳۴۵۶۷۸۹"[d];
-      });
+      return String(number).replace(
+        /\d/g,
+        function(d) {
+          return "۰۱۲۳۴۵۶۷۸۹"[d];
+        }
+      );
 
     }
 
 
     /* =====================================================
-       تاریخ شمسی فعلی
+       تاریخ شمسی
     ===================================================== */
 
     function getJalaliDate(date) {
 
-      const formatter = new Intl.DateTimeFormat(
-        "en-US-u-ca-persian",
-        {
-          year: "numeric",
-          month: "numeric",
-          day: "numeric"
-        }
-      );
+      const formatter =
+        new Intl.DateTimeFormat(
+          "en-US-u-ca-persian",
+          {
+            year: "numeric",
+            month: "numeric",
+            day: "numeric"
+          }
+        );
 
-      const parts = formatter.formatToParts(date);
+
+      const parts =
+        formatter.formatToParts(date);
+
 
       let year = "";
       let month = "";
       let day = "";
+
 
       parts.forEach(function(part) {
 
@@ -886,6 +1161,7 @@
 
       });
 
+
       return {
         year: year,
         month: month,
@@ -896,42 +1172,68 @@
 
 
     /* =====================================================
-       پیدا کردن تولد بعدی
+       تولد بعدی
     ===================================================== */
 
     function findNextBirthday(person) {
 
-      const birthParts = toEnglishNumbers(person.birth)
-        .split("/")
-        .map(Number);
+      const birthParts =
+        toEnglishNumbers(person.birth)
+          .split("/")
+          .map(Number);
 
-      const birthMonth = birthParts[1];
-      const birthDay = birthParts[2];
+
+      const birthMonth =
+        birthParts[1];
+
+      const birthDay =
+        birthParts[2];
+
 
       const now = new Date();
 
+
       for (let i = 0; i <= 370; i++) {
 
-        const candidate = new Date(now);
+        const candidate =
+          new Date(now);
 
-        candidate.setDate(now.getDate() + i);
 
-        const jalali = getJalaliDate(candidate);
+        candidate.setDate(
+          now.getDate() + i
+        );
+
+
+        const jalali =
+          getJalaliDate(candidate);
+
 
         if (
           jalali.month === birthMonth &&
           jalali.day === birthDay
         ) {
 
-          candidate.setHours(0, 0, 0, 0);
+          candidate.setHours(
+            0,
+            0,
+            0,
+            0
+          );
 
-          if (candidate.getTime() >= now.getTime()) {
+
+          if (
+            candidate.getTime() >=
+            now.getTime()
+          ) {
+
             return candidate;
+
           }
 
         }
 
       }
+
 
       return null;
 
@@ -939,140 +1241,179 @@
 
 
     function getNextBirthdayInfo(person) {
+
       return findNextBirthday(person);
+
     }
 
 
     /* =====================================================
-       نمایش لیست تولدها
+       لیست تولدها
     ===================================================== */
 
     function renderBirthdayList() {
 
       const birthdayList =
-        document.getElementById("birthdayList");
+        document.getElementById(
+          "birthdayList"
+        );
+
 
       const now = new Date();
 
-      const sortedPeople = people
-        .map(function(person, index) {
 
-          const nextBirthday =
-            getNextBirthdayInfo(person);
+      const sortedPeople =
+        people
+          .map(function(person, index) {
 
-          return {
-            person: person,
-            index: index,
-            nextBirthday: nextBirthday
-          };
+            const nextBirthday =
+              getNextBirthdayInfo(person);
 
-        })
-        .sort(function(a, b) {
 
-          return (
-            a.nextBirthday.getTime() -
-            b.nextBirthday.getTime()
-          );
+            return {
+              person: person,
+              index: index,
+              nextBirthday: nextBirthday
+            };
 
-        });
+          })
+          .sort(function(a, b) {
+
+            return (
+              a.nextBirthday.getTime() -
+              b.nextBirthday.getTime()
+            );
+
+          });
 
 
       birthdayList.innerHTML = "";
 
 
-      sortedPeople.forEach(function(item, position) {
+      sortedPeople.forEach(
+        function(item, position) {
 
-        const difference =
-          item.nextBirthday.getTime() -
-          now.getTime();
+          const difference =
+            item.nextBirthday.getTime() -
+            now.getTime();
 
-        const totalDays =
-          Math.floor(
-            difference / 86400000
+
+          const totalDays =
+            Math.floor(
+              difference / 86400000
+            );
+
+
+          let countdownText;
+
+
+          if (totalDays <= 0) {
+
+            countdownText =
+              "امروز 🎉";
+
+          } else if (totalDays === 1) {
+
+            countdownText =
+              "فردا";
+
+          } else {
+
+            countdownText =
+              persianNumber(totalDays) +
+              " روز دیگر";
+
+          }
+
+
+          const button =
+            document.createElement(
+              "button"
+            );
+
+
+          button.className =
+            "birthday-person";
+
+
+          button.type =
+            "button";
+
+
+          button.innerHTML = `
+
+            <div class="birthday-person-left">
+
+              <span class="birthday-rank">
+                ${persianNumber(position + 1)}
+              </span>
+
+              <span class="birthday-name">
+                ${item.person.name}
+              </span>
+
+            </div>
+
+            <span class="birthday-countdown">
+              ${countdownText}
+            </span>
+
+          `;
+
+
+          button.addEventListener(
+            "click",
+            function() {
+
+              showInfo(item.index);
+
+            }
           );
 
 
-        let countdownText;
-
-
-        if (totalDays <= 0) {
-
-          countdownText = "امروز 🎉";
-
-        } else if (totalDays === 1) {
-
-          countdownText = "فردا";
-
-        } else {
-
-          countdownText =
-            persianNumber(totalDays) +
-            " روز دیگر";
+          birthdayList.appendChild(
+            button
+          );
 
         }
-
-
-        const button =
-          document.createElement("button");
-
-        button.className =
-          "birthday-person";
-
-
-        button.onclick = function() {
-
-          showInfo(item.index);
-
-        };
-
-
-        button.innerHTML = `
-
-          <div class="birthday-person-left">
-
-            <span class="birthday-rank">
-              ${persianNumber(position + 1)}
-            </span>
-
-            <span class="birthday-name">
-              ${item.person.name}
-            </span>
-
-          </div>
-
-          <span class="birthday-countdown">
-            ${countdownText}
-          </span>
-
-        `;
-
-
-        birthdayList.appendChild(button);
-
-      });
+      );
 
     }
 
 
-    function toggleBirthdayList() {
+    document
+      .getElementById(
+        "birthdayToggle"
+      )
+      .addEventListener(
+        "click",
+        function() {
 
-      const section =
-        document.getElementById(
-          "birthdaySection"
-        );
-
-      const isOpen =
-        section.classList.contains("open");
-
-
-      if (!isOpen) {
-        renderBirthdayList();
-      }
+          const section =
+            document.getElementById(
+              "birthdaySection"
+            );
 
 
-      section.classList.toggle("open");
+          const isOpen =
+            section.classList.contains(
+              "open"
+            );
 
-    }
+
+          if (!isOpen) {
+
+            renderBirthdayList();
+
+          }
+
+
+          section.classList.toggle(
+            "open"
+          );
+
+        }
+      );
 
 
     /* =====================================================
@@ -1082,7 +1423,10 @@
     function renderPeople(list) {
 
       const grid =
-        document.getElementById("peopleGrid");
+        document.getElementById(
+          "peopleGrid"
+        );
+
 
       grid.innerHTML = "";
 
@@ -1107,17 +1451,13 @@
 
 
         const card =
-          document.createElement("article");
+          document.createElement(
+            "article"
+          );
+
 
         card.className =
           "person-card";
-
-
-        card.onclick = function() {
-
-          showInfo(originalIndex);
-
-        };
 
 
         card.innerHTML = `
@@ -1147,6 +1487,16 @@
         `;
 
 
+        card.addEventListener(
+          "click",
+          function() {
+
+            showInfo(originalIndex);
+
+          }
+        );
+
+
         grid.appendChild(card);
 
       });
@@ -1155,26 +1505,39 @@
 
 
     /* =====================================================
-       نمایش پروفایل
+       پروفایل
     ===================================================== */
 
     function showInfo(index) {
 
-      const person = people[index];
+      const person =
+        people[index];
 
-      document.getElementById("modalImage").src =
+
+      document.getElementById(
+        "modalImage"
+      ).src =
         person.image;
 
-      document.getElementById("modalImage").alt =
+
+      document.getElementById(
+        "modalImage"
+      ).alt =
         person.name;
 
-      document.getElementById("modalName").textContent =
+
+      document.getElementById(
+        "modalName"
+      ).textContent =
         person.name;
 
 
-      document.getElementById("modalDetails").innerHTML = `
+      document.getElementById(
+        "modalDetails"
+      ).innerHTML = `
 
         <div class="detail-box">
+
           <span class="detail-label">
             🎂 سن
           </span>
@@ -1182,10 +1545,12 @@
           <span class="detail-value">
             ${persianNumber(person.age)} سال
           </span>
+
         </div>
 
 
         <div class="detail-box">
+
           <span class="detail-label">
             📅 تاریخ تولد
           </span>
@@ -1193,10 +1558,12 @@
           <span class="detail-value">
             ${persianNumber(person.birth)}
           </span>
+
         </div>
 
 
         <div class="detail-box">
+
           <span class="detail-label">
             🏫 مدرسه
           </span>
@@ -1204,10 +1571,12 @@
           <span class="detail-value">
             ${person.school}
           </span>
+
         </div>
 
 
         <div class="detail-box">
+
           <span class="detail-label">
             📚 پایه
           </span>
@@ -1215,10 +1584,15 @@
           <span class="detail-value">
             ${person.grade}
           </span>
+
         </div>
 
 
-        <div class="detail-box" style="grid-column:1/-1;">
+        <div
+          class="detail-box"
+          style="grid-column:1/-1;"
+        >
+
           <span class="detail-label">
             ⚽ پست فوتسال
           </span>
@@ -1226,12 +1600,16 @@
           <span class="detail-value">
             ${person.futsal}
           </span>
+
         </div>
 
       `;
 
 
-      document.getElementById("profileModal")
+      document
+        .getElementById(
+          "profileModal"
+        )
         .classList.add("show");
 
 
@@ -1242,31 +1620,52 @@
 
     function closeModal() {
 
-      document.getElementById("profileModal")
+      document
+        .getElementById(
+          "profileModal"
+        )
         .classList.remove("show");
 
     }
 
 
-    function handleModalClick(event) {
+    document
+      .getElementById(
+        "closeModal"
+      )
+      .addEventListener(
+        "click",
+        closeModal
+      );
 
-      if (
-        event.target.id ===
+
+    document
+      .getElementById(
         "profileModal"
-      ) {
+      )
+      .addEventListener(
+        "click",
+        function(event) {
 
-        closeModal();
+          if (
+            event.target.id ===
+            "profileModal"
+          ) {
 
-      }
+            closeModal();
 
-    }
+          }
+
+        }
+      );
 
 
     /* =====================================================
-       شمارش معکوس تولد
+       شمارش تولد
     ===================================================== */
 
-    let birthdayTimerInterval = null;
+    let birthdayTimerInterval =
+      null;
 
 
     function startBirthdayTimer(person) {
@@ -1285,7 +1684,10 @@
         const target =
           findNextBirthday(person);
 
-        const now = new Date();
+
+        const now =
+          new Date();
+
 
         const difference =
           target.getTime() -
@@ -1313,17 +1715,20 @@
             difference / 86400000
           );
 
+
         const hours =
           Math.floor(
             (difference % 86400000) /
             3600000
           );
 
+
         const minutes =
           Math.floor(
             (difference % 3600000) /
             60000
           );
+
 
         const seconds =
           Math.floor(
@@ -1362,7 +1767,9 @@
     ===================================================== */
 
     document
-      .getElementById("searchInput")
+      .getElementById(
+        "searchInput"
+      )
       .addEventListener(
         "input",
         function(event) {
@@ -1383,35 +1790,37 @@
 
 
           const filtered =
-            people.filter(function(person) {
+            people.filter(
+              function(person) {
 
-              return (
+                return (
 
-                person.name
-                  .toLowerCase()
-                  .includes(query)
+                  person.name
+                    .toLowerCase()
+                    .includes(query)
 
-                ||
+                  ||
 
-                person.school
-                  .toLowerCase()
-                  .includes(query)
+                  person.school
+                    .toLowerCase()
+                    .includes(query)
 
-                ||
+                  ||
 
-                person.grade
-                  .toLowerCase()
-                  .includes(query)
+                  person.grade
+                    .toLowerCase()
+                    .includes(query)
 
-                ||
+                  ||
 
-                person.futsal
-                  .toLowerCase()
-                  .includes(query)
+                  person.futsal
+                    .toLowerCase()
+                    .includes(query)
 
-              );
+                );
 
-            });
+              }
+            );
 
 
           renderPeople(filtered);
@@ -1422,7 +1831,20 @@
 
     /* =====================================================
        حالت شب / روز
+       افکت دایره‌ای از خود دکمه
     ===================================================== */
+
+    const themeToggle =
+      document.getElementById(
+        "themeToggle"
+      );
+
+
+    const themeToggleIcon =
+      document.getElementById(
+        "themeToggleIcon"
+      );
+
 
     function applySavedTheme() {
 
@@ -1432,19 +1854,14 @@
         );
 
 
-      const toggle =
-        document.getElementById(
-          "themeToggle"
-        );
-
-
       if (savedTheme === "light") {
 
         document.body.classList.add(
           "light-mode"
         );
 
-        toggle.textContent = "☀️";
+        themeToggleIcon.textContent =
+          "☀️";
 
       } else {
 
@@ -1452,43 +1869,183 @@
           "light-mode"
         );
 
-        toggle.textContent = "🌙";
+        themeToggleIcon.textContent =
+          "🌙";
 
       }
 
     }
 
 
-    function toggleTheme() {
+    function getThemeCirclePosition() {
 
-      const isLight =
-        document.body.classList.toggle(
+      const rect =
+        themeToggle.getBoundingClientRect();
+
+
+      const x =
+        rect.left +
+        rect.width / 2;
+
+
+      const y =
+        rect.top +
+        rect.height / 2;
+
+
+      const radius =
+        Math.hypot(
+          Math.max(x, window.innerWidth - x),
+          Math.max(y, window.innerHeight - y)
+        );
+
+
+      return {
+        x: x,
+        y: y,
+        radius: radius
+      };
+
+    }
+
+
+    function changeTheme() {
+
+      const isCurrentlyLight =
+        document.body.classList.contains(
           "light-mode"
         );
 
 
-      const toggle =
-        document.getElementById(
-          "themeToggle"
+      const newTheme =
+        isCurrentlyLight
+          ? "dark"
+          : "light";
+
+
+      const position =
+        getThemeCirclePosition();
+
+
+      document.documentElement.style.setProperty(
+        "--theme-x",
+        position.x + "px"
+      );
+
+
+      document.documentElement.style.setProperty(
+        "--theme-y",
+        position.y + "px"
+      );
+
+
+      document.documentElement.style.setProperty(
+        "--theme-radius",
+        position.radius + "px"
+      );
+
+
+      themeToggle.classList.add(
+        "switching"
+      );
+
+
+      function updateTheme() {
+
+        document.body.classList.toggle(
+          "light-mode",
+          newTheme === "light"
         );
 
-
-      if (isLight) {
-
-        toggle.textContent = "☀️";
 
         localStorage.setItem(
           "friendsSiteTheme",
-          "light"
+          newTheme
         );
+
+
+        themeToggleIcon.textContent =
+          newTheme === "light"
+            ? "☀️"
+            : "🌙";
+
+      }
+
+
+      /*
+        اگر مرورگر View Transition داشته باشد،
+        تغییر تم با دایره از خود دکمه انجام می‌شود.
+      */
+
+      if (
+        document.startViewTransition
+      ) {
+
+        const transition =
+          document.startViewTransition(
+            updateTheme
+          );
+
+
+        transition.finished
+          .finally(function() {
+
+            setTimeout(
+              function() {
+
+                themeToggle.classList.remove(
+                  "switching"
+                );
+
+              },
+              30
+            );
+
+          });
 
       } else {
 
-        toggle.textContent = "🌙";
+        /*
+          حالت جایگزین برای مرورگرهای قدیمی‌تر
+        */
 
-        localStorage.setItem(
-          "friendsSiteTheme",
-          "dark"
+        document.body.style.transition =
+          "opacity 0.15s ease";
+
+        document.body.style.opacity =
+          "0.35";
+
+
+        setTimeout(
+          function() {
+
+            updateTheme();
+
+            requestAnimationFrame(
+              function() {
+
+                document.body.style.opacity =
+                  "1";
+
+                setTimeout(
+                  function() {
+
+                    document.body.style.transition =
+                      "";
+
+                    themeToggle.classList.remove(
+                      "switching"
+                    );
+
+                  },
+                  180
+                );
+
+              }
+            );
+
+          },
+          80
         );
 
       }
@@ -1496,15 +2053,23 @@
     }
 
 
+    themeToggle.addEventListener(
+      "click",
+      changeTheme
+    );
+
+
     /* =====================================================
-       بستن با ESC
+       ESC
     ===================================================== */
 
     document.addEventListener(
       "keydown",
       function(event) {
 
-        if (event.key === "Escape") {
+        if (
+          event.key === "Escape"
+        ) {
 
           closeModal();
 
@@ -1526,3 +2091,4 @@
 
 </body>
 </html>
+```
