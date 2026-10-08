@@ -1,495 +1,1013 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>بچو ته خط</title>
+  <title>بچو ته خط</title>
 
-<style>
-* {
-    box-sizing: border-box;
-}
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
 
-body {
-    margin: 0;
-    font-family: Tahoma, Arial, sans-serif;
-    background: #f5f7fa;
-    color: #222;
-}
-
-header {
-    background: white;
-    padding: 35px 20px;
-    text-align: center;
-    border-bottom: 1px solid #e5e7eb;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 38px;
-    font-weight: 900;
-    color: #111827;
-}
-
-header p {
-    margin-top: 10px;
-    color: #6b7280;
-    font-size: 15px;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-.people {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-}
-
-.card {
-    background: white;
-    border-radius: 22px;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.07);
-    transition: 0.3s ease;
-    border: 1px solid #eee;
-}
-
-.card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-}
-
-.card-image {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-    display: block;
-}
-
-.card-content {
-    padding: 22px;
-    text-align: center;
-}
-
-.card-content h2 {
-    margin: 0 0 10px;
-    font-size: 23px;
-}
-
-.card-content p {
-    margin: 6px 0;
-    color: #6b7280;
-    font-size: 14px;
-}
-
-.card-button {
-    margin-top: 18px;
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 12px;
-    background: #111827;
-    color: white;
-    font-size: 15px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.card-button:hover {
-    background: #374151;
-}
-
-/* Modal */
-
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.55);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-
-.modal-box {
-    background: white;
-    width: 100%;
-    max-width: 430px;
-    border-radius: 25px;
-    padding: 28px;
-    position: relative;
-    animation: popup 0.25s ease;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-}
-
-@keyframes popup {
-    from {
-        transform: scale(0.9);
-        opacity: 0;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    to {
-        transform: scale(1);
-        opacity: 1;
+
+    body {
+      font-family: "Vazirmatn", Tahoma, sans-serif;
+      background:
+        radial-gradient(circle at 10% 15%, rgba(41, 180, 110, .12), transparent 25%),
+        radial-gradient(circle at 90% 80%, rgba(0, 145, 255, .10), transparent 25%),
+        #070b10;
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
-}
 
-.close {
-    position: absolute;
-    left: 18px;
-    top: 14px;
-    font-size: 28px;
-    cursor: pointer;
-    color: #777;
-}
-
-.modal-box h2 {
-    margin-top: 5px;
-    margin-bottom: 25px;
-    text-align: center;
-    font-size: 27px;
-}
-
-.info {
-    background: #f8fafc;
-    border-radius: 14px;
-    padding: 13px 15px;
-    margin: 9px 0;
-    font-size: 15px;
-}
-
-.info strong {
-    color: #111827;
-}
-
-footer {
-    text-align: center;
-    color: #9ca3af;
-    padding: 35px 20px;
-    font-size: 13px;
-}
-
-/* موبایل */
-
-@media (max-width: 900px) {
-    .people {
-        grid-template-columns: repeat(2, 1fr);
+    /* پس‌زمینه فوتبالی */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .18;
+      background:
+        linear-gradient(90deg, transparent 49.8%, rgba(255,255,255,.12) 50%, transparent 50.2%),
+        linear-gradient(0deg, transparent 49.8%, rgba(255,255,255,.08) 50%, transparent 50.2%);
+      background-size: 120px 120px;
+      mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+      z-index: -2;
     }
-}
 
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 30px;
+    body::after {
+      content: "";
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border: 1px solid rgba(66, 220, 133, .08);
+      border-radius: 50%;
+      left: -250px;
+      top: 25%;
+      box-shadow:
+        0 0 0 80px rgba(66,220,133,.025),
+        0 0 0 160px rgba(66,220,133,.02);
+      pointer-events: none;
+      z-index: -1;
     }
 
     .container {
-        margin: 25px auto;
-        padding: 0 14px;
+      width: min(1250px, 92%);
+      margin: auto;
     }
 
-    .people {
+    /* هدر */
+    header {
+      margin-top: 28px;
+      padding: 38px 30px;
+      border-radius: 30px;
+      background:
+        linear-gradient(135deg, rgba(20,30,39,.96), rgba(10,17,23,.93));
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow:
+        0 25px 70px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border: 1px solid rgba(71,220,133,.13);
+      border-radius: 50%;
+      left: -100px;
+      top: -120px;
+      box-shadow:
+        0 0 0 45px rgba(71,220,133,.025),
+        0 0 0 90px rgba(71,220,133,.018);
+    }
+
+    header::after {
+      content: "⚽";
+      position: absolute;
+      left: 35px;
+      bottom: -22px;
+      font-size: 95px;
+      opacity: .045;
+      transform: rotate(-18deg);
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .mini-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      border-radius: 50px;
+      background: rgba(53, 207, 119, .09);
+      border: 1px solid rgba(53, 207, 119, .18);
+      color: #72e5a0;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .mini-title span {
+      width: 7px;
+      height: 7px;
+      background: #53df91;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #53df91;
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 70px);
+      line-height: 1.1;
+      font-weight: 900;
+      letter-spacing: -2px;
+      background: linear-gradient(135deg, #fff 20%, #8df0b5 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      width: fit-content;
+    }
+
+    .header-text {
+      margin-top: 12px;
+      color: #aab5bd;
+      font-size: 15px;
+      line-height: 2;
+      max-width: 650px;
+    }
+
+    .header-bottom {
+      margin-top: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .count-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.08);
+      padding: 10px 15px;
+      border-radius: 14px;
+      color: #dce4e8;
+      font-size: 14px;
+    }
+
+    .count-number {
+      color: #6ce99c;
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    /* سرچ */
+    .search-section {
+      margin: 28px 0 35px;
+    }
+
+    .search-box {
+      position: relative;
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #84919b;
+      font-size: 20px;
+      pointer-events: none;
+    }
+
+    #searchInput {
+      width: 100%;
+      height: 62px;
+      border: 1px solid rgba(255,255,255,.09);
+      outline: none;
+      border-radius: 18px;
+      padding: 0 55px 0 60px;
+      background: rgba(17,25,32,.82);
+      color: white;
+      font-family: inherit;
+      font-size: 15px;
+      transition: .3s;
+      box-shadow: 0 12px 35px rgba(0,0,0,.15);
+    }
+
+    #searchInput::placeholder {
+      color: #68757e;
+    }
+
+    #searchInput:focus {
+      border-color: rgba(82,224,143,.5);
+      box-shadow:
+        0 0 0 4px rgba(82,224,143,.06),
+        0 15px 40px rgba(0,0,0,.25);
+    }
+
+    #clearSearch {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 0;
+      background: rgba(255,255,255,.06);
+      color: #9ca8ae;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      font-size: 16px;
+    }
+
+    /* کارت‌ها */
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 24px;
+      padding-bottom: 60px;
+    }
+
+    .person-card {
+      background:
+        linear-gradient(145deg, rgba(20,29,37,.97), rgba(10,16,21,.97));
+      border: 1px solid rgba(255,255,255,.075);
+      border-radius: 25px;
+      padding: 13px;
+      overflow: hidden;
+      position: relative;
+      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+      cursor: pointer;
+      animation: cardIn .55s ease both;
+    }
+
+    .person-card:hover {
+      transform: translateY(-9px);
+      border-color: rgba(82,224,143,.32);
+      box-shadow:
+        0 25px 55px rgba(0,0,0,.38),
+        0 0 35px rgba(61,205,126,.06);
+    }
+
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .photo-frame {
+      position: relative;
+      padding: 5px;
+      border-radius: 21px;
+      background: linear-gradient(145deg, #31413a, #14231c, #27332e);
+    }
+
+    .photo-frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 21px;
+      background: linear-gradient(135deg, rgba(111,241,159,.45), transparent 40%);
+      pointer-events: none;
+    }
+
+    .photo-wrapper {
+      height: 300px;
+      border-radius: 17px;
+      overflow: hidden;
+      position: relative;
+      background: #10171c;
+    }
+
+    .photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .55s ease;
+    }
+
+    .person-card:hover .photo-wrapper img {
+      transform: scale(1.045);
+    }
+
+    .photo-overlay {
+      position: absolute;
+      inset: auto 0 0;
+      height: 42%;
+      background: linear-gradient(to top, rgba(0,0,0,.72), transparent);
+      pointer-events: none;
+    }
+
+    .position-tag {
+      position: absolute;
+      right: 14px;
+      bottom: 13px;
+      padding: 7px 11px;
+      border-radius: 10px;
+      background: rgba(5,10,13,.72);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(8px);
+      color: #d9ffe7;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .card-info {
+      padding: 17px 8px 8px;
+    }
+
+    .person-name {
+      font-size: 20px;
+      font-weight: 800;
+      color: #f4f7f8;
+      margin-bottom: 7px;
+    }
+
+    .person-age {
+      color: #85929a;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    .profile-button {
+      width: 100%;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 13px;
+      background: rgba(255,255,255,.045);
+      color: #dce5e8;
+      font-family: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .profile-button:hover {
+      background: rgba(72,218,133,.1);
+      border-color: rgba(72,218,133,.25);
+      color: #83eaaa;
+    }
+
+    /* نتیجه جستجو */
+    .no-result {
+      display: none;
+      text-align: center;
+      padding: 70px 20px;
+      color: #8d9aa2;
+    }
+
+    .no-result-icon {
+      font-size: 45px;
+      margin-bottom: 15px;
+      opacity: .5;
+    }
+
+    .no-result h3 {
+      color: #dce3e6;
+      margin-bottom: 8px;
+    }
+
+    /* مودال */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.72);
+      backdrop-filter: blur(12px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 1000;
+    }
+
+    .modal.show {
+      display: flex;
+      animation: modalBg .25s ease;
+    }
+
+    @keyframes modalBg {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-box {
+      width: min(850px, 100%);
+      max-height: 92vh;
+      overflow-y: auto;
+      background:
+        linear-gradient(145deg, #172129, #0b1116);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 30px;
+      padding: 22px;
+      position: relative;
+      box-shadow: 0 35px 100px rgba(0,0,0,.65);
+      animation: modalIn .35s ease;
+    }
+
+    @keyframes modalIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(.97);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .close {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 13px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(0,0,0,.25);
+      color: #d4dde0;
+      cursor: pointer;
+      font-size: 20px;
+      z-index: 5;
+      transition: .25s;
+    }
+
+    .close:hover {
+      background: rgba(255,70,70,.12);
+      color: #ff8b8b;
+    }
+
+    .modal-top {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .modal-image {
+      height: 340px;
+      border-radius: 22px;
+      overflow: hidden;
+      padding: 5px;
+      background: linear-gradient(145deg, #55df91, #1a3326, #26323b);
+    }
+
+    .modal-image img {
+      width: 100%;
+      height: 100%;
+      border-radius: 18px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .modal-title {
+      padding-left: 35px;
+    }
+
+    .modal-small {
+      color: #65df98;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    #modalName {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    #modalPosition {
+      color: #a9b5ba;
+      font-size: 14px;
+    }
+
+    .details {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .detail {
+      padding: 18px;
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.065);
+      border-radius: 17px;
+    }
+
+    .detail-label {
+      display: block;
+      color: #728087;
+      font-size: 11px;
+      margin-bottom: 7px;
+    }
+
+    .detail-value {
+      color: #e9eef0;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 0 0 30px;
+      color: #56636b;
+      font-size: 12px;
+    }
+
+    /* موبایل */
+    @media (max-width: 700px) {
+      .container {
+        width: 94%;
+      }
+
+      header {
+        margin-top: 14px;
+        padding: 28px 20px;
+        border-radius: 24px;
+      }
+
+      h1 {
+        font-size: 42px;
+      }
+
+      .header-text {
+        font-size: 13px;
+      }
+
+      .people-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 18px;
+      }
+
+      .photo-wrapper {
+        height: 330px;
+      }
+
+      .modal {
+        padding: 10px;
+      }
+
+      .modal-box {
+        border-radius: 23px;
+        padding: 15px;
+      }
+
+      .modal-top {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .modal-image {
+        height: 330px;
+      }
+
+      .modal-title {
+        padding: 0 5px 5px;
+        text-align: center;
+      }
+
+      .details {
+        grid-template-columns: 1fr;
+      }
+
+      .close {
+        left: 13px;
+        top: 13px;
+      }
     }
 
-    .card-image {
-        height: 330px;
+    @media (min-width: 701px) and (max-width: 1050px) {
+      .people-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
-}
-</style>
+
+    /* اسکرول بار */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #080d11;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #26343b;
+      border-radius: 20px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3e5149;
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-    <h1>بچو ته خط</h1>
-    <p>یه معرفی ساده از بچه‌های ته خط 😎</p>
-</header>
+  <main class="container">
 
-<div class="container">
+    <!-- هدر -->
+    <header>
+      <div class="header-content">
 
-<div class="people">
+        <div class="mini-title">
+          <span></span>
+          معرفی بچه‌های تیم
+        </div>
 
-<!-- سجاد -->
-<div class="card">
-    <img class="card-image"
-         src="images/ChatGPT%20Image%20Aug%2023%2C%202026%2C%2003_13_17%20PM.jpg"
-         alt="سجاد حسنی تبار">
+        <h1>بچو ته خط</h1>
 
-    <div class="card-content">
-        <h2>سجاد حسنی تبار</h2>
-        <p>۱۷ ساله</p>
-        <p>بازیکن فوتسال</p>
+        <p class="header-text">
+          یه جمع دوستانه، یه تیم فوتسال و کلی رفیق.
+          اینجا می‌تونی با بچه‌های تیم بیشتر آشنا بشی.
+        </p>
 
-        <button class="card-button" onclick="showInfo('sajad')">
-            مشاهده پروفایل
-        </button>
+        <div class="header-bottom">
+          <div class="count-badge">
+            <span class="count-number" id="totalCount">۷</span>
+            نفر در لیست
+          </div>
+
+          <div class="count-badge">
+            ⚽ فوتسال و رفاقت
+          </div>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- جستجو -->
+    <section class="search-section">
+
+      <div class="search-box">
+
+        <span class="search-icon">⌕</span>
+
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="جستجو بین اسم، مدرسه، پایه یا پست..."
+          autocomplete="off"
+        >
+
+        <button id="clearSearch" onclick="clearSearch()">×</button>
+
+      </div>
+
+    </section>
+
+    <!-- افراد -->
+    <section class="people-grid" id="peopleGrid"></section>
+
+    <div class="no-result" id="noResult">
+      <div class="no-result-icon">⚽</div>
+      <h3>چیزی پیدا نشد</h3>
+      <p>اسم یا مشخصات دیگه‌ای رو امتحان کن.</p>
     </div>
-</div>
+
+    <footer>
+      بچو ته خط • رفاقت، فوتبال، خاطره
+    </footer>
+
+  </main>
 
 
-<!-- یوسف -->
-<div class="card">
-    <img class="card-image"
-         src="images/yoosef.jpg"
-         alt="یوسف سالاری">
-
-    <div class="card-content">
-        <h2>یوسف سالاری</h2>
-        <p>۱۶ ساله</p>
-        <p>مهاجم فوتسال</p>
-
-        <button class="card-button" onclick="showInfo('yoosef')">
-            مشاهده پروفایل
-        </button>
-    </div>
-</div>
-
-
-<!-- احمد -->
-<div class="card">
-    <img class="card-image"
-         src="images/aahmad.jpg"
-         alt="احمد اسماعیل زاده">
-
-    <div class="card-content">
-        <h2>احمد اسماعیل زاده</h2>
-        <p>۱۷ ساله</p>
-        <p>هافبک فوتسال</p>
-
-        <button class="card-button" onclick="showInfo('ahmad')">
-            مشاهده پروفایل
-        </button>
-    </div>
-</div>
-
-
-<!-- طاها -->
-<div class="card">
-    <img class="card-image"
-         src="images/taha.jpg"
-         alt="طاها شبان">
-
-    <div class="card-content">
-        <h2>طاها شبان</h2>
-        <p>۱۶ ساله</p>
-        <p>مهاجم / وینگر چپ</p>
-
-        <button class="card-button" onclick="showInfo('taha')">
-            مشاهده پروفایل
-        </button>
-    </div>
-</div>
-
-
-<!-- علیرضا -->
-<div class="card">
-    <img class="card-image"
-         src="images/alireza.jfif"
-         alt="علیرضا مختاری">
-
-    <div class="card-content">
-        <h2>علیرضا مختاری</h2>
-        <p>۱۶ ساله</p>
-        <p>دروازه‌بان</p>
-
-        <button class="card-button" onclick="showInfo('alireza')">
-            مشاهده پروفایل
-        </button>
-    </div>
-</div>
-
-
-<!-- احسان -->
-<div class="card">
-    <img class="card-image"
-         src="images/ehsan.jpg"
-         alt="احسان آرام">
-
-    <div class="card-content">
-        <h2>احسان آرام</h2>
-        <p>۱۶ ساله</p>
-        <p>مهاجم / هافبک</p>
-
-        <button class="card-button" onclick="showInfo('ehsan')">
-            مشاهده پروفایل
-        </button>
-    </div>
-</div>
-
-
-<!-- امیر عباس -->
-<div class="card">
-    <img class="card-image"
-         src="images/amirabbas.jpg"
-         alt="امیر عباس فیروز">
-
-    <div class="card-content">
-        <h2>امیر عباس فیروز</h2>
-        <p>۱۶ ساله</p>
-        <p>بازیکن چند پسته</p>
-
-        <button class="card-button" onclick="showInfo('amirabbas')">
-            مشاهده پروفایل
-        </button>
-    </div>
-</div>
-
-</div>
-</div>
-
-
-<!-- پنجره اطلاعات -->
-
-<div class="modal" id="profileModal">
+  <!-- مودال -->
+  <div class="modal" id="modal">
 
     <div class="modal-box">
 
-        <span class="close" onclick="closeModal()">×</span>
+      <button class="close" onclick="closeModal()">×</button>
 
-        <h2 id="modalName"></h2>
+      <div class="modal-top">
 
-        <div class="info">
-            <strong>سن:</strong>
-            <span id="modalAge"></span>
+        <div class="modal-image">
+          <img id="modalImage" src="" alt="">
         </div>
 
-        <div class="info">
-            <strong>تاریخ تولد:</strong>
-            <span id="modalBirth"></span>
+        <div class="modal-title">
+
+          <div class="modal-small">
+            پروفایل بازیکن
+          </div>
+
+          <h2 id="modalName"></h2>
+
+          <p id="modalPosition"></p>
+
         </div>
 
-        <div class="info">
-            <strong>مدرسه:</strong>
-            <span id="modalSchool"></span>
+      </div>
+
+      <div class="details">
+
+        <div class="detail">
+          <span class="detail-label">سن</span>
+          <span class="detail-value" id="modalAge"></span>
         </div>
 
-        <div class="info">
-            <strong>پایه تحصیلی:</strong>
-            <span id="modalGrade"></span>
+        <div class="detail">
+          <span class="detail-label">تاریخ تولد</span>
+          <span class="detail-value" id="modalBirth"></span>
         </div>
 
-        <div class="info">
-            <strong>پست فوتسال:</strong>
-            <span id="modalPosition"></span>
+        <div class="detail">
+          <span class="detail-label">مدرسه / محل تحصیل</span>
+          <span class="detail-value" id="modalSchool"></span>
         </div>
+
+        <div class="detail">
+          <span class="detail-label">پایه</span>
+          <span class="detail-value" id="modalGrade"></span>
+        </div>
+
+        <div class="detail">
+          <span class="detail-label">پست فوتسال</span>
+          <span class="detail-value" id="modalFutsal"></span>
+        </div>
+
+      </div>
 
     </div>
 
-</div>
+  </div>
 
 
-<footer>
-    بچو ته خط © 2026
-</footer>
+  <script>
 
+    const people = [
 
-<script>
-
-const people = {
-
-    sajad: {
+      {
         name: "سجاد حسنی تبار",
-        age: "۱۷",
+        age: "۱۷ سال",
         birth: "۱۳۸۸/۸/۱۴",
         school: "قائم آل محمد",
         grade: "یازدهم",
-        position: "مدافع / دروازه‌بان"
-    },
+        futsal: "مدافع / دروازه‌بان",
+        image: "images/ChatGPT%20Image%20Aug%2023%2C%202026%2C%2003_13_17%20PM.jpg"
+      },
 
-    yoosef: {
+      {
         name: "یوسف سالاری",
-        age: "۱۶",
-        birth: "۱۳۸۸/۹/۴",
+        age: "۱۶ سال",
+        birth: "۱۳۸۸/۰۹/۰۴",
         school: "حوزه",
         grade: "پایه دو",
-        position: "مهاجم"
-    },
+        futsal: "مهاجم",
+        image: "images/yoosef.jpg"
+      },
 
-    ahmad: {
+      {
         name: "احمد اسماعیل زاده",
-        age: "۱۷",
-        birth: "۱۳۸۸/۱۱/۶",
+        age: "۱۷ سال",
+        birth: "۱۳۸۸/۱۱/۰۶",
         school: "قائم آل محمد",
         grade: "یازدهم",
-        position: "هافبک"
-    },
+        futsal: "هافبک",
+        image: "images/aahmad.jpg"
+      },
 
-    taha: {
+      {
         name: "طاها شبان",
-        age: "۱۶",
+        age: "۱۶ سال",
         birth: "۱۳۸۹/۹/۱۵",
         school: "قائم آل محمد",
         grade: "دهم",
-        position: "مهاجم / وینگر چپ"
-    },
+        futsal: "مهاجم / وینگر چپ",
+        image: "images/taha.jpg"
+      },
 
-    alireza: {
+      {
         name: "علیرضا مختاری",
-        age: "۱۶",
+        age: "۱۶ سال",
         birth: "۱۳۸۸/۹/۱۴",
         school: "قائم آل محمد",
         grade: "یازدهم",
-        position: "دروازه‌بان"
-    },
+        futsal: "دروازه‌بان",
+        image: "images/alireza.jfif"
+      },
 
-    ehsan: {
+      {
         name: "احسان آرام",
-        age: "۱۶",
+        age: "۱۶ سال",
         birth: "۱۳۸۹/۴/۲۴",
         school: "قائم آل محمد",
         grade: "یازدهم",
-        position: "مهاجم / هافبک"
-    },
+        futsal: "مهاجم / هافبک",
+        image: "images/ehsan.jpg"
+      },
 
-    amirabbas: {
+      {
         name: "امیر عباس فیروز",
-        age: "۱۶",
+        age: "۱۶ سال",
         birth: "۱۳۸۹/۱/۱۴",
         school: "قائم آل محمد",
         grade: "یازدهم",
-        position: "دروازه‌بان / دفاع / هافبک / مهاجم"
+        futsal: "دروازه‌بان / دفاع / هافبک / مهاجم",
+        image: "images/amirabbas.jpg"
+      }
+
+    ];
+
+
+    const grid = document.getElementById("peopleGrid");
+    const searchInput = document.getElementById("searchInput");
+    const clearButton = document.getElementById("clearSearch");
+    const noResult = document.getElementById("noResult");
+
+
+    function renderPeople(list) {
+
+      grid.innerHTML = "";
+
+      list.forEach((person, index) => {
+
+        const card = document.createElement("article");
+
+        card.className = "person-card";
+
+        card.style.animationDelay = `${index * 0.06}s`;
+
+        card.innerHTML = `
+
+          <div class="photo-frame">
+
+            <div class="photo-wrapper">
+
+              <img
+                src="${person.image}"
+                alt="${person.name}"
+                loading="lazy"
+              >
+
+              <div class="photo-overlay"></div>
+
+              <div class="position-tag">
+                ${person.futsal}
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="card-info">
+
+            <div class="person-name">
+              ${person.name}
+            </div>
+
+            <div class="person-age">
+              ${person.age} • ${person.grade}
+            </div>
+
+            <button
+              class="profile-button"
+              onclick="showInfo(${index})"
+            >
+              مشاهده پروفایل
+            </button>
+
+          </div>
+        `;
+
+        grid.appendChild(card);
+
+      });
+
+      noResult.style.display = list.length === 0 ? "block" : "none";
     }
 
-};
+
+    function showInfo(index) {
+
+      const person = people[index];
+
+      document.getElementById("modalImage").src = person.image;
+      document.getElementById("modalImage").alt = person.name;
+
+      document.getElementById("modalName").textContent = person.name;
+
+      document.getElementById("modalPosition").textContent =
+        "پست فوتسال: " + person.futsal;
+
+      document.getElementById("modalAge").textContent =
+        person.age;
+
+      document.getElementById("modalBirth").textContent =
+        person.birth;
+
+      document.getElementById("modalSchool").textContent =
+        person.school;
+
+      document.getElementById("modalGrade").textContent =
+        person.grade;
+
+      document.getElementById("modalFutsal").textContent =
+        person.futsal;
+
+      document.getElementById("modal").classList.add("show");
+
+      document.body.style.overflow = "hidden";
+    }
 
 
-function showInfo(person) {
+    function closeModal() {
 
-    const data = people[person];
+      document.getElementById("modal").classList.remove("show");
 
-    document.getElementById("modalName").textContent = data.name;
-    document.getElementById("modalAge").textContent = data.age;
-    document.getElementById("modalBirth").textContent = data.birth;
-    document.getElementById("modalSchool").textContent = data.school;
-    document.getElementById("modalGrade").textContent = data.grade;
-    document.getElementById("modalPosition").textContent = data.position;
-
-    document.getElementById("profileModal").style.display = "flex";
-}
+      document.body.style.overflow = "";
+    }
 
 
-function closeModal() {
-    document.getElementById("profileModal").style.display = "none";
-}
+    function clearSearch() {
+
+      searchInput.value = "";
+
+      clearButton.style.display = "none";
+
+      renderPeople(people);
+
+      searchInput.focus();
+    }
 
 
-window.onclick = function(event) {
+    searchInput.addEventListener("input", function() {
 
-    const modal = document.getElementById("profileModal");
+      const value = this.value.trim().toLowerCase();
 
-    if (event.target === modal) {
+      clearButton.style.display =
+        value ? "block" : "none";
+
+      if (!value) {
+
+        renderPeople(people);
+
+        return;
+      }
+
+      const filtered = people.filter(person => {
+
+        const text = `
+          ${person.name}
+          ${person.school}
+          ${person.grade}
+          ${person.futsal}
+          ${person.age}
+          ${person.birth}
+        `.toLowerCase();
+
+        return text.includes(value);
+      });
+
+      renderPeople(filtered);
+
+    });
+
+
+    document.getElementById("modal").addEventListener("click", function(e) {
+
+      if (e.target === this) {
         closeModal();
-    }
+      }
 
-}
+    });
 
-</script>
+
+    document.addEventListener("keydown", function(e) {
+
+      if (e.key === "Escape") {
+        closeModal();
+      }
+
+    });
+
+
+    renderPeople(people);
+
+  </script>
 
 </body>
 </html>
