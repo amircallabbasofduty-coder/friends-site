@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b1220">
+<meta name="theme-color" content="#07101d">
 <title>بچو ته خط</title>
 
 <style>
@@ -57,9 +57,7 @@ body{
       transparent 50px
     ),
     var(--bg);
-  transition:
-    background-color .35s ease,
-    color .35s ease;
+  transition:background-color .35s ease,color .35s ease;
   overflow-x:hidden;
 }
 
@@ -443,6 +441,7 @@ main{
     opacity:0;
     transform:translateY(15px) scale(.97);
   }
+
   to{
     opacity:1;
     transform:none;
@@ -544,9 +543,11 @@ main{
 ========================= */
 
 @media(max-width:950px){
+
   .people-grid{
     grid-template-columns:repeat(2,1fr);
   }
+
 }
 
 /* =========================
@@ -692,14 +693,17 @@ main{
   }
 
   @keyframes mobileModalIn{
+
     from{
       opacity:0;
       transform:translateY(35px);
     }
+
     to{
       opacity:1;
       transform:none;
     }
+
   }
 
   .close{
@@ -751,6 +755,7 @@ main{
   .countdown{
     font-size:13px;
   }
+
 }
 
 /* =========================
@@ -786,6 +791,7 @@ main{
   .birthday-count{
     display:none;
   }
+
 }
 
 /* =========================
@@ -793,6 +799,7 @@ main{
 ========================= */
 
 @media(prefers-reduced-motion:reduce){
+
   *,
   *::before,
   *::after{
@@ -800,13 +807,16 @@ main{
     animation-duration:.01ms!important;
     transition-duration:.01ms!important;
   }
+
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
+
   <div class="header-inner">
 
     <button
@@ -822,89 +832,154 @@ main{
     </div>
 
   </div>
+
 </header>
+
 
 <main>
 
   <section class="intro">
+
     <h2>رفقای ته خط ⚽</h2>
+
     <p>
       اینجا قراره بچه‌ها رو بهتر بشناسیم؛
       مشخصات، عکس و اطلاعات فوتسالی هر نفر.
     </p>
+
   </section>
 
+
   <div class="search-box">
+
     <input
       type="text"
       id="searchInput"
       placeholder="🔎 جستجوی اسم..."
       autocomplete="off">
+
   </div>
 
-  <section class="birthday-section" id="birthdaySection">
 
-    <button class="birthday-toggle" id="birthdayToggle">
+  <section
+    class="birthday-section"
+    id="birthdaySection">
+
+    <button
+      class="birthday-toggle"
+      id="birthdayToggle">
+
       <span>🎂 نزدیک‌ترین تولدها</span>
+
       <span class="arrow">⌄</span>
+
     </button>
 
-    <div class="birthday-list" id="birthdayList"></div>
+    <div
+      class="birthday-list"
+      id="birthdayList">
+    </div>
 
   </section>
 
-  <section class="people-grid" id="peopleGrid"></section>
+
+  <section
+    class="people-grid"
+    id="peopleGrid">
+  </section>
 
 </main>
 
-<div class="modal" id="profileModal">
+
+<div
+  class="modal"
+  id="profileModal">
 
   <div class="modal-content">
 
-    <button class="close" id="closeModal">×</button>
+    <button
+      class="close"
+      id="closeModal">
+      ×
+    </button>
+
 
     <div class="modal-photo">
-      <img id="modalImage" src="" alt="">
+
+      <img
+        id="modalImage"
+        src=""
+        alt="">
+
     </div>
+
 
     <h2 id="modalName"></h2>
 
-    <div class="modal-position" id="modalPosition"></div>
+    <div
+      class="modal-position"
+      id="modalPosition">
+    </div>
+
 
     <div class="details">
 
       <div class="detail">
+
         <span>سن</span>
+
         <strong id="modalAge"></strong>
+
       </div>
 
+
       <div class="detail">
+
         <span>تاریخ تولد</span>
+
         <strong id="modalBirth"></strong>
+
       </div>
 
+
       <div class="detail">
+
         <span>مدرسه / محل تحصیل</span>
+
         <strong id="modalSchool"></strong>
+
       </div>
 
+
       <div class="detail">
+
         <span>پایه</span>
+
         <strong id="modalGrade"></strong>
+
       </div>
 
     </div>
 
+
     <div class="birthday-box">
-      <div class="title">🎂 تولد بعدی</div>
-      <div class="countdown" id="modalCountdown">
+
+      <div class="title">
+        🎂 تولد بعدی
+      </div>
+
+      <div
+        class="countdown"
+        id="modalCountdown">
         در حال محاسبه...
       </div>
+
     </div>
 
   </div>
 
 </div>
+
 
 <script>
 
@@ -1002,6 +1077,16 @@ const people = [
     grade:"یازدهم",
     futsal:"دفاع",
     image:"images/aadel.jpg"
+  },
+
+  {
+    name:"متین جوان",
+    age:16,
+    birth:"1388/7/18",
+    school:"قائم آل محمد",
+    grade:"—",
+    futsal:"همه‌جا",
+    image:"images/matin.jpg"
   }
 
 ];
@@ -1060,10 +1145,14 @@ function getPersianDate(date){
   const result = {};
 
   parts.forEach(part=>{
+
     if(part.type !== "literal"){
+
       result[part.type] =
         Number(part.value);
+
     }
+
   });
 
   return {
@@ -1071,6 +1160,7 @@ function getPersianDate(date){
     month:result.month,
     day:result.day
   };
+
 }
 
 
@@ -1095,7 +1185,9 @@ function getNextBirthday(person){
   const searchStart =
     new Date(now);
 
-  searchStart.setHours(0,0,0,0);
+  searchStart.setHours(
+    0,0,0,0
+  );
 
   for(let i=0;i<=370;i++){
 
@@ -1119,12 +1211,17 @@ function getNextBirthday(person){
       );
 
       if(candidate > now){
+
         return candidate;
+
       }
+
     }
+
   }
 
   return null;
+
 }
 
 
@@ -1135,55 +1232,9 @@ function getNextBirthday(person){
 function getCountdownText(target){
 
   if(!target){
+
     return "تاریخ نامشخص";
-  }
 
-  const now =
-    new Date();
-
-  let diff =
-    target.getTime() -
-    now.getTime();
-
-  if(diff <= 0){
-    return "🎉 تولد مبارک!";
-  }
-
-  const totalSeconds =
-    Math.floor(diff / 1000);
-
-  const days =
-    Math.floor(
-      totalSeconds / 86400
-    );
-
-  const hours =
-    Math.floor(
-      (totalSeconds % 86400) / 3600
-    );
-
-  const minutes =
-    Math.floor(
-      (totalSeconds % 3600) / 60
-    );
-
-  const seconds =
-    totalSeconds % 60;
-
-  return `
-    ${days} روز،
-    ${hours} ساعت،
-    ${minutes} دقیقه،
-    ${seconds} ثانیه
-    باقی مانده
-  `;
-}
-
-
-function getShortCountdown(target){
-
-  if(!target){
-    return "";
   }
 
   const now =
@@ -1194,19 +1245,77 @@ function getShortCountdown(target){
     now.getTime();
 
   if(diff <= 0){
+
+    return "🎉 تولد مبارک!";
+
+  }
+
+  const totalSeconds =
+    Math.floor(diff/1000);
+
+  const days =
+    Math.floor(
+      totalSeconds/86400
+    );
+
+  const hours =
+    Math.floor(
+      (totalSeconds%86400)/3600
+    );
+
+  const minutes =
+    Math.floor(
+      (totalSeconds%3600)/60
+    );
+
+  const seconds =
+    totalSeconds%60;
+
+  return `
+    ${days} روز،
+    ${hours} ساعت،
+    ${minutes} دقیقه،
+    ${seconds} ثانیه
+    باقی مانده
+  `;
+
+}
+
+
+function getShortCountdown(target){
+
+  if(!target){
+
+    return "";
+
+  }
+
+  const now =
+    new Date();
+
+  const diff =
+    target.getTime() -
+    now.getTime();
+
+  if(diff <= 0){
+
     return "امروز";
+
   }
 
   const days =
     Math.ceil(
-      diff / 86400000
+      diff/86400000
     );
 
   if(days === 1){
+
     return "فردا";
+
   }
 
   return `${days} روز دیگر`;
+
 }
 
 
@@ -1214,27 +1323,33 @@ function getShortCountdown(target){
    RENDER CARDS
 ========================================= */
 
-function renderPeople(list = people){
+function renderPeople(list=people){
 
-  peopleGrid.innerHTML = "";
+  peopleGrid.innerHTML="";
 
   if(!list.length){
 
-    peopleGrid.innerHTML = `
+    peopleGrid.innerHTML=`
+
       <div style="
         grid-column:1/-1;
         text-align:center;
         padding:35px;
         color:var(--muted);
       ">
+
         کسی با این اسم پیدا نشد.
+
       </div>
+
     `;
 
     return;
+
   }
 
-  list.forEach((person,index)=>{
+
+  list.forEach(person=>{
 
     const card =
       document.createElement("article");
@@ -1242,7 +1357,8 @@ function renderPeople(list = people){
     card.className =
       "person-card";
 
-    card.innerHTML = `
+
+    card.innerHTML=`
 
       <div class="photo-frame">
 
@@ -1252,6 +1368,7 @@ function renderPeople(list = people){
           loading="lazy">
 
       </div>
+
 
       <div class="person-info">
 
@@ -1264,16 +1381,20 @@ function renderPeople(list = people){
         </span>
 
       </div>
+
     `;
+
 
     card.addEventListener(
       "click",
       ()=>openProfile(person)
     );
 
+
     peopleGrid.appendChild(card);
 
   });
+
 }
 
 
@@ -1292,9 +1413,11 @@ searchInput.addEventListener(
 
     const filtered =
       people.filter(person=>
+
         person.name
           .toLowerCase()
           .includes(value)
+
       );
 
     renderPeople(filtered);
@@ -1319,14 +1442,17 @@ function renderBirthdays(){
           getNextBirthday(person)
 
       }))
+
       .filter(item=>item.next)
 
       .sort(
         (a,b)=>
-          a.next - b.next
+          a.next-b.next
       );
 
-  birthdayList.innerHTML = "";
+
+  birthdayList.innerHTML="";
+
 
   sorted.forEach(
     (item,index)=>{
@@ -1337,7 +1463,8 @@ function renderBirthdays(){
       button.className =
         "birthday-item";
 
-      button.innerHTML = `
+
+      button.innerHTML=`
 
         <span class="rank">
           ${index+1}
@@ -1353,15 +1480,18 @@ function renderBirthdays(){
 
       `;
 
+
       button.addEventListener(
         "click",
         ()=>openProfile(item.person)
       );
 
+
       birthdayList.appendChild(button);
 
     }
   );
+
 }
 
 
@@ -1373,12 +1503,15 @@ birthdayToggle.addEventListener(
       "open"
     );
 
+
     if(
       birthdaySection.classList.contains(
         "open"
       )
     ){
+
       renderBirthdays();
+
     }
 
   }
@@ -1393,48 +1526,58 @@ function openProfile(person){
 
   document.getElementById(
     "modalImage"
-  ).src = person.image;
+  ).src=person.image;
+
 
   document.getElementById(
     "modalImage"
-  ).alt = person.name;
+  ).alt=person.name;
+
 
   document.getElementById(
     "modalName"
-  ).textContent = person.name;
+  ).textContent=person.name;
+
 
   document.getElementById(
     "modalPosition"
-  ).textContent = person.futsal;
+  ).textContent=person.futsal;
+
 
   document.getElementById(
     "modalAge"
-  ).textContent = person.age;
+  ).textContent=person.age;
+
 
   document.getElementById(
     "modalBirth"
-  ).textContent = person.birth;
+  ).textContent=person.birth;
+
 
   document.getElementById(
     "modalSchool"
-  ).textContent = person.school;
+  ).textContent=person.school;
+
 
   document.getElementById(
     "modalGrade"
-  ).textContent = person.grade;
+  ).textContent=person.grade;
+
 
   const target =
     getNextBirthday(person);
 
+
   document.getElementById(
     "modalCountdown"
-  ).textContent =
+  ).textContent=
     getCountdownText(target);
+
 
   modal.classList.add("show");
 
-  document.body.style.overflow =
-    "hidden";
+  document.body.style.overflow="hidden";
+
 }
 
 
@@ -1442,8 +1585,8 @@ function closeProfile(){
 
   modal.classList.remove("show");
 
-  document.body.style.overflow =
-    "";
+  document.body.style.overflow="";
+
 }
 
 
@@ -1457,8 +1600,10 @@ modal.addEventListener(
   "click",
   event=>{
 
-    if(event.target === modal){
+    if(event.target===modal){
+
       closeProfile();
+
     }
 
   }
@@ -1470,10 +1615,12 @@ document.addEventListener(
   event=>{
 
     if(
-      event.key === "Escape" &&
+      event.key==="Escape" &&
       modal.classList.contains("show")
     ){
+
       closeProfile();
+
     }
 
   }
@@ -1487,27 +1634,33 @@ document.addEventListener(
 setInterval(()=>{
 
   if(!modal.classList.contains("show")){
+
     return;
+
   }
+
 
   const name =
     document.getElementById(
       "modalName"
     ).textContent;
 
+
   const person =
     people.find(
-      p=>p.name === name
+      p=>p.name===name
     );
+
 
   if(person){
 
     const target =
       getNextBirthday(person);
 
+
     document.getElementById(
       "modalCountdown"
-    ).textContent =
+    ).textContent=
       getCountdownText(target);
 
   }
@@ -1524,31 +1677,39 @@ function getThemeCirclePosition(){
   const rect =
     themeToggle.getBoundingClientRect();
 
+
   const x =
-    rect.left +
-    rect.width / 2;
+    rect.left+
+    rect.width/2;
+
 
   const y =
-    rect.top +
-    rect.height / 2;
+    rect.top+
+    rect.height/2;
+
 
   const radius =
     Math.hypot(
+
       Math.max(
         x,
         window.innerWidth-x
       ),
+
       Math.max(
         y,
         window.innerHeight-y
       )
+
     );
+
 
   return {
     x,
     y,
     radius
   };
+
 }
 
 
@@ -1559,20 +1720,32 @@ function updateTheme(){
       "light-mode"
     );
 
+
   localStorage.setItem(
     "friendsSiteTheme",
-    isLight ? "light" : "dark"
+    isLight
+      ?"light"
+      :"dark"
   );
 
+
   themeToggle.textContent =
-    isLight ? "☀️" : "🌙";
+    isLight
+      ?"☀️"
+      :"🌙";
+
 
   document
-    .querySelector('meta[name="theme-color"]')
+    .querySelector(
+      'meta[name="theme-color"]'
+    )
     .setAttribute(
       "content",
-      isLight ? "#f2f5f8" : "#07101d"
+      isLight
+        ?" #f2f5f8".trim()
+        :"#07101d"
     );
+
 }
 
 
@@ -1581,43 +1754,38 @@ function changeTheme(){
   const position =
     getThemeCirclePosition();
 
+
   document.documentElement.style.setProperty(
     "--theme-x",
     `${position.x}px`
   );
+
 
   document.documentElement.style.setProperty(
     "--theme-y",
     `${position.y}px`
   );
 
+
   document.documentElement.style.setProperty(
     "--theme-radius",
     `${position.radius}px`
   );
 
-  if(
-    !document.startViewTransition
-  ){
 
-    document.body.classList.add(
-      "theme-fading"
-    );
+  if(!document.startViewTransition){
 
     updateTheme();
 
-    setTimeout(()=>{
-      document.body.classList.remove(
-        "theme-fading"
-      );
-    },120);
-
     return;
+
   }
+
 
   document.startViewTransition(
     ()=>updateTheme()
   );
+
 }
 
 
@@ -1636,20 +1804,26 @@ const savedTheme =
     "friendsSiteTheme"
   );
 
-if(savedTheme === "light"){
+
+if(savedTheme==="light"){
 
   document.body.classList.add(
     "light-mode"
   );
 
-  themeToggle.textContent = "☀️";
+
+  themeToggle.textContent="☀️";
+
 
   document
-    .querySelector('meta[name="theme-color"]')
+    .querySelector(
+      'meta[name="theme-color"]'
+    )
     .setAttribute(
       "content",
       "#f2f5f8"
     );
+
 }
 
 
