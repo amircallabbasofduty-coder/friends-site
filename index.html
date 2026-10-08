@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -867,7 +866,7 @@
 
     /* =========================
        BALANCED TEAM BUTTON
-       ========================= */
+    ========================= */
 
     .balanced-reroll {
       width: 100%;
@@ -2983,18 +2982,33 @@
 
     }
 
+    /*
+      مهم:
+      ورود معمولی همیشه ترکیب ثابت را نمایش می‌دهد.
+    */
+
     enterGameButton.addEventListener(
       "click",
-      openGamePage
+      () => {
+
+        buildGameTeams();
+
+        openGamePage();
+
+      }
     );
+
+    /*
+      این دکمه فقط ترکیب تصادفی برابر را می‌سازد.
+    */
 
     balancedTeamButton.addEventListener(
       "click",
       () => {
 
-        openGamePage();
-
         buildBalancedTeam();
+
+        openGamePage();
 
       }
     );
@@ -3282,7 +3296,10 @@
       return strength;
     }
 
-    function getPlayerRole(person, isGoalkeeper = false) {
+    function getPlayerRole(
+      person,
+      isGoalkeeper = false
+    ) {
 
       if (isGoalkeeper) {
         return "دروازه‌بان";
@@ -3316,9 +3333,8 @@
     function getBestBalancedTeams() {
 
       /*
-        بازیکن امیر علی آرامش چون در ترکیب
-        قبلی تعویضی بوده، وارد ترکیب اصلی
-        تصادفی نمی‌شود.
+        امیر علی آرامش چون در ترکیب قبلی
+        تعویضی بوده، وارد ترکیب اصلی نمی‌شود.
       */
 
       const available =
@@ -3329,11 +3345,7 @@
         );
 
       /*
-        دروازه‌بان‌های اصلی:
-        علیرضا و سجاد
-
-        امیر عباس هم چندپسته است و در صورت
-        نیاز می‌تواند جای دروازه‌بان قرار بگیرد.
+        پیدا کردن دروازه‌بان‌ها
       */
 
       const goalkeepers =
@@ -3359,8 +3371,7 @@
         goalkeepers[1];
 
       /*
-        اگر ترتیب لیست در آینده تغییر کرد،
-        دو دروازه‌بان تصادفی انتخاب می‌شوند.
+        جابه‌جایی تصادفی دروازه‌بان‌ها
       */
 
       if (
@@ -3384,8 +3395,7 @@
         );
 
       /*
-        همه حالت‌های ممکن تقسیم ۸ بازیکن
-        به دو گروه ۴ نفره بررسی می‌شود.
+        بررسی تمام حالت‌های ممکن
       */
 
       let bestTeamA = null;
@@ -3465,11 +3475,6 @@
             scoreA - scoreB
           );
 
-        /*
-          پاداش برای داشتن دفاع، هافبک
-          و مهاجم در هر تیم.
-        */
-
         const hasDefenseA =
           teamA.some(
             player =>
@@ -3540,6 +3545,7 @@
           goalkeeper1,
           ...shuffle(bestTeamA)
         ],
+
         teamB: [
           goalkeeper2,
           ...shuffle(bestTeamB)
@@ -3636,6 +3642,10 @@
       );
 
     }
+
+    /*
+      دکمه ساخت ترکیب برابر جدید
+    */
 
     balancedReroll.addEventListener(
       "click",
@@ -3981,10 +3991,14 @@
 
     renderBirthdays();
 
+    /*
+      ترکیب اولیه ثابت ساخته می‌شود،
+      اما تا وقتی وارد زمین نشده‌ایم دیده نمی‌شود.
+    */
+
     buildGameTeams();
 
   </script>
 
 </body>
 </html>
-```
