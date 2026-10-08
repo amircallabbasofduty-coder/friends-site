@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -478,7 +479,7 @@
     ========================= */
 
     .game-entry {
-      margin-bottom: 28px;
+      margin-bottom: 18px;
     }
 
     .game-entry-button {
@@ -566,6 +567,103 @@
     }
 
     .game-entry-arrow {
+      font-size: 24px;
+      color: var(--accent);
+    }
+
+    /* =========================
+       BALANCED TEAM ENTRY
+    ========================= */
+
+    .balanced-team-entry {
+      margin-bottom: 28px;
+    }
+
+    .balanced-team-button {
+      width: 100%;
+
+      min-height: 76px;
+
+      padding: 15px 20px;
+
+      border:
+        1px solid rgba(31,169,255,.24);
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(31,169,255,.13),
+          rgba(54,209,124,.10)
+        );
+
+      color: var(--text);
+
+      cursor: pointer;
+
+      font-family: inherit;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+
+      text-align: right;
+
+      box-shadow: var(--shadow);
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease;
+    }
+
+    .balanced-team-button:hover {
+      transform: translateY(-2px);
+
+      border-color:
+        rgba(31,169,255,.45);
+    }
+
+    .balanced-team-main {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .balanced-team-icon {
+      width: 48px;
+      height: 48px;
+
+      flex-shrink: 0;
+
+      border-radius: 14px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background:
+        rgba(31,169,255,.14);
+
+      font-size: 24px;
+    }
+
+    .balanced-team-title {
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .balanced-team-desc {
+      margin-top: 4px;
+
+      color: var(--muted);
+
+      font-size: 11px;
+    }
+
+    .balanced-team-arrow {
       font-size: 24px;
       color: var(--accent);
     }
@@ -765,6 +863,54 @@
       color: var(--accent);
 
       font-weight: 900;
+    }
+
+    /* =========================
+       BALANCED TEAM BUTTON
+       ========================= */
+
+    .balanced-reroll {
+      width: 100%;
+
+      margin-bottom: 15px;
+
+      padding: 13px 16px;
+
+      border: 1px solid rgba(54,209,124,.25);
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(54,209,124,.13),
+          rgba(31,169,255,.09)
+        );
+
+      color: var(--text);
+
+      font-family: inherit;
+
+      font-size: 13px;
+
+      font-weight: 900;
+
+      cursor: pointer;
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease;
+    }
+
+    .balanced-reroll:hover {
+      transform: translateY(-2px);
+
+      border-color:
+        rgba(54,209,124,.45);
+    }
+
+    .balanced-reroll:active {
+      transform: scale(.98);
     }
 
     .game-pitch-wrapper {
@@ -1394,10 +1540,11 @@
       }
 
       .game-entry {
-        margin-bottom: 18px;
+        margin-bottom: 12px;
       }
 
-      .game-entry-button {
+      .game-entry-button,
+      .balanced-team-button {
         min-height: 68px;
 
         padding: 12px 14px;
@@ -1405,7 +1552,8 @@
         border-radius: 17px;
       }
 
-      .game-entry-icon {
+      .game-entry-icon,
+      .balanced-team-icon {
         width: 42px;
         height: 42px;
 
@@ -1414,16 +1562,23 @@
         font-size: 21px;
       }
 
-      .game-entry-title {
+      .game-entry-title,
+      .balanced-team-title {
         font-size: 14px;
       }
 
-      .game-entry-desc {
+      .game-entry-desc,
+      .balanced-team-desc {
         font-size: 9px;
       }
 
-      .game-entry-arrow {
+      .game-entry-arrow,
+      .balanced-team-arrow {
         font-size: 20px;
+      }
+
+      .balanced-team-entry {
+        margin-bottom: 18px;
       }
 
       #peopleGrid {
@@ -1480,6 +1635,14 @@
 
       .team-name {
         font-size: 17px;
+      }
+
+      .balanced-reroll {
+        padding: 11px;
+
+        font-size: 11px;
+
+        border-radius: 12px;
       }
 
       .game-pitch-wrapper {
@@ -1770,6 +1933,8 @@
 
       </section>
 
+      <!-- GAME ENTRY -->
+
       <section class="game-entry">
 
         <button
@@ -1798,6 +1963,43 @@
           </div>
 
           <div class="game-entry-arrow">
+            ←
+          </div>
+
+        </button>
+
+      </section>
+
+      <!-- BALANCED RANDOM TEAM -->
+
+      <section class="balanced-team-entry">
+
+        <button
+          class="balanced-team-button"
+          id="balancedTeamButton"
+        >
+
+          <div class="balanced-team-main">
+
+            <div class="balanced-team-icon">
+              🎲
+            </div>
+
+            <div>
+
+              <div class="balanced-team-title">
+                ساخت ترکیب ۵ در مقابل ۵
+              </div>
+
+              <div class="balanced-team-desc">
+                یک ترکیب تصادفی و تا حد ممکن برابر بساز
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="balanced-team-arrow">
             ←
           </div>
 
@@ -1850,7 +2052,10 @@
 
       </div>
 
-      <div class="game-description">
+      <div
+        class="game-description"
+        id="gameDescription"
+      >
         ترکیب ۵ به ۵ بچه‌ها در زمین فوتسال
       </div>
 
@@ -1860,15 +2065,28 @@
 
           <div class="team-header">
 
-            <h3 class="team-name">
+            <h3
+              class="team-name"
+              id="teamName"
+            >
               تیم یک ⚔️ تیم دو
             </h3>
 
-            <div class="team-number">
+            <div
+              class="team-number"
+              id="teamNumber"
+            >
               ۱۰
             </div>
 
           </div>
+
+          <button
+            class="balanced-reroll"
+            id="balancedReroll"
+          >
+            🎲 ساخت یک ترکیب برابر جدید
+          </button>
 
           <div class="game-pitch-wrapper">
 
@@ -2216,6 +2434,12 @@
     const enterGameButton =
       document.getElementById("enterGameButton");
 
+    const balancedTeamButton =
+      document.getElementById("balancedTeamButton");
+
+    const balancedReroll =
+      document.getElementById("balancedReroll");
+
     const backHomeButton =
       document.getElementById("backHomeButton");
 
@@ -2287,6 +2511,15 @@
 
     const benchAmirali =
       document.getElementById("benchAmirali");
+
+    const gamePitch =
+      document.getElementById("gamePitch");
+
+    const gameDescription =
+      document.getElementById("gameDescription");
+
+    const teamName =
+      document.getElementById("teamName");
 
     let selectedPerson = null;
     let timerInterval = null;
@@ -2737,18 +2970,31 @@
        صفحه زمین بازی
     ================================================== */
 
+    function openGamePage() {
+
+      homePage.classList.add("hidden");
+
+      gamePage.classList.add("active");
+
+      window.scrollTo({
+        top: 0,
+        behavior: "instant"
+      });
+
+    }
+
     enterGameButton.addEventListener(
+      "click",
+      openGamePage
+    );
+
+    balancedTeamButton.addEventListener(
       "click",
       () => {
 
-        homePage.classList.add("hidden");
+        openGamePage();
 
-        gamePage.classList.add("active");
-
-        window.scrollTo({
-          top: 0,
-          behavior: "instant"
-        });
+        buildBalancedTeam();
 
       }
     );
@@ -2847,15 +3093,33 @@
     }
 
     /* ==================================================
-       ساخت ترکیب روی یک زمین
+       پاک کردن بازیکنان زمین
+    ================================================== */
+
+    function clearGamePlayers() {
+
+      gamePitch
+        .querySelectorAll(".game-player")
+        .forEach(
+          player =>
+            player.remove()
+        );
+
+    }
+
+    /* ==================================================
+       ترکیب ثابت قبلی
     ================================================== */
 
     function buildGameTeams() {
 
-      const gamePitch =
-        document.getElementById(
-          "gamePitch"
-        );
+      clearGamePlayers();
+
+      teamName.textContent =
+        "تیم یک ⚔️ تیم دو";
+
+      gameDescription.textContent =
+        "ترکیب ۵ به ۵ بچه‌ها در زمین فوتسال";
 
       /* تیم یک - نیمه پایین */
 
@@ -2942,6 +3206,441 @@
       );
 
     }
+
+    /* ==================================================
+       سیستم ساخت ترکیب برابر
+    ================================================== */
+
+    function shuffle(array) {
+
+      const result =
+        [...array];
+
+      for (
+        let i = result.length - 1;
+        i > 0;
+        i--
+      ) {
+
+        const j =
+          Math.floor(
+            Math.random() * (i + 1)
+          );
+
+        [
+          result[i],
+          result[j]
+        ] =
+        [
+          result[j],
+          result[i]
+        ];
+
+      }
+
+      return result;
+
+    }
+
+    function getPlayerStrength(person) {
+
+      const position =
+        person.futsal;
+
+      let strength = 2;
+
+      if (
+        position.includes("دروازه‌بان")
+      ) {
+        strength += 3;
+      }
+
+      if (
+        position.includes("دفاع")
+      ) {
+        strength += 2;
+      }
+
+      if (
+        position.includes("هافبک")
+      ) {
+        strength += 2;
+      }
+
+      if (
+        position.includes("مهاجم")
+      ) {
+        strength += 2;
+      }
+
+      if (
+        position.includes("همه‌جا")
+      ) {
+        strength += 2.5;
+      }
+
+      return strength;
+    }
+
+    function getPlayerRole(person, isGoalkeeper = false) {
+
+      if (isGoalkeeper) {
+        return "دروازه‌بان";
+      }
+
+      const futsal =
+        person.futsal;
+
+      if (
+        futsal.includes("دفاع")
+      ) {
+        return "دفاع";
+      }
+
+      if (
+        futsal.includes("هافبک")
+      ) {
+        return "هافبک";
+      }
+
+      if (
+        futsal.includes("مهاجم")
+      ) {
+        return "مهاجم";
+      }
+
+      return "همه‌جا";
+
+    }
+
+    function getBestBalancedTeams() {
+
+      /*
+        بازیکن امیر علی آرامش چون در ترکیب
+        قبلی تعویضی بوده، وارد ترکیب اصلی
+        تصادفی نمی‌شود.
+      */
+
+      const available =
+        people.filter(
+          person =>
+            person.name !==
+            "امیر علی آرامش"
+        );
+
+      /*
+        دروازه‌بان‌های اصلی:
+        علیرضا و سجاد
+
+        امیر عباس هم چندپسته است و در صورت
+        نیاز می‌تواند جای دروازه‌بان قرار بگیرد.
+      */
+
+      const goalkeepers =
+        available.filter(
+          person =>
+            person.futsal.includes(
+              "دروازه‌بان"
+            )
+        );
+
+      const normalPlayers =
+        available.filter(
+          person =>
+            !person.futsal.includes(
+              "دروازه‌بان"
+            )
+        );
+
+      let goalkeeper1 =
+        goalkeepers[0];
+
+      let goalkeeper2 =
+        goalkeepers[1];
+
+      /*
+        اگر ترتیب لیست در آینده تغییر کرد،
+        دو دروازه‌بان تصادفی انتخاب می‌شوند.
+      */
+
+      if (
+        Math.random() > .5
+      ) {
+
+        [
+          goalkeeper1,
+          goalkeeper2
+        ] =
+        [
+          goalkeeper2,
+          goalkeeper1
+        ];
+
+      }
+
+      const remaining =
+        shuffle(
+          normalPlayers
+        );
+
+      /*
+        همه حالت‌های ممکن تقسیم ۸ بازیکن
+        به دو گروه ۴ نفره بررسی می‌شود.
+      */
+
+      let bestTeamA = null;
+      let bestTeamB = null;
+      let bestDifference = Infinity;
+
+      for (
+        let mask = 0;
+        mask < (1 << remaining.length);
+        mask++
+      ) {
+
+        const teamA = [];
+        const teamB = [];
+
+        for (
+          let i = 0;
+          i < remaining.length;
+          i++
+        ) {
+
+          if (
+            mask & (1 << i)
+          ) {
+
+            teamA.push(
+              remaining[i]
+            );
+
+          } else {
+
+            teamB.push(
+              remaining[i]
+            );
+
+          }
+
+        }
+
+        if (
+          teamA.length !== 4 ||
+          teamB.length !== 4
+        ) {
+          continue;
+        }
+
+        const scoreA =
+          teamA.reduce(
+            (
+              sum,
+              player
+            ) =>
+              sum +
+              getPlayerStrength(player),
+            0
+          ) +
+          getPlayerStrength(
+            goalkeeper1
+          );
+
+        const scoreB =
+          teamB.reduce(
+            (
+              sum,
+              player
+            ) =>
+              sum +
+              getPlayerStrength(player),
+            0
+          ) +
+          getPlayerStrength(
+            goalkeeper2
+          );
+
+        let difference =
+          Math.abs(
+            scoreA - scoreB
+          );
+
+        /*
+          پاداش برای داشتن دفاع، هافبک
+          و مهاجم در هر تیم.
+        */
+
+        const hasDefenseA =
+          teamA.some(
+            player =>
+              player.futsal.includes(
+                "دفاع"
+              )
+          );
+
+        const hasDefenseB =
+          teamB.some(
+            player =>
+              player.futsal.includes(
+                "دفاع"
+              )
+          );
+
+        const hasAttackA =
+          teamA.some(
+            player =>
+              player.futsal.includes(
+                "مهاجم"
+              )
+          );
+
+        const hasAttackB =
+          teamB.some(
+            player =>
+              player.futsal.includes(
+                "مهاجم"
+              )
+          );
+
+        if (!hasDefenseA) {
+          difference += 3;
+        }
+
+        if (!hasDefenseB) {
+          difference += 3;
+        }
+
+        if (!hasAttackA) {
+          difference += 2;
+        }
+
+        if (!hasAttackB) {
+          difference += 2;
+        }
+
+        if (
+          difference < bestDifference
+        ) {
+
+          bestDifference =
+            difference;
+
+          bestTeamA =
+            teamA;
+
+          bestTeamB =
+            teamB;
+
+        }
+
+      }
+
+      return {
+        teamA: [
+          goalkeeper1,
+          ...shuffle(bestTeamA)
+        ],
+        teamB: [
+          goalkeeper2,
+          ...shuffle(bestTeamB)
+        ]
+      };
+
+    }
+
+    /* ==================================================
+       نمایش ترکیب برابر
+    ================================================== */
+
+    function buildBalancedTeam() {
+
+      clearGamePlayers();
+
+      const teams =
+        getBestBalancedTeams();
+
+      teamName.textContent =
+        "🎲 ترکیب برابر";
+
+      gameDescription.textContent =
+        "یک ترکیب تصادفی و متعادل ۵ در مقابل ۵";
+
+      /*
+        تیم پایین
+      */
+
+      const teamA =
+        teams.teamA;
+
+      const positionsA = [
+        [50, 91],
+        [30, 72],
+        [70, 72],
+        [35, 58],
+        [65, 58]
+      ];
+
+      teamA.forEach(
+        (player, index) => {
+
+          const role =
+            getPlayerRole(
+              player,
+              index === 0
+            );
+
+          addGamePlayer(
+            gamePitch,
+            player.name,
+            positionsA[index][0],
+            positionsA[index][1],
+            role
+          );
+
+        }
+      );
+
+      /*
+        تیم بالا
+      */
+
+      const teamB =
+        teams.teamB;
+
+      const positionsB = [
+        [50, 9],
+        [30, 28],
+        [70, 28],
+        [35, 42],
+        [65, 42]
+      ];
+
+      teamB.forEach(
+        (player, index) => {
+
+          const role =
+            getPlayerRole(
+              player,
+              index === 0
+            );
+
+          addGamePlayer(
+            gamePitch,
+            player.name,
+            positionsB[index][0],
+            positionsB[index][1],
+            role
+          );
+
+        }
+      );
+
+    }
+
+    balancedReroll.addEventListener(
+      "click",
+      buildBalancedTeam
+    );
 
     /* ==================================================
        کلیک روی امیر علی از نیمکت
@@ -3288,3 +3987,4 @@
 
 </body>
 </html>
+```
