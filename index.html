@@ -464,13 +464,547 @@
       font-size: 13px;
     }
 
-    .random-timer {
-      margin-top: 6px;
+    /* ==================================================
+       🏆 جام پنالتی
+    ================================================== */
 
-      color: var(--accent);
+    .penalty-section {
+      margin-bottom: 28px;
+
+      padding: 18px;
+
+      border: 1px solid rgba(54,209,124,.20);
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(54,209,124,.08),
+          rgba(31,169,255,.06)
+        );
+
+      box-shadow: var(--shadow);
+    }
+
+    .penalty-header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .penalty-title {
+      font-size: 19px;
+      font-weight: 900;
+    }
+
+    .penalty-subtitle {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .penalty-scoreboard {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+
+      margin-bottom: 16px;
+    }
+
+    .penalty-score-box {
+      min-width: 100px;
+      padding: 10px 15px;
+
+      border-radius: 15px;
+
+      background: var(--card);
+      border: 1px solid var(--border);
+
+      text-align: center;
+    }
+
+    .penalty-score-label {
+      color: var(--muted);
+      font-size: 10px;
+      margin-bottom: 5px;
+    }
+
+    .penalty-score-number {
+      font-size: 25px;
+      font-weight: 900;
+    }
+
+    .penalty-round {
+      text-align: center;
+      margin-bottom: 13px;
+
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .penalty-field {
+      position: relative;
+
+      width: 100%;
+      max-width: 620px;
+
+      margin: auto;
+
+      aspect-ratio: 16 / 10;
+
+      overflow: hidden;
+
+      border-radius: 20px;
+
+      border: 3px solid rgba(255,255,255,.8);
+
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #147847 0,
+          #147847 10%,
+          #198451 10%,
+          #198451 20%
+        );
+
+      box-shadow:
+        inset 0 0 50px rgba(0,0,0,.18),
+        0 15px 35px rgba(0,0,0,.18);
+
+      touch-action: none;
+    }
+
+    .penalty-field::before {
+      content: "";
+
+      position: absolute;
+
+      left: 9%;
+      right: 9%;
+      top: 8%;
+
+      height: 48%;
+
+      border:
+        2px solid rgba(255,255,255,.75);
+
+      border-bottom: 0;
+
+      border-radius:
+        12px 12px 0 0;
+    }
+
+    .penalty-field::after {
+      content: "";
+
+      position: absolute;
+
+      left: 24%;
+      width: 52%;
+      top: 8%;
+
+      height: 24%;
+
+      border:
+        2px solid rgba(255,255,255,.75);
+
+      border-top: 0;
+
+      border-radius:
+        0 0 45% 45%;
+    }
+
+    .penalty-goal {
+      position: absolute;
+
+      left: 25%;
+      top: 3%;
+
+      width: 50%;
+      height: 23%;
+
+      border:
+        5px solid rgba(255,255,255,.92);
+
+      border-bottom: 7px solid rgba(255,255,255,.92);
+
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent 0,
+          transparent 8%,
+          rgba(255,255,255,.18) 8%,
+          rgba(255,255,255,.18) 9%
+        ),
+        repeating-linear-gradient(
+          0deg,
+          transparent 0,
+          transparent 15%,
+          rgba(255,255,255,.14) 15%,
+          rgba(255,255,255,.14) 16%
+        );
+
+      z-index: 2;
+    }
+
+    .penalty-keeper {
+      position: absolute;
+
+      left: 50%;
+      top: 18%;
+
+      width: 48px;
+      height: 58px;
+
+      transform:
+        translate(-50%, -50%);
+
+      z-index: 8;
+
+      transition:
+        left .32s cubic-bezier(.2,.8,.3,1),
+        top .32s cubic-bezier(.2,.8,.3,1),
+        transform .32s cubic-bezier(.2,.8,.3,1);
+    }
+
+    .keeper-head {
+      width: 19px;
+      height: 19px;
+
+      margin: auto;
+
+      border-radius: 50%;
+
+      background: #f1c7a7;
+
+      border: 2px solid rgba(0,0,0,.2);
+    }
+
+    .keeper-body {
+      width: 34px;
+      height: 29px;
+
+      margin: -1px auto 0;
+
+      border-radius: 11px 11px 7px 7px;
+
+      background: #f2b233;
+
+      border: 2px solid rgba(0,0,0,.2);
+
+      position: relative;
+    }
+
+    .keeper-body::before,
+    .keeper-body::after {
+      content: "";
+
+      position: absolute;
+
+      top: 3px;
+
+      width: 23px;
+      height: 9px;
+
+      border-radius: 8px;
+
+      background: #f1c7a7;
+
+      border: 2px solid rgba(0,0,0,.18);
+    }
+
+    .keeper-body::before {
+      right: 24px;
+      transform: rotate(-22deg);
+    }
+
+    .keeper-body::after {
+      left: 24px;
+      transform: rotate(22deg);
+    }
+
+    .penalty-ball {
+      position: absolute;
+
+      left: 50%;
+      top: 82%;
+
+      width: 24px;
+      height: 24px;
+
+      transform:
+        translate(-50%, -50%);
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle at 32% 28%,
+          #ffffff 0 17%,
+          #dce2e7 18% 45%,
+          #ffffff 46% 100%
+        );
+
+      border: 1px solid rgba(0,0,0,.25);
+
+      box-shadow:
+        0 5px 12px rgba(0,0,0,.3);
+
+      z-index: 10;
+
+      transition:
+        left .55s cubic-bezier(.15,.75,.25,1),
+        top .55s cubic-bezier(.15,.75,.25,1),
+        width .55s ease,
+        height .55s ease;
+    }
+
+    .penalty-ball.shoot {
+      width: 17px;
+      height: 17px;
+    }
+
+    .penalty-ball.hit {
+      animation: ballHit .22s ease;
+    }
+
+    @keyframes ballHit {
+      0% {
+        transform:
+          translate(-50%, -50%)
+          scale(1);
+      }
+
+      50% {
+        transform:
+          translate(-50%, -50%)
+          scale(1.35);
+      }
+
+      100% {
+        transform:
+          translate(-50%, -50%)
+          scale(1);
+      }
+    }
+
+    .penalty-aim {
+      position: absolute;
+
+      left: 50%;
+      top: 65%;
+
+      width: 54px;
+      height: 54px;
+
+      transform:
+        translate(-50%, -50%);
+
+      border:
+        2px dashed rgba(255,255,255,.8);
+
+      border-radius: 50%;
+
+      z-index: 5;
+
+      pointer-events: none;
+
+      opacity: .75;
+    }
+
+    .penalty-aim::after {
+      content: "🎯";
+
+      position: absolute;
+
+      left: 50%;
+      top: 50%;
+
+      transform:
+        translate(-50%, -50%);
+
+      font-size: 20px;
+    }
+
+    .penalty-message {
+      min-height: 25px;
+
+      margin: 12px 0 10px;
+
+      text-align: center;
+
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .penalty-controls {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 9px;
+
+      margin-top: 12px;
+    }
+
+    .penalty-control {
+      border: 1px solid var(--border);
+
+      border-radius: 13px;
+
+      padding: 11px 7px;
+
+      background: var(--card);
+      color: var(--text);
+
+      font-family: inherit;
+
+      cursor: pointer;
 
       font-size: 12px;
       font-weight: 900;
+
+      transition:
+        transform .15s ease,
+        border-color .15s ease,
+        background .15s ease;
+    }
+
+    .penalty-control:hover {
+      border-color:
+        rgba(54,209,124,.45);
+    }
+
+    .penalty-control:active {
+      transform: scale(.96);
+    }
+
+    .penalty-power-wrap {
+      margin-top: 13px;
+
+      padding: 11px 13px;
+
+      border-radius: 14px;
+
+      background: var(--card);
+
+      border: 1px solid var(--border);
+    }
+
+    .penalty-power-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 7px;
+
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .penalty-power-value {
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .penalty-power {
+      width: 100%;
+      accent-color: var(--accent);
+
+      cursor: pointer;
+    }
+
+    .penalty-shoot {
+      width: 100%;
+
+      margin-top: 12px;
+
+      border: 0;
+
+      padding: 13px;
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--accent),
+          var(--accent2)
+        );
+
+      color: white;
+
+      font-family: inherit;
+
+      font-size: 14px;
+      font-weight: 900;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 8px 20px
+        rgba(54,209,124,.18);
+    }
+
+    .penalty-shoot:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+
+    .penalty-reset {
+      display: none;
+
+      width: 100%;
+
+      margin-top: 9px;
+
+      border: 1px solid var(--border);
+
+      padding: 11px;
+
+      border-radius: 13px;
+
+      background: var(--card);
+
+      color: var(--text);
+
+      font-family: inherit;
+
+      font-size: 12px;
+      font-weight: 900;
+
+      cursor: pointer;
+    }
+
+    .penalty-result {
+      display: none;
+
+      margin-top: 12px;
+
+      padding: 13px;
+
+      text-align: center;
+
+      border-radius: 15px;
+
+      background:
+        rgba(54,209,124,.09);
+
+      border:
+        1px solid rgba(54,209,124,.20);
+
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .penalty-result.show {
+      display: block;
+
+      animation:
+        randomIn .3s ease;
     }
 
     /* =========================
@@ -717,7 +1251,12 @@
     }
 
     .teams {
-      display: block;
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 24px;
     }
 
     .team-card {
@@ -778,9 +1317,6 @@
           #151f2d,
           #0c1623
         );
-
-      max-width: 700px;
-      margin: auto;
     }
 
     .game-pitch {
@@ -1006,10 +1542,6 @@
 
       border:
         1px solid var(--border);
-
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .bench-title {
@@ -1281,6 +1813,10 @@
           repeat(2, 1fr);
       }
 
+      .teams {
+        grid-template-columns: 1fr;
+      }
+
     }
 
     /* =========================
@@ -1391,6 +1927,76 @@
 
       .random-button {
         width: 100%;
+      }
+
+      /* پنالتی موبایل */
+
+      .penalty-section {
+        padding: 14px;
+
+        margin-bottom: 18px;
+
+        border-radius: 18px;
+      }
+
+      .penalty-title {
+        font-size: 16px;
+      }
+
+      .penalty-subtitle {
+        font-size: 10px;
+      }
+
+      .penalty-scoreboard {
+        gap: 10px;
+      }
+
+      .penalty-score-box {
+        min-width: 85px;
+        padding: 8px 10px;
+      }
+
+      .penalty-score-number {
+        font-size: 21px;
+      }
+
+      .penalty-field {
+        aspect-ratio: 15 / 11;
+
+        border-width: 2px;
+      }
+
+      .penalty-goal {
+        border-width: 3px;
+      }
+
+      .penalty-keeper {
+        transform:
+          translate(-50%, -50%)
+          scale(.82);
+      }
+
+      .penalty-ball {
+        width: 21px;
+        height: 21px;
+      }
+
+      .penalty-aim {
+        width: 46px;
+        height: 46px;
+      }
+
+      .penalty-controls {
+        gap: 6px;
+      }
+
+      .penalty-control {
+        padding: 10px 4px;
+        font-size: 10px;
+      }
+
+      .penalty-shoot {
+        padding: 12px;
       }
 
       .game-entry {
@@ -1611,10 +2217,6 @@
         font-size: 13px;
       }
 
-      .random-timer {
-        font-size: 11px;
-      }
-
     }
 
     /* =========================
@@ -1759,14 +2361,181 @@
             id="randomResultAge"
           ></div>
 
-          <div
-            class="random-timer"
-            id="randomTimer"
-          >
-            ۵ ثانیه
+        </div>
+
+      </section>
+
+      <!-- ==================================================
+           🏆 جام پنالتی
+      ================================================== -->
+
+      <section class="penalty-section">
+
+        <div class="penalty-header">
+
+          <div class="penalty-title">
+            🏆 جام پنالتی بچو ته خط
+          </div>
+
+          <div class="penalty-subtitle">
+            قدرت شوت را تنظیم کن، هدف بگیر و با یک شوت توپ را به گوشه دروازه بفرست!
           </div>
 
         </div>
+
+        <div class="penalty-scoreboard">
+
+          <div class="penalty-score-box">
+
+            <div class="penalty-score-label">
+              ⚽ گل
+            </div>
+
+            <div
+              class="penalty-score-number"
+              id="penaltyScore"
+            >
+              0
+            </div>
+
+          </div>
+
+          <div class="penalty-score-box">
+
+            <div class="penalty-score-label">
+              🎯 ضربه
+            </div>
+
+            <div
+              class="penalty-score-number"
+              id="penaltyShot"
+            >
+              1
+            </div>
+
+          </div>
+
+        </div>
+
+        <div
+          class="penalty-round"
+          id="penaltyRound"
+        >
+          ضربه ۱ از ۵
+        </div>
+
+        <div
+          class="penalty-field"
+          id="penaltyField"
+        >
+
+          <div class="penalty-goal"></div>
+
+          <div
+            class="penalty-keeper"
+            id="penaltyKeeper"
+          >
+
+            <div class="keeper-head"></div>
+            <div class="keeper-body"></div>
+
+          </div>
+
+          <div
+            class="penalty-aim"
+            id="penaltyAim"
+          ></div>
+
+          <div
+            class="penalty-ball"
+            id="penaltyBall"
+          ></div>
+
+        </div>
+
+        <div
+          class="penalty-message"
+          id="penaltyMessage"
+        >
+          اول گوشه شوت را انتخاب کن.
+        </div>
+
+        <div class="penalty-controls">
+
+          <button
+            class="penalty-control"
+            type="button"
+            data-direction="left"
+          >
+            ↖️ گوشه چپ
+          </button>
+
+          <button
+            class="penalty-control"
+            type="button"
+            data-direction="center"
+          >
+            ⬆️ وسط
+          </button>
+
+          <button
+            class="penalty-control"
+            type="button"
+            data-direction="right"
+          >
+            ↗️ گوشه راست
+          </button>
+
+        </div>
+
+        <div class="penalty-power-wrap">
+
+          <div class="penalty-power-head">
+
+            <span>
+              💥 قدرت شوت
+            </span>
+
+            <span
+              class="penalty-power-value"
+              id="penaltyPowerValue"
+            >
+              75%
+            </span>
+
+          </div>
+
+          <input
+            class="penalty-power"
+            id="penaltyPower"
+            type="range"
+            min="35"
+            max="100"
+            value="75"
+          >
+
+        </div>
+
+        <button
+          class="penalty-shoot"
+          id="penaltyShoot"
+          type="button"
+        >
+          ⚽ شوت کن!
+        </button>
+
+        <button
+          class="penalty-reset"
+          id="penaltyReset"
+          type="button"
+        >
+          🔄 شروع دوباره
+        </button>
+
+        <div
+          class="penalty-result"
+          id="penaltyResult"
+        ></div>
 
       </section>
 
@@ -1861,11 +2630,11 @@
           <div class="team-header">
 
             <h3 class="team-name">
-              تیم یک ⚔️ تیم دو
+              تیم یک
             </h3>
 
             <div class="team-number">
-              ۱۰
+              ۱
             </div>
 
           </div>
@@ -1874,7 +2643,46 @@
 
             <div
               class="game-pitch"
-              id="gamePitch"
+              id="teamOnePitch"
+            >
+
+              <div class="game-pitch-center"></div>
+
+              <div class="game-pitch-dot"></div>
+
+              <div class="game-penalty top"></div>
+
+              <div class="game-penalty bottom"></div>
+
+              <div class="game-goal top"></div>
+
+              <div class="game-goal bottom"></div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        <section class="team-card">
+
+          <div class="team-header">
+
+            <h3 class="team-name">
+              تیم دو
+            </h3>
+
+            <div class="team-number">
+              ۲
+            </div>
+
+          </div>
+
+          <div class="game-pitch-wrapper">
+
+            <div
+              class="game-pitch"
+              id="teamTwoPitch"
             >
 
               <div class="game-pitch-center"></div>
@@ -1896,7 +2704,7 @@
           <div class="bench">
 
             <div class="bench-title">
-              🪑 نیمکت — تعویضی
+              🪑 نیمکت — تعویضی تیم دو
             </div>
 
             <div
@@ -2282,9 +3090,6 @@
     const randomResultAge =
       document.getElementById("randomResultAge");
 
-    const randomTimer =
-      document.getElementById("randomTimer");
-
     const benchAmirali =
       document.getElementById("benchAmirali");
 
@@ -2650,7 +3455,6 @@
     ================================================== */
 
     let randomPlayerTimeout = null;
-    let randomPlayerCountdown = null;
 
     randomPlayerButton.addEventListener(
       "click",
@@ -2658,10 +3462,6 @@
 
         clearTimeout(
           randomPlayerTimeout
-        );
-
-        clearInterval(
-          randomPlayerCountdown
         );
 
         const randomIndex =
@@ -2679,39 +3479,13 @@
         randomResultAge.textContent =
           `سن: ${person.age} سال`;
 
-        let remainingTime = 5;
-
-        randomTimer.textContent =
-          `⏱️ ${remainingTime} ثانیه`;
-
         randomResult.classList.add(
           "show"
         );
 
-        randomPlayerCountdown =
-          setInterval(
-            () => {
-
-              remainingTime--;
-
-              if (remainingTime > 0) {
-
-                randomTimer.textContent =
-                  `⏱️ ${remainingTime} ثانیه`;
-
-              }
-
-            },
-            1000
-          );
-
         randomPlayerTimeout =
           setTimeout(
             () => {
-
-              clearInterval(
-                randomPlayerCountdown
-              );
 
               randomResult.classList.remove(
                 "show"
@@ -2723,12 +3497,718 @@
               randomResultAge.textContent =
                 "";
 
-              randomTimer.textContent =
-                "۵ ثانیه";
-
             },
             5000
           );
+
+      }
+    );
+
+    /* ==================================================
+       🏆 سیستم جام پنالتی
+    ================================================== */
+
+    const penaltyField =
+      document.getElementById("penaltyField");
+
+    const penaltyBall =
+      document.getElementById("penaltyBall");
+
+    const penaltyKeeper =
+      document.getElementById("penaltyKeeper");
+
+    const penaltyAim =
+      document.getElementById("penaltyAim");
+
+    const penaltyScore =
+      document.getElementById("penaltyScore");
+
+    const penaltyShot =
+      document.getElementById("penaltyShot");
+
+    const penaltyRound =
+      document.getElementById("penaltyRound");
+
+    const penaltyMessage =
+      document.getElementById("penaltyMessage");
+
+    const penaltyPower =
+      document.getElementById("penaltyPower");
+
+    const penaltyPowerValue =
+      document.getElementById("penaltyPowerValue");
+
+    const penaltyShoot =
+      document.getElementById("penaltyShoot");
+
+    const penaltyReset =
+      document.getElementById("penaltyReset");
+
+    const penaltyResult =
+      document.getElementById("penaltyResult");
+
+    const penaltyControls =
+      document.querySelectorAll(
+        ".penalty-control"
+      );
+
+    let penaltyCurrentDirection =
+      "center";
+
+    let penaltyCurrentPower =
+      75;
+
+    let penaltyGoals = 0;
+
+    let penaltyShots = 0;
+
+    let penaltyBusy = false;
+
+    /* --------------------------
+       قدرت
+    -------------------------- */
+
+    penaltyPower.addEventListener(
+      "input",
+      () => {
+
+        penaltyCurrentPower =
+          Number(
+            penaltyPower.value
+          );
+
+        penaltyPowerValue.textContent =
+          penaltyCurrentPower + "%";
+
+      }
+    );
+
+    /* --------------------------
+       انتخاب جهت
+    -------------------------- */
+
+    function selectPenaltyDirection(
+      direction
+    ) {
+
+      penaltyCurrentDirection =
+        direction;
+
+      if (
+        direction === "left"
+      ) {
+
+        penaltyAim.style.left =
+          "30%";
+
+        penaltyAim.style.top =
+          "20%";
+
+      }
+
+      if (
+        direction === "center"
+      ) {
+
+        penaltyAim.style.left =
+          "50%";
+
+        penaltyAim.style.top =
+          "19%";
+
+      }
+
+      if (
+        direction === "right"
+      ) {
+
+        penaltyAim.style.left =
+          "70%";
+
+        penaltyAim.style.top =
+          "20%";
+
+      }
+
+    }
+
+    penaltyControls.forEach(
+      button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            selectPenaltyDirection(
+              button.dataset.direction
+            );
+
+            penaltyMessage.textContent =
+              "هدف انتخاب شد؛ حالا قدرت شوت را تنظیم کن.";
+
+          }
+        );
+
+      }
+    );
+
+    /* --------------------------
+       موقعیت تصادفی دروازه‌بان
+    -------------------------- */
+
+    function getKeeperDirection() {
+
+      const random =
+        Math.random();
+
+      if (random < .33) {
+        return "left";
+      }
+
+      if (random < .66) {
+        return "center";
+      }
+
+      return "right";
+
+    }
+
+    /* --------------------------
+       حرکت دروازه‌بان
+    -------------------------- */
+
+    function moveKeeper(
+      direction
+    ) {
+
+      if (
+        direction === "left"
+      ) {
+
+        penaltyKeeper.style.left =
+          "31%";
+
+        penaltyKeeper.style.transform =
+          "translate(-50%, -50%) rotate(-25deg)";
+
+      }
+
+      if (
+        direction === "center"
+      ) {
+
+        penaltyKeeper.style.left =
+          "50%";
+
+        penaltyKeeper.style.transform =
+          "translate(-50%, -50%)";
+
+      }
+
+      if (
+        direction === "right"
+      ) {
+
+        penaltyKeeper.style.left =
+          "69%";
+
+        penaltyKeeper.style.transform =
+          "translate(-50%, -50%) rotate(25deg)";
+
+      }
+
+    }
+
+    /* --------------------------
+       تعیین مختصات مقصد توپ
+    -------------------------- */
+
+    function getPenaltyTarget(
+      direction,
+      power
+    ) {
+
+      let x = 50;
+
+      let y = 18;
+
+      if (
+        direction === "left"
+      ) {
+
+        x = 27;
+
+        y = 17;
+
+      }
+
+      if (
+        direction === "center"
+      ) {
+
+        x = 50;
+
+        y = 17;
+
+      }
+
+      if (
+        direction === "right"
+      ) {
+
+        x = 73;
+
+        y = 17;
+
+      }
+
+      /*
+       قدرت بالاتر یعنی توپ
+       کمی بالاتر و سریع‌تر می‌رود.
+      */
+
+      const heightBonus =
+        (power - 50) * .055;
+
+      y -= heightBonus;
+
+      return {
+        x,
+        y
+      };
+
+    }
+
+    /* --------------------------
+       شوت
+    -------------------------- */
+
+    penaltyShoot.addEventListener(
+      "click",
+      shootPenalty
+    );
+
+    function shootPenalty() {
+
+      if (penaltyBusy) {
+        return;
+      }
+
+      if (penaltyShots >= 5) {
+        return;
+      }
+
+      penaltyBusy = true;
+
+      penaltyShoot.disabled =
+        true;
+
+      penaltyControls.forEach(
+        button => {
+          button.disabled = true;
+        }
+      );
+
+      penaltyMessage.textContent =
+        "⚡ شوت شد...";
+
+      const direction =
+        penaltyCurrentDirection;
+
+      const power =
+        penaltyCurrentPower;
+
+      const keeperDirection =
+        getKeeperDirection();
+
+      moveKeeper(
+        keeperDirection
+      );
+
+      const target =
+        getPenaltyTarget(
+          direction,
+          power
+        );
+
+      /*
+       فیزیک ساده‌شده توپ:
+       قدرت بالاتر = حرکت سریع‌تر
+       و کمی تغییر ارتفاع مقصد.
+      */
+
+      const duration =
+        Math.max(
+          310,
+          720 - power * 3.7
+        );
+
+      penaltyBall.classList.add(
+        "shoot"
+      );
+
+      penaltyBall.style.left =
+        target.x + "%";
+
+      penaltyBall.style.top =
+        target.y + "%";
+
+      setTimeout(
+        () => {
+
+          const keeperCaught =
+            direction ===
+            keeperDirection;
+
+          /*
+           قدرت خیلی زیاد باعث می‌شود
+           گاهی توپ از دست دروازه‌بان
+           عبور کند.
+          */
+
+          const powerBreak =
+            power >= 91 &&
+            Math.random() < .20;
+
+          const postHit =
+            Math.random() < .08;
+
+          if (postHit) {
+
+            penaltyBall.classList.add(
+              "hit"
+            );
+
+            penaltyMessage.textContent =
+              "💥 به تیرک خورد!";
+
+            setTimeout(
+              () => {
+
+                penaltyBall.classList.remove(
+                  "hit"
+                );
+
+                finishPenaltyShot(
+                  false
+                );
+
+              },
+              280
+            );
+
+            return;
+
+          }
+
+          if (
+            keeperCaught &&
+            !powerBreak
+          ) {
+
+            penaltyMessage.textContent =
+              "🧤 گرفت! چه واکنشی!";
+
+            finishPenaltyShot(
+              false
+            );
+
+            return;
+
+          }
+
+          penaltyGoals++;
+
+          penaltyScore.textContent =
+            penaltyGoals;
+
+          penaltyMessage.textContent =
+            "⚽ گللللل! چه شوتی!";
+
+          finishPenaltyShot(
+            true
+          );
+
+        },
+        duration
+      );
+
+    }
+
+    /* --------------------------
+       پایان هر ضربه
+    -------------------------- */
+
+    function finishPenaltyShot(
+      goal
+    ) {
+
+      penaltyShots++;
+
+      penaltyShot.textContent =
+        Math.min(
+          penaltyShots + 1,
+          5
+        );
+
+      if (
+        penaltyShots >= 5
+      ) {
+
+        setTimeout(
+          finishPenaltyGame,
+          650
+        );
+
+        return;
+
+      }
+
+      setTimeout(
+        () => {
+
+          resetPenaltyBall();
+
+          penaltyBusy = false;
+
+          penaltyShoot.disabled =
+            false;
+
+          penaltyControls.forEach(
+            button => {
+              button.disabled = false;
+            }
+          );
+
+          penaltyRound.textContent =
+            `ضربه ${penaltyShots + 1} از ۵`;
+
+          penaltyMessage.textContent =
+            "ضربه بعدی را آماده کن!";
+
+        },
+        700
+      );
+
+    }
+
+    /* --------------------------
+       بازگرداندن توپ
+    -------------------------- */
+
+    function resetPenaltyBall() {
+
+      penaltyBall.style.left =
+        "50%";
+
+      penaltyBall.style.top =
+        "82%";
+
+      penaltyBall.classList.remove(
+        "shoot"
+      );
+
+      penaltyKeeper.style.left =
+        "50%";
+
+      penaltyKeeper.style.transform =
+        "translate(-50%, -50%)";
+
+      selectPenaltyDirection(
+        "center"
+      );
+
+    }
+
+    /* --------------------------
+       پایان مسابقه
+    -------------------------- */
+
+    function finishPenaltyGame() {
+
+      penaltyBusy = true;
+
+      penaltyShoot.disabled =
+        true;
+
+      penaltyControls.forEach(
+        button => {
+          button.disabled = true;
+        }
+      );
+
+      let text = "";
+
+      if (
+        penaltyGoals === 5
+      ) {
+
+        text =
+          "🔥 فوق‌العاده! هر ۵ پنالتی گل شد!";
+
+      } else if (
+        penaltyGoals >= 4
+      ) {
+
+        text =
+          "🏆 عالی بود! ۴ گل از ۵ ضربه!";
+
+      } else if (
+        penaltyGoals >= 3
+      ) {
+
+        text =
+          "👏 خوب بود! ۳ گل از ۵ ضربه!";
+
+      } else if (
+        penaltyGoals >= 1
+      ) {
+
+        text =
+          "⚽ حداقل یکی رو ترکوندی! دوباره امتحان کن.";
+
+      } else {
+
+        text =
+          "🧤 دروازه‌بان امروز دیوار بود!";
+
+      }
+
+      penaltyResult.textContent =
+        `${text} — نتیجه: ${penaltyGoals} از ۵`;
+
+      penaltyResult.classList.add(
+        "show"
+      );
+
+      penaltyReset.style.display =
+        "block";
+
+    }
+
+    /* --------------------------
+       شروع دوباره
+    -------------------------- */
+
+    penaltyReset.addEventListener(
+      "click",
+      resetPenaltyGame
+    );
+
+    function resetPenaltyGame() {
+
+      penaltyGoals = 0;
+
+      penaltyShots = 0;
+
+      penaltyBusy = false;
+
+      penaltyScore.textContent =
+        "0";
+
+      penaltyShot.textContent =
+        "1";
+
+      penaltyRound.textContent =
+        "ضربه ۱ از ۵";
+
+      penaltyMessage.textContent =
+        "اول گوشه شوت را انتخاب کن.";
+
+      penaltyResult.classList.remove(
+        "show"
+      );
+
+      penaltyReset.style.display =
+        "none";
+
+      penaltyShoot.disabled =
+        false;
+
+      penaltyControls.forEach(
+        button => {
+          button.disabled = false;
+        }
+      );
+
+      penaltyPower.value =
+        "75";
+
+      penaltyCurrentPower =
+        75;
+
+      penaltyPowerValue.textContent =
+        "75%";
+
+      resetPenaltyBall();
+
+    }
+
+    /* ==================================================
+       کلیک روی زمین پنالتی برای هدف‌گیری
+    ================================================== */
+
+    penaltyField.addEventListener(
+      "pointerdown",
+      event => {
+
+        if (
+          penaltyBusy ||
+          penaltyShots >= 5
+        ) {
+          return;
+        }
+
+        const rect =
+          penaltyField.getBoundingClientRect();
+
+        const x =
+          ((event.clientX - rect.left) /
+            rect.width) * 100;
+
+        const y =
+          ((event.clientY - rect.top) /
+            rect.height) * 100;
+
+        /*
+          فقط محدوده دروازه
+          برای هدف‌گیری قابل انتخاب است.
+        */
+
+        if (
+          y > 42 ||
+          x < 15 ||
+          x > 85
+        ) {
+
+          return;
+
+        }
+
+        if (x < 40) {
+
+          selectPenaltyDirection(
+            "left"
+          );
+
+        } else if (
+          x > 60
+        ) {
+
+          selectPenaltyDirection(
+            "right"
+          );
+
+        } else {
+
+          selectPenaltyDirection(
+            "center"
+          );
+
+        }
+
+        penaltyMessage.textContent =
+          "🎯 هدف انتخاب شد؛ شلیک کن!";
 
       }
     );
@@ -2847,20 +4327,23 @@
     }
 
     /* ==================================================
-       ساخت ترکیب روی یک زمین
+       ساخت ترکیب تیم‌ها
     ================================================== */
 
     function buildGameTeams() {
 
-      const gamePitch =
+      const teamOnePitch =
         document.getElementById(
-          "gamePitch"
+          "teamOnePitch"
         );
 
-      /* تیم یک - نیمه پایین */
+      const teamTwoPitch =
+        document.getElementById(
+          "teamTwoPitch"
+        );
 
       addGamePlayer(
-        gamePitch,
+        teamOnePitch,
         "علیرضا مختاری",
         50,
         91,
@@ -2868,76 +4351,74 @@
       );
 
       addGamePlayer(
-        gamePitch,
+        teamOnePitch,
         "عرفان بابائی",
         30,
-        72,
+        68,
         "دفاع"
       );
 
       addGamePlayer(
-        gamePitch,
+        teamOnePitch,
         "امیر عباس فیروز",
         70,
-        72,
+        68,
         "دفاع"
       );
 
       addGamePlayer(
-        gamePitch,
+        teamOnePitch,
         "طاها شبان",
         35,
-        58,
+        28,
         "مهاجم"
       );
 
       addGamePlayer(
-        gamePitch,
+        teamOnePitch,
         "یوسف سالاری",
         65,
-        58,
+        28,
         "مهاجم"
       );
 
-      /* تیم دو - نیمه بالا */
-
       addGamePlayer(
-        gamePitch,
+        teamTwoPitch,
         "سجاد حسنی تبار",
         50,
-        9,
+        91,
         "دروازه‌بان"
       );
 
       addGamePlayer(
-        gamePitch,
+        teamTwoPitch,
         "عادل نصیری",
         30,
-        28,
+        68,
         "دفاع"
       );
 
       addGamePlayer(
-        gamePitch,
+        teamTwoPitch,
         "متین جوان",
         70,
-        28,
+        68,
         "دفاع"
       );
 
       addGamePlayer(
-        gamePitch,
+        teamTwoPitch,
         "احسان آرام",
         35,
-        42,
+        28,
         "جلو"
       );
 
       addGamePlayer(
-        gamePitch,
+        teamTwoPitch,
         "احمد اسماعیل زاده",
         65,
-        42,
+        28,
         "جلو"
       );
 
@@ -3283,6 +4764,8 @@
     renderBirthdays();
 
     buildGameTeams();
+
+    resetPenaltyGame();
 
   </script>
 
