@@ -1,716 +1,869 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#07101d" id="themeColor">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#07101d" id="themeColor">
+<title>بچو ته خط ⚽</title>
 
-  <title>بچو ته خط | معرفی بچه‌های تیم ⚽</title>
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  -webkit-tap-highlight-color:transparent;
+}
 
-  <style>
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
+:root{
+  --bg:#07101d;
+  --bg2:#0b1625;
+  --card:#101d2e;
+  --card2:#142438;
+  --text:#f5f7fb;
+  --muted:#9eacbd;
+  --accent:#27d17f;
+  --accent2:#159b5b;
+  --border:rgba(255,255,255,.08);
+  --shadow:0 12px 35px rgba(0,0,0,.28);
+}
+
+body.light-mode{
+  --bg:#eef2f5;
+  --bg2:#f8fafc;
+  --card:#ffffff;
+  --card2:#f1f4f7;
+  --text:#18212b;
+  --muted:#66717e;
+  --accent:#159b5b;
+  --accent2:#0f814b;
+  --border:rgba(0,0,0,.08);
+  --shadow:0 10px 30px rgba(0,0,0,.10);
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(
+      circle at 15% 0%,
+      rgba(39,209,127,.09),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 100%,
+      rgba(39,209,127,.06),
+      transparent 30%
+    ),
+    var(--bg);
+  color:var(--text);
+  font-family:Tahoma,Arial,sans-serif;
+  transition:background .3s ease,color .3s ease;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(
+      rgba(255,255,255,.012) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.012) 1px,
+      transparent 1px
+    );
+  background-size:35px 35px;
+}
+
+/* =========================
+   THEME ANIMATION
+========================= */
+
+::view-transition-old(root),
+::view-transition-new(root){
+  animation:none;
+  mix-blend-mode:normal;
+}
+
+::view-transition-new(root){
+  clip-path:circle(
+    0px at var(--theme-x) var(--theme-y)
+  );
+
+  animation:
+    themeCircle .65s
+    cubic-bezier(.22,1,.36,1)
+    forwards;
+}
+
+@keyframes themeCircle{
+  to{
+    clip-path:circle(
+      var(--theme-radius)
+      at var(--theme-x) var(--theme-y)
+    );
+  }
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+  width:min(1150px,calc(100% - 30px));
+  margin:20px auto 0;
+  min-height:80px;
+  padding:16px 20px;
+  border:1px solid var(--border);
+  border-radius:24px;
+  background:rgba(16,29,46,.88);
+  backdrop-filter:blur(18px);
+  box-shadow:var(--shadow);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:relative;
+  z-index:5;
+}
+
+body.light-mode header{
+  background:rgba(255,255,255,.9);
+}
+
+.logo-area h1{
+  font-size:28px;
+  line-height:1.3;
+}
+
+.logo-area p{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:5px;
+}
+
+.theme-btn{
+  width:48px;
+  height:48px;
+  flex-shrink:0;
+  border-radius:50%;
+  border:1px solid var(--border);
+  background:var(--card2);
+  color:var(--text);
+  font-size:21px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform .2s ease;
+}
+
+.theme-btn:active{
+  transform:scale(.9);
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+  width:min(1150px,calc(100% - 30px));
+  margin:18px auto 45px;
+  position:relative;
+  z-index:2;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search{
+  position:sticky;
+  top:10px;
+  z-index:10;
+  margin-bottom:16px;
+}
+
+.search input{
+  width:100%;
+  height:55px;
+  border:1px solid var(--border);
+  border-radius:18px;
+  outline:none;
+  background:var(--card);
+  color:var(--text);
+  padding:0 20px;
+  font-family:inherit;
+  font-size:15px;
+  box-shadow:var(--shadow);
+}
+
+.search input::placeholder{
+  color:var(--muted);
+}
+
+.search input:focus{
+  border-color:var(--accent);
+  box-shadow:
+    0 0 0 3px rgba(39,209,127,.1),
+    var(--shadow);
+}
+
+/* =========================
+   BIRTHDAYS
+========================= */
+
+.birthday{
+  border:1px solid var(--border);
+  background:var(--card);
+  border-radius:20px;
+  overflow:hidden;
+  margin-bottom:17px;
+  box-shadow:var(--shadow);
+}
+
+.birthday-button{
+  width:100%;
+  min-height:52px;
+  border:0;
+  background:transparent;
+  color:var(--text);
+  padding:0 17px;
+  font-family:inherit;
+  font-size:14px;
+  font-weight:bold;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.arrow{
+  color:var(--muted);
+  transition:transform .25s;
+}
+
+.birthday.open .arrow{
+  transform:rotate(180deg);
+}
+
+.birthday-list{
+  display:none;
+  padding:0 10px 10px;
+}
+
+.birthday.open .birthday-list{
+  display:block;
+}
+
+.birthday-row{
+  min-height:48px;
+  border-top:1px solid var(--border);
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:7px;
+  cursor:pointer;
+}
+
+.birthday-row:active{
+  background:rgba(127,127,127,.08);
+}
+
+.rank{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  flex-shrink:0;
+  background:rgba(39,209,127,.12);
+  color:var(--accent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.birthday-name{
+  flex:1;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.birthday-time{
+  color:var(--muted);
+  font-size:10px;
+  white-space:nowrap;
+}
+
+/* =========================
+   PEOPLE GRID
+========================= */
+
+.people{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.card{
+  overflow:hidden;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:22px;
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  transition:
+    transform .2s ease,
+    border-color .2s ease;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(39,209,127,.35);
+}
+
+.card:active{
+  transform:scale(.98);
+}
+
+.card-image{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  display:block;
+  background:var(--card2);
+}
+
+.card-info{
+  padding:14px;
+}
+
+.card-name{
+  font-size:16px;
+  font-weight:bold;
+  line-height:1.5;
+  margin-bottom:5px;
+}
+
+.card-position{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.7;
+}
+
+.empty{
+  grid-column:1/-1;
+  padding:45px 20px;
+  text-align:center;
+  color:var(--muted);
+  border:1px solid var(--border);
+  background:var(--card);
+  border-radius:20px;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(0,0,0,.7);
+  backdrop-filter:blur(8px);
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:min(510px,100%);
+  max-height:92vh;
+  overflow:auto;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:28px;
+  box-shadow:0 25px 80px rgba(0,0,0,.5);
+  position:relative;
+  animation:modalShow .25s ease;
+}
+
+@keyframes modalShow{
+  from{
+    opacity:0;
+    transform:scale(.95) translateY(12px);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.close{
+  position:absolute;
+  top:12px;
+  left:12px;
+  z-index:5;
+  width:42px;
+  height:42px;
+  border:none;
+  border-radius:50%;
+  background:rgba(0,0,0,.58);
+  color:#fff;
+  font-size:18px;
+  cursor:pointer;
+}
+
+.modal-image{
+  width:100%;
+  height:330px;
+  object-fit:cover;
+  display:block;
+}
+
+.modal-content{
+  padding:22px;
+}
+
+.modal-name{
+  font-size:25px;
+  margin-bottom:18px;
+}
+
+.details{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+}
+
+.detail{
+  background:var(--card2);
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:12px;
+}
+
+.detail.full{
+  grid-column:1/-1;
+}
+
+.detail-title{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  margin-bottom:6px;
+}
+
+.detail-value{
+  font-size:13px;
+  font-weight:bold;
+  line-height:1.7;
+}
+
+.timer{
+  margin-top:12px;
+  padding:15px;
+  border-radius:17px;
+  background:rgba(39,209,127,.08);
+  border:1px solid rgba(39,209,127,.18);
+  text-align:center;
+}
+
+.timer-title{
+  color:var(--muted);
+  font-size:11px;
+  margin-bottom:7px;
+}
+
+.timer-value{
+  color:var(--accent);
+  font-size:14px;
+  font-weight:bold;
+  line-height:1.9;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  text-align:center;
+  color:var(--muted);
+  font-size:11px;
+  padding:0 20px 30px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:650px){
+
+  body{
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+
+  header{
+    width:calc(100% - 16px);
+    margin:8px auto 0;
+    min-height:68px;
+    padding:12px 13px;
+    border-radius:19px;
+  }
+
+  .logo-area h1{
+    font-size:21px;
+  }
+
+  .logo-area p{
+    font-size:10px;
+    margin-top:3px;
+  }
+
+  .theme-btn{
+    width:42px;
+    height:42px;
+    font-size:18px;
+  }
+
+  main{
+    width:calc(100% - 16px);
+    margin:12px auto 30px;
+  }
+
+  .search{
+    top:7px;
+    margin-bottom:12px;
+  }
+
+  .search input{
+    height:52px;
+    border-radius:17px;
+    padding:0 16px;
+    font-size:14px;
+  }
+
+  .birthday{
+    border-radius:18px;
+    margin-bottom:12px;
+  }
+
+  .birthday-button{
+    min-height:50px;
+    font-size:13px;
+  }
+
+  .people{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:9px;
+  }
+
+  .card{
+    border-radius:17px;
+  }
+
+  .card-image{
+    aspect-ratio:1/1;
+  }
+
+  .card-info{
+    padding:10px;
+  }
+
+  .card-name{
+    font-size:13px;
+    margin-bottom:3px;
+  }
+
+  .card-position{
+    font-size:10px;
+    line-height:1.6;
+  }
+
+  .modal{
+    padding:0;
+    align-items:flex-end;
+  }
+
+  .modal-box{
+    width:100%;
+    max-height:94vh;
+    border-radius:26px 26px 0 0;
+    animation:sheetUp .28s ease;
+  }
+
+  @keyframes sheetUp{
+    from{
+      transform:translateY(100%);
     }
 
-    html{
-      scroll-behavior:smooth;
+    to{
+      transform:translateY(0);
     }
-
-    body{
-      font-family:Tahoma, Arial, sans-serif;
-      background:
-        radial-gradient(circle at 20% 10%, rgba(39,209,127,.08), transparent 30%),
-        radial-gradient(circle at 80% 80%, rgba(29,169,107,.06), transparent 30%),
-        var(--bg);
-      color:var(--text);
-      min-height:100vh;
-      transition:
-        background .35s ease,
-        color .35s ease;
-    }
-
-    :root{
-      --bg:#07101d;
-      --bg2:#0c1727;
-      --card:rgba(15,27,45,.92);
-      --card2:#111f33;
-      --text:#f5f7fb;
-      --muted:#aab5c5;
-      --accent:#27d17f;
-      --accent2:#1da96b;
-      --border:rgba(255,255,255,.08);
-      --shadow:0 15px 45px rgba(0,0,0,.35);
-    }
-
-    body.light-mode{
-      --bg:#eef2f5;
-      --bg2:#f8fafc;
-      --card:rgba(255,255,255,.95);
-      --card2:#ffffff;
-      --text:#18212b;
-      --muted:#66717e;
-      --accent:#159b5b;
-      --accent2:#0f814b;
-      --border:rgba(0,0,0,.09);
-      --shadow:0 15px 40px rgba(0,0,0,.12);
-    }
-
-    /* Theme transition */
-    ::view-transition-old(root),
-    ::view-transition-new(root){
-      animation:none;
-      mix-blend-mode:normal;
-    }
-
-    ::view-transition-new(root){
-      clip-path:circle(
-        0px at var(--theme-x) var(--theme-y)
-      );
-
-      animation:
-        theme-circle-expand .65s
-        cubic-bezier(.22,1,.36,1)
-        forwards;
-    }
-
-    @keyframes theme-circle-expand{
-      to{
-        clip-path:circle(
-          var(--theme-radius)
-          at var(--theme-x) var(--theme-y)
-        );
-      }
-    }
-
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      background:
-        linear-gradient(
-          rgba(255,255,255,.015) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,.015) 1px,
-          transparent 1px
-        );
-      background-size:35px 35px;
-      opacity:.35;
-    }
-
-    /* Header */
-    header{
-      width:min(1150px, calc(100% - 30px));
-      margin:25px auto 0;
-      padding:22px 25px;
-      border:1px solid var(--border);
-      border-radius:24px;
-      background:var(--card);
-      backdrop-filter:blur(15px);
-      box-shadow:var(--shadow);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-      position:relative;
-      z-index:2;
-    }
-
-    .header-title h1{
-      font-size:31px;
-      margin-bottom:7px;
-    }
-
-    .header-title p{
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    .theme-btn{
-      width:46px;
-      height:46px;
-      border:none;
-      border-radius:50%;
-      background:var(--card2);
-      color:var(--text);
-      border:1px solid var(--border);
-      cursor:pointer;
-      font-size:21px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      transition:transform .2s ease;
-      flex-shrink:0;
-    }
-
-    .theme-btn:hover{
-      transform:scale(1.08);
-    }
-
-    /* Main */
-    main{
-      width:min(1150px, calc(100% - 30px));
-      margin:22px auto 50px;
-      position:relative;
-      z-index:1;
-    }
-
-    /* Search */
-    .search-box{
-      margin-bottom:20px;
-      position:relative;
-    }
-
-    .search-box input{
-      width:100%;
-      height:55px;
-      border-radius:18px;
-      border:1px solid var(--border);
-      outline:none;
-      background:var(--card);
-      color:var(--text);
-      padding:0 20px;
-      font-size:15px;
-      box-shadow:var(--shadow);
-      transition:.25s;
-    }
-
-    .search-box input:focus{
-      border-color:var(--accent);
-      box-shadow:
-        0 0 0 3px rgba(39,209,127,.1),
-        var(--shadow);
-    }
-
-    .search-box input::placeholder{
-      color:var(--muted);
-    }
-
-    /* Birthday */
-    .birthday-section{
-      margin-bottom:22px;
-      border:1px solid var(--border);
-      border-radius:20px;
-      background:var(--card);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-
-    .birthday-header{
-      width:100%;
-      border:none;
-      background:transparent;
-      color:var(--text);
-      padding:17px 20px;
-      cursor:pointer;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      font-size:15px;
-      font-weight:bold;
-    }
-
-    .birthday-header span:last-child{
-      font-size:13px;
-      color:var(--muted);
-      transition:transform .25s;
-    }
-
-    .birthday-header.active span:last-child{
-      transform:rotate(180deg);
-    }
-
-    .birthday-list{
-      display:none;
-      padding:0 12px 12px;
-    }
-
-    .birthday-list.show{
-      display:block;
-    }
-
-    .birthday-item{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding:12px 10px;
-      border-top:1px solid var(--border);
-      cursor:pointer;
-      transition:background .2s;
-      border-radius:12px;
-    }
-
-    .birthday-item:hover{
-      background:rgba(127,127,127,.07);
-    }
-
-    .birthday-rank{
-      width:30px;
-      height:30px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:rgba(39,209,127,.12);
-      color:var(--accent);
-      font-weight:bold;
-      font-size:13px;
-      flex-shrink:0;
-    }
-
-    .birthday-name{
-      flex:1;
-      font-size:14px;
-      font-weight:bold;
-    }
-
-    .birthday-count{
-      color:var(--muted);
-      font-size:12px;
-      white-space:nowrap;
-    }
-
-    /* Cards */
-    .people-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-    }
-
-    .person-card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:22px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-      cursor:pointer;
-      transition:
-        transform .25s ease,
-        border-color .25s ease;
-    }
-
-    .person-card:hover{
-      transform:translateY(-5px);
-      border-color:rgba(39,209,127,.35);
-    }
-
-    .person-image{
-      width:100%;
-      aspect-ratio:1/1;
-      object-fit:cover;
-      display:block;
-      background:var(--card2);
-    }
-
-    .person-info{
-      padding:15px;
-    }
-
-    .person-name{
-      font-size:17px;
-      font-weight:bold;
-      margin-bottom:8px;
-    }
-
-    .person-position{
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.7;
-    }
-
-    .no-result{
-      grid-column:1/-1;
-      text-align:center;
-      padding:45px 20px;
-      color:var(--muted);
-      background:var(--card);
-      border-radius:20px;
-      border:1px solid var(--border);
-    }
-
-    /* Modal */
-    .modal{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.65);
-      backdrop-filter:blur(8px);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:20px;
-      z-index:100;
-    }
-
-    .modal.show{
-      display:flex;
-    }
-
-    .modal-box{
-      width:min(500px,100%);
-      max-height:90vh;
-      overflow:auto;
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:28px;
-      box-shadow:0 25px 80px rgba(0,0,0,.5);
-      position:relative;
-      animation:modalIn .25s ease;
-    }
-
-    @keyframes modalIn{
-      from{
-        opacity:0;
-        transform:translateY(15px) scale(.97);
-      }
-      to{
-        opacity:1;
-        transform:none;
-      }
-    }
-
-    .modal-close{
-      position:absolute;
-      top:13px;
-      left:13px;
-      width:38px;
-      height:38px;
-      border:none;
-      border-radius:50%;
-      background:rgba(0,0,0,.5);
-      color:white;
-      cursor:pointer;
-      font-size:18px;
-      z-index:3;
-    }
-
-    .modal-image{
-      width:100%;
-      height:330px;
-      object-fit:cover;
-      display:block;
-    }
-
-    .modal-content{
-      padding:22px;
-    }
-
-    .modal-content h2{
-      font-size:25px;
-      margin-bottom:18px;
-    }
-
-    .details{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
-    }
-
-    .detail{
-      padding:13px;
-      border-radius:15px;
-      background:var(--card2);
-      border:1px solid var(--border);
-    }
-
-    .detail-title{
-      display:block;
-      color:var(--muted);
-      font-size:11px;
-      margin-bottom:6px;
-    }
-
-    .detail-value{
-      font-size:14px;
-      font-weight:bold;
-    }
-
-    .birthday-timer{
-      margin-top:14px;
-      padding:15px;
-      border-radius:17px;
-      background:rgba(39,209,127,.08);
-      border:1px solid rgba(39,209,127,.18);
-      text-align:center;
-    }
-
-    .birthday-timer-title{
-      color:var(--muted);
-      font-size:12px;
-      margin-bottom:7px;
-    }
-
-    .birthday-timer-value{
-      color:var(--accent);
-      font-size:15px;
-      font-weight:bold;
-      line-height:1.8;
-    }
-
-    /* Footer */
-    footer{
-      text-align:center;
-      color:var(--muted);
-      font-size:12px;
-      padding:10px 20px 30px;
-    }
-
-    /* Mobile */
-    @media(max-width:650px){
-
-      header{
-        width:calc(100% - 20px);
-        margin-top:10px;
-        padding:16px;
-        border-radius:20px;
-      }
-
-      .header-title h1{
-        font-size:23px;
-      }
-
-      .header-title p{
-        font-size:12px;
-      }
-
-      .theme-btn{
-        width:42px;
-        height:42px;
-        font-size:18px;
-      }
-
-      main{
-        width:calc(100% - 20px);
-        margin-top:15px;
-      }
-
-      .search-box input{
-        height:50px;
-        font-size:14px;
-      }
-
-      .people-grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:10px;
-      }
-
-      .person-card{
-        border-radius:17px;
-      }
-
-      .person-info{
-        padding:11px;
-      }
-
-      .person-name{
-        font-size:14px;
-        margin-bottom:5px;
-      }
-
-      .person-position{
-        font-size:11px;
-        line-height:1.6;
-      }
-
-      .birthday-section{
-        border-radius:17px;
-      }
-
-      .birthday-header{
-        padding:15px;
-        font-size:13px;
-      }
-
-      .birthday-item{
-        padding:10px 7px;
-      }
-
-      .birthday-name{
-        font-size:13px;
-      }
-
-      .birthday-count{
-        font-size:10px;
-      }
-
-      .modal{
-        align-items:flex-end;
-        padding:0;
-      }
-
-      .modal-box{
-        width:100%;
-        max-height:92vh;
-        border-radius:25px 25px 0 0;
-        animation:sheetIn .25s ease;
-      }
-
-      @keyframes sheetIn{
-        from{
-          transform:translateY(100%);
-        }
-        to{
-          transform:translateY(0);
-        }
-      }
-
-      .modal-image{
-        height:280px;
-      }
-
-      .modal-content{
-        padding:18px;
-      }
-
-      .modal-content h2{
-        font-size:21px;
-      }
-
-      .details{
-        gap:8px;
-      }
-
-      .detail{
-        padding:11px;
-      }
-    }
-
-    @media(max-width:390px){
-
-      .people-grid{
-        gap:8px;
-      }
-
-      .person-name{
-        font-size:13px;
-      }
-
-      .person-position{
-        font-size:10px;
-      }
-
-      .birthday-count{
-        display:none;
-      }
-
-      .modal-image{
-        height:245px;
-      }
-    }
-  </style>
+  }
+
+  .modal-image{
+    height:300px;
+  }
+
+  .modal-content{
+    padding:17px;
+  }
+
+  .modal-name{
+    font-size:21px;
+    margin-bottom:14px;
+  }
+
+  .details{
+    gap:7px;
+  }
+
+  .detail{
+    padding:10px;
+    border-radius:13px;
+  }
+
+  .detail-title{
+    font-size:9px;
+  }
+
+  .detail-value{
+    font-size:12px;
+  }
+
+  .timer{
+    padding:12px;
+    margin-top:10px;
+  }
+
+  .timer-value{
+    font-size:12px;
+  }
+
+  .close{
+    width:40px;
+    height:40px;
+    top:10px;
+    left:10px;
+  }
+}
+
+/* =========================
+   VERY SMALL PHONES
+========================= */
+
+@media(max-width:380px){
+
+  header{
+    width:calc(100% - 12px);
+  }
+
+  main{
+    width:calc(100% - 12px);
+  }
+
+  .people{
+    gap:7px;
+  }
+
+  .card-info{
+    padding:8px;
+  }
+
+  .card-name{
+    font-size:12px;
+  }
+
+  .card-position{
+    font-size:9px;
+  }
+
+  .birthday-time{
+    display:none;
+  }
+
+  .modal-image{
+    height:255px;
+  }
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media(min-width:651px) and (max-width:900px){
+
+  .people{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="header-title">
-      <h1>بچو ته خط ⚽</h1>
-      <p>معرفی بچه‌های تیم</p>
-    </div>
+<header>
 
-    <button class="theme-btn" id="themeToggle" aria-label="تغییر حالت">
-      🌙
+  <div class="logo-area">
+    <h1>بچو ته خط ⚽</h1>
+    <p>معرفی بچه‌های تیم</p>
+  </div>
+
+  <button
+    class="theme-btn"
+    id="themeToggle"
+    aria-label="تغییر حالت شب و روز"
+  >
+    🌙
+  </button>
+
+</header>
+
+
+<main>
+
+  <div class="search">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="🔎 اسم بازیکن را جستجو کن..."
+      autocomplete="off"
+    >
+  </div>
+
+
+  <section class="birthday" id="birthdayBox">
+
+    <button
+      class="birthday-button"
+      id="birthdayButton"
+    >
+      <span>🎂 نزدیک‌ترین تولدها</span>
+      <span class="arrow">▼</span>
     </button>
-  </header>
 
-  <main>
+    <div
+      class="birthday-list"
+      id="birthdayList"
+    ></div>
 
-    <div class="search-box">
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="🔎 جستجوی اسم..."
-        autocomplete="off"
-      >
-    </div>
-
-    <section class="birthday-section">
-
-      <button class="birthday-header" id="birthdayToggle">
-        <span>🎂 نزدیک‌ترین تولدها</span>
-        <span>▼</span>
-      </button>
-
-      <div class="birthday-list" id="birthdayList"></div>
-
-    </section>
-
-    <section class="people-grid" id="peopleGrid"></section>
-
-  </main>
-
-  <footer>
-    بچو ته خط ⚽ | معرفی بچه‌های تیم
-  </footer>
+  </section>
 
 
-  <!-- Modal -->
+  <section
+    class="people"
+    id="peopleGrid"
+  ></section>
 
-  <div class="modal" id="profileModal">
+</main>
 
-    <div class="modal-box" id="modalBox">
 
-      <button class="modal-close" id="modalClose">
-        ✕
-      </button>
+<footer>
+  بچو ته خط ⚽
+</footer>
 
-      <img
-        class="modal-image"
-        id="modalImage"
-        src=""
-        alt=""
-      >
 
-      <div class="modal-content">
+<!-- PROFILE -->
 
-        <h2 id="modalName"></h2>
+<div
+  class="modal"
+  id="profileModal"
+>
 
-        <div class="details">
+  <div class="modal-box">
 
-          <div class="detail">
-            <span class="detail-title">سن</span>
-            <span class="detail-value" id="modalAge"></span>
-          </div>
+    <button
+      class="close"
+      id="closeModal"
+    >
+      ✕
+    </button>
 
-          <div class="detail">
-            <span class="detail-title">تاریخ تولد</span>
-            <span class="detail-value" id="modalBirth"></span>
-          </div>
+    <img
+      class="modal-image"
+      id="modalImage"
+      src=""
+      alt=""
+    >
 
-          <div class="detail">
-            <span class="detail-title">مدرسه</span>
-            <span class="detail-value" id="modalSchool"></span>
-          </div>
+    <div class="modal-content">
 
-          <div class="detail">
-            <span class="detail-title">پایه</span>
-            <span class="detail-value" id="modalGrade"></span>
-          </div>
+      <h2
+        class="modal-name"
+        id="modalName"
+      ></h2>
 
-          <div class="detail" style="grid-column:1/-1;">
-            <span class="detail-title">پست فوتسال</span>
-            <span class="detail-value" id="modalPosition"></span>
-          </div>
+      <div class="details">
 
+        <div class="detail">
+          <span class="detail-title">سن</span>
+          <span
+            class="detail-value"
+            id="modalAge"
+          ></span>
         </div>
 
-        <div class="birthday-timer">
+        <div class="detail">
+          <span class="detail-title">تاریخ تولد</span>
+          <span
+            class="detail-value"
+            id="modalBirth"
+          ></span>
+        </div>
 
-          <div class="birthday-timer-title">
-            🎂 زمان باقی‌مانده تا تولد بعدی
-          </div>
+        <div class="detail">
+          <span class="detail-title">مدرسه</span>
+          <span
+            class="detail-value"
+            id="modalSchool"
+          ></span>
+        </div>
 
-          <div
-            class="birthday-timer-value"
-            id="birthdayTimer"
-          >
-            -
-          </div>
+        <div class="detail">
+          <span class="detail-title">پایه</span>
+          <span
+            class="detail-value"
+            id="modalGrade"
+          ></span>
+        </div>
 
+        <div class="detail full">
+          <span class="detail-title">پست فوتسال</span>
+          <span
+            class="detail-value"
+            id="modalPosition"
+          ></span>
+        </div>
+
+      </div>
+
+
+      <div class="timer">
+
+        <div class="timer-title">
+          🎂 زمان باقی‌مانده تا تولد بعدی
+        </div>
+
+        <div
+          class="timer-value"
+          id="birthdayTimer"
+        >
+          -
         </div>
 
       </div>
@@ -719,761 +872,706 @@
 
   </div>
 
+</div>
 
-  <script>
 
-    /* =========================
-       PEOPLE
-    ========================= */
+<script>
 
-    const people = [
+/* =========================
+   PEOPLE
+========================= */
 
+const people = [
+
+  {
+    name:"سجاد حسنی تبار",
+    age:17,
+    birth:"1388/8/14",
+    school:"قائم آل محمد",
+    grade:"یازدهم",
+    position:"مدافع / دروازه‌بان",
+    image:"images/ChatGPT%20Image%20Aug%2023%2C%202026%2C%2003_13_17%20PM.jpg"
+  },
+
+  {
+    name:"یوسف سالاری",
+    age:16,
+    birth:"1388/09/04",
+    school:"حوزه",
+    grade:"پایه دو",
+    position:"مهاجم",
+    image:"images/yoosef.jpg"
+  },
+
+  {
+    name:"احمد اسماعیل زاده",
+    age:17,
+    birth:"1388/11/06",
+    school:"قائم آل محمد",
+    grade:"یازدهم",
+    position:"هافبک",
+    image:"images/aahmad.jpg"
+  },
+
+  {
+    name:"طاها شبان",
+    age:16,
+    birth:"1389/9/15",
+    school:"قائم آل محمد",
+    grade:"دهم",
+    position:"مهاجم / وینگر چپ",
+    image:"images/taha.jpg"
+  },
+
+  {
+    name:"علیرضا مختاری",
+    age:16,
+    birth:"1388/9/14",
+    school:"قائم آل محمد",
+    grade:"یازدهم",
+    position:"دروازه‌بان",
+    image:"images/alireza.jfif"
+  },
+
+  {
+    name:"احسان آرام",
+    age:16,
+    birth:"1389/4/24",
+    school:"قائم آل محمد",
+    grade:"یازدهم",
+    position:"مهاجم / هافبک",
+    image:"images/ehsan.jpg"
+  },
+
+  {
+    name:"امیر عباس فیروز",
+    age:16,
+    birth:"1389/1/14",
+    school:"قائم آل محمد",
+    grade:"یازدهم",
+    position:"دروازه‌بان / دفاع / هافبک / مهاجم",
+    image:"images/amirabbas.jpg"
+  },
+
+  {
+    name:"عرفان بابائی",
+    age:15,
+    birth:"1390/4/29",
+    school:"قائم آل محمد",
+    grade:"دهم",
+    position:"دفاع راست / دفاع وسط",
+    image:"images/erfan.jpg"
+  },
+
+  {
+    name:"عادل نصیری",
+    age:16,
+    birth:"1389/5/10",
+    school:"خاتم",
+    grade:"یازدهم",
+    position:"دفاع",
+    image:"images/aadel.jpg"
+  },
+
+  {
+    name:"متین جوان",
+    age:16,
+    birth:"1388/7/18",
+    school:"قائم آل محمد",
+    grade:"یازدهم",
+    position:"همه‌جا",
+    image:"images/matin.jpg"
+  }
+
+];
+
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const peopleGrid =
+  document.getElementById("peopleGrid");
+
+const searchInput =
+  document.getElementById("searchInput");
+
+const birthdayBox =
+  document.getElementById("birthdayBox");
+
+const birthdayButton =
+  document.getElementById("birthdayButton");
+
+const birthdayList =
+  document.getElementById("birthdayList");
+
+const profileModal =
+  document.getElementById("profileModal");
+
+const closeModal =
+  document.getElementById("closeModal");
+
+const modalImage =
+  document.getElementById("modalImage");
+
+const modalName =
+  document.getElementById("modalName");
+
+const modalAge =
+  document.getElementById("modalAge");
+
+const modalBirth =
+  document.getElementById("modalBirth");
+
+const modalSchool =
+  document.getElementById("modalSchool");
+
+const modalGrade =
+  document.getElementById("modalGrade");
+
+const modalPosition =
+  document.getElementById("modalPosition");
+
+const birthdayTimer =
+  document.getElementById("birthdayTimer");
+
+const themeToggle =
+  document.getElementById("themeToggle");
+
+
+/* =========================
+   PERSIAN DATE
+========================= */
+
+function getPersianDate(date){
+
+  const formatter =
+    new Intl.DateTimeFormat(
+      "en-US-u-ca-persian",
       {
-        name:"سجاد حسنی تبار",
-        age:17,
-        birth:"1388/8/14",
-        school:"قائم آل محمد",
-        grade:"یازدهم",
-        position:"مدافع / دروازه‌بان",
-        image:"images/ChatGPT%20Image%20Aug%2023%2C%202026%2C%2003_13_17%20PM.jpg"
-      },
-
-      {
-        name:"یوسف سالاری",
-        age:16,
-        birth:"1388/09/04",
-        school:"حوزه",
-        grade:"پایه دو",
-        position:"مهاجم",
-        image:"images/yoosef.jpg"
-      },
-
-      {
-        name:"احمد اسماعیل زاده",
-        age:17,
-        birth:"1388/11/06",
-        school:"قائم آل محمد",
-        grade:"یازدهم",
-        position:"هافبک",
-        image:"images/aahmad.jpg"
-      },
-
-      {
-        name:"طاها شبان",
-        age:16,
-        birth:"1389/9/15",
-        school:"قائم آل محمد",
-        grade:"دهم",
-        position:"مهاجم / وینگر چپ",
-        image:"images/taha.jpg"
-      },
-
-      {
-        name:"علیرضا مختاری",
-        age:16,
-        birth:"1388/9/14",
-        school:"قائم آل محمد",
-        grade:"یازدهم",
-        position:"دروازه‌بان",
-        image:"images/alireza.jfif"
-      },
-
-      {
-        name:"احسان آرام",
-        age:16,
-        birth:"1389/4/24",
-        school:"قائم آل محمد",
-        grade:"یازدهم",
-        position:"مهاجم / هافبک",
-        image:"images/ehsan.jpg"
-      },
-
-      {
-        name:"امیر عباس فیروز",
-        age:16,
-        birth:"1389/1/14",
-        school:"قائم آل محمد",
-        grade:"یازدهم",
-        position:"دروازه‌بان / دفاع / هافبک / مهاجم",
-        image:"images/amirabbas.jpg"
-      },
-
-      {
-        name:"عرفان بابائی",
-        age:15,
-        birth:"1390/4/29",
-        school:"قائم آل محمد",
-        grade:"دهم",
-        position:"دفاع راست / دفاع وسط",
-        image:"images/erfan.jpg"
-      },
-
-      {
-        name:"عادل نصیری",
-        age:16,
-        birth:"1389/5/10",
-        school:"خاتم",
-        grade:"یازدهم",
-        position:"دفاع",
-        image:"images/aadel.jpg"
-      },
-
-      {
-        name:"متین جوان",
-        age:16,
-        birth:"1388/7/18",
-        school:"قائم آل محمد",
-        grade:"یازدهم",
-        position:"همه‌جا",
-        image:"images/matin.jpg"
-      }
-
-    ];
-
-
-    /* =========================
-       ELEMENTS
-    ========================= */
-
-    const peopleGrid =
-      document.getElementById("peopleGrid");
-
-    const searchInput =
-      document.getElementById("searchInput");
-
-    const profileModal =
-      document.getElementById("profileModal");
-
-    const modalClose =
-      document.getElementById("modalClose");
-
-    const modalImage =
-      document.getElementById("modalImage");
-
-    const modalName =
-      document.getElementById("modalName");
-
-    const modalAge =
-      document.getElementById("modalAge");
-
-    const modalBirth =
-      document.getElementById("modalBirth");
-
-    const modalSchool =
-      document.getElementById("modalSchool");
-
-    const modalGrade =
-      document.getElementById("modalGrade");
-
-    const modalPosition =
-      document.getElementById("modalPosition");
-
-    const birthdayTimer =
-      document.getElementById("birthdayTimer");
-
-    const birthdayToggle =
-      document.getElementById("birthdayToggle");
-
-    const birthdayList =
-      document.getElementById("birthdayList");
-
-    const themeToggle =
-      document.getElementById("themeToggle");
-
-
-    /* =========================
-       PERSIAN DATE
-    ========================= */
-
-    function getPersianDate(date){
-
-      const formatter =
-        new Intl.DateTimeFormat(
-          "en-US-u-ca-persian",
-          {
-            year:"numeric",
-            month:"numeric",
-            day:"numeric"
-          }
-        );
-
-      const parts =
-        formatter.formatToParts(date);
-
-      const result = {};
-
-      parts.forEach(part => {
-
-        if(
-          part.type === "year" ||
-          part.type === "month" ||
-          part.type === "day"
-        ){
-          result[part.type] =
-            Number(part.value);
-        }
-
-      });
-
-      return result;
-    }
-
-
-    function parseBirthDate(birth){
-
-      const parts =
-        birth.split("/").map(Number);
-
-      return {
-        year:parts[0],
-        month:parts[1],
-        day:parts[2]
-      };
-
-    }
-
-
-    /* =========================
-       NEXT BIRTHDAY
-    ========================= */
-
-    function getNextBirthday(person){
-
-      const birth =
-        parseBirthDate(person.birth);
-
-      const now =
-        new Date();
-
-      for(let i=0; i<=370; i++){
-
-        const candidate =
-          new Date(now);
-
-        candidate.setHours(0,0,0,0);
-
-        candidate.setDate(
-          candidate.getDate() + i
-        );
-
-        const p =
-          getPersianDate(candidate);
-
-        if(
-          p.month === birth.month &&
-          p.day === birth.day &&
-          candidate > now
-        ){
-          return candidate;
-        }
-
-      }
-
-      return null;
-    }
-
-
-    /* =========================
-       COUNTDOWN
-    ========================= */
-
-    function getCountdownText(target){
-
-      const now =
-        new Date();
-
-      let diff =
-        target - now;
-
-      if(diff < 0){
-        diff = 0;
-      }
-
-      const day =
-        Math.floor(
-          diff / 86400000
-        );
-
-      diff %= 86400000;
-
-      const hour =
-        Math.floor(
-          diff / 3600000
-        );
-
-      diff %= 3600000;
-
-      const minute =
-        Math.floor(
-          diff / 60000
-        );
-
-      diff %= 60000;
-
-      const second =
-        Math.floor(
-          diff / 1000
-        );
-
-      return `${day} روز و ${hour} ساعت و ${minute} دقیقه و ${second} ثانیه`;
-
-    }
-
-
-    function getShortCountdown(target){
-
-      const now =
-        new Date();
-
-      const diff =
-        Math.max(
-          0,
-          target - now
-        );
-
-      const days =
-        Math.floor(
-          diff / 86400000
-        );
-
-      if(days > 0){
-        return `${days} روز دیگر`;
-      }
-
-      const hours =
-        Math.floor(
-          diff / 3600000
-        );
-
-      if(hours > 0){
-        return `${hours} ساعت دیگر`;
-      }
-
-      const minutes =
-        Math.floor(
-          diff / 60000
-        );
-
-      return `${minutes} دقیقه دیگر`;
-
-    }
-
-
-    /* =========================
-       RENDER PEOPLE
-    ========================= */
-
-    function renderPeople(list = people){
-
-      peopleGrid.innerHTML = "";
-
-      if(list.length === 0){
-
-        peopleGrid.innerHTML = `
-          <div class="no-result">
-            کسی با این اسم پیدا نشد.
-          </div>
-        `;
-
-        return;
-      }
-
-
-      list.forEach(person => {
-
-        const card =
-          document.createElement("article");
-
-        card.className =
-          "person-card";
-
-        card.innerHTML = `
-
-          <img
-            class="person-image"
-            src="${person.image}"
-            alt="${person.name}"
-            loading="lazy"
-          >
-
-          <div class="person-info">
-
-            <div class="person-name">
-              ${person.name}
-            </div>
-
-            <div class="person-position">
-              ⚽ ${person.position}
-            </div>
-
-          </div>
-
-        `;
-
-        card.addEventListener(
-          "click",
-          () => openProfile(person)
-        );
-
-        peopleGrid.appendChild(card);
-
-      });
-
-    }
-
-
-    /* =========================
-       SEARCH
-    ========================= */
-
-    searchInput.addEventListener(
-      "input",
-      () => {
-
-        const value =
-          searchInput.value
-            .trim()
-            .toLowerCase();
-
-        const filtered =
-          people.filter(person =>
-            person.name
-              .toLowerCase()
-              .includes(value)
-          );
-
-        renderPeople(filtered);
-
+        year:"numeric",
+        month:"numeric",
+        day:"numeric"
       }
     );
 
+  const parts =
+    formatter.formatToParts(date);
 
-    /* =========================
-       PROFILE MODAL
-    ========================= */
+  const result = {};
 
-    let currentPerson = null;
+  parts.forEach(part => {
 
-    function openProfile(person){
-
-      currentPerson = person;
-
-      modalImage.src =
-        person.image;
-
-      modalImage.alt =
-        person.name;
-
-      modalName.textContent =
-        person.name;
-
-      modalAge.textContent =
-        person.age;
-
-      modalBirth.textContent =
-        person.birth;
-
-      modalSchool.textContent =
-        person.school;
-
-      modalGrade.textContent =
-        person.grade;
-
-      modalPosition.textContent =
-        person.position;
-
-      profileModal.classList.add("show");
-
-      document.body.style.overflow =
-        "hidden";
-
-      updateBirthdayTimer();
-
+    if(
+      part.type === "year" ||
+      part.type === "month" ||
+      part.type === "day"
+    ){
+      result[part.type] =
+        Number(part.value);
     }
 
+  });
 
-    function closeProfile(){
+  return result;
+}
 
-      profileModal.classList.remove("show");
 
-      document.body.style.overflow =
-        "";
+function parseBirth(birth){
 
-      currentPerson = null;
+  const p =
+    birth.split("/").map(Number);
 
+  return {
+    year:p[0],
+    month:p[1],
+    day:p[2]
+  };
+}
+
+
+/* =========================
+   NEXT BIRTHDAY
+========================= */
+
+function getNextBirthday(person){
+
+  const birth =
+    parseBirth(person.birth);
+
+  const now =
+    new Date();
+
+  for(let i=0;i<=370;i++){
+
+    const candidate =
+      new Date(now);
+
+    candidate.setHours(0,0,0,0);
+
+    candidate.setDate(
+      candidate.getDate()+i
+    );
+
+    const p =
+      getPersianDate(candidate);
+
+    if(
+      p.month === birth.month &&
+      p.day === birth.day &&
+      candidate > now
+    ){
+      return candidate;
     }
 
+  }
 
-    modalClose.addEventListener(
+  return null;
+}
+
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+function getCountdown(target){
+
+  let diff =
+    Math.max(
+      0,
+      target - new Date()
+    );
+
+  const days =
+    Math.floor(diff/86400000);
+
+  diff %= 86400000;
+
+  const hours =
+    Math.floor(diff/3600000);
+
+  diff %= 3600000;
+
+  const minutes =
+    Math.floor(diff/60000);
+
+  diff %= 60000;
+
+  const seconds =
+    Math.floor(diff/1000);
+
+  return `${days} روز و ${hours} ساعت و ${minutes} دقیقه و ${seconds} ثانیه`;
+}
+
+
+function getShortCountdown(target){
+
+  const diff =
+    Math.max(
+      0,
+      target - new Date()
+    );
+
+  const days =
+    Math.floor(diff/86400000);
+
+  if(days > 0)
+    return `${days} روز دیگر`;
+
+  const hours =
+    Math.floor(diff/3600000);
+
+  if(hours > 0)
+    return `${hours} ساعت دیگر`;
+
+  const minutes =
+    Math.floor(diff/60000);
+
+  return `${minutes} دقیقه دیگر`;
+}
+
+
+/* =========================
+   RENDER CARDS
+========================= */
+
+function renderPeople(list=people){
+
+  peopleGrid.innerHTML="";
+
+  if(!list.length){
+
+    peopleGrid.innerHTML=`
+      <div class="empty">
+        کسی با این اسم پیدا نشد.
+      </div>
+    `;
+
+    return;
+  }
+
+
+  list.forEach(person => {
+
+    const card =
+      document.createElement("article");
+
+    card.className="card";
+
+    card.innerHTML=`
+
+      <img
+        class="card-image"
+        src="${person.image}"
+        alt="${person.name}"
+        loading="lazy"
+      >
+
+      <div class="card-info">
+
+        <div class="card-name">
+          ${person.name}
+        </div>
+
+        <div class="card-position">
+          ⚽ ${person.position}
+        </div>
+
+      </div>
+    `;
+
+    card.addEventListener(
       "click",
-      closeProfile
+      () => openProfile(person)
     );
 
+    peopleGrid.appendChild(card);
 
-    profileModal.addEventListener(
-      "click",
-      event => {
+  });
 
-        if(event.target === profileModal){
-          closeProfile();
-        }
-
-      }
-    );
+}
 
 
-    document.addEventListener(
-      "keydown",
-      event => {
+/* =========================
+   SEARCH
+========================= */
 
-        if(event.key === "Escape"){
-          closeProfile();
-        }
+searchInput.addEventListener(
+  "input",
+  () => {
 
-      }
-    );
+    const value =
+      searchInput.value
+        .trim()
+        .toLowerCase();
 
-
-    function updateBirthdayTimer(){
-
-      if(!currentPerson){
-        return;
-      }
-
-      const target =
-        getNextBirthday(currentPerson);
-
-      if(!target){
-        birthdayTimer.textContent =
-          "نامشخص";
-
-        return;
-      }
-
-      birthdayTimer.textContent =
-        getCountdownText(target);
-
-    }
-
-
-    setInterval(
-      updateBirthdayTimer,
-      1000
-    );
-
-
-    /* =========================
-       BIRTHDAY LIST
-    ========================= */
-
-    function renderBirthdayList(){
-
-      const sorted =
-        people
-          .map(person => ({
-            person,
-            date:getNextBirthday(person)
-          }))
-          .filter(item => item.date)
-          .sort(
-            (a,b) =>
-              a.date - b.date
-          );
-
-
-      birthdayList.innerHTML = "";
-
-
-      sorted.forEach(
-        (item,index) => {
-
-          const row =
-            document.createElement("div");
-
-          row.className =
-            "birthday-item";
-
-          row.innerHTML = `
-
-            <div class="birthday-rank">
-              ${index + 1}
-            </div>
-
-            <div class="birthday-name">
-              ${item.person.name}
-            </div>
-
-            <div class="birthday-count">
-              ${getShortCountdown(item.date)}
-            </div>
-
-          `;
-
-          row.addEventListener(
-            "click",
-            () => openProfile(item.person)
-          );
-
-          birthdayList.appendChild(row);
-
-        }
+    const result =
+      people.filter(person =>
+        person.name
+          .toLowerCase()
+          .includes(value)
       );
 
+    renderPeople(result);
+
+  }
+);
+
+
+/* =========================
+   BIRTHDAY LIST
+========================= */
+
+function renderBirthdays(){
+
+  const sorted =
+    people
+      .map(person => ({
+        person,
+        date:getNextBirthday(person)
+      }))
+      .filter(x => x.date)
+      .sort(
+        (a,b) =>
+          a.date-b.date
+      );
+
+  birthdayList.innerHTML="";
+
+  sorted.forEach(
+    (item,index) => {
+
+      const row =
+        document.createElement("div");
+
+      row.className="birthday-row";
+
+      row.innerHTML=`
+
+        <div class="rank">
+          ${index+1}
+        </div>
+
+        <div class="birthday-name">
+          ${item.person.name}
+        </div>
+
+        <div class="birthday-time">
+          ${getShortCountdown(item.date)}
+        </div>
+
+      `;
+
+      row.addEventListener(
+        "click",
+        () => openProfile(item.person)
+      );
+
+      birthdayList.appendChild(row);
+
+    }
+  );
+
+}
+
+
+birthdayButton.addEventListener(
+  "click",
+  () => {
+
+    birthdayBox.classList.toggle("open");
+
+  }
+);
+
+
+/* =========================
+   MODAL
+========================= */
+
+let currentPerson=null;
+
+function openProfile(person){
+
+  currentPerson=person;
+
+  modalImage.src=person.image;
+  modalImage.alt=person.name;
+
+  modalName.textContent=person.name;
+  modalAge.textContent=person.age;
+  modalBirth.textContent=person.birth;
+  modalSchool.textContent=person.school;
+  modalGrade.textContent=person.grade;
+  modalPosition.textContent=person.position;
+
+  profileModal.classList.add("show");
+
+  document.body.style.overflow="hidden";
+
+  updateTimer();
+}
+
+
+function closeProfile(){
+
+  profileModal.classList.remove("show");
+
+  document.body.style.overflow="";
+
+  currentPerson=null;
+}
+
+
+closeModal.addEventListener(
+  "click",
+  closeProfile
+);
+
+
+profileModal.addEventListener(
+  "click",
+  e => {
+
+    if(e.target===profileModal){
+      closeProfile();
     }
 
-
-    birthdayToggle.addEventListener(
-      "click",
-      () => {
-
-        const active =
-          birthdayList.classList.toggle("show");
-
-        birthdayToggle.classList.toggle(
-          "active",
-          active
-        );
-
-      }
-    );
+  }
+);
 
 
-    /* =========================
-       THEME
-    ========================= */
+document.addEventListener(
+  "keydown",
+  e => {
 
-    function getThemeCirclePosition(){
+    if(e.key==="Escape"){
+      closeProfile();
+    }
 
-      const rect =
-        themeToggle.getBoundingClientRect();
+  }
+);
 
-      const x =
-        rect.left +
-        rect.width / 2;
 
-      const y =
-        rect.top +
-        rect.height / 2;
+/* =========================
+   LIVE TIMER
+========================= */
 
-      const radius =
-        Math.hypot(
-          Math.max(
-            x,
-            window.innerWidth - x
-          ),
-          Math.max(
-            y,
-            window.innerHeight - y
-          )
-        );
+function updateTimer(){
 
-      return {
+  if(!currentPerson)
+    return;
+
+  const target =
+    getNextBirthday(currentPerson);
+
+  if(!target){
+
+    birthdayTimer.textContent="نامشخص";
+    return;
+
+  }
+
+  birthdayTimer.textContent =
+    getCountdown(target);
+
+}
+
+
+setInterval(
+  updateTimer,
+  1000
+);
+
+
+/* =========================
+   THEME
+========================= */
+
+function getThemePosition(){
+
+  const rect =
+    themeToggle.getBoundingClientRect();
+
+  const x =
+    rect.left + rect.width/2;
+
+  const y =
+    rect.top + rect.height/2;
+
+  const radius =
+    Math.hypot(
+      Math.max(
         x,
+        window.innerWidth-x
+      ),
+      Math.max(
         y,
-        radius
-      };
-
-    }
-
-
-    function applyTheme(isLight){
-
-      document.body.classList.toggle(
-        "light-mode",
-        isLight
-      );
-
-      themeToggle.textContent =
-        isLight ? "☀️" : "🌙";
-
-      document
-        .getElementById("themeColor")
-        .setAttribute(
-          "content",
-          isLight ? "#f2f5f8" : "#07101d"
-        );
-
-      localStorage.setItem(
-        "friendsSiteTheme",
-        isLight ? "light" : "dark"
-      );
-
-    }
-
-
-    function changeTheme(){
-
-      const isLight =
-        !document.body.classList.contains(
-          "light-mode"
-        );
-
-      const pos =
-        getThemeCirclePosition();
-
-
-      if(document.startViewTransition){
-
-        document.documentElement.style.setProperty(
-          "--theme-x",
-          `${pos.x}px`
-        );
-
-        document.documentElement.style.setProperty(
-          "--theme-y",
-          `${pos.y}px`
-        );
-
-        document.documentElement.style.setProperty(
-          "--theme-radius",
-          `${pos.radius}px`
-        );
-
-
-        document.startViewTransition(
-          () => applyTheme(isLight)
-        );
-
-      }else{
-
-        applyTheme(isLight);
-
-      }
-
-    }
-
-
-    themeToggle.addEventListener(
-      "click",
-      changeTheme
+        window.innerHeight-y
+      )
     );
 
-
-    /* =========================
-       LOAD THEME
-    ========================= */
-
-    const savedTheme =
-      localStorage.getItem(
-        "friendsSiteTheme"
-      );
-
-    if(savedTheme === "light"){
-      applyTheme(true);
-    }else{
-      applyTheme(false);
-    }
+  return {
+    x,
+    y,
+    radius
+  };
+}
 
 
-    /* =========================
-       INITIAL RENDER
-    ========================= */
+function applyTheme(light){
 
-    renderPeople();
+  document.body.classList.toggle(
+    "light-mode",
+    light
+  );
 
-    renderBirthdayList();
+  themeToggle.textContent =
+    light ? "☀️" : "🌙";
 
-  </script>
+  document
+    .getElementById("themeColor")
+    .setAttribute(
+      "content",
+      light ? "#f2f5f8" : "#07101d"
+    );
+
+  localStorage.setItem(
+    "friendsSiteTheme",
+    light ? "light" : "dark"
+  );
+}
+
+
+function toggleTheme(){
+
+  const light =
+    !document.body.classList.contains(
+      "light-mode"
+    );
+
+  const pos =
+    getThemePosition();
+
+  document.documentElement.style.setProperty(
+    "--theme-x",
+    `${pos.x}px`
+  );
+
+  document.documentElement.style.setProperty(
+    "--theme-y",
+    `${pos.y}px`
+  );
+
+  document.documentElement.style.setProperty(
+    "--theme-radius",
+    `${pos.radius}px`
+  );
+
+
+  if(document.startViewTransition){
+
+    document.startViewTransition(
+      () => applyTheme(light)
+    );
+
+  }else{
+
+    applyTheme(light);
+
+  }
+
+}
+
+
+themeToggle.addEventListener(
+  "click",
+  toggleTheme
+);
+
+
+/* =========================
+   LOAD SAVED THEME
+========================= */
+
+const savedTheme =
+  localStorage.getItem(
+    "friendsSiteTheme"
+  );
+
+applyTheme(
+  savedTheme === "light"
+);
+
+
+/* =========================
+   START
+========================= */
+
+renderPeople();
+renderBirthdays();
+
+</script>
 
 </body>
 </html>
