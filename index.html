@@ -91,10 +91,6 @@
       background-size: 35px 35px;
     }
 
-    /* =========================
-       HEADER
-    ========================= */
-
     header {
       padding: 34px 20px 22px;
       text-align: center;
@@ -142,10 +138,6 @@
       font-size: 15px;
     }
 
-    /* =========================
-       THEME BUTTON
-    ========================= */
-
     #themeToggle {
       position: fixed;
       top: 16px;
@@ -168,18 +160,10 @@
       backdrop-filter: blur(10px);
     }
 
-    /* =========================
-       MAIN
-    ========================= */
-
     main {
       width: min(1100px, calc(100% - 28px));
       margin: 0 auto 60px;
     }
-
-    /* =========================
-       SEARCH
-    ========================= */
 
     .search-wrap {
       position: sticky;
@@ -212,10 +196,6 @@
     .search::placeholder {
       color: var(--muted);
     }
-
-    /* =========================
-       BIRTHDAYS
-    ========================= */
 
     .birthday-section {
       margin-bottom: 28px;
@@ -340,10 +320,6 @@
       font-size: 12px;
       white-space: nowrap;
     }
-
-    /* =========================
-       RANDOM PLAYER
-    ========================= */
 
     .random-section {
       margin-bottom: 28px;
@@ -473,10 +449,6 @@
       font-weight: 900;
     }
 
-    /* =========================
-       GAME ENTRY
-    ========================= */
-
     .game-entry {
       margin-bottom: 18px;
     }
@@ -569,10 +541,6 @@
       font-size: 24px;
       color: var(--accent);
     }
-
-    /* =========================
-       BALANCED TEAM ENTRY
-    ========================= */
 
     .balanced-team-entry {
       margin-bottom: 28px;
@@ -667,10 +635,6 @@
       color: var(--accent);
     }
 
-    /* =========================
-       PEOPLE GRID
-    ========================= */
-
     #peopleGrid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -729,10 +693,6 @@
       line-height: 1.7;
     }
 
-    /* =========================
-       EMPTY
-    ========================= */
-
     .empty {
       grid-column: 1 / -1;
 
@@ -747,10 +707,6 @@
 
       border-radius: 20px;
     }
-
-    /* =========================
-       GAME PAGE
-    ========================= */
 
     #gamePage {
       display: none;
@@ -863,10 +819,6 @@
 
       font-weight: 900;
     }
-
-    /* =========================
-       BALANCED TEAM BUTTON
-    ========================= */
 
     .balanced-reroll {
       width: 100%;
@@ -1201,10 +1153,6 @@
       font-size: 10px;
     }
 
-    /* =========================
-       MODAL
-    ========================= */
-
     .modal {
       position: fixed;
       inset: 0;
@@ -1397,10 +1345,6 @@
       font-weight: 900;
     }
 
-    /* =========================
-       VIEW TRANSITION
-    ========================= */
-
     ::view-transition-old(root),
     ::view-transition-new(root) {
       animation: none;
@@ -1415,10 +1359,6 @@
       z-index: 1;
     }
 
-    /* =========================
-       TABLET
-    ========================= */
-
     @media (max-width: 900px) {
 
       #peopleGrid {
@@ -1427,10 +1367,6 @@
       }
 
     }
-
-    /* =========================
-       MOBILE
-    ========================= */
 
     @media (max-width: 650px) {
 
@@ -1779,10 +1715,6 @@
 
     }
 
-    /* =========================
-       SMALL MOBILE
-    ========================= */
-
     @media (max-width: 360px) {
 
       #peopleGrid {
@@ -1887,8 +1819,6 @@
 
       </section>
 
-      <!-- RANDOM PLAYER -->
-
       <section class="random-section">
 
         <div class="random-title">
@@ -1932,8 +1862,6 @@
 
       </section>
 
-      <!-- GAME ENTRY -->
-
       <section class="game-entry">
 
         <button
@@ -1968,8 +1896,6 @@
         </button>
 
       </section>
-
-      <!-- BALANCED RANDOM TEAM -->
 
       <section class="balanced-team-entry">
 
@@ -2095,15 +2021,10 @@
             >
 
               <div class="game-pitch-center"></div>
-
               <div class="game-pitch-dot"></div>
-
               <div class="game-penalty top"></div>
-
               <div class="game-penalty bottom"></div>
-
               <div class="game-goal top"></div>
-
               <div class="game-goal bottom"></div>
 
             </div>
@@ -2181,81 +2102,33 @@
         <div class="profile-grid">
 
           <div class="detail">
-
-            <span class="detail-label">
-              سن
-            </span>
-
-            <span
-              class="detail-value"
-              id="profileAge"
-            ></span>
-
+            <span class="detail-label">سن</span>
+            <span class="detail-value" id="profileAge"></span>
           </div>
 
           <div class="detail">
-
-            <span class="detail-label">
-              تاریخ تولد
-            </span>
-
-            <span
-              class="detail-value"
-              id="profileBirth"
-            ></span>
-
+            <span class="detail-label">تاریخ تولد</span>
+            <span class="detail-value" id="profileBirth"></span>
           </div>
 
           <div class="detail">
-
-            <span class="detail-label">
-              مدرسه / مرکز آموزشی
-            </span>
-
-            <span
-              class="detail-value"
-              id="profileSchool"
-            ></span>
-
+            <span class="detail-label">مدرسه / مرکز آموزشی</span>
+            <span class="detail-value" id="profileSchool"></span>
           </div>
 
           <div class="detail">
-
-            <span class="detail-label">
-              پایه
-            </span>
-
-            <span
-              class="detail-value"
-              id="profileGrade"
-            ></span>
-
+            <span class="detail-label">پایه</span>
+            <span class="detail-value" id="profileGrade"></span>
           </div>
 
           <div class="detail full">
-
-            <span class="detail-label">
-              رشته تحصیلی
-            </span>
-
-            <span
-              class="detail-value"
-              id="profileField"
-            ></span>
-
+            <span class="detail-label">رشته تحصیلی</span>
+            <span class="detail-value" id="profileField"></span>
           </div>
 
           <div class="detail full">
-
-            <span class="detail-label">
-              پست فوتسال
-            </span>
-
-            <span
-              class="detail-value"
-              id="profileFutsal"
-            ></span>
-
+            <span class="detail-label">پست فوتسال</span>
+            <span class="detail-value" id="profileFutsal"></span>
           </div>
 
         </div>
@@ -2523,10 +2396,6 @@
     let selectedPerson = null;
     let timerInterval = null;
 
-    /* ==================================================
-       نمایش افراد
-    ================================================== */
-
     function renderPeople(list = people) {
 
       peopleGrid.innerHTML = "";
@@ -2587,10 +2456,6 @@
 
     }
 
-    /* ==================================================
-       جستجو
-    ================================================== */
-
     searchInput.addEventListener(
       "input",
       () => {
@@ -2612,10 +2477,6 @@
 
       }
     );
-
-    /* ==================================================
-       تاریخ شمسی
-    ================================================== */
 
     function getPersianDate(date) {
 
@@ -2652,10 +2513,6 @@
       return result;
 
     }
-
-    /* ==================================================
-       تولد بعدی
-    ================================================== */
 
     function getNextBirthday(person) {
 
@@ -2711,10 +2568,6 @@
       return null;
 
     }
-
-    /* ==================================================
-       شمارش معکوس
-    ================================================== */
 
     function getCountdown(target) {
 
@@ -2782,10 +2635,6 @@
 
     }
 
-    /* ==================================================
-       لیست تولدها
-    ================================================== */
-
     function renderBirthdays() {
 
       const sorted =
@@ -2846,10 +2695,6 @@
 
     }
 
-    /* ==================================================
-       باز و بسته شدن تولدها
-    ================================================== */
-
     birthdayToggle.addEventListener(
       "click",
       () => {
@@ -2875,11 +2720,6 @@
 
       }
     );
-
-    /* ==================================================
-       بازیکن تصادفی
-       تایمر ۵ ثانیه‌ای
-    ================================================== */
 
     let randomPlayerTimeout = null;
     let randomPlayerCountdown = null;
@@ -2965,10 +2805,6 @@
       }
     );
 
-    /* ==================================================
-       صفحه زمین بازی
-    ================================================== */
-
     function openGamePage() {
 
       homePage.classList.add("hidden");
@@ -2982,11 +2818,6 @@
 
     }
 
-    /*
-      مهم:
-      ورود معمولی همیشه ترکیب ثابت را نمایش می‌دهد.
-    */
-
     enterGameButton.addEventListener(
       "click",
       () => {
@@ -2997,10 +2828,6 @@
 
       }
     );
-
-    /*
-      این دکمه فقط ترکیب تصادفی برابر را می‌سازد.
-    */
 
     balancedTeamButton.addEventListener(
       "click",
@@ -3029,10 +2856,6 @@
       }
     );
 
-    /* ==================================================
-       پیدا کردن شخص
-    ================================================== */
-
     function findPerson(name) {
 
       return people.find(
@@ -3041,10 +2864,6 @@
       );
 
     }
-
-    /* ==================================================
-       اضافه کردن بازیکن به زمین
-    ================================================== */
 
     function addGamePlayer(
       pitchElement,
@@ -3106,10 +2925,6 @@
 
     }
 
-    /* ==================================================
-       پاک کردن بازیکنان زمین
-    ================================================== */
-
     function clearGamePlayers() {
 
       gamePitch
@@ -3121,10 +2936,6 @@
 
     }
 
-    /* ==================================================
-       ترکیب ثابت قبلی
-    ================================================== */
-
     function buildGameTeams() {
 
       clearGamePlayers();
@@ -3134,8 +2945,6 @@
 
       gameDescription.textContent =
         "ترکیب ۵ به ۵ بچه‌ها در زمین فوتسال";
-
-      /* تیم یک - نیمه پایین */
 
       addGamePlayer(
         gamePitch,
@@ -3176,8 +2985,6 @@
         58,
         "مهاجم"
       );
-
-      /* تیم دو - نیمه بالا */
 
       addGamePlayer(
         gamePitch,
@@ -3220,10 +3027,6 @@
       );
 
     }
-
-    /* ==================================================
-       سیستم ساخت ترکیب برابر
-    ================================================== */
 
     function shuffle(array) {
 
@@ -3330,90 +3133,80 @@
 
     }
 
+
+    /* ==================================================
+       ترکیب تصادفی و متعادل - اصلاح شده
+    ================================================== */
+
     function getBestBalancedTeams() {
 
       /*
-        امیر علی آرامش چون در ترکیب قبلی
-        تعویضی بوده، وارد ترکیب اصلی نمی‌شود.
+        فقط این دو نفر دروازه‌بان اصلی هستند.
+        امیر عباس فیروز با اینکه توانایی دروازه‌بانی دارد،
+        در سیستم ترکیب برابر به عنوان بازیکن چندپسته حساب می‌شود.
       */
 
-      const available =
-        people.filter(
-          person =>
-            person.name !==
-            "امیر علی آرامش"
-        );
+      const goalkeeper1 =
+        findPerson("علیرضا مختاری");
+
+      const goalkeeper2 =
+        findPerson("سجاد حسنی تبار");
+
 
       /*
-        پیدا کردن دروازه‌بان‌ها
+        امیر علی آرامش همچنان تعویضی است.
+        دو دروازه‌بان اصلی هم از بازیکنان عادی حذف می‌شوند.
       */
-
-      const goalkeepers =
-        available.filter(
-          person =>
-            person.futsal.includes(
-              "دروازه‌بان"
-            )
-        );
 
       const normalPlayers =
-        available.filter(
+        people.filter(
           person =>
-            !person.futsal.includes(
-              "دروازه‌بان"
-            )
+            person.name !== "امیر علی آرامش" &&
+            person.name !== "علیرضا مختاری" &&
+            person.name !== "سجاد حسنی تبار"
         );
 
-      let goalkeeper1 =
-        goalkeepers[0];
-
-      let goalkeeper2 =
-        goalkeepers[1];
 
       /*
-        جابه‌جایی تصادفی دروازه‌بان‌ها
+        در اینجا دقیقاً ۸ بازیکن داریم:
+        
+        یوسف
+        احمد
+        طاها
+        احسان
+        امیر عباس
+        عرفان
+        عادل
+        متین
       */
 
-      if (
-        Math.random() > .5
-      ) {
+      const shuffled =
+        shuffle(normalPlayers);
 
-        [
-          goalkeeper1,
-          goalkeeper2
-        ] =
-        [
-          goalkeeper2,
-          goalkeeper1
-        ];
-
-      }
-
-      const remaining =
-        shuffle(
-          normalPlayers
-        );
-
-      /*
-        بررسی تمام حالت‌های ممکن
-      */
 
       let bestTeamA = null;
       let bestTeamB = null;
       let bestDifference = Infinity;
 
+
+      /*
+        تمام حالت‌های ممکن تقسیم ۸ نفر
+        به دو تیم ۴ نفره بررسی می‌شود.
+      */
+
       for (
         let mask = 0;
-        mask < (1 << remaining.length);
+        mask < (1 << shuffled.length);
         mask++
       ) {
 
         const teamA = [];
         const teamB = [];
 
+
         for (
           let i = 0;
-          i < remaining.length;
+          i < shuffled.length;
           i++
         ) {
 
@@ -3422,58 +3215,86 @@
           ) {
 
             teamA.push(
-              remaining[i]
+              shuffled[i]
             );
 
           } else {
 
             teamB.push(
-              remaining[i]
+              shuffled[i]
             );
 
           }
 
         }
 
+
+        /*
+          هر تیم باید ۴ بازیکن عادی داشته باشد.
+        */
+
         if (
           teamA.length !== 4 ||
           teamB.length !== 4
         ) {
+
           continue;
+
         }
 
-        const scoreA =
-          teamA.reduce(
-            (
-              sum,
-              player
-            ) =>
-              sum +
-              getPlayerStrength(player),
-            0
-          ) +
+
+        /*
+          قدرت کلی هر تیم
+        */
+
+        let scoreA =
           getPlayerStrength(
             goalkeeper1
           );
 
-        const scoreB =
-          teamB.reduce(
-            (
-              sum,
-              player
-            ) =>
-              sum +
-              getPlayerStrength(player),
-            0
-          ) +
+        let scoreB =
           getPlayerStrength(
             goalkeeper2
           );
+
+
+        teamA.forEach(
+          player => {
+
+            scoreA +=
+              getPlayerStrength(
+                player
+              );
+
+          }
+        );
+
+
+        teamB.forEach(
+          player => {
+
+            scoreB +=
+              getPlayerStrength(
+                player
+              );
+
+          }
+        );
+
+
+        /*
+          اختلاف قدرت دو تیم
+        */
 
         let difference =
           Math.abs(
             scoreA - scoreB
           );
+
+
+        /*
+          بررسی داشتن مدافع
+        */
 
         const hasDefenseA =
           teamA.some(
@@ -3491,6 +3312,11 @@
               )
           );
 
+
+        /*
+          بررسی داشتن مهاجم
+        */
+
         const hasAttackA =
           teamA.some(
             player =>
@@ -3507,6 +3333,11 @@
               )
           );
 
+
+        /*
+          جریمه برای تیم بدون مدافع
+        */
+
         if (!hasDefenseA) {
           difference += 3;
         }
@@ -3515,6 +3346,11 @@
           difference += 3;
         }
 
+
+        /*
+          جریمه برای تیم بدون مهاجم
+        */
+
         if (!hasAttackA) {
           difference += 2;
         }
@@ -3522,6 +3358,12 @@
         if (!hasAttackB) {
           difference += 2;
         }
+
+
+        /*
+          اگر این حالت بهتر بود،
+          ذخیره‌اش کن.
+        */
 
         if (
           difference < bestDifference
@@ -3540,7 +3382,35 @@
 
       }
 
+
+      /*
+        حالت پشتیبان:
+        اگر به هر دلیلی ترکیب پیدا نشد،
+        باز هم حتماً دو تیم ساخته می‌شوند.
+      */
+
+      if (
+        !bestTeamA ||
+        !bestTeamB
+      ) {
+
+        bestTeamA =
+          shuffled.slice(0, 4);
+
+        bestTeamB =
+          shuffled.slice(4, 8);
+
+      }
+
+
+      /*
+        برای اینکه با هر بار زدن دکمه
+        چینش بازیکنان هم تغییر کند،
+        اعضای هر تیم را دوباره مخلوط می‌کنیم.
+      */
+
       return {
+
         teamA: [
           goalkeeper1,
           ...shuffle(bestTeamA)
@@ -3550,13 +3420,11 @@
           goalkeeper2,
           ...shuffle(bestTeamB)
         ]
+
       };
 
     }
 
-    /* ==================================================
-       نمایش ترکیب برابر
-    ================================================== */
 
     function buildBalancedTeam() {
 
@@ -3570,6 +3438,7 @@
 
       gameDescription.textContent =
         "یک ترکیب تصادفی و متعادل ۵ در مقابل ۵";
+
 
       /*
         تیم پایین
@@ -3585,6 +3454,7 @@
         [35, 58],
         [65, 58]
       ];
+
 
       teamA.forEach(
         (player, index) => {
@@ -3606,6 +3476,7 @@
         }
       );
 
+
       /*
         تیم بالا
       */
@@ -3620,6 +3491,7 @@
         [35, 42],
         [65, 42]
       ];
+
 
       teamB.forEach(
         (player, index) => {
@@ -3643,18 +3515,12 @@
 
     }
 
-    /*
-      دکمه ساخت ترکیب برابر جدید
-    */
 
     balancedReroll.addEventListener(
       "click",
       buildBalancedTeam
     );
 
-    /* ==================================================
-       کلیک روی امیر علی از نیمکت
-    ================================================== */
 
     benchAmirali.addEventListener(
       "click",
@@ -3674,9 +3540,6 @@
       }
     );
 
-    /* ==================================================
-       باز کردن پروفایل
-    ================================================== */
 
     function openProfile(index) {
 
@@ -3732,9 +3595,6 @@
 
     }
 
-    /* ==================================================
-       تایمر تولد
-    ================================================== */
 
     function updateTimer() {
 
@@ -3764,9 +3624,6 @@
 
     }
 
-    /* ==================================================
-       بستن پروفایل
-    ================================================== */
 
     function closeProfile() {
 
@@ -3784,10 +3641,12 @@
 
     }
 
+
     closeModal.addEventListener(
       "click",
       closeProfile
     );
+
 
     modal.addEventListener(
       "click",
@@ -3804,6 +3663,7 @@
       }
     );
 
+
     document.addEventListener(
       "keydown",
       event => {
@@ -3819,9 +3679,6 @@
       }
     );
 
-    /* ==================================================
-       حالت شب / روز
-    ================================================== */
 
     function applyTheme(theme) {
 
@@ -3846,6 +3703,7 @@
       );
 
     }
+
 
     function getThemePosition() {
 
@@ -3879,6 +3737,7 @@
       };
 
     }
+
 
     async function changeTheme() {
 
@@ -3957,14 +3816,12 @@
 
     }
 
+
     themeToggle.addEventListener(
       "click",
       changeTheme
     );
 
-    /* ==================================================
-       تم ذخیره شده
-    ================================================== */
 
     const savedTheme =
       localStorage.getItem(
@@ -3983,18 +3840,10 @@
 
     }
 
-    /* ==================================================
-       شروع سایت
-    ================================================== */
 
     renderPeople();
 
     renderBirthdays();
-
-    /*
-      ترکیب اولیه ثابت ساخته می‌شود،
-      اما تا وقتی وارد زمین نشده‌ایم دیده نمی‌شود.
-    */
 
     buildGameTeams();
 
