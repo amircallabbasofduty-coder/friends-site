@@ -16,6 +16,7 @@
       --muted: #aeb8c6;
       --border: rgba(255,255,255,.09);
       --accent: #36d17c;
+      --accent2: #1fa463;
       --shadow: 0 12px 35px rgba(0,0,0,.25);
     }
 
@@ -28,6 +29,7 @@
       --muted: #657180;
       --border: rgba(0,0,0,.08);
       --accent: #159957;
+      --accent2: #0e7d46;
       --shadow: 0 10px 30px rgba(0,0,0,.10);
     }
 
@@ -148,7 +150,7 @@
       position: fixed;
       top: 16px;
       left: 16px;
-      z-index: 1000;
+      z-index: 3000;
 
       width: 45px;
       height: 45px;
@@ -248,8 +250,6 @@
       font-weight: 800;
     }
 
-    /* مربع راهنمای باز شدن */
-
     .birthday-open-icon {
       width: 32px;
       height: 32px;
@@ -342,6 +342,228 @@
     }
 
     /* =========================
+       RANDOM PLAYER
+    ========================= */
+
+    .random-section {
+      margin-bottom: 28px;
+
+      padding: 18px;
+
+      border: 1px solid var(--border);
+      border-radius: 20px;
+
+      background: var(--card);
+
+      box-shadow: var(--shadow);
+
+      text-align: center;
+    }
+
+    .random-title {
+      margin-bottom: 5px;
+
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .random-subtitle {
+      margin-bottom: 14px;
+
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .random-button {
+      border: 0;
+
+      padding: 12px 22px;
+
+      border-radius: 13px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--accent),
+          var(--accent2)
+        );
+
+      color: white;
+
+      font-family: inherit;
+
+      font-size: 14px;
+      font-weight: 900;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 8px 20px
+        rgba(54,209,124,.18);
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .random-button:hover {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 12px 25px
+        rgba(54,209,124,.25);
+    }
+
+    .random-button:active {
+      transform: scale(.97);
+    }
+
+    /* نتیجه بازیکن تصادفی */
+
+    .random-result {
+      display: none;
+
+      margin-top: 15px;
+
+      padding: 13px;
+
+      border-radius: 14px;
+
+      background: rgba(54,209,124,.09);
+
+      border:
+        1px solid rgba(54,209,124,.20);
+    }
+
+    .random-result.show {
+      display: block;
+
+      animation: randomIn .25s ease;
+    }
+
+    @keyframes randomIn {
+      from {
+        opacity: 0;
+        transform: translateY(7px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .random-result-name {
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .random-result-age {
+      margin-top: 5px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    /* =========================
+       GAME ENTRY
+    ========================= */
+
+    .game-entry {
+      margin-bottom: 28px;
+    }
+
+    .game-entry-button {
+      width: 100%;
+
+      min-height: 76px;
+
+      padding: 15px 20px;
+
+      border:
+        1px solid rgba(54,209,124,.22);
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(54,209,124,.14),
+          rgba(31,169,255,.10)
+        );
+
+      color: var(--text);
+
+      cursor: pointer;
+
+      font-family: inherit;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+
+      text-align: right;
+
+      box-shadow: var(--shadow);
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease;
+    }
+
+    .game-entry-button:hover {
+      transform: translateY(-2px);
+
+      border-color:
+        rgba(54,209,124,.45);
+    }
+
+    .game-entry-main {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .game-entry-icon {
+      width: 48px;
+      height: 48px;
+
+      flex-shrink: 0;
+
+      border-radius: 14px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background:
+        rgba(54,209,124,.16);
+
+      font-size: 24px;
+    }
+
+    .game-entry-title {
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .game-entry-desc {
+      margin-top: 4px;
+
+      color: var(--muted);
+
+      font-size: 11px;
+    }
+
+    .game-entry-arrow {
+      font-size: 24px;
+      color: var(--accent);
+    }
+
+    /* =========================
        PEOPLE GRID
     ========================= */
 
@@ -370,7 +592,9 @@
 
     .person-card:hover {
       transform: translateY(-5px);
-      border-color: rgba(54,209,124,.35);
+
+      border-color:
+        rgba(54,209,124,.35);
     }
 
     .person-image {
@@ -396,6 +620,7 @@
 
     .person-position {
       color: var(--muted);
+
       font-size: 13px;
       line-height: 1.7;
     }
@@ -408,12 +633,422 @@
       grid-column: 1 / -1;
 
       text-align: center;
+
       padding: 50px 20px;
 
       color: var(--muted);
 
-      border: 1px dashed var(--border);
+      border:
+        1px dashed var(--border);
+
       border-radius: 20px;
+    }
+
+    /* =========================
+       GAME PAGE
+    ========================= */
+
+    #gamePage {
+      display: none;
+    }
+
+    #gamePage.active {
+      display: block;
+    }
+
+    #homePage.hidden {
+      display: none;
+    }
+
+    .game-page-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+
+      margin-bottom: 22px;
+    }
+
+    .game-page-title {
+      margin: 0;
+
+      font-size:
+        clamp(24px, 5vw, 34px);
+
+      font-weight: 900;
+    }
+
+    .back-button {
+      border: 1px solid var(--border);
+
+      border-radius: 12px;
+
+      padding: 10px 15px;
+
+      background: var(--card);
+
+      color: var(--text);
+
+      cursor: pointer;
+
+      font-family: inherit;
+
+      font-size: 13px;
+      font-weight: 800;
+
+      box-shadow: var(--shadow);
+    }
+
+    .game-description {
+      color: var(--muted);
+
+      margin:
+        -10px 0 22px;
+
+      font-size: 13px;
+    }
+
+    .teams {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 24px;
+    }
+
+    .team-card {
+      padding: 15px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 23px;
+
+      background: var(--card);
+
+      box-shadow: var(--shadow);
+    }
+
+    .team-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 14px;
+    }
+
+    .team-name {
+      margin: 0;
+
+      font-size: 20px;
+
+      font-weight: 900;
+    }
+
+    .team-number {
+      width: 36px;
+      height: 36px;
+
+      border-radius: 11px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background:
+        rgba(54,209,124,.13);
+
+      color: var(--accent);
+
+      font-weight: 900;
+    }
+
+    /* زمین */
+
+    .game-pitch-wrapper {
+      padding: 10px;
+
+      border-radius: 19px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #151f2d,
+          #0c1623
+        );
+    }
+
+    .game-pitch {
+      position: relative;
+
+      width: 100%;
+
+      aspect-ratio: 9 / 16;
+
+      overflow: hidden;
+
+      border-radius: 14px;
+
+      background:
+        repeating-linear-gradient(
+          0deg,
+          #16814d 0,
+          #16814d 9%,
+          #1a8d55 9%,
+          #1a8d55 18%
+        );
+
+      border:
+        3px solid rgba(255,255,255,.85);
+    }
+
+    .game-pitch::before {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+
+      top: 50%;
+
+      height: 2px;
+
+      background:
+        rgba(255,255,255,.82);
+
+      transform:
+        translateY(-50%);
+    }
+
+    .game-pitch-center {
+      position: absolute;
+
+      left: 50%;
+      top: 50%;
+
+      width: 23%;
+
+      aspect-ratio: 1;
+
+      border:
+        2px solid rgba(255,255,255,.82);
+
+      border-radius: 50%;
+
+      transform:
+        translate(-50%, -50%);
+    }
+
+    .game-pitch-dot {
+      position: absolute;
+
+      left: 50%;
+      top: 50%;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: white;
+
+      transform:
+        translate(-50%, -50%);
+    }
+
+    .game-penalty {
+      position: absolute;
+
+      left: 25%;
+      width: 50%;
+      height: 13%;
+
+      border:
+        2px solid rgba(255,255,255,.82);
+    }
+
+    .game-penalty.top {
+      top: -1px;
+
+      border-top: 0;
+
+      border-radius:
+        0 0 35% 35%;
+    }
+
+    .game-penalty.bottom {
+      bottom: -1px;
+
+      border-bottom: 0;
+
+      border-radius:
+        35% 35% 0 0;
+    }
+
+    .game-goal {
+      position: absolute;
+
+      left: 39%;
+
+      width: 22%;
+      height: 3%;
+
+      border:
+        2px solid rgba(255,255,255,.85);
+    }
+
+    .game-goal.top {
+      top: -3px;
+
+      border-top: 0;
+    }
+
+    .game-goal.bottom {
+      bottom: -3px;
+
+      border-bottom: 0;
+    }
+
+    .game-player {
+      position: absolute;
+
+      transform:
+        translate(-50%, -50%);
+
+      width: 75px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      cursor: pointer;
+
+      z-index: 5;
+
+      transition:
+        transform .2s ease;
+    }
+
+    .game-player:hover {
+      transform:
+        translate(-50%, -50%)
+        scale(1.08);
+    }
+
+    .game-player img {
+      width: 48px;
+      height: 48px;
+
+      object-fit: cover;
+
+      border-radius: 50%;
+
+      border:
+        3px solid white;
+
+      box-shadow:
+        0 5px 14px rgba(0,0,0,.35);
+
+      background: #222;
+    }
+
+    .game-player-name {
+      max-width: 75px;
+
+      margin-top: 5px;
+
+      padding:
+        3px 6px;
+
+      border-radius: 7px;
+
+      background:
+        rgba(0,0,0,.72);
+
+      color: white;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      white-space: nowrap;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+    }
+
+    .game-player-role {
+      margin-top: 2px;
+
+      color: white;
+
+      font-size: 7px;
+
+      opacity: .9;
+    }
+
+    /* نیمکت */
+
+    .bench {
+      margin-top: 15px;
+
+      padding: 12px;
+
+      border-radius: 16px;
+
+      background:
+        rgba(127,127,127,.08);
+
+      border:
+        1px solid var(--border);
+    }
+
+    .bench-title {
+      margin-bottom: 9px;
+
+      color: var(--muted);
+
+      font-size: 11px;
+
+      font-weight: 800;
+    }
+
+    .bench-player {
+      display: flex;
+      align-items: center;
+
+      gap: 10px;
+
+      cursor: pointer;
+    }
+
+    .bench-player img {
+      width: 42px;
+      height: 42px;
+
+      border-radius: 50%;
+
+      object-fit: cover;
+
+      border:
+        2px solid var(--accent);
+    }
+
+    .bench-name {
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .bench-role {
+      margin-top: 3px;
+
+      color: var(--muted);
+
+      font-size: 10px;
     }
 
     /* =========================
@@ -424,7 +1059,7 @@
       position: fixed;
       inset: 0;
 
-      z-index: 2000;
+      z-index: 4000;
 
       display: none;
 
@@ -433,7 +1068,8 @@
 
       padding: 20px;
 
-      background: rgba(0,0,0,.68);
+      background:
+        rgba(0,0,0,.68);
 
       backdrop-filter: blur(8px);
     }
@@ -446,6 +1082,7 @@
       width: min(650px, 100%);
 
       max-height: 92vh;
+
       overflow-y: auto;
 
       position: relative;
@@ -454,17 +1091,21 @@
 
       background: var(--card2);
 
-      border: 1px solid var(--border);
+      border:
+        1px solid var(--border);
 
       box-shadow:
         0 30px 80px rgba(0,0,0,.35);
 
-      animation: modalIn .25s ease;
+      animation:
+        modalIn .25s ease;
     }
 
     @keyframes modalIn {
+
       from {
         opacity: 0;
+
         transform:
           translateY(25px)
           scale(.98);
@@ -472,10 +1113,12 @@
 
       to {
         opacity: 1;
+
         transform:
           translateY(0)
           scale(1);
       }
+
     }
 
     .close-modal {
@@ -488,13 +1131,16 @@
       height: 38px;
 
       border: 0;
+
       border-radius: 50%;
 
-      background: rgba(0,0,0,.35);
+      background:
+        rgba(0,0,0,.35);
 
       color: white;
 
       cursor: pointer;
+
       font-size: 18px;
 
       z-index: 3;
@@ -503,9 +1149,11 @@
     .profile-image {
       width: 100%;
 
-      height: min(390px, 65vw);
+      height:
+        min(390px, 65vw);
 
       object-fit: cover;
+
       display: block;
 
       background: #111;
@@ -516,16 +1164,19 @@
     }
 
     .profile-name {
-      margin: 0 0 18px;
+      margin:
+        0 0 18px;
 
       font-size: 25px;
+
       font-weight: 900;
     }
 
     .profile-grid {
       display: grid;
 
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns:
+        repeat(2, 1fr);
 
       gap: 10px;
     }
@@ -538,7 +1189,8 @@
       background:
         rgba(127,127,127,.08);
 
-      border: 1px solid var(--border);
+      border:
+        1px solid var(--border);
     }
 
     .detail.full {
@@ -551,12 +1203,15 @@
       margin-bottom: 6px;
 
       color: var(--muted);
+
       font-size: 11px;
     }
 
     .detail-value {
       font-size: 14px;
+
       font-weight: 800;
+
       line-height: 1.7;
     }
 
@@ -580,12 +1235,15 @@
 
     .timer-title {
       color: var(--muted);
+
       font-size: 12px;
+
       margin-bottom: 5px;
     }
 
     .timer-value {
       font-size: 16px;
+
       font-weight: 900;
     }
 
@@ -612,9 +1270,16 @@
     ========================= */
 
     @media (max-width: 900px) {
+
       #peopleGrid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+          repeat(2, 1fr);
       }
+
+      .teams {
+        grid-template-columns: 1fr;
+      }
+
     }
 
     /* =========================
@@ -624,7 +1289,8 @@
     @media (max-width: 650px) {
 
       header {
-        padding: 25px 15px 18px;
+        padding:
+          25px 15px 18px;
       }
 
       .logo {
@@ -647,7 +1313,9 @@
       }
 
       main {
-        width: min(100% - 18px, 600px);
+        width:
+          min(100% - 18px, 600px);
+
         margin-bottom: 35px;
       }
 
@@ -661,22 +1329,27 @@
 
       .search-wrap {
         top: 6px;
+
         margin-bottom: 17px;
       }
 
       .search {
         height: 48px;
+
         border-radius: 15px;
+
         font-size: 14px;
       }
 
       .birthday-section {
         border-radius: 17px;
+
         margin-bottom: 18px;
       }
 
       .birthday-header {
         padding: 14px;
+
         font-size: 14px;
       }
 
@@ -691,6 +1364,7 @@
 
       .birthday-row {
         padding: 10px;
+
         gap: 9px;
       }
 
@@ -700,6 +1374,55 @@
 
       .birthday-countdown {
         font-size: 10px;
+      }
+
+      .random-section {
+        padding: 15px;
+
+        margin-bottom: 18px;
+
+        border-radius: 17px;
+      }
+
+      .random-title {
+        font-size: 15px;
+      }
+
+      .random-button {
+        width: 100%;
+      }
+
+      .game-entry {
+        margin-bottom: 18px;
+      }
+
+      .game-entry-button {
+        min-height: 68px;
+
+        padding: 12px 14px;
+
+        border-radius: 17px;
+      }
+
+      .game-entry-icon {
+        width: 42px;
+        height: 42px;
+
+        border-radius: 12px;
+
+        font-size: 21px;
+      }
+
+      .game-entry-title {
+        font-size: 14px;
+      }
+
+      .game-entry-desc {
+        font-size: 9px;
+      }
+
+      .game-entry-arrow {
+        font-size: 20px;
       }
 
       #peopleGrid {
@@ -719,18 +1442,109 @@
 
       .person-name {
         font-size: 13px;
+
         margin-bottom: 4px;
       }
 
       .person-position {
         font-size: 10px;
+
         line-height: 1.6;
+      }
+
+      /* GAME PAGE */
+
+      .game-page-header {
+        align-items: flex-start;
+      }
+
+      .game-page-title {
+        font-size: 23px;
+      }
+
+      .back-button {
+        padding:
+          9px 11px;
+
+        font-size: 11px;
+      }
+
+      .game-description {
+        font-size: 10px;
+      }
+
+      .team-card {
+        padding: 11px;
+
+        border-radius: 18px;
+      }
+
+      .team-name {
+        font-size: 17px;
+      }
+
+      .game-pitch-wrapper {
+        padding: 7px;
+
+        border-radius: 16px;
+      }
+
+      .game-pitch {
+        border-radius: 12px;
+
+        border-width: 2px;
+      }
+
+      .game-player {
+        width: 60px;
+      }
+
+      .game-player img {
+        width: 38px;
+        height: 38px;
+
+        border-width: 2px;
+      }
+
+      .game-player-name {
+        max-width: 60px;
+
+        padding:
+          2px 4px;
+
+        font-size: 6px;
+      }
+
+      .game-player-role {
+        display: none;
+      }
+
+      .bench {
+        margin-top: 10px;
+
+        padding: 9px;
+
+        border-radius: 13px;
+      }
+
+      .bench-player img {
+        width: 36px;
+        height: 36px;
+      }
+
+      .bench-name {
+        font-size: 11px;
+      }
+
+      .bench-role {
+        font-size: 9px;
       }
 
       /* MODAL */
 
       .modal {
         padding: 0;
+
         align-items: flex-end;
       }
 
@@ -747,11 +1561,13 @@
       @keyframes sheetIn {
 
         from {
-          transform: translateY(100%);
+          transform:
+            translateY(100%);
         }
 
         to {
-          transform: translateY(0);
+          transform:
+            translateY(0);
         }
 
       }
@@ -766,6 +1582,7 @@
 
       .profile-name {
         font-size: 21px;
+
         margin-bottom: 14px;
       }
 
@@ -775,6 +1592,7 @@
 
       .detail {
         padding: 11px;
+
         border-radius: 13px;
       }
 
@@ -788,12 +1606,14 @@
 
       .birthday-timer {
         margin-top: 10px;
+
         padding: 12px;
       }
 
       .timer-value {
         font-size: 13px;
       }
+
     }
 
     /* =========================
@@ -825,14 +1645,18 @@
       .detail.full {
         grid-column: auto;
       }
+
     }
 
   </style>
 </head>
 
+
 <body>
 
-  <!-- دکمه حالت شب و روز -->
+  <!-- =========================
+       دکمه حالت شب و روز
+  ========================= -->
 
   <button
     id="themeToggle"
@@ -842,87 +1666,380 @@
   </button>
 
 
-  <!-- HEADER -->
+  <!-- ==================================================
+       صفحه اصلی
+  ================================================== -->
 
-  <header>
+  <div id="homePage">
 
-    <div class="header-box">
+    <header>
 
-      <div class="logo">
-        ⚽
+      <div class="header-box">
+
+        <div class="logo">
+          ⚽
+        </div>
+
+        <h1>
+          بچو ته خط
+        </h1>
+
+        <div class="subtitle">
+          معرفی بچه‌های تیم ⚽
+        </div>
+
       </div>
 
-      <h1>
-        بچو ته خط
-      </h1>
-
-      <div class="subtitle">
-        معرفی بچه‌های تیم ⚽
-      </div>
-
-    </div>
-
-  </header>
+    </header>
 
 
-  <main>
+    <main>
 
-    <!-- SEARCH -->
+      <!-- SEARCH -->
 
-    <div class="search-wrap">
+      <div class="search-wrap">
 
-      <input
-        id="searchInput"
-        class="search"
-        type="text"
-        placeholder="🔎 جستجوی اسم..."
-        autocomplete="off"
-      >
-
-    </div>
-
-
-    <!-- BIRTHDAYS -->
-
-    <section
-      class="birthday-section"
-      id="birthdaySection"
-    >
-
-      <button
-        class="birthday-header"
-        id="birthdayToggle"
-      >
-
-        <span>
-          🎂 نزدیک‌ترین تولدها
-        </span>
-
-        <span
-          class="birthday-open-icon"
-          id="birthdayOpenIcon"
+        <input
+          id="searchInput"
+          class="search"
+          type="text"
+          placeholder="🔎 جستجوی اسم..."
+          autocomplete="off"
         >
-          +
-        </span>
 
-      </button>
-
-      <div
-        class="birthday-list"
-        id="birthdayList"
-      ></div>
-
-    </section>
+      </div>
 
 
-    <!-- PEOPLE -->
+      <!-- BIRTHDAYS -->
 
-    <section id="peopleGrid"></section>
+      <section
+        class="birthday-section"
+        id="birthdaySection"
+      >
 
-  </main>
+        <button
+          class="birthday-header"
+          id="birthdayToggle"
+        >
+
+          <span>
+            🎂 نزدیک‌ترین تولدها
+          </span>
+
+          <span
+            class="birthday-open-icon"
+            id="birthdayOpenIcon"
+          >
+            +
+          </span>
+
+        </button>
+
+        <div
+          class="birthday-list"
+          id="birthdayList"
+        ></div>
+
+      </section>
 
 
-  <!-- PROFILE MODAL -->
+      <!-- RANDOM PLAYER -->
+
+      <section class="random-section">
+
+        <div class="random-title">
+          🎲 بازیکن تصادفی
+        </div>
+
+        <div class="random-subtitle">
+          ببین امروز قرعه به نام کی می‌افته!
+        </div>
+
+        <button
+          class="random-button"
+          id="randomPlayerButton"
+        >
+          🎲 انتخاب بازیکن
+        </button>
+
+        <div
+          class="random-result"
+          id="randomResult"
+        >
+
+          <div
+            class="random-result-name"
+            id="randomResultName"
+          ></div>
+
+          <div
+            class="random-result-age"
+            id="randomResultAge"
+          ></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ورود به زمین -->
+
+      <section class="game-entry">
+
+        <button
+          class="game-entry-button"
+          id="enterGameButton"
+        >
+
+          <div class="game-entry-main">
+
+            <div class="game-entry-icon">
+              🏟️
+            </div>
+
+            <div>
+
+              <div class="game-entry-title">
+                ورود به زمین بازی
+              </div>
+
+              <div class="game-entry-desc">
+                مشاهده ترکیب دو تیم ۵ به ۵
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="game-entry-arrow">
+            ←
+          </div>
+
+        </button>
+
+      </section>
+
+
+      <!-- PEOPLE -->
+
+      <section id="peopleGrid"></section>
+
+    </main>
+
+  </div>
+
+
+  <!-- ==================================================
+       صفحه زمین بازی
+  ================================================== -->
+
+  <div id="gamePage">
+
+    <header>
+
+      <div class="header-box">
+
+        <div class="logo">
+          ⚽
+        </div>
+
+        <h1>
+          بچو ته خط
+        </h1>
+
+        <div class="subtitle">
+          ترکیب بازی ⚽
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <main>
+
+      <div class="game-page-header">
+
+        <h2 class="game-page-title">
+          🏟️ زمین بازی
+        </h2>
+
+        <button
+          class="back-button"
+          id="backHomeButton"
+        >
+          → صفحه اصلی
+        </button>
+
+      </div>
+
+
+      <div class="game-description">
+        ترکیب ۵ به ۵ بچه‌ها در زمین فوتسال
+      </div>
+
+
+      <div class="teams">
+
+
+        <!-- =========================
+             تیم یک
+        ========================= -->
+
+        <section class="team-card">
+
+          <div class="team-header">
+
+            <h3 class="team-name">
+              تیم یک
+            </h3>
+
+            <div class="team-number">
+              ۱
+            </div>
+
+          </div>
+
+
+          <div class="game-pitch-wrapper">
+
+            <div
+              class="game-pitch"
+              id="teamOnePitch"
+            >
+
+              <div
+                class="game-pitch-center"
+              ></div>
+
+              <div
+                class="game-pitch-dot"
+              ></div>
+
+              <div
+                class="game-penalty top"
+              ></div>
+
+              <div
+                class="game-penalty bottom"
+              ></div>
+
+              <div
+                class="game-goal top"
+              ></div>
+
+              <div
+                class="game-goal bottom"
+              ></div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =========================
+             تیم دو
+        ========================= -->
+
+        <section class="team-card">
+
+          <div class="team-header">
+
+            <h3 class="team-name">
+              تیم دو
+            </h3>
+
+            <div class="team-number">
+              ۲
+            </div>
+
+          </div>
+
+
+          <div class="game-pitch-wrapper">
+
+            <div
+              class="game-pitch"
+              id="teamTwoPitch"
+            >
+
+              <div
+                class="game-pitch-center"
+              ></div>
+
+              <div
+                class="game-pitch-dot"
+              ></div>
+
+              <div
+                class="game-penalty top"
+              ></div>
+
+              <div
+                class="game-penalty bottom"
+              ></div>
+
+              <div
+                class="game-goal top"
+              ></div>
+
+              <div
+                class="game-goal bottom"
+              ></div>
+
+            </div>
+
+          </div>
+
+
+          <!-- نیمکت تیم دو -->
+
+          <div class="bench">
+
+            <div class="bench-title">
+              🪑 نیمکت — تعویضی تیم دو
+            </div>
+
+            <div
+              class="bench-player"
+              id="benchAmirali"
+            >
+
+              <img
+                src="images/amiralia.jpg"
+                alt="امیر علی آرامش"
+              >
+
+              <div>
+
+                <div class="bench-name">
+                  امیر علی آرامش
+                </div>
+
+                <div class="bench-role">
+                  تعویضی
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+    </main>
+
+  </div>
+
+
+  <!-- ==================================================
+       PROFILE MODAL
+  ================================================== -->
 
   <div
     class="modal"
@@ -938,12 +2055,14 @@
         ✕
       </button>
 
+
       <img
         id="profileImage"
         class="profile-image"
         src=""
         alt=""
       >
+
 
       <div class="profile-content">
 
@@ -956,6 +2075,7 @@
         <div class="profile-grid">
 
           <div class="detail">
+
             <span class="detail-label">
               سن
             </span>
@@ -964,10 +2084,12 @@
               class="detail-value"
               id="profileAge"
             ></span>
+
           </div>
 
 
           <div class="detail">
+
             <span class="detail-label">
               تاریخ تولد
             </span>
@@ -976,10 +2098,12 @@
               class="detail-value"
               id="profileBirth"
             ></span>
+
           </div>
 
 
           <div class="detail">
+
             <span class="detail-label">
               مدرسه / مرکز آموزشی
             </span>
@@ -988,10 +2112,12 @@
               class="detail-value"
               id="profileSchool"
             ></span>
+
           </div>
 
 
           <div class="detail">
+
             <span class="detail-label">
               پایه
             </span>
@@ -1000,10 +2126,12 @@
               class="detail-value"
               id="profileGrade"
             ></span>
+
           </div>
 
 
           <div class="detail full">
+
             <span class="detail-label">
               رشته تحصیلی
             </span>
@@ -1012,10 +2140,12 @@
               class="detail-value"
               id="profileField"
             ></span>
+
           </div>
 
 
           <div class="detail full">
+
             <span class="detail-label">
               پست فوتسال
             </span>
@@ -1024,6 +2154,7 @@
               class="detail-value"
               id="profileFutsal"
             ></span>
+
           </div>
 
         </div>
@@ -1053,9 +2184,9 @@
 
   <script>
 
-    /* =========================
+    /* ==================================================
        اطلاعات افراد
-    ========================= */
+    ================================================== */
 
     const people = [
 
@@ -1079,7 +2210,8 @@
         grade: "پایه دو",
         field: "حوزه",
         futsal: "مهاجم",
-        image: "images/yoosef.jpg"
+        image:
+          "images/yoosef.jpg"
       },
 
       {
@@ -1090,7 +2222,8 @@
         grade: "یازدهم",
         field: "ریاضی فیزیک",
         futsal: "هافبک",
-        image: "images/aahmad.jpg"
+        image:
+          "images/aahmad.jpg"
       },
 
       {
@@ -1101,7 +2234,8 @@
         grade: "دهم",
         field: "تجربی",
         futsal: "مهاجم / وینگر چپ",
-        image: "images/taha.jpg"
+        image:
+          "images/taha.jpg"
       },
 
       {
@@ -1112,7 +2246,8 @@
         grade: "یازدهم",
         field: "ریاضی فیزیک",
         futsal: "دروازه‌بان",
-        image: "images/alireza.jfif"
+        image:
+          "images/alireza.jfif"
       },
 
       {
@@ -1123,7 +2258,8 @@
         grade: "یازدهم",
         field: "ریاضی فیزیک",
         futsal: "مهاجم / هافبک",
-        image: "images/ehsan.jpg"
+        image:
+          "images/ehsan.jpg"
       },
 
       {
@@ -1135,7 +2271,8 @@
         field: "ریاضی فیزیک",
         futsal:
           "دروازه‌بان / دفاع / هافبک / مهاجم",
-        image: "images/amirabbas.jpg"
+        image:
+          "images/amirabbas.jpg"
       },
 
       {
@@ -1147,7 +2284,8 @@
         field: "ریاضی فیزیک",
         futsal:
           "دفاع راست / دفاع وسط",
-        image: "images/erfan.jpg"
+        image:
+          "images/erfan.jpg"
       },
 
       {
@@ -1157,8 +2295,10 @@
         school: "خاتم",
         grade: "یازدهم",
         field: "کامپیوتر",
-        futsal: "دفاع",
-        image: "images/aadel.jpg"
+        futsal:
+          "دفاع",
+        image:
+          "images/aadel.jpg"
       },
 
       {
@@ -1168,8 +2308,10 @@
         school: "قائم آل محمد",
         grade: "یازدهم",
         field: "تجربی",
-        futsal: "همه‌جا",
-        image: "images/matin.jpg"
+        futsal:
+          "همه‌جا",
+        image:
+          "images/matin.jpg"
       },
 
       {
@@ -1179,78 +2321,161 @@
         school: "دانشگاه",
         grade: "ثبت نشده",
         field: "ریاضی فیزیک",
-        futsal: "همه‌جا",
-        image: "images/amiralia.jpg"
+        futsal:
+          "همه‌جا",
+        image:
+          "images/amiralia.jpg"
       }
 
     ];
 
 
-    /* =========================
+    /* ==================================================
        ELEMENTS
-    ========================= */
+    ================================================== */
+
+    const homePage =
+      document.getElementById(
+        "homePage"
+      );
+
+    const gamePage =
+      document.getElementById(
+        "gamePage"
+      );
+
+    const enterGameButton =
+      document.getElementById(
+        "enterGameButton"
+      );
+
+    const backHomeButton =
+      document.getElementById(
+        "backHomeButton"
+      );
 
     const peopleGrid =
-      document.getElementById("peopleGrid");
+      document.getElementById(
+        "peopleGrid"
+      );
 
     const searchInput =
-      document.getElementById("searchInput");
+      document.getElementById(
+        "searchInput"
+      );
 
     const birthdaySection =
-      document.getElementById("birthdaySection");
+      document.getElementById(
+        "birthdaySection"
+      );
 
     const birthdayToggle =
-      document.getElementById("birthdayToggle");
+      document.getElementById(
+        "birthdayToggle"
+      );
 
     const birthdayList =
-      document.getElementById("birthdayList");
+      document.getElementById(
+        "birthdayList"
+      );
 
     const modal =
-      document.getElementById("profileModal");
+      document.getElementById(
+        "profileModal"
+      );
 
     const closeModal =
-      document.getElementById("closeModal");
+      document.getElementById(
+        "closeModal"
+      );
 
     const profileImage =
-      document.getElementById("profileImage");
+      document.getElementById(
+        "profileImage"
+      );
 
     const profileName =
-      document.getElementById("profileName");
+      document.getElementById(
+        "profileName"
+      );
 
     const profileAge =
-      document.getElementById("profileAge");
+      document.getElementById(
+        "profileAge"
+      );
 
     const profileBirth =
-      document.getElementById("profileBirth");
+      document.getElementById(
+        "profileBirth"
+      );
 
     const profileSchool =
-      document.getElementById("profileSchool");
+      document.getElementById(
+        "profileSchool"
+      );
 
     const profileGrade =
-      document.getElementById("profileGrade");
+      document.getElementById(
+        "profileGrade"
+      );
 
     const profileField =
-      document.getElementById("profileField");
+      document.getElementById(
+        "profileField"
+      );
 
     const profileFutsal =
-      document.getElementById("profileFutsal");
+      document.getElementById(
+        "profileFutsal"
+      );
 
     const birthdayTimer =
-      document.getElementById("birthdayTimer");
+      document.getElementById(
+        "birthdayTimer"
+      );
 
     const themeToggle =
-      document.getElementById("themeToggle");
+      document.getElementById(
+        "themeToggle"
+      );
+
+    const randomPlayerButton =
+      document.getElementById(
+        "randomPlayerButton"
+      );
+
+    const randomResult =
+      document.getElementById(
+        "randomResult"
+      );
+
+    const randomResultName =
+      document.getElementById(
+        "randomResultName"
+      );
+
+    const randomResultAge =
+      document.getElementById(
+        "randomResultAge"
+      );
+
+    const benchAmirali =
+      document.getElementById(
+        "benchAmirali"
+      );
 
 
     let selectedPerson = null;
     let timerInterval = null;
 
 
-    /* =========================
+    /* ==================================================
        نمایش افراد
-    ========================= */
+    ================================================== */
 
-    function renderPeople(list = people) {
+    function renderPeople(
+      list = people
+    ) {
 
       peopleGrid.innerHTML = "";
 
@@ -1266,58 +2491,69 @@
       }
 
 
-      list.forEach(person => {
+      list.forEach(
+        person => {
 
-        const originalIndex =
-          people.indexOf(person);
-
-        const card =
-          document.createElement("article");
-
-        card.className =
-          "person-card";
+          const originalIndex =
+            people.indexOf(person);
 
 
-        card.innerHTML = `
+          const card =
+            document.createElement(
+              "article"
+            );
 
-          <img
-            class="person-image"
-            src="${person.image}"
-            alt="${person.name}"
-            loading="lazy"
-          >
 
-          <div class="person-info">
+          card.className =
+            "person-card";
 
-            <h2 class="person-name">
-              ${person.name}
-            </h2>
 
-            <div class="person-position">
-              ⚽ ${person.futsal}
+          card.innerHTML = `
+
+            <img
+              class="person-image"
+              src="${person.image}"
+              alt="${person.name}"
+              loading="lazy"
+            >
+
+            <div class="person-info">
+
+              <h2 class="person-name">
+                ${person.name}
+              </h2>
+
+              <div class="person-position">
+                ⚽ ${person.futsal}
+              </div>
+
             </div>
 
-          </div>
-
-        `;
+          `;
 
 
-        card.addEventListener(
-          "click",
-          () => openProfile(originalIndex)
-        );
+          card.addEventListener(
+            "click",
+            () =>
+              openProfile(
+                originalIndex
+              )
+          );
 
 
-        peopleGrid.appendChild(card);
+          peopleGrid.appendChild(
+            card
+          );
 
-      });
+        }
+      );
 
     }
 
 
-    /* =========================
+    /* ==================================================
        جستجو
-    ========================= */
+    ================================================== */
 
     searchInput.addEventListener(
       "input",
@@ -1338,17 +2574,21 @@
           );
 
 
-        renderPeople(filtered);
+        renderPeople(
+          filtered
+        );
 
       }
     );
 
 
-    /* =========================
+    /* ==================================================
        تاریخ شمسی
-    ========================= */
+    ================================================== */
 
-    function getPersianDate(date) {
+    function getPersianDate(
+      date
+    ) {
 
       const formatter =
         new Intl.DateTimeFormat(
@@ -1362,37 +2602,44 @@
 
 
       const parts =
-        formatter.formatToParts(date);
+        formatter.formatToParts(
+          date
+        );
 
 
       const result = {};
 
 
-      parts.forEach(part => {
+      parts.forEach(
+        part => {
 
-        if (
-          part.type === "year" ||
-          part.type === "month" ||
-          part.type === "day"
-        ) {
+          if (
+            part.type === "year" ||
+            part.type === "month" ||
+            part.type === "day"
+          ) {
 
-          result[part.type] =
-            Number(part.value);
+            result[part.type] =
+              Number(part.value);
+
+          }
 
         }
-
-      });
+      );
 
 
       return result;
+
     }
 
 
-    /* =========================
-       نزدیک‌ترین تولد
-    ========================= */
+    /* ==================================================
+       تولد بعدی
+    ================================================== */
 
-    function getNextBirthday(person) {
+    function getNextBirthday(
+      person
+    ) {
 
       const birthParts =
         person.birth
@@ -1411,14 +2658,21 @@
         new Date();
 
 
-      for (let i = 0; i <= 370; i++) {
+      for (
+        let i = 0;
+        i <= 370;
+        i++
+      ) {
 
         const candidate =
           new Date(now);
 
 
         candidate.setHours(
-          0, 0, 0, 0
+          0,
+          0,
+          0,
+          0
         );
 
 
@@ -1428,7 +2682,9 @@
 
 
         const persian =
-          getPersianDate(candidate);
+          getPersianDate(
+            candidate
+          );
 
 
         if (
@@ -1445,14 +2701,17 @@
 
 
       return null;
+
     }
 
 
-    /* =========================
+    /* ==================================================
        شمارش معکوس
-    ========================= */
+    ================================================== */
 
-    function getCountdown(target) {
+    function getCountdown(
+      target
+    ) {
 
       const now =
         new Date();
@@ -1507,59 +2766,76 @@
     }
 
 
-    function getShortCountdown(target) {
+    function getShortCountdown(
+      target
+    ) {
 
       const c =
-        getCountdown(target);
+        getCountdown(
+          target
+        );
 
 
       if (c.day > 0) {
         return `${c.day} روز`;
       }
 
-
       if (c.hour > 0) {
         return `${c.hour} ساعت`;
       }
-
 
       if (c.minute > 0) {
         return `${c.minute} دقیقه`;
       }
 
-
       return `${c.second} ثانیه`;
+
     }
 
 
-    /* =========================
+    /* ==================================================
        لیست تولدها
-    ========================= */
+    ================================================== */
 
     function renderBirthdays() {
 
       const sorted =
         people
-          .map((person, index) => ({
-            person,
-            index,
-            date: getNextBirthday(person)
-          }))
-          .filter(item => item.date)
+          .map(
+            (person, index) => ({
+
+              person,
+              index,
+
+              date:
+                getNextBirthday(
+                  person
+                )
+
+            })
+          )
+
+          .filter(
+            item => item.date
+          )
+
           .sort(
             (a, b) =>
               a.date - b.date
           );
 
 
-      birthdayList.innerHTML = "";
+      birthdayList.innerHTML =
+        "";
 
 
       sorted.forEach(
         (item, position) => {
 
           const row =
-            document.createElement("div");
+            document.createElement(
+              "div"
+            );
 
 
           row.className =
@@ -1577,7 +2853,9 @@
             </div>
 
             <div class="birthday-countdown">
-              ${getShortCountdown(item.date)}
+              ${getShortCountdown(
+                item.date
+              )}
             </div>
 
           `;
@@ -1586,11 +2864,15 @@
           row.addEventListener(
             "click",
             () =>
-              openProfile(item.index)
+              openProfile(
+                item.index
+              )
           );
 
 
-          birthdayList.appendChild(row);
+          birthdayList.appendChild(
+            row
+          );
 
         }
       );
@@ -1598,9 +2880,9 @@
     }
 
 
-    /* =========================
+    /* ==================================================
        باز و بسته شدن تولدها
-    ========================= */
+    ================================================== */
 
     birthdayToggle.addEventListener(
       "click",
@@ -1623,11 +2905,13 @@
           )
         ) {
 
-          icon.textContent = "−";
+          icon.textContent =
+            "−";
 
         } else {
 
-          icon.textContent = "+";
+          icon.textContent =
+            "+";
 
         }
 
@@ -1635,11 +2919,356 @@
     );
 
 
-    /* =========================
-       پروفایل
-    ========================= */
+    /* ==================================================
+       بازیکن تصادفی
+    ================================================== */
 
-    function openProfile(index) {
+    randomPlayerButton.addEventListener(
+      "click",
+      () => {
+
+        const randomIndex =
+          Math.floor(
+            Math.random() *
+            people.length
+          );
+
+
+        const person =
+          people[randomIndex];
+
+
+        randomResultName.textContent =
+          person.name;
+
+
+        randomResultAge.textContent =
+          `سن: ${person.age} سال`;
+
+
+        randomResult.classList.add(
+          "show"
+        );
+
+      }
+    );
+
+
+    /* ==================================================
+       صفحه زمین بازی
+    ================================================== */
+
+    enterGameButton.addEventListener(
+      "click",
+      () => {
+
+        homePage.classList.add(
+          "hidden"
+        );
+
+        gamePage.classList.add(
+          "active"
+        );
+
+        window.scrollTo({
+          top: 0,
+          behavior: "instant"
+        });
+
+      }
+    );
+
+
+    backHomeButton.addEventListener(
+      "click",
+      () => {
+
+        gamePage.classList.remove(
+          "active"
+        );
+
+        homePage.classList.remove(
+          "hidden"
+        );
+
+        window.scrollTo({
+          top: 0,
+          behavior: "instant"
+        });
+
+      }
+    );
+
+
+    /* ==================================================
+       پیدا کردن شخص
+    ================================================== */
+
+    function findPerson(
+      name
+    ) {
+
+      return people.find(
+        person =>
+          person.name === name
+      );
+
+    }
+
+
+    /* ==================================================
+       اضافه کردن بازیکن به زمین
+    ================================================== */
+
+    function addGamePlayer(
+      pitchElement,
+      personName,
+      x,
+      y,
+      role
+    ) {
+
+      const person =
+        findPerson(
+          personName
+        );
+
+
+      if (!person) {
+        return;
+      }
+
+
+      const player =
+        document.createElement(
+          "div"
+        );
+
+
+      player.className =
+        "game-player";
+
+
+      player.style.left =
+        x + "%";
+
+
+      player.style.top =
+        y + "%";
+
+
+      player.innerHTML = `
+
+        <img
+          src="${person.image}"
+          alt="${person.name}"
+        >
+
+        <div class="game-player-name">
+          ${person.name}
+        </div>
+
+        <div class="game-player-role">
+          ${role}
+        </div>
+
+      `;
+
+
+      player.addEventListener(
+        "click",
+        () => {
+
+          const index =
+            people.indexOf(
+              person
+            );
+
+          openProfile(index);
+
+        }
+      );
+
+
+      pitchElement.appendChild(
+        player
+      );
+
+    }
+
+
+    /* ==================================================
+       ساخت ترکیب تیم‌ها
+    ================================================== */
+
+    function buildGameTeams() {
+
+      const teamOnePitch =
+        document.getElementById(
+          "teamOnePitch"
+        );
+
+      const teamTwoPitch =
+        document.getElementById(
+          "teamTwoPitch"
+        );
+
+
+      /*
+        تیم یک
+
+        دروازبان:
+        علیرضا مختاری
+
+        دفاع عقب:
+        عرفان
+        امیر عباس
+
+        جلو:
+        طاها
+        یوسف
+      */
+
+
+      addGamePlayer(
+        teamOnePitch,
+        "علیرضا مختاری",
+        50,
+        91,
+        "دروازه‌بان"
+      );
+
+
+      addGamePlayer(
+        teamOnePitch,
+        "عرفان بابائی",
+        30,
+        68,
+        "دفاع"
+      );
+
+
+      addGamePlayer(
+        teamOnePitch,
+        "امیر عباس فیروز",
+        70,
+        68,
+        "دفاع"
+      );
+
+
+      addGamePlayer(
+        teamOnePitch,
+        "طاها شبان",
+        35,
+        28,
+        "مهاجم"
+      );
+
+
+      addGamePlayer(
+        teamOnePitch,
+        "یوسف سالاری",
+        65,
+        28,
+        "مهاجم"
+      );
+
+
+      /*
+        تیم دو
+
+        دروازبان:
+        سجاد حسنی تبار
+
+        دفاع عقب:
+        عادل
+        متین
+
+        جلو:
+        احسان
+        احمد
+      */
+
+
+      addGamePlayer(
+        teamTwoPitch,
+        "سجاد حسنی تبار",
+        50,
+        91,
+        "دروازه‌بان"
+      );
+
+
+      addGamePlayer(
+        teamTwoPitch,
+        "عادل نصیری",
+        30,
+        68,
+        "دفاع"
+      );
+
+
+      addGamePlayer(
+        teamTwoPitch,
+        "متین جوان",
+        70,
+        68,
+        "دفاع"
+      );
+
+
+      addGamePlayer(
+        teamTwoPitch,
+        "احسان آرام",
+        35,
+        28,
+        "جلو"
+      );
+
+
+      addGamePlayer(
+        teamTwoPitch,
+        "احمد اسماعیل زاده",
+        65,
+        28,
+        "جلو"
+      );
+
+    }
+
+
+    /* ==================================================
+       کلیک روی امیر علی از نیمکت
+    ================================================== */
+
+    benchAmirali.addEventListener(
+      "click",
+      () => {
+
+        const index =
+          people.findIndex(
+            person =>
+              person.name ===
+              "امیر علی آرامش"
+          );
+
+
+        if (index !== -1) {
+          openProfile(index);
+        }
+
+      }
+    );
+
+
+    /* ==================================================
+       باز کردن پروفایل
+    ================================================== */
+
+    function openProfile(
+      index
+    ) {
 
       const person =
         people[index];
@@ -1678,7 +3307,9 @@
         person.futsal;
 
 
-      modal.classList.add("show");
+      modal.classList.add(
+        "show"
+      );
 
 
       document.body.style.overflow =
@@ -1702,6 +3333,10 @@
     }
 
 
+    /* ==================================================
+       تایمر تولد
+    ================================================== */
+
     function updateTimer() {
 
       if (!selectedPerson) {
@@ -1721,11 +3356,14 @@
           "تاریخ تولد محاسبه نشد";
 
         return;
+
       }
 
 
       const c =
-        getCountdown(target);
+        getCountdown(
+          target
+        );
 
 
       birthdayTimer.textContent =
@@ -1733,6 +3371,10 @@
 
     }
 
+
+    /* ==================================================
+       بستن پروفایل
+    ================================================== */
 
     function closeProfile() {
 
@@ -1794,11 +3436,13 @@
     );
 
 
-    /* =========================
+    /* ==================================================
        حالت شب / روز
-    ========================= */
+    ================================================== */
 
-    function applyTheme(theme) {
+    function applyTheme(
+      theme
+    ) {
 
       const light =
         theme === "light";
@@ -1811,7 +3455,9 @@
 
 
       themeToggle.textContent =
-        light ? "🌙" : "☀️";
+        light
+          ? "🌙"
+          : "☀️";
 
 
       themeToggle.setAttribute(
@@ -1846,7 +3492,6 @@
             x,
             window.innerWidth - x
           ),
-
           Math.max(
             y,
             window.innerHeight - y
@@ -1892,6 +3537,7 @@
         );
 
         return;
+
       }
 
 
@@ -1919,26 +3565,35 @@
 
 
       document.documentElement.animate(
+
         [
           {
             clipPath:
-              `circle(0px at ${x}px ${y}px)`
+              `circle(
+                0px at
+                ${x}px ${y}px
+              )`
           },
 
           {
             clipPath:
-              `circle(${radius}px at ${x}px ${y}px)`
+              `circle(
+                ${radius}px at
+                ${x}px ${y}px
+              )`
           }
 
         ],
 
         {
           duration: 500,
+
           easing: "ease-out",
 
           pseudoElement:
             "::view-transition-new(root)"
         }
+
       );
 
     }
@@ -1950,9 +3605,9 @@
     );
 
 
-    /* =========================
+    /* ==================================================
        تم ذخیره شده
-    ========================= */
+    ================================================== */
 
     const savedTheme =
       localStorage.getItem(
@@ -1964,21 +3619,28 @@
       savedTheme === "light"
     ) {
 
-      applyTheme("light");
+      applyTheme(
+        "light"
+      );
 
     } else {
 
-      applyTheme("dark");
+      applyTheme(
+        "dark"
+      );
 
     }
 
 
-    /* =========================
+    /* ==================================================
        شروع سایت
-    ========================= */
+    ================================================== */
 
     renderPeople();
+
     renderBirthdays();
+
+    buildGameTeams();
 
   </script>
 
