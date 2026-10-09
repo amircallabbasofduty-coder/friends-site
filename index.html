@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -256,7 +255,7 @@
     .random-result-age { margin-top: 5px; color: var(--muted); font-size: 13px; }
     .random-timer { margin-top: 6px; color: var(--accent); font-size: 12px; font-weight: 900; }
 
-    .game-entry { margin-bottom: 28px; }
+    .game-entry { margin-bottom: 16px; }
 
     .game-entry-button {
       width: 100%;
@@ -296,6 +295,47 @@
     .game-entry-desc { margin-top: 4px; color: var(--muted); font-size: 11px; }
     .game-entry-arrow { font-size: 24px; color: var(--accent); }
 
+    /* دکمه صفحه کارت قدرت همه بازیکنان */
+    .power-entry { margin-bottom: 28px; }
+
+    .power-entry-button {
+      width: 100%;
+      min-height: 76px;
+      padding: 15px 20px;
+      border: 1px solid rgba(31,169,255,.27);
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(31,169,255,.14), rgba(54,209,124,.12));
+      color: var(--text);
+      cursor: pointer;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      text-align: right;
+      box-shadow: var(--shadow);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .power-entry-button:hover { transform: translateY(-2px); border-color: rgba(31,169,255,.5); }
+    .power-entry-main { display: flex; align-items: center; gap: 13px; }
+
+    .power-entry-icon {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(31,169,255,.15);
+      font-size: 24px;
+    }
+
+    .power-entry-title { font-size: 16px; font-weight: 900; }
+    .power-entry-desc { margin-top: 4px; color: var(--muted); font-size: 11px; }
+    .power-entry-arrow { font-size: 24px; color: #20a9ff; }
+
     #peopleGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 
     .person-card {
@@ -323,8 +363,8 @@
       border-radius: 20px;
     }
 
-    #gamePage { display: none; }
-    #gamePage.active { display: block; }
+    #gamePage, #powerPage { display: none; }
+    #gamePage.active, #powerPage.active { display: block; }
     #homePage.hidden { display: none; }
 
     .game-page-header {
@@ -650,6 +690,155 @@
       transition: width .45s ease;
     }
 
+    /* صفحه مستقل کارت قدرت همه بازیکنان */
+    .power-page-intro {
+      margin: -8px 0 22px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .power-page-tools {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .power-search {
+      width: 100%;
+      min-width: 0;
+      height: 47px;
+      padding: 0 15px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      outline: none;
+      background: var(--card);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 13px;
+      box-shadow: var(--shadow);
+    }
+
+    .power-search::placeholder { color: var(--muted); }
+
+    .power-sort {
+      flex-shrink: 0;
+      height: 47px;
+      padding: 0 12px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--card);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      outline: none;
+    }
+
+    .power-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .power-list-card {
+      overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .power-list-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(54,209,124,.4);
+    }
+
+    .power-list-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(120deg, rgba(54,209,124,.08), rgba(31,169,255,.06));
+    }
+
+    .power-list-image {
+      width: 62px;
+      height: 62px;
+      flex-shrink: 0;
+      border-radius: 16px;
+      object-fit: cover;
+      background: #111;
+      border: 2px solid rgba(54,209,124,.45);
+    }
+
+    .power-list-person { flex: 1; min-width: 0; }
+    .power-list-name { font-size: 14px; font-weight: 900; line-height: 1.8; }
+    .power-list-position { margin-top: 3px; color: var(--muted); font-size: 10px; line-height: 1.7; }
+
+    .power-list-overall {
+      width: 55px;
+      height: 55px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
+      color: white;
+      background: linear-gradient(135deg, var(--accent), #20a9ff);
+      box-shadow: 0 5px 14px rgba(31,169,255,.16);
+    }
+
+    .power-list-overall strong { font-size: 20px; line-height: 1.2; }
+    .power-list-overall span { margin-top: 3px; font-size: 9px; }
+
+    .power-list-stats { padding: 13px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px 12px; }
+
+    .power-list-stat-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 7px;
+    }
+
+    .power-list-stat-label { font-size: 11px; font-weight: 800; }
+    .power-list-stat-value { font-size: 11px; font-weight: 900; color: var(--accent); }
+
+    .power-list-bar {
+      height: 6px;
+      overflow: hidden;
+      border-radius: 20px;
+      background: rgba(127,127,127,.18);
+    }
+
+    .power-list-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent2), var(--accent), #20a9ff);
+    }
+
+    .power-list-footer {
+      padding: 0 13px 13px;
+      color: var(--muted);
+      font-size: 10px;
+      text-align: center;
+    }
+
+    .power-list-empty {
+      grid-column: 1 / -1;
+      padding: 40px 15px;
+      border: 1px dashed var(--border);
+      border-radius: 18px;
+      color: var(--muted);
+      text-align: center;
+    }
+
     ::view-transition-old(root),
     ::view-transition-new(root) {
       animation: none;
@@ -681,12 +870,13 @@
       .random-section { padding: 15px; margin-bottom: 18px; border-radius: 17px; }
       .random-title { font-size: 15px; }
       .random-button { width: 100%; }
-      .game-entry { margin-bottom: 18px; }
-      .game-entry-button { min-height: 68px; padding: 12px 14px; border-radius: 17px; }
-      .game-entry-icon { width: 42px; height: 42px; border-radius: 12px; font-size: 21px; }
-      .game-entry-title { font-size: 14px; }
-      .game-entry-desc { font-size: 9px; }
-      .game-entry-arrow { font-size: 20px; }
+      .game-entry { margin-bottom: 12px; }
+      .game-entry-button, .power-entry-button { min-height: 68px; padding: 12px 14px; border-radius: 17px; }
+      .game-entry-icon, .power-entry-icon { width: 42px; height: 42px; border-radius: 12px; font-size: 21px; }
+      .game-entry-title, .power-entry-title { font-size: 14px; }
+      .game-entry-desc, .power-entry-desc { font-size: 9px; }
+      .game-entry-arrow, .power-entry-arrow { font-size: 20px; }
+      .power-entry { margin-bottom: 18px; }
       #peopleGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
       .person-card { border-radius: 17px; }
       .person-info { padding: 10px; }
@@ -733,6 +923,14 @@
       .power-stat-name { font-size: 11px; }
       .power-stat-number { font-size: 12px; }
       .power-overall-number { width: 52px; height: 52px; font-size: 21px; }
+
+      .power-page-tools { align-items: stretch; }
+      .power-sort { max-width: 125px; padding: 0 8px; font-size: 10px; }
+      .power-list { grid-template-columns: 1fr; gap: 12px; }
+      .power-list-head { padding: 12px; }
+      .power-list-image { width: 56px; height: 56px; border-radius: 14px; }
+      .power-list-name { font-size: 13px; }
+      .power-list-stats { padding: 12px; gap: 12px; }
     }
 
     @media (max-width: 360px) {
@@ -742,6 +940,8 @@
       .person-position { font-size: 9px; }
       .profile-grid { grid-template-columns: 1fr; }
       .detail.full { grid-column: auto; }
+      .power-page-tools { flex-direction: column; }
+      .power-sort { max-width: none; width: 100%; }
     }
   </style>
 </head>
@@ -793,6 +993,19 @@
             </div>
           </div>
           <div class="game-entry-arrow">←</div>
+        </button>
+      </section>
+
+      <section class="power-entry">
+        <button class="power-entry-button" id="enterPowerPageButton">
+          <div class="power-entry-main">
+            <div class="power-entry-icon">🏆</div>
+            <div>
+              <div class="power-entry-title">کارت قدرت بچه‌ها</div>
+              <div class="power-entry-desc">مشاهده و مقایسه قدرت همه بازیکنان</div>
+            </div>
+          </div>
+          <div class="power-entry-arrow">←</div>
         </button>
       </section>
 
@@ -852,6 +1065,50 @@
     </main>
   </div>
 
+  <!-- صفحه مستقل کارت قدرت همه بازیکنان -->
+  <div id="powerPage">
+    <header>
+      <div class="header-box">
+        <div class="logo">🏆</div>
+        <h1>کارت قدرت بچه‌ها</h1>
+        <div class="subtitle">آمار و مقایسه بازیکنان تیم ⚽</div>
+      </div>
+    </header>
+
+    <main>
+      <div class="game-page-header">
+        <h2 class="game-page-title">⚡ قدرت بازیکنان</h2>
+        <button class="back-button" id="backHomeFromPowerButton">→ صفحه اصلی</button>
+      </div>
+
+      <p class="power-page-intro">
+        قدرت کلی هر بازیکن از میانگین سرعت، دفاع، شوت و تکنیک محاسبه می‌شود.
+        برای مشاهده مشخصات کامل بازیکن، روی کارت او بزن.
+      </p>
+
+      <div class="power-page-tools">
+        <input
+          type="search"
+          id="powerSearchInput"
+          class="power-search"
+          placeholder="🔎 جستجوی نام بازیکن..."
+          autocomplete="off"
+        >
+
+        <select id="powerSortSelect" class="power-sort" aria-label="مرتب‌سازی بازیکنان">
+          <option value="overall">قدرت کلی</option>
+          <option value="speed">سرعت</option>
+          <option value="defense">دفاع</option>
+          <option value="shooting">شوت</option>
+          <option value="technique">تکنیک</option>
+          <option value="name">نام بازیکن</option>
+        </select>
+      </div>
+
+      <section id="powerPlayersGrid" class="power-list"></section>
+    </main>
+  </div>
+
   <div class="modal" id="profileModal">
     <div class="modal-box">
       <button class="close-modal" id="closeModal">✕</button>
@@ -887,7 +1144,6 @@
           </div>
         </div>
 
-        <!-- کارت قدرت اضافه‌شده؛ سایر بخش‌های پروفایل حفظ شده‌اند -->
         <section class="power-card">
           <div class="power-card-title">
             <span>🏆 کارت قدرت بازیکن</span>
@@ -1059,7 +1315,6 @@
       }
     ];
 
-    /* امتیازهای قدرت بازیکنان */
     const playerPowerStats = {
       "سجاد حسنی تبار": { speed: 20, defense: 60, shooting: 65, technique: 52 },
       "امیر عباس فیروز": { speed: 89, defense: 80, shooting: 88, technique: 85 },
@@ -1092,11 +1347,17 @@
 
     const homePage = document.getElementById("homePage");
     const gamePage = document.getElementById("gamePage");
+    const powerPage = document.getElementById("powerPage");
     const enterGameButton = document.getElementById("enterGameButton");
+    const enterPowerPageButton = document.getElementById("enterPowerPageButton");
     const balancedReroll = document.getElementById("balancedReroll");
     const backHomeButton = document.getElementById("backHomeButton");
+    const backHomeFromPowerButton = document.getElementById("backHomeFromPowerButton");
     const peopleGrid = document.getElementById("peopleGrid");
     const searchInput = document.getElementById("searchInput");
+    const powerSearchInput = document.getElementById("powerSearchInput");
+    const powerSortSelect = document.getElementById("powerSortSelect");
+    const powerPlayersGrid = document.getElementById("powerPlayersGrid");
     const birthdaySection = document.getElementById("birthdaySection");
     const birthdayToggle = document.getElementById("birthdayToggle");
     const birthdayList = document.getElementById("birthdayList");
@@ -1155,6 +1416,135 @@
       const value = searchInput.value.trim().toLowerCase();
       renderPeople(people.filter(person => person.name.toLowerCase().includes(value)));
     });
+
+    /* صفحه کارت قدرت همه بازیکنان */
+    function renderAllPowerCards() {
+      const query = powerSearchInput.value.trim().toLowerCase();
+      const sortBy = powerSortSelect.value;
+
+      const list = people
+        .filter(person => person.name.toLowerCase().includes(query))
+        .map(person => ({
+          person,
+          stats: getPowerStats(person.name)
+        }));
+
+      list.sort((a, b) => {
+        if (sortBy === "name") {
+          return a.person.name.localeCompare(b.person.name, "fa");
+        }
+
+        return b.stats[sortBy] - a.stats[sortBy];
+      });
+
+      powerPlayersGrid.innerHTML = "";
+
+      if (!list.length) {
+        powerPlayersGrid.innerHTML =
+          '<div class="power-list-empty">بازیکنی با این نام پیدا نشد.</div>';
+        return;
+      }
+
+      list.forEach(({ person, stats }, index) => {
+        const card = document.createElement("article");
+        card.className = "power-list-card";
+        card.tabIndex = 0;
+        card.setAttribute("role", "button");
+        card.setAttribute("aria-label", `نمایش پروفایل ${person.name}`);
+
+        card.innerHTML = `
+          <div class="power-list-head">
+            <img class="power-list-image" src="${person.image}" alt="${person.name}" loading="lazy">
+            <div class="power-list-person">
+              <div class="power-list-name">${index + 1}. ${person.name}</div>
+              <div class="power-list-position">⚽ ${person.futsal}</div>
+            </div>
+            <div class="power-list-overall">
+              <strong>${stats.overall}</strong>
+              <span>قدرت کلی</span>
+            </div>
+          </div>
+
+          <div class="power-list-stats">
+            <div>
+              <div class="power-list-stat-head">
+                <span class="power-list-stat-label">⚡ سرعت</span>
+                <span class="power-list-stat-value">${stats.speed}/100</span>
+              </div>
+              <div class="power-list-bar">
+                <div class="power-list-fill" style="width:${stats.speed}%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="power-list-stat-head">
+                <span class="power-list-stat-label">🛡️ دفاع</span>
+                <span class="power-list-stat-value">${stats.defense}/100</span>
+              </div>
+              <div class="power-list-bar">
+                <div class="power-list-fill" style="width:${stats.defense}%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="power-list-stat-head">
+                <span class="power-list-stat-label">🎯 شوت</span>
+                <span class="power-list-stat-value">${stats.shooting}/100</span>
+              </div>
+              <div class="power-list-bar">
+                <div class="power-list-fill" style="width:${stats.shooting}%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="power-list-stat-head">
+                <span class="power-list-stat-label">🪄 تکنیک</span>
+                <span class="power-list-stat-value">${stats.technique}/100</span>
+              </div>
+              <div class="power-list-bar">
+                <div class="power-list-fill" style="width:${stats.technique}%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="power-list-footer">برای مشاهده پروفایل بازیکن بزن</div>
+        `;
+
+        card.addEventListener("click", () => {
+          const personIndex = people.indexOf(person);
+          openProfile(personIndex);
+        });
+
+        card.addEventListener("keydown", event => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openProfile(people.indexOf(person));
+          }
+        });
+
+        powerPlayersGrid.appendChild(card);
+      });
+    }
+
+    function openPowerPage() {
+      homePage.classList.add("hidden");
+      gamePage.classList.remove("active");
+      powerPage.classList.add("active");
+      renderAllPowerCards();
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+
+    function backToHome() {
+      gamePage.classList.remove("active");
+      powerPage.classList.remove("active");
+      homePage.classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+
+    enterPowerPageButton.addEventListener("click", openPowerPage);
+    backHomeFromPowerButton.addEventListener("click", backToHome);
+    powerSearchInput.addEventListener("input", renderAllPowerCards);
+    powerSortSelect.addEventListener("change", renderAllPowerCards);
 
     function getPersianDate(date) {
       const formatter = new Intl.DateTimeFormat("en-US-u-ca-persian", {
@@ -1286,6 +1676,7 @@
 
     function openGamePage() {
       homePage.classList.add("hidden");
+      powerPage.classList.remove("active");
       gamePage.classList.add("active");
       window.scrollTo({ top: 0, behavior: "instant" });
     }
@@ -1295,11 +1686,7 @@
       openGamePage();
     });
 
-    backHomeButton.addEventListener("click", () => {
-      gamePage.classList.remove("active");
-      homePage.classList.remove("hidden");
-      window.scrollTo({ top: 0, behavior: "instant" });
-    });
+    backHomeButton.addEventListener("click", backToHome);
 
     function findPerson(name) {
       return people.find(person => person.name === name);
@@ -1498,27 +1885,29 @@
       if (index !== -1) openProfile(index);
     });
 
-    /* نمایش امتیازها در کارت قدرت */
     function renderPowerCard(person) {
       const stats = getPowerStats(person.name);
 
       document.getElementById("powerOverall").textContent = stats.overall;
 
       const powerItems = [
-        { key: "speed", value: stats.speed, text: "powerSpeedText", bar: "powerSpeedBar" },
-        { key: "defense", value: stats.defense, text: "powerDefenseText", bar: "powerDefenseBar" },
-        { key: "shooting", value: stats.shooting, text: "powerShootingText", bar: "powerShootingBar" },
-        { key: "technique", value: stats.technique, text: "powerTechniqueText", bar: "powerTechniqueBar" }
+        { value: stats.speed, text: "powerSpeedText", bar: "powerSpeedBar" },
+        { value: stats.defense, text: "powerDefenseText", bar: "powerDefenseBar" },
+        { value: stats.shooting, text: "powerShootingText", bar: "powerShootingBar" },
+        { value: stats.technique, text: "powerTechniqueText", bar: "powerTechniqueBar" }
       ];
 
       powerItems.forEach(item => {
         document.getElementById(item.text).textContent = `${item.value}/100`;
-        document.getElementById(item.bar).style.width = `${Math.max(0, Math.min(100, item.value))}%`;
+        document.getElementById(item.bar).style.width =
+          `${Math.max(0, Math.min(100, item.value))}%`;
       });
     }
 
     function openProfile(index) {
       const person = people[index];
+      if (!person) return;
+
       selectedPerson = person;
 
       profileImage.src = person.image;
@@ -1639,6 +2028,7 @@
     renderPeople();
     renderBirthdays();
     buildGameTeams();
+    renderAllPowerCards();
   </script>
 
 </body>
