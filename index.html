@@ -295,7 +295,6 @@
     .game-entry-desc { margin-top: 4px; color: var(--muted); font-size: 11px; }
     .game-entry-arrow { font-size: 24px; color: var(--accent); }
 
-    /* دکمه صفحه کارت قدرت همه بازیکنان */
     .power-entry { margin-bottom: 28px; }
 
     .power-entry-button {
@@ -541,6 +540,12 @@
     .bench-name { font-size: 13px; font-weight: 900; }
     .bench-role { margin-top: 3px; color: var(--muted); font-size: 10px; }
 
+    .bench-empty {
+      color: var(--muted);
+      font-size: 12px;
+      padding: 5px 0;
+    }
+
     .modal {
       position: fixed;
       inset: 0;
@@ -614,7 +619,6 @@
     .timer-title { color: var(--muted); font-size: 12px; margin-bottom: 5px; }
     .timer-value { font-size: 16px; font-weight: 900; }
 
-    /* کارت قدرت بازیکن */
     .power-card {
       margin-top: 14px;
       padding: 16px;
@@ -690,7 +694,6 @@
       transition: width .45s ease;
     }
 
-    /* صفحه مستقل کارت قدرت همه بازیکنان */
     .power-page-intro {
       margin: -8px 0 22px;
       color: var(--muted);
@@ -947,7 +950,6 @@
 </head>
 
 <body>
-
   <button id="themeToggle" aria-label="تغییر حالت شب و روز">☀️</button>
 
   <div id="homePage">
@@ -1052,11 +1054,13 @@
 
           <div class="bench">
             <div class="bench-title">🪑 نیمکت — تعویضی</div>
-            <div class="bench-player" id="benchAmirali">
-              <img src="images/amiralia.jpg" alt="امیر علی آرامش">
-              <div>
-                <div class="bench-name">امیر علی آرامش</div>
-                <div class="bench-role">تعویضی</div>
+            <div id="benchPlayers">
+              <div class="bench-player" id="benchAmirali">
+                <img src="images/amiralia.jpg" alt="امیر علی آرامش">
+                <div>
+                  <div class="bench-name">امیر علی آرامش</div>
+                  <div class="bench-role">تعویضی</div>
+                </div>
               </div>
             </div>
           </div>
@@ -1065,7 +1069,6 @@
     </main>
   </div>
 
-  <!-- صفحه مستقل کارت قدرت همه بازیکنان -->
   <div id="powerPage">
     <header>
       <div class="header-box">
@@ -1087,13 +1090,7 @@
       </p>
 
       <div class="power-page-tools">
-        <input
-          type="search"
-          id="powerSearchInput"
-          class="power-search"
-          placeholder="🔎 جستجوی نام بازیکن..."
-          autocomplete="off"
-        >
+        <input type="search" id="powerSearchInput" class="power-search" placeholder="🔎 جستجوی نام بازیکن..." autocomplete="off">
 
         <select id="powerSortSelect" class="power-sort" aria-label="مرتب‌سازی بازیکنان">
           <option value="overall">قدرت کلی</option>
@@ -1378,13 +1375,24 @@
     const randomResultName = document.getElementById("randomResultName");
     const randomResultAge = document.getElementById("randomResultAge");
     const randomTimer = document.getElementById("randomTimer");
-    const benchAmirali = document.getElementById("benchAmirali");
+    const benchPlayers = document.getElementById("benchPlayers");
     const gamePitch = document.getElementById("gamePitch");
     const gameDescription = document.getElementById("gameDescription");
     const teamName = document.getElementById("teamName");
 
     let selectedPerson = null;
     let timerInterval = null;
+
+    /*
+      ترکیب فعلی بازی:
+      ۱۰ نفر داخل زمین و بازیکنان باقی‌مانده روی نیمکت.
+      امیر علی آرامش در ترکیب اولیه روی نیمکت است و با هر بار
+      زدن دکمه ترکیب برابر، جای یک بازیکن غیر دروازه‌بان را می‌گیرد.
+    */
+    let currentTeamA = [];
+    let currentTeamB = [];
+    let currentBench = [];
+    let gameHasBeenRandomized = false;
 
     function renderPeople(list = people) {
       peopleGrid.innerHTML = "";
@@ -1417,7 +1425,6 @@
       renderPeople(people.filter(person => person.name.toLowerCase().includes(value)));
     });
 
-    /* صفحه کارت قدرت همه بازیکنان */
     function renderAllPowerCards() {
       const query = powerSearchInput.value.trim().toLowerCase();
       const sortBy = powerSortSelect.value;
@@ -1471,49 +1478,35 @@
                 <span class="power-list-stat-label">⚡ سرعت</span>
                 <span class="power-list-stat-value">${stats.speed}/100</span>
               </div>
-              <div class="power-list-bar">
-                <div class="power-list-fill" style="width:${stats.speed}%"></div>
-              </div>
+              <div class="power-list-bar"><div class="power-list-fill" style="width:${stats.speed}%"></div></div>
             </div>
-
             <div>
               <div class="power-list-stat-head">
                 <span class="power-list-stat-label">🛡️ دفاع</span>
                 <span class="power-list-stat-value">${stats.defense}/100</span>
               </div>
-              <div class="power-list-bar">
-                <div class="power-list-fill" style="width:${stats.defense}%"></div>
-              </div>
+              <div class="power-list-bar"><div class="power-list-fill" style="width:${stats.defense}%"></div></div>
             </div>
-
             <div>
               <div class="power-list-stat-head">
                 <span class="power-list-stat-label">🎯 شوت</span>
                 <span class="power-list-stat-value">${stats.shooting}/100</span>
               </div>
-              <div class="power-list-bar">
-                <div class="power-list-fill" style="width:${stats.shooting}%"></div>
-              </div>
+              <div class="power-list-bar"><div class="power-list-fill" style="width:${stats.shooting}%"></div></div>
             </div>
-
             <div>
               <div class="power-list-stat-head">
                 <span class="power-list-stat-label">🪄 تکنیک</span>
                 <span class="power-list-stat-value">${stats.technique}/100</span>
               </div>
-              <div class="power-list-bar">
-                <div class="power-list-fill" style="width:${stats.technique}%"></div>
-              </div>
+              <div class="power-list-bar"><div class="power-list-fill" style="width:${stats.technique}%"></div></div>
             </div>
           </div>
 
           <div class="power-list-footer">برای مشاهده پروفایل بازیکن بزن</div>
         `;
 
-        card.addEventListener("click", () => {
-          const personIndex = people.indexOf(person);
-          openProfile(personIndex);
-        });
+        card.addEventListener("click", () => openProfile(people.indexOf(person)));
 
         card.addEventListener("keydown", event => {
           if (event.key === "Enter" || event.key === " ") {
@@ -1693,7 +1686,7 @@
     }
 
     function addGamePlayer(pitchElement, personName, x, y, role) {
-      const person = findPerson(personName);
+      const person = typeof personName === "string" ? findPerson(personName) : personName;
       if (!person) return;
 
       const player = document.createElement("div");
@@ -1715,23 +1708,96 @@
       gamePitch.querySelectorAll(".game-player").forEach(player => player.remove());
     }
 
-    function buildGameTeams() {
+    function renderBench() {
+      benchPlayers.innerHTML = "";
+
+      if (!currentBench.length) {
+        benchPlayers.innerHTML = '<div class="bench-empty">همه بازیکنان داخل زمین هستند.</div>';
+        return;
+      }
+
+      currentBench.forEach(person => {
+        const row = document.createElement("div");
+        row.className = "bench-player";
+
+        row.innerHTML = `
+          <img src="${person.image}" alt="${person.name}">
+          <div>
+            <div class="bench-name">${person.name}</div>
+            <div class="bench-role">تعویضی — برای مشاهده پروفایل بزن</div>
+          </div>
+        `;
+
+        row.addEventListener("click", () => openProfile(people.indexOf(person)));
+        benchPlayers.appendChild(row);
+      });
+    }
+
+    function renderCurrentTeams() {
       clearGamePlayers();
+      renderBench();
 
-      teamName.textContent = "تیم یک ⚔️ تیم دو";
-      gameDescription.textContent = "ترکیب ۵ به ۵ بچه‌ها در زمین فوتسال";
+      const positionsA = [
+        [50, 91],
+        [30, 72],
+        [70, 72],
+        [35, 58],
+        [65, 58]
+      ];
 
-      addGamePlayer(gamePitch, "علیرضا مختاری", 50, 91, "دروازه‌بان");
-      addGamePlayer(gamePitch, "عرفان بابائی", 30, 72, "دفاع");
-      addGamePlayer(gamePitch, "امیر عباس فیروز", 70, 72, "دفاع");
-      addGamePlayer(gamePitch, "طاها شبان", 35, 58, "مهاجم");
-      addGamePlayer(gamePitch, "یوسف سالاری", 65, 58, "مهاجم");
+      const positionsB = [
+        [50, 9],
+        [30, 28],
+        [70, 28],
+        [35, 42],
+        [65, 42]
+      ];
 
-      addGamePlayer(gamePitch, "سجاد حسنی تبار", 50, 9, "دروازه‌بان");
-      addGamePlayer(gamePitch, "عادل نصیری", 30, 28, "دفاع");
-      addGamePlayer(gamePitch, "متین جوان", 70, 28, "دفاع");
-      addGamePlayer(gamePitch, "احسان آرام", 35, 42, "جلو");
-      addGamePlayer(gamePitch, "احمد اسماعیل زاده", 65, 42, "جلو");
+      currentTeamA.forEach((player, index) => {
+        addGamePlayer(
+          gamePitch,
+          player,
+          positionsA[index][0],
+          positionsA[index][1],
+          getPlayerRole(player, index === 0)
+        );
+      });
+
+      currentTeamB.forEach((player, index) => {
+        addGamePlayer(
+          gamePitch,
+          player,
+          positionsB[index][0],
+          positionsB[index][1],
+          getPlayerRole(player, index === 0)
+        );
+      });
+
+      teamName.textContent = "🎲 ترکیب دو تیم";
+      gameDescription.textContent = gameHasBeenRandomized
+        ? "ترکیب برابر؛ بازیکن نیمکت در ترکیب قرار گرفته است."
+        : "ترکیب اولیه ۵ در مقابل ۵";
+    }
+
+    function buildGameTeams() {
+      const goalkeeperA = findPerson("علیرضا مختاری");
+      const goalkeeperB = findPerson("سجاد حسنی تبار");
+      const substitute = findPerson("امیر علی آرامش");
+
+      const normalPlayers = people.filter(person =>
+        person.name !== "امیر علی آرامش" &&
+        person.name !== "علیرضا مختاری" &&
+        person.name !== "سجاد حسنی تبار"
+      );
+
+      const shuffled = shuffle(normalPlayers);
+
+      currentTeamA = [goalkeeperA, ...shuffled.slice(0, 4)];
+      currentTeamB = [goalkeeperB, ...shuffled.slice(4, 8)];
+      currentBench = [substitute];
+      gameHasBeenRandomized = false;
+
+      renderCurrentTeams();
     }
 
     function shuffle(array) {
@@ -1747,7 +1813,8 @@
 
     function getPlayerStrength(person) {
       const position = person.futsal;
-      let strength = 2;
+      const stats = getPowerStats(person.name);
+      let strength = stats.overall / 20;
 
       if (position.includes("دروازه‌بان")) strength += 3;
       if (position.includes("دفاع")) strength += 2;
@@ -1773,6 +1840,7 @@
     function getBestBalancedTeams() {
       const goalkeeper1 = findPerson("علیرضا مختاری");
       const goalkeeper2 = findPerson("سجاد حسنی تبار");
+      const substitute = findPerson("امیر علی آرامش");
 
       const normalPlayers = people.filter(person =>
         person.name !== "امیر علی آرامش" &&
@@ -1827,63 +1895,40 @@
         bestTeamB = shuffled.slice(4, 8);
       }
 
+      /*
+        امیر علی آرامش وارد ترکیب می‌شود و یکی از بازیکنان
+        غیر دروازه‌بان تیم دوم به نیمکت منتقل می‌شود.
+      */
+      const teamBOutfield = bestTeamB.filter(player =>
+        player.name !== goalkeeper2.name
+      );
+
+      const playerToBench = teamBOutfield[
+        Math.floor(Math.random() * teamBOutfield.length)
+      ];
+
+      bestTeamB = bestTeamB.filter(player => player !== playerToBench);
+      bestTeamB.push(substitute);
+
       return {
         teamA: [goalkeeper1, ...shuffle(bestTeamA)],
-        teamB: [goalkeeper2, ...shuffle(bestTeamB)]
+        teamB: [goalkeeper2, ...shuffle(bestTeamB)],
+        bench: playerToBench ? [playerToBench] : []
       };
     }
 
     function buildBalancedTeam() {
-      clearGamePlayers();
-
       const teams = getBestBalancedTeams();
 
-      teamName.textContent = "🎲 ترکیب برابر";
-      gameDescription.textContent = "یک ترکیب تصادفی و متعادل ۵ در مقابل ۵";
+      currentTeamA = teams.teamA;
+      currentTeamB = teams.teamB;
+      currentBench = teams.bench;
+      gameHasBeenRandomized = true;
 
-      const positionsA = [
-        [50, 91],
-        [30, 72],
-        [70, 72],
-        [35, 58],
-        [65, 58]
-      ];
-
-      teams.teamA.forEach((player, index) => {
-        addGamePlayer(
-          gamePitch,
-          player.name,
-          positionsA[index][0],
-          positionsA[index][1],
-          getPlayerRole(player, index === 0)
-        );
-      });
-
-      const positionsB = [
-        [50, 9],
-        [30, 28],
-        [70, 28],
-        [35, 42],
-        [65, 42]
-      ];
-
-      teams.teamB.forEach((player, index) => {
-        addGamePlayer(
-          gamePitch,
-          player.name,
-          positionsB[index][0],
-          positionsB[index][1],
-          getPlayerRole(player, index === 0)
-        );
-      });
+      renderCurrentTeams();
     }
 
     balancedReroll.addEventListener("click", buildBalancedTeam);
-
-    benchAmirali.addEventListener("click", () => {
-      const index = people.findIndex(person => person.name === "امیر علی آرامش");
-      if (index !== -1) openProfile(index);
-    });
 
     function renderPowerCard(person) {
       const stats = getPowerStats(person.name);
@@ -2030,6 +2075,5 @@
     buildGameTeams();
     renderAllPowerCards();
   </script>
-
 </body>
 </html>
