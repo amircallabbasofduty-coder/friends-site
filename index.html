@@ -422,6 +422,11 @@ const people = [
     name:"امیر علی قهستانی",age:17,birth:"1388/5/17",
     school:"قائم آل محمد",grade:"یازدهم",field:"تجربی",
     futsal:"دروازبان",image:"images/amiraligh.jpg"
+  },
+  {
+    name:"محمد مهدی سالاری",age:13,birth:"1392/6/10",
+    school:"صاحب الزمان",grade:"هشتم",field:"ثبت نشده",
+    futsal:"مهاجم",image:"images/mohammadmahdi.jpg"
   }
 ];
 
@@ -712,7 +717,7 @@ let currentBench=[];
 let selectedSubstitute=null;
 
 /*
-  هر بار ترکیب جدید ساخته شود، هر ۱۲ نفر وارد زمین می‌شوند.
+  هر بار ترکیب جدید ساخته شود، بازیکنان بین دو تیم تقسیم می‌شوند.
   شش بازیکن برای هر تیم در نظر گرفته شده است.
 */
 function buildGameTeams() {
@@ -720,7 +725,7 @@ function buildGameTeams() {
 
   currentTeamA=shuffled.slice(0,6);
   currentTeamB=shuffled.slice(6,12);
-  currentBench=[];
+  currentBench=shuffled.slice(12);
   selectedSubstitute=null;
 
   renderPitch();
