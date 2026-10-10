@@ -7,853 +7,250 @@
 <title>بچو ته خط</title>
 
 <style>
-:root{
+:root {
   --bg:#07101d;
   --bg2:#0d1726;
-  --card:rgba(17,28,43,.95);
+  --card:#111c2bf5;
   --card2:#121f30;
   --text:#f5f7fa;
   --muted:#aeb8c6;
-  --border:rgba(255,255,255,.09);
+  --border:#ffffff17;
   --accent:#36d17c;
   --accent2:#1fa463;
-  --shadow:0 12px 35px rgba(0,0,0,.25)
+  --shadow:0 12px 35px #0004;
 }
-
-body.light{
+body.light {
   --bg:#f2f5f8;
   --bg2:#e8edf2;
-  --card:rgba(255,255,255,.96);
+  --card:#fffffff5;
   --card2:#fff;
   --text:#18212b;
   --muted:#657180;
-  --border:rgba(0,0,0,.09);
+  --border:#00000017;
   --accent:#159957;
   --accent2:#0e7d46;
-  --shadow:0 10px 30px rgba(0,0,0,.09)
+  --shadow:0 10px 30px #0001;
 }
-
-*{
-  box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent
-}
-
-html{
-  scroll-behavior:smooth
-}
-
-body{
-  margin:0;
-  min-height:100vh;
-  font-family:Tahoma,Arial,sans-serif;
-  color:var(--text);
+* {box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html {scroll-behavior:smooth}
+body {
+  margin:0;min-height:100vh;
+  font-family:Tahoma,Arial,sans-serif;color:var(--text);
   background:
-    radial-gradient(circle at top right,rgba(44,124,255,.12),transparent 30%),
-    radial-gradient(circle at bottom left,rgba(54,209,124,.09),transparent 30%),
+    radial-gradient(circle at top right,#2c7cff1f,transparent 30%),
+    radial-gradient(circle at bottom left,#36d17c17,transparent 30%),
     linear-gradient(135deg,var(--bg),var(--bg2));
-  transition:background .3s,color .3s
 }
-
-body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  opacity:.025;
-  background-image:
-    linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
-  background-size:35px 35px
-}
-
-button,input{
-  font-family:inherit
-}
-
-button{
-  cursor:pointer;
-  touch-action:manipulation
-}
-
-#themeToggle{
-  position:fixed;
-  top:calc(12px + env(safe-area-inset-top));
-  left:12px;
-  z-index:1000;
-  width:45px;
-  height:45px;
-  border-radius:50%;
-  border:1px solid var(--border);
-  background:var(--card);
-  color:var(--text);
-  font-size:20px;
-  box-shadow:var(--shadow)
-}
-
-header{
-  text-align:center;
-  padding:35px 18px 22px
-}
-
-.header-box{
-  max-width:1100px;
-  margin:auto
-}
-
-.logo{
-  width:68px;
-  height:68px;
-  margin:0 auto 14px;
-  border-radius:20px;
-  display:grid;
-  place-items:center;
-  font-size:31px;
+button,input {font:inherit}
+button {cursor:pointer;touch-action:manipulation}
+header {text-align:center;padding:30px 15px 20px}
+.header-box {max-width:1100px;margin:auto}
+.logo {
+  width:62px;height:62px;margin:0 auto 12px;border-radius:18px;
+  display:grid;place-items:center;font-size:30px;
   background:linear-gradient(135deg,var(--accent),#20a9ff);
-  box-shadow:0 12px 30px rgba(31,164,99,.25)
 }
-
-h1{
-  margin:0;
-  font-size:clamp(28px,5vw,44px);
-  font-weight:900
+h1 {margin:0;font-size:clamp(28px,5vw,44px);font-weight:900}
+.subtitle {margin-top:8px;color:var(--muted);font-size:13px}
+main {width:min(1100px,calc(100% - 24px));margin:0 auto 45px}
+#themeToggle {
+  position:fixed;top:calc(12px + env(safe-area-inset-top));left:12px;
+  z-index:1000;width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--border);background:var(--card);
+  color:var(--text);font-size:20px;box-shadow:var(--shadow)
 }
-
-.subtitle{
-  margin-top:8px;
-  color:var(--muted);
-  font-size:14px
+.search-wrap {position:sticky;top:8px;z-index:20;margin:4px auto 20px}
+.search {
+  width:100%;height:50px;padding:0 16px;border-radius:15px;
+  border:1px solid var(--border);outline:none;background:var(--card);
+  color:var(--text);font-size:14px;box-shadow:var(--shadow)
 }
-
-main{
-  width:min(1100px,calc(100% - 28px));
-  margin:0 auto 55px
+.section {
+  margin-bottom:18px;padding:15px;border:1px solid var(--border);
+  border-radius:18px;background:var(--card);box-shadow:var(--shadow)
 }
-
-.search-wrap{
-  position:sticky;
-  top:8px;
-  z-index:20;
-  margin:4px auto 22px;
-  max-width:650px
+.section-title {font-size:17px;font-weight:900;margin:0 0 13px}
+.birthday-header {
+  width:100%;min-height:40px;display:flex;align-items:center;
+  justify-content:space-between;background:none;color:var(--text);
+  border:0;text-align:right;font-size:15px;font-weight:900
 }
-
-.search{
-  width:100%;
-  height:52px;
-  padding:0 18px;
-  border-radius:16px;
-  border:1px solid var(--border);
-  outline:none;
-  background:var(--card);
-  color:var(--text);
-  font-size:15px;
-  box-shadow:var(--shadow);
-  backdrop-filter:blur(12px)
+.birthday-list {display:none;margin-top:10px}
+.birthday-section.open .birthday-list {display:block}
+.birthday-row {
+  display:flex;align-items:center;gap:9px;padding:11px;margin-top:7px;
+  border-radius:12px;background:var(--card2);border:1px solid var(--border);
+  cursor:pointer;min-width:0
 }
-
-.search::placeholder{
-  color:var(--muted)
+.birthday-row.expanded {border-color:var(--accent)}
+.birthday-rank {
+  min-width:29px;height:29px;border-radius:9px;display:grid;
+  place-items:center;color:var(--accent);background:#36d17c20;font-weight:900
 }
-
-.section{
-  margin-bottom:22px;
-  padding:17px;
-  border:1px solid var(--border);
-  border-radius:20px;
-  background:var(--card);
-  box-shadow:var(--shadow)
+.birthday-name {flex:1;font-size:13px;font-weight:800;min-width:0}
+.birthday-countdown {
+  max-width:58%;font-size:11px;color:var(--muted);
+  text-align:left;line-height:1.9
 }
-
-.section-title{
-  font-size:18px;
-  font-weight:900;
-  margin:0 0 13px
+.birthday-extra {display:block;color:var(--accent);font-size:10px;margin-top:3px}
+.action-button {
+  width:100%;min-height:68px;padding:12px 14px;border-radius:16px;
+  border:1px solid #36d17c40;
+  background:linear-gradient(135deg,#36d17c20,#1fa9ff12);
+  color:var(--text);display:flex;align-items:center;gap:12px;
+  text-align:right;box-shadow:var(--shadow);margin-bottom:12px
 }
-
-.birthday-header{
-  width:100%;
-  min-height:35px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  background:none;
-  color:var(--text);
-  border:0;
-  text-align:right;
-  font-size:16px;
-  font-weight:900
+.action-icon {
+  flex-shrink:0;width:44px;height:44px;border-radius:13px;
+  display:grid;place-items:center;background:#36d17c22;font-size:23px
 }
-
-.birthday-list{
-  display:none;
-  margin-top:12px
+.action-title {font-weight:900;font-size:14px}
+.action-desc {display:block;margin-top:5px;color:var(--muted);font-size:11px;line-height:1.7}
+.action-arrow {margin-right:auto;font-size:21px;color:var(--accent)}
+.random-result {
+  display:none;text-align:center;padding:14px;border-radius:13px;
+  background:#36d17c15;border:1px solid #36d17c35
 }
-
-.birthday-section.open .birthday-list{
-  display:block
+.random-result.show {display:block;animation:appear .25s ease}
+.random-result-name {font-weight:900;font-size:18px}
+.random-result-age {margin-top:6px;color:var(--muted);font-size:13px}
+.random-countdown {margin-top:10px;color:var(--accent);font-size:12px;font-weight:900}
+@keyframes appear {from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+#peopleGrid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.person-card {
+  overflow:hidden;border:1px solid var(--border);border-radius:17px;
+  background:var(--card);box-shadow:var(--shadow);cursor:pointer;min-width:0
 }
-
-.birthday-row{
-  display:flex;
-  align-items:center;
-  gap:11px;
-  padding:12px;
-  margin-top:7px;
-  border-radius:13px;
-  background:var(--card2);
-  border:1px solid var(--border);
-  cursor:pointer
+.person-image {display:block;width:100%;aspect-ratio:1;object-fit:cover;background:#111}
+.person-info {padding:11px}
+.person-name {margin:0 0 7px;font-size:14px;font-weight:900;line-height:1.8}
+.person-position {color:var(--muted);font-size:11px;line-height:1.9}
+.empty {grid-column:1/-1;text-align:center;padding:30px;color:var(--muted)}
+#gamePage {display:none}
+#gamePage.active {display:block}
+#homePage.hidden {display:none}
+.page-header {display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:15px}
+.page-title {font-size:clamp(22px,5vw,30px);font-weight:900;margin:0}
+.back-button,.small-button {
+  border:1px solid var(--border);border-radius:11px;padding:10px 12px;
+  min-height:42px;background:var(--card);color:var(--text);
+  font-size:12px;font-weight:800
 }
-
-.birthday-rank{
-  min-width:30px;
-  height:30px;
-  border-radius:10px;
-  display:grid;
-  place-items:center;
-  color:var(--accent);
-  background:rgba(54,209,124,.13);
-  font-weight:900
+.game-description {color:var(--muted);font-size:12px;line-height:2;margin-bottom:13px}
+.balanced-button {
+  width:100%;padding:13px;min-height:45px;margin-bottom:14px;
+  border-radius:12px;border:1px solid #36d17c55;
+  background:#36d17c1a;color:var(--text);font-weight:900
 }
-
-.birthday-name{
-  flex:1;
-  font-weight:800
-}
-
-.birthday-countdown{
-  font-size:11px;
-  color:var(--muted);
-  text-align:left;
-  line-height:1.8
-}
-
-.action-button{
-  width:100%;
-  min-height:74px;
-  padding:15px 17px;
-  border-radius:18px;
-  border:1px solid rgba(54,209,124,.25);
-  background:linear-gradient(
-    135deg,
-    rgba(54,209,124,.13),
-    rgba(31,169,255,.09)
-  );
-  color:var(--text);
-  display:flex;
-  align-items:center;
-  gap:13px;
-  text-align:right;
-  box-shadow:var(--shadow);
-  margin-bottom:13px
-}
-
-.action-icon{
-  flex-shrink:0;
-  width:47px;
-  height:47px;
-  border-radius:14px;
-  display:grid;
-  place-items:center;
-  background:rgba(54,209,124,.14);
-  font-size:24px
-}
-
-.action-title{
-  font-weight:900;
-  font-size:15px
-}
-
-.action-desc{
-  margin-top:5px;
-  color:var(--muted);
-  font-size:11px
-}
-
-.action-arrow{
-  margin-right:auto;
-  font-size:22px;
-  color:var(--accent)
-}
-
-.random-result{
-  display:none;
-  text-align:center;
-  padding:14px;
-  border-radius:14px;
-  background:rgba(54,209,124,.09);
-  border:1px solid rgba(54,209,124,.2)
-}
-
-.random-result.show{
-  display:block;
-  animation:appear .25s ease
-}
-
-.random-result-name{
-  font-weight:900;
-  font-size:18px
-}
-
-.random-result-age{
-  margin-top:6px;
-  color:var(--muted);
-  font-size:13px
-}
-
-.random-countdown{
-  margin-top:10px;
-  font-size:12px;
-  font-weight:900;
-  color:var(--accent)
-}
-
-@keyframes appear{
-  from{opacity:0;transform:translateY(7px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-#peopleGrid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:17px
-}
-
-.person-card{
-  overflow:hidden;
-  border:1px solid var(--border);
-  border-radius:20px;
-  background:var(--card);
-  box-shadow:var(--shadow);
-  cursor:pointer;
-  transition:transform .2s,border-color .2s
-}
-
-.person-card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(54,209,124,.4)
-}
-
-.person-image{
-  display:block;
-  width:100%;
-  aspect-ratio:1;
-  object-fit:cover;
-  background:#111
-}
-
-.person-info{
-  padding:13px
-}
-
-.person-name{
-  margin:0 0 8px;
-  font-size:15px;
-  font-weight:900;
-  line-height:1.8
-}
-
-.person-position{
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.8
-}
-
-.empty{
-  grid-column:1/-1;
-  text-align:center;
-  padding:35px;
-  color:var(--muted)
-}
-
-#gamePage{
-  display:none
-}
-
-#gamePage.active{
-  display:block
-}
-
-#homePage.hidden{
-  display:none
-}
-
-.page-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:17px
-}
-
-.page-title{
-  font-size:clamp(23px,5vw,32px);
-  font-weight:900;
-  margin:0
-}
-
-.back-button,.small-button{
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:10px 13px;
-  min-height:42px;
-  background:var(--card);
-  color:var(--text);
-  font-size:12px;
-  font-weight:800
-}
-
-.game-description{
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.9;
-  margin-bottom:15px
-}
-
-.balanced-button{
-  width:100%;
-  padding:13px;
-  min-height:44px;
-  margin-bottom:15px;
-  border-radius:13px;
-  border:1px solid rgba(54,209,124,.3);
-  background:rgba(54,209,124,.1);
-  color:var(--text);
-  font-weight:900
-}
-
-.game-pitch-wrapper{
-  max-width:660px;
-  margin:auto;
-  padding:9px;
-  border-radius:18px;
+.game-pitch-wrapper {
+  max-width:660px;margin:auto;padding:6px;border-radius:16px;
   background:linear-gradient(145deg,#151f2d,#0c1623)
 }
-
-.game-pitch{
-  position:relative;
-  width:100%;
-  aspect-ratio:9/16;
-  overflow:hidden;
-  border-radius:13px;
-  border:3px solid rgba(255,255,255,.85);
-  background:repeating-linear-gradient(
-    0deg,
-    #16814d 0,#16814d 9%,
-    #1a8d55 9%,#1a8d55 18%
-  )
+.game-pitch {
+  position:relative;width:100%;aspect-ratio:9/16;overflow:hidden;
+  border-radius:12px;border:3px solid #ffffffd9;
+  background:repeating-linear-gradient(0deg,#16814d 0,#16814d 9%,#1a8d55 9%,#1a8d55 18%)
 }
-
-.game-pitch:before{
-  content:"";
-  position:absolute;
-  top:50%;
-  left:0;
-  right:0;
-  height:2px;
-  background:rgba(255,255,255,.82);
-  transform:translateY(-50%)
+.game-pitch:before {
+  content:"";position:absolute;top:50%;left:0;right:0;height:2px;
+  background:#ffffffd9;transform:translateY(-50%)
 }
-
-.game-pitch-center{
-  position:absolute;
-  left:50%;
-  top:50%;
-  width:23%;
-  aspect-ratio:1;
-  border:2px solid rgba(255,255,255,.82);
-  border-radius:50%;
-  transform:translate(-50%,-50%)
+.game-pitch-center {
+  position:absolute;left:50%;top:50%;width:23%;aspect-ratio:1;
+  border:2px solid #ffffffd9;border-radius:50%;transform:translate(-50%,-50%)
 }
-
-.game-pitch-dot{
-  position:absolute;
-  left:50%;
-  top:50%;
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:white;
-  transform:translate(-50%,-50%)
+.game-pitch-dot {
+  position:absolute;left:50%;top:50%;width:7px;height:7px;
+  border-radius:50%;background:white;transform:translate(-50%,-50%)
 }
-
-.penalty{
-  position:absolute;
-  left:25%;
-  width:50%;
-  height:13%;
-  border:2px solid rgba(255,255,255,.82)
+.penalty {position:absolute;left:25%;width:50%;height:13%;border:2px solid #ffffffd9}
+.penalty.top {top:-1px;border-top:0;border-radius:0 0 35% 35%}
+.penalty.bottom {bottom:-1px;border-bottom:0;border-radius:35% 35% 0 0}
+.goal {position:absolute;left:39%;width:22%;height:3%;border:2px solid white}
+.goal.top {top:-3px;border-top:0}
+.goal.bottom {bottom:-3px;border-bottom:0}
+.game-player {
+  position:absolute;transform:translate(-50%,-50%);width:65px;
+  display:flex;flex-direction:column;align-items:center;z-index:5;cursor:pointer
 }
-
-.penalty.top{
-  top:-1px;
-  border-top:0;
-  border-radius:0 0 35% 35%
+.game-player img {
+  width:clamp(27px,7vw,43px);height:clamp(27px,7vw,43px);
+  object-fit:cover;border-radius:50%;border:2px solid white;
+  box-shadow:0 4px 12px #0007;background:#222
 }
-
-.penalty.bottom{
-  bottom:-1px;
-  border-bottom:0;
-  border-radius:35% 35% 0 0
+.game-player-name {
+  max-width:65px;margin-top:3px;padding:3px 4px;border-radius:5px;
+  background:#000b;color:white;font-size:7px;font-weight:900;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center
 }
-
-.goal{
-  position:absolute;
-  left:39%;
-  width:22%;
-  height:3%;
-  border:2px solid white
+.game-player-role {margin-top:2px;color:white;font-size:7px}
+.bench {
+  max-width:660px;margin:14px auto;padding:13px;border-radius:14px;
+  background:#7f7f7f12;border:1px solid var(--border)
 }
-
-.goal.top{
-  top:-3px;
-  border-top:0
+.bench-title {margin-bottom:10px;color:var(--muted);font-size:12px;font-weight:900}
+.bench-list {display:flex;flex-wrap:wrap;gap:8px}
+.bench-player {
+  display:flex;align-items:center;gap:8px;cursor:pointer;padding:7px;
+  border-radius:11px;border:1px solid transparent;min-height:56px;flex:1 1 180px
 }
-
-.goal.bottom{
-  bottom:-3px;
-  border-bottom:0
+.bench-player.selected-substitute {border-color:var(--accent);background:#36d17c20}
+.bench-player img {
+  width:39px;height:39px;flex-shrink:0;border-radius:50%;
+  object-fit:cover;border:2px solid var(--accent)
 }
-
-.game-player{
-  position:absolute;
-  transform:translate(-50%,-50%);
-  width:74px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  z-index:5;
-  cursor:pointer
+.bench-name {font-size:11px;font-weight:900}
+.bench-role {margin-top:4px;color:var(--muted);font-size:10px;line-height:1.6}
+.modal {
+  position:fixed;inset:0;z-index:2000;display:none;align-items:center;
+  justify-content:center;padding:12px;background:#000b;backdrop-filter:blur(6px)
 }
-
-.game-player img{
-  width:clamp(32px,7vw,48px);
-  height:clamp(32px,7vw,48px);
-  object-fit:cover;
-  border-radius:50%;
-  border:3px solid white;
-  box-shadow:0 5px 14px #0006;
-  background:#222
+.modal.show {display:flex}
+.modal-box {
+  position:relative;width:min(620px,100%);max-height:92vh;overflow:auto;
+  border-radius:21px;background:var(--card2);border:1px solid var(--border);
+  box-shadow:0 30px 80px #0006;animation:appear .2s ease
 }
-
-.game-player-name{
-  max-width:78px;
-  margin-top:4px;
-  padding:3px 5px;
-  border-radius:6px;
-  background:#000b;
-  color:white;
-  font-size:8px;
-  font-weight:900;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis
+.close-modal {
+  position:absolute;top:10px;left:10px;z-index:2;width:40px;height:40px;
+  border:0;border-radius:50%;background:#0009;color:white;font-size:24px
 }
+.profile-image {width:100%;height:min(330px,65vw);object-fit:cover;display:block;background:#111}
+.profile-content {padding:17px}
+.profile-name {margin:0 0 14px;font-size:22px;font-weight:900}
+.profile-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.detail {padding:11px;border-radius:12px;background:#7f7f7f12;border:1px solid var(--border)}
+.detail.full {grid-column:1/-1}
+.detail-label {display:block;margin-bottom:6px;color:var(--muted);font-size:10px}
+.detail-value {font-size:12px;font-weight:800;line-height:1.8}
+.birthday-timer {margin-top:12px;padding:12px;border-radius:13px;background:#36d17c14;border:1px solid var(--border)}
+.timer-title {color:var(--muted);font-size:11px;margin-bottom:6px}
+.timer-value {font-size:12px;font-weight:900;line-height:2}
+footer {text-align:center;color:var(--muted);font-size:11px;padding:20px}
 
-.game-player-role{
-  margin-top:2px;
-  color:white;
-  font-size:8px
+@media(max-width:760px) {
+  header {padding:28px 12px 17px}
+  main {width:calc(100% - 20px)}
+  #peopleGrid {grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .person-info {padding:9px}
+  .person-name {font-size:12px}
+  .section {padding:12px;border-radius:16px}
+  .action-button {min-height:64px;padding:10px}
+  .game-pitch-wrapper {padding:4px}
+  .game-player {width:58px}
+  .game-player-name {max-width:58px;font-size:6px}
+  .birthday-countdown {font-size:10px}
 }
-
-.bench{
-  max-width:660px;
-  margin:14px auto;
-  padding:13px;
-  border-radius:15px;
-  background:rgba(127,127,127,.08);
-  border:1px solid var(--border)
+@media(max-width:390px) {
+  main {width:calc(100% - 14px)}
+  .birthday-row {gap:6px;padding:8px}
+  .birthday-name {font-size:11px}
+  .birthday-countdown {font-size:9px}
+  .profile-content {padding:12px}
+  .detail {padding:8px}
 }
-
-.bench-title{
-  margin-bottom:12px;
-  color:var(--muted);
-  font-size:12px;
-  font-weight:900
-}
-
-.bench-list{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px
-}
-
-.bench-player{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  cursor:pointer;
-  padding:7px;
-  border-radius:12px;
-  border:1px solid transparent;
-  min-height:58px;
-  flex:1 1 200px
-}
-
-.bench-player.selected-substitute{
-  border-color:var(--accent);
-  background:rgba(54,209,124,.12)
-}
-
-.bench-player img{
-  width:42px;
-  height:42px;
-  flex-shrink:0;
-  border-radius:50%;
-  object-fit:cover;
-  border:2px solid var(--accent)
-}
-
-.bench-name{
-  font-size:12px;
-  font-weight:900
-}
-
-.bench-role{
-  margin-top:4px;
-  color:var(--muted);
-  font-size:10px;
-  line-height:1.7
-}
-
-.modal{
-  position:fixed;
-  inset:0;
-  z-index:2000;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:16px;
-  background:rgba(0,0,0,.72);
-  backdrop-filter:blur(7px)
-}
-
-.modal.show{
-  display:flex
-}
-
-.modal-box{
-  position:relative;
-  width:min(620px,100%);
-  max-height:92vh;
-  overflow:auto;
-  border-radius:23px;
-  background:var(--card2);
-  border:1px solid var(--border);
-  box-shadow:0 30px 80px #0006;
-  animation:appear .2s ease
-}
-
-.close-modal{
-  position:absolute;
-  top:12px;
-  left:12px;
-  z-index:2;
-  width:42px;
-  height:42px;
-  border:0;
-  border-radius:50%;
-  background:#0009;
-  color:white;
-  font-size:24px
-}
-
-.profile-image{
-  width:100%;
-  height:min(340px,65vw);
-  object-fit:cover;
-  display:block;
-  background:#111
-}
-
-.profile-content{
-  padding:19px
-}
-
-.profile-name{
-  margin:0 0 15px;
-  font-size:23px;
-  font-weight:900
-}
-
-.profile-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:9px
-}
-
-.detail{
-  padding:12px;
-  border-radius:13px;
-  background:rgba(127,127,127,.08);
-  border:1px solid var(--border)
-}
-
-.detail.full{
-  grid-column:1/-1
-}
-
-.detail-label{
-  display:block;
-  margin-bottom:6px;
-  color:var(--muted);
-  font-size:11px
-}
-
-.detail-value{
-  font-size:13px;
-  font-weight:800;
-  line-height:1.8
-}
-
-.birthday-timer{
-  margin-top:13px;
-  padding:13px;
-  border-radius:14px;
-  background:rgba(54,209,124,.09);
-  border:1px solid var(--border)
-}
-
-.timer-title{
-  color:var(--muted);
-  font-size:11px;
-  margin-bottom:6px
-}
-
-.timer-value{
-  font-size:13px;
-  font-weight:900;
-  line-height:1.9
-}
-
-footer{
-  text-align:center;
-  color:var(--muted);
-  font-size:11px;
-  padding:20px
-}
-
-@media(max-width:760px){
-  header{
-    padding:28px 14px 18px
-  }
-
-  .logo{
-    width:58px;
-    height:58px;
-    margin-bottom:11px
-  }
-
-  main{
-    width:calc(100% - 22px)
-  }
-
-  #peopleGrid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:12px
-  }
-
-  .person-info{
-    padding:11px
-  }
-
-  .person-name{
-    font-size:13px
-  }
-
-  .section{
-    padding:14px;
-    border-radius:17px
-  }
-
-  .action-button{
-    min-height:68px;
-    padding:12px
-  }
-
-  .game-pitch-wrapper{
-    padding:5px
-  }
-
-  .game-player{
-    width:65px
-  }
-
-  .game-player img{
-    width:clamp(30px,9vw,42px);
-    height:clamp(30px,9vw,42px)
-  }
-
-  .game-player-name{
-    max-width:66px;
-    font-size:7px
-  }
-
-  .birthday-row{
-    align-items:flex-start
-  }
-
-  .birthday-countdown{
-    max-width:58%;
-    font-size:10px;
-    white-space:normal
-  }
-}
-
-@media(max-width:390px){
-  main{
-    width:calc(100% - 16px)
-  }
-
-  #peopleGrid{
-    gap:9px
-  }
-
-  .person-info{
-    padding:9px
-  }
-
-  .person-name{
-    font-size:12px
-  }
-
-  .birthday-row{
-    gap:7px;
-    padding:9px
-  }
-
-  .birthday-countdown{
-    font-size:9px
-  }
-
-  .game-player{
-    width:60px
-  }
-
-  .game-player-name{
-    max-width:60px;
-    font-size:7px
-  }
-
-  .profile-content{
-    padding:14px
-  }
-
-  .profile-grid{
-    gap:7px
-  }
-
-  .detail{
-    padding:9px
-  }
-}
-
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{
-    scroll-behavior:auto!important;
-    animation-duration:.01ms!important;
-    transition-duration:.01ms!important
-  }
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
 }
 </style>
 </head>
@@ -872,13 +269,9 @@ footer{
 <main>
   <section id="homePage">
     <div class="search-wrap">
-      <input
-        class="search"
-        id="searchInput"
-        type="search"
+      <input class="search" id="searchInput" type="search"
         placeholder="🔎 جست‌وجوی اسم، مدرسه، رشته یا پست فوتسال..."
-        autocomplete="off"
-      >
+        autocomplete="off">
     </div>
 
     <section class="section birthday-section" id="birthdaySection">
@@ -894,24 +287,18 @@ footer{
       <p style="color:var(--muted);font-size:12px;line-height:1.9">
         ببینیم این بار اسم کدوم رفیق درمیاد!
       </p>
-
       <button class="action-button" id="randomButton">
         <span class="action-icon">🎯</span>
         <span>
           <span class="action-title">انتخاب بازیکن تصادفی</span>
-          <span class="action-desc" style="display:block">
-            انتخاب یک نفر از بین همه بچه‌ها
-          </span>
+          <span class="action-desc">انتخاب یک نفر از بین همه بچه‌ها</span>
         </span>
         <span class="action-arrow">←</span>
       </button>
-
       <div class="random-result" id="randomResult" aria-live="polite">
         <div class="random-result-name" id="randomName"></div>
         <div class="random-result-age" id="randomAge"></div>
-        <div class="random-countdown" id="randomCountdown">
-          حذف نام در ۵ ثانیه
-        </div>
+        <div class="random-countdown" id="randomCountdown"></div>
       </div>
     </section>
 
@@ -919,16 +306,12 @@ footer{
       <span class="action-icon">⚽</span>
       <span>
         <span class="action-title">ورود به زمین بازی</span>
-        <span class="action-desc" style="display:block">
-          ترکیب دو تیم و بازیکنان ذخیره
-        </span>
+        <span class="action-desc">ترکیب دو تیم و بازیکنان ذخیره</span>
       </span>
       <span class="action-arrow">←</span>
     </button>
 
-    <h2 class="section-title" style="margin-top:25px">
-      👥 معرفی بچه‌ها
-    </h2>
+    <h2 class="section-title" style="margin-top:25px">👥 معرفی بچه‌ها</h2>
     <div id="peopleGrid"></div>
   </section>
 
@@ -939,8 +322,8 @@ footer{
     </div>
 
     <p class="game-description">
-      برای دیدن مشخصات، روی بازیکن بزن.
-      برای تعویض، اول بازیکن ذخیره را انتخاب کن و بعد بازیکنی از داخل زمین را بزن تا جایشان عوض شود.
+      برای دیدن مشخصات، روی بازیکن بزن. برای تعویض، ابتدا بازیکن ذخیره را انتخاب کن و بعد بازیکنی از داخل زمین را بزن.
+      با زدن «ساخت ترکیب جدید»، تمام بازیکنان دوباره بین دو تیم تقسیم می‌شوند.
     </p>
 
     <button class="balanced-button" id="shuffleTeams">
@@ -977,137 +360,74 @@ footer{
 <script>
 "use strict";
 
-/* اطلاعات بازیکنان */
 const people = [
   {
-    name:"سجاد حسنی‌تبار",
-    age:17,
-    birth:"1388/8/14",
-    school:"قائم آل محمد",
-    grade:"یازدهم",
-    field:"انسانی",
+    name:"سجاد حسنی‌تبار",age:17,birth:"1388/8/14",
+    school:"قائم آل محمد",grade:"یازدهم",field:"انسانی",
     futsal:"مدافع / دروازه‌بان",
     image:"images/ChatGPT Image Aug 23, 2026, 03_13_17 PM.jpg"
   },
   {
-    name:"یوسف سالاری",
-    age:16,
-    birth:"1388/9/4",
-    school:"حوزه",
-    grade:"پایه دو",
-    field:"حوزه",
-    futsal:"مهاجم",
-    image:"images/yoosef.jpg"
+    name:"یوسف سالاری",age:16,birth:"1388/9/4",
+    school:"حوزه",grade:"پایه دو",field:"حوزه",
+    futsal:"مهاجم",image:"images/yoosef.jpg"
   },
   {
-    name:"احمد اسماعیل‌زاده",
-    age:17,
-    birth:"1388/11/6",
-    school:"قائم آل محمد",
-    grade:"یازدهم",
-    field:"ریاضی فیزیک",
-    futsal:"هافبک",
-    image:"images/aahmad.jpg"
+    name:"احمد اسماعیل‌زاده",age:17,birth:"1388/11/6",
+    school:"قائم آل محمد",grade:"یازدهم",field:"ریاضی فیزیک",
+    futsal:"هافبک",image:"images/aahmad.jpg"
   },
   {
-    name:"طاها شبان",
-    age:16,
-    birth:"1389/9/15",
-    school:"قائم آل محمد",
-    grade:"دهم",
-    field:"تجربی",
-    futsal:"مهاجم / وینگر چپ",
-    image:"images/taha.jpg"
+    name:"طاها شبان",age:16,birth:"1389/9/15",
+    school:"قائم آل محمد",grade:"دهم",field:"تجربی",
+    futsal:"مهاجم / وینگر چپ",image:"images/taha.jpg"
   },
   {
-    name:"علیرضا مختاری",
-    age:16,
-    birth:"1388/9/14",
-    school:"قائم آل محمد",
-    grade:"یازدهم",
-    field:"ریاضی فیزیک",
-    futsal:"دروازبان",
-    image:"images/alireza.jfif"
+    name:"علیرضا مختاری",age:16,birth:"1388/9/14",
+    school:"قائم آل محمد",grade:"یازدهم",field:"ریاضی فیزیک",
+    futsal:"دروازبان",image:"images/alireza.jfif"
   },
   {
-    name:"احسان آرام",
-    age:16,
-    birth:"1389/4/24",
-    school:"قائم آل محمد",
-    grade:"یازدهم",
-    field:"ریاضی فیزیک",
-    futsal:"مهاجم / هافبک",
-    image:"images/ehsan.jpg"
+    name:"احسان آرام",age:16,birth:"1389/4/24",
+    school:"قائم آل محمد",grade:"یازدهم",field:"ریاضی فیزیک",
+    futsal:"مهاجم / هافبک",image:"images/ehsan.jpg"
   },
   {
-    name:"امیر عباس فیروز",
-    age:16,
-    birth:"1389/1/14",
-    school:"قائم آل محمد",
-    grade:"یازدهم",
-    field:"ریاضی فیزیک",
+    name:"امیر عباس فیروز",age:16,birth:"1389/1/14",
+    school:"قائم آل محمد",grade:"یازدهم",field:"ریاضی فیزیک",
     futsal:"دروازبان / دفاع / هافبک / مهاجم",
     image:"images/amirabbas.jpg"
   },
   {
-    name:"عرفان بابائی",
-    age:15,
-    birth:"1390/4/29",
-    school:"قائم آل محمد",
-    grade:"دهم",
-    field:"کامپیوتر",
-    futsal:"دفاع راست / دفاع وسط",
-    image:"images/erfan.jpg"
+    name:"عرفان بابائی",age:15,birth:"1390/4/29",
+    school:"قائم آل محمد",grade:"دهم",field:"ریاضی فیزیک",
+    futsal:"دفاع راست / دفاع وسط",image:"images/erfan.jpg"
   },
   {
-    name:"عادل نصیری",
-    age:16,
-    birth:"1389/5/10",
-    school:"خاتم",
-    grade:"یازدهم",
-    field:"تجربی",
-    futsal:"دفاع",
-    image:"images/aadel.jpg"
+    name:"عادل نصیری",age:16,birth:"1389/5/10",
+    school:"خاتم",grade:"یازدهم",field:"کامپیوتر",
+    futsal:"دفاع",image:"images/aadel.jpg"
   },
   {
-    name:"متین جوان",
-    age:16,
-    birth:"1388/7/18",
-    school:"قائم آل محمد",
-    grade:"یازدهم",
-    field:"ریاضی فیزیک",
-    futsal:"همه‌جا",
-    image:"images/matin.jpg"
+    name:"متین جوان",age:16,birth:"1388/7/18",
+    school:"قائم آل محمد",grade:"یازدهم",field:"تجربی",
+    futsal:"همه‌جا",image:"images/matin.jpg"
   },
   {
-    name:"امیر علی آرامش",
-    age:18,
-    birth:"1387/6/19",
-    school:"دانشگاه",
-    grade:"ثبت نشده",
-    field:"ریاضی فیزیک",
-    futsal:"همه‌جا",
-    image:"images/amiralia.jpg"
+    name:"امیر علی آرامش",age:18,birth:"1387/6/19",
+    school:"دانشگاه",grade:"ثبت نشده",field:"ریاضی فیزیک",
+    futsal:"همه‌جا",image:"images/amiralia.jpg"
   },
   {
-    name:"امیر علی قهستانی",
-    age:17,
-    birth:"1388/5/17",
-    school:"قائم آل محمد",
-    grade:"یازدهم",
-    field:"تجربی",
-    futsal:"دروازبان",
-    image:"images/amiraligh.jpg"
+    name:"امیر علی قهستانی",age:17,birth:"1388/5/17",
+    school:"قائم آل محمد",grade:"یازدهم",field:"تجربی",
+    futsal:"دروازبان",image:"images/amiraligh.jpg"
   }
 ];
 
 const $ = id => document.getElementById(id);
 
-const findPerson = name => people.find(p =>
-  normalize(p.name) === normalize(name)
-);
-
-function normalize(value){
+function normalize(value) {
   return String(value || "")
     .replace(/[ي]/g,"ی")
     .replace(/[ك]/g,"ک")
@@ -1116,86 +436,66 @@ function normalize(value){
     .toLowerCase();
 }
 
-function escapeHTML(value){
+function escapeHTML(value) {
   return String(value ?? "").replace(/[&<>"']/g,ch=>({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#39;"
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
   })[ch]);
 }
 
-function imageHTML(person,extra=""){
-  const fallback = `
-    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">
-      <rect width="100%" height="100%" fill="#182638"/>
-      <text x="50%" y="54%" fill="#36d17c" font-size="68" text-anchor="middle">⚽</text>
-    </svg>
-  `;
-
-  return `<img
-    class="${extra}"
-    src="${escapeHTML(person.image)}"
-    alt="${escapeHTML(person.name)}"
-    loading="lazy"
-    onerror="this.onerror=null;this.src='data:image/svg+xml;charset=UTF-8,${encodeURIComponent(fallback)}'"
-  >`;
+function findPerson(name) {
+  return people.find(p=>normalize(p.name)===normalize(name));
 }
 
-/* کارت‌های معرفی */
-function renderPeople(query=""){
-  const q=normalize(query);
+function imageHTML(person,extra="") {
+  const fallback =
+    "data:image/svg+xml;charset=UTF-8,"+
+    encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">'+
+      '<rect width="100%" height="100%" fill="#182638"/>'+
+      '<text x="50%" y="58%" fill="#36d17c" font-size="68" text-anchor="middle">⚽</text>'+
+      '</svg>'
+    );
 
+  return `<img class="${extra}" src="${escapeHTML(person.image)}"
+    alt="${escapeHTML(person.name)}" loading="lazy"
+    onerror="this.onerror=null;this.src='${fallback}'">`;
+}
+
+/* معرفی افراد */
+function renderPeople(query="") {
+  const q=normalize(query);
   const results=people.filter(p=>
-    normalize([
-      p.name,
-      p.school,
-      p.grade,
-      p.field,
-      p.futsal,
-      p.birth
-    ].join(" ")).includes(q)
+    normalize([p.name,p.school,p.grade,p.field,p.futsal,p.birth].join(" ")).includes(q)
   );
 
-  $("peopleGrid").innerHTML=results.length
-    ? results.map(p=>`
-      <article class="person-card" data-person="${escapeHTML(p.name)}">
-        ${imageHTML(p,"person-image")}
-        <div class="person-info">
-          <h3 class="person-name">${escapeHTML(p.name)}</h3>
-          <div class="person-position">
-            ⚽ ${escapeHTML(p.futsal)}<br>
-            🎓 ${escapeHTML(p.grade)}
-          </div>
+  $("peopleGrid").innerHTML=results.length ? results.map(p=>`
+    <article class="person-card" data-person="${escapeHTML(p.name)}">
+      ${imageHTML(p,"person-image")}
+      <div class="person-info">
+        <h3 class="person-name">${escapeHTML(p.name)}</h3>
+        <div class="person-position">
+          ⚽ ${escapeHTML(p.futsal)}<br>
+          🎓 ${escapeHTML(p.field)}
         </div>
-      </article>
-    `).join("")
-    : `<div class="empty">کسی با این مشخصات پیدا نشد.</div>`;
+      </div>
+    </article>
+  `).join("") : `<div class="empty">کسی با این مشخصات پیدا نشد.</div>`;
 }
 
 /* تبدیل تاریخ شمسی به میلادی */
-function jalaliToGregorian(jy,jm,jd){
-  jy=Number(jy);
-  jm=Number(jm);
-  jd=Number(jd);
-
+function jalaliToGregorian(jy,jm,jd) {
+  jy=Number(jy);jm=Number(jm);jd=Number(jd);
   jy+=1595;
 
-  let days=-355668
-    +365*jy
-    +Math.floor(jy/33)*8
-    +Math.floor(((jy%33)+3)/4)
-    +jd;
+  let days=-355668+365*jy+Math.floor(jy/33)*8+
+    Math.floor(((jy%33)+3)/4)+jd;
 
-  days+=jm<7
-    ?(jm-1)*31
-    :(jm-7)*30+186;
+  days+=jm<7?(jm-1)*31:(jm-7)*30+186;
 
   let gy=400*Math.floor(days/146097);
   days%=146097;
 
-  if(days>36524){
+  if(days>36524) {
     gy+=100*Math.floor(--days/36524);
     days%=36524;
     if(days>=365)days++;
@@ -1204,23 +504,17 @@ function jalaliToGregorian(jy,jm,jd){
   gy+=4*Math.floor(days/1461);
   days%=1461;
 
-  if(days>365){
+  if(days>365) {
     gy+=Math.floor((days-1)/365);
     days=(days-1)%365;
   }
 
   let gd=days+1;
-
   const leap=(gy%4===0&&gy%100!==0)||gy%400===0;
-
-  const monthDays=[
-    0,31,leap?29:28,31,30,31,30,
-    31,31,30,31,30,31
-  ];
-
+  const monthDays=[0,31,leap?29:28,31,30,31,30,31,31,30,31,30,31];
   let gm=1;
 
-  while(gm<=12&&gd>monthDays[gm]){
+  while(gm<=12&&gd>monthDays[gm]) {
     gd-=monthDays[gm];
     gm++;
   }
@@ -1228,54 +522,29 @@ function jalaliToGregorian(jy,jm,jd){
   return {year:gy,month:gm,day:gd};
 }
 
-/* تعیین زمان تولد بعدی */
-function birthdayDate(person,reference=new Date()){
+/* تاریخ تولد بعدی */
+function birthdayDate(person,reference=new Date()) {
   const parts=person.birth.split("/").map(Number);
-
-  if(parts.length!==3||parts.some(n=>!Number.isFinite(n))){
-    return null;
-  }
+  if(parts.length!==3||parts.some(n=>!Number.isFinite(n)))return null;
 
   const birth=jalaliToGregorian(parts[0],parts[1],parts[2]);
+  let year=reference.getFullYear();
 
-  let targetYear=reference.getFullYear();
+  let target=new Date(year,birth.month-1,birth.day,0,0,0);
 
-  let target=new Date(
-    targetYear,
-    birth.month-1,
-    birth.day,
-    0,0,0
-  );
-
-  if(target<=reference){
-    target=new Date(
-      ++targetYear,
-      birth.month-1,
-      birth.day,
-      0,0,0
-    );
+  if(target<=reference) {
+    target=new Date(++year,birth.month-1,birth.day,0,0,0);
   }
 
   return target;
 }
 
-/* شمارش معکوس تولد تا ثانیه */
-function birthdayInfo(person,reference=new Date()){
+function birthdayInfo(person,reference=new Date()) {
   const target=birthdayDate(person,reference);
 
-  if(!target){
-    return {
-      days:9999,
-      seconds:Infinity,
-      text:"تاریخ نامشخص"
-    };
-  }
+  if(!target) return {days:9999,seconds:Infinity,text:"تاریخ نامشخص"};
 
-  const seconds=Math.max(
-    0,
-    Math.floor((target-reference)/1000)
-  );
-
+  const seconds=Math.max(0,Math.floor((target-reference)/1000));
   const days=Math.floor(seconds/86400);
   const hours=Math.floor((seconds%86400)/3600);
   const minutes=Math.floor((seconds%3600)/60);
@@ -1283,83 +552,84 @@ function birthdayInfo(person,reference=new Date()){
 
   let text;
 
-  if(seconds<1){
-    text="🎉 تولد مبارک!";
-  }else if(days===0){
-    text=`${hours} ساعت و ${minutes} دقیقه و ${secs} ثانیه`;
-  }else{
-    text=`${days} روز و ${hours} ساعت و ${minutes} دقیقه و ${secs} ثانیه`;
-  }
+  if(seconds===0) text="🎉 تولد مبارک!";
+  else if(days===0) text=`${hours} ساعت، ${minutes} دقیقه و ${secs} ثانیه`;
+  else text=`${days} روز، ${hours} ساعت، ${minutes} دقیقه و ${secs} ثانیه`;
 
-  return {days,seconds,text};
+  return {days,seconds,hours,minutes,secs,text};
 }
 
-function renderBirthdays(){
-  const sorted=people
-    .map(person=>({
-      person,
-      ...birthdayInfo(person)
-    }))
-    .sort((a,b)=>a.seconds-b.seconds);
+/*
+  تولدها:
+  حالت عادی فقط روزها را نشان می‌دهد.
+  با کلیک روی یک ردیف، ساعت و دقیقه و ثانیه هم ظاهر می‌شوند.
+*/
+const expandedBirthdays=new Set();
 
-  $("birthdayList").innerHTML=sorted.map((item,i)=>`
-    <div class="birthday-row" data-person="${escapeHTML(item.person.name)}">
-      <div class="birthday-rank">${i+1}</div>
-      <div class="birthday-name">${escapeHTML(item.person.name)}</div>
-      <div class="birthday-countdown">${escapeHTML(item.text)}</div>
-    </div>
-  `).join("");
+function renderBirthdays() {
+  const sorted=people.map(person=>({
+    person,
+    ...birthdayInfo(person)
+  })).sort((a,b)=>a.seconds-b.seconds);
+
+  $("birthdayList").innerHTML=sorted.map((item,i)=>{
+    const open=expandedBirthdays.has(item.person.name);
+    const dayText=item.days===0?"امروز تولدشه 🎉":`${item.days} روز باقی‌مانده`;
+
+    return `
+      <div class="birthday-row ${open?"expanded":""}"
+        data-birthday="${escapeHTML(item.person.name)}"
+        role="button" tabindex="0" aria-expanded="${open}">
+        <div class="birthday-rank">${i+1}</div>
+        <div class="birthday-name">${escapeHTML(item.person.name)}</div>
+        <div class="birthday-countdown">
+          <span>${dayText}</span>
+          ${open?`<span class="birthday-extra">${escapeHTML(item.text)}</span>`:""}
+        </div>
+      </div>
+    `;
+  }).join("");
 }
 
-/* پنجره مشخصات هر نفر */
-function showProfile(name){
+/* پروفایل فرد */
+function showProfile(name) {
   const p=findPerson(name);
   if(!p)return;
 
-  const birthday=birthdayInfo(p);
-
   $("profileContent").innerHTML=`
     ${imageHTML(p,"profile-image")}
-
     <div class="profile-content">
       <h2 class="profile-name">${escapeHTML(p.name)}</h2>
-
       <div class="profile-grid">
         <div class="detail">
           <span class="detail-label">🎂 سن</span>
           <span class="detail-value">${p.age} سال</span>
         </div>
-
         <div class="detail">
           <span class="detail-label">📅 تاریخ تولد</span>
           <span class="detail-value">${escapeHTML(p.birth)}</span>
         </div>
-
         <div class="detail">
           <span class="detail-label">🏫 مدرسه</span>
           <span class="detail-value">${escapeHTML(p.school)}</span>
         </div>
-
         <div class="detail">
           <span class="detail-label">📚 پایه تحصیلی</span>
           <span class="detail-value">${escapeHTML(p.grade)}</span>
         </div>
-
         <div class="detail">
           <span class="detail-label">🎓 رشته تحصیلی</span>
           <span class="detail-value">${escapeHTML(p.field)}</span>
         </div>
-
         <div class="detail">
           <span class="detail-label">⚽ پست فوتسال</span>
           <span class="detail-value">${escapeHTML(p.futsal)}</span>
         </div>
       </div>
-
       <div class="birthday-timer">
         <div class="timer-title">🎂 زمان باقی‌مانده تا تولد</div>
         <div class="timer-value" id="profileBirthdayCountdown">
-          ${escapeHTML(birthday.text)}
+          ${escapeHTML(birthdayInfo(p).text)}
         </div>
       </div>
     </div>
@@ -1369,12 +639,12 @@ function showProfile(name){
   document.body.style.overflow="hidden";
 }
 
-function closeProfile(){
+function closeProfile() {
   $("profileModal").classList.remove("show");
   document.body.style.overflow="";
 }
 
-/* بازیکن تصادفی و تایمر ۵ ثانیه‌ای */
+/* بازیکن تصادفی: تایمر پنج ثانیه */
 let randomTimeout=null;
 let randomInterval=null;
 
@@ -1383,151 +653,114 @@ $("randomButton").addEventListener("click",()=>{
 
   const p=people[Math.floor(Math.random()*people.length)];
 
-  $("randomName").textContent=p.name;
-  $("randomAge").textContent=`${p.age} ساله`;
-
   clearTimeout(randomTimeout);
   clearInterval(randomInterval);
 
   let remaining=5;
 
+  $("randomName").textContent=p.name;
+  $("randomAge").textContent=`${p.age} ساله`;
   $("randomCountdown").textContent=`حذف نام در ${remaining} ثانیه`;
   $("randomResult").classList.add("show");
 
   randomInterval=setInterval(()=>{
     remaining--;
-
-    if(remaining>0){
+    if(remaining>0) {
       $("randomCountdown").textContent=`حذف نام در ${remaining} ثانیه`;
-    }else{
+    } else {
       clearInterval(randomInterval);
     }
   },1000);
 
   randomTimeout=setTimeout(()=>{
     $("randomResult").classList.remove("show");
-
     $("randomName").textContent="";
     $("randomAge").textContent="";
     $("randomCountdown").textContent="";
-
     clearInterval(randomInterval);
   },5000);
 });
 
-/* جابه‌جایی صفحه‌ها */
-function showPage(page){
+/* صفحه‌ها */
+function showPage(page) {
   $("homePage").classList.toggle("hidden",page!=="home");
   $("gamePage").classList.toggle("active",page==="game");
+  window.scrollTo({top:0,behavior:"smooth"});
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-  if(page==="game"){
-    buildGameTeams();
-  }
+  if(page==="game")buildGameTeams();
 }
 
-$("openGame").addEventListener("click",()=>{
-  showPage("game");
-});
+$("openGame").addEventListener("click",()=>showPage("game"));
 
 document.querySelectorAll("[data-back]").forEach(button=>{
-  button.addEventListener("click",()=>{
-    showPage("home");
-  });
+  button.addEventListener("click",()=>showPage("home"));
 });
 
-/* مخلوط کردن تصادفی بازیکنان */
-function shuffle(array){
+/* ترکیب فوتبال */
+function shuffle(array) {
   const result=[...array];
-
-  for(let i=result.length-1;i>0;i--){
+  for(let i=result.length-1;i>0;i--) {
     const j=Math.floor(Math.random()*(i+1));
     [result[i],result[j]]=[result[j],result[i]];
   }
-
   return result;
 }
 
-/* ترکیب دو تیم و ذخیره‌ها */
 let currentTeamA=[];
 let currentTeamB=[];
 let currentBench=[];
 let selectedSubstitute=null;
 
-function buildGameTeams(){
+/*
+  هر بار ترکیب جدید ساخته شود، هر ۱۲ نفر وارد زمین می‌شوند.
+  شش بازیکن برای هر تیم در نظر گرفته شده است.
+*/
+function buildGameTeams() {
+  const shuffled=shuffle(people);
+
+  currentTeamA=shuffled.slice(0,6);
+  currentTeamB=shuffled.slice(6,12);
+  currentBench=[];
   selectedSubstitute=null;
-
-  const keeperA=findPerson("علیرضا مختاری");
-  const keeperB=findPerson("سجاد حسنی‌تبار");
-  const allRounder=findPerson("امیر علی آرامش");
-  const newKeeper=findPerson("امیر علی قهستانی");
-
-  const outfield=people.filter(p=>
-    p!==keeperA &&
-    p!==keeperB &&
-    p!==allRounder &&
-    p!==newKeeper
-  );
-
-  const shuffled=shuffle(outfield);
-
-  currentTeamA=[keeperA,...shuffled.slice(0,4)].filter(Boolean);
-  currentTeamB=[keeperB,...shuffled.slice(4,8)].filter(Boolean);
-  currentBench=[allRounder,newKeeper].filter(Boolean);
 
   renderPitch();
   renderBench();
 }
 
-/* جایگاه بازیکنان داخل زمین */
-function renderPitch(){
+function renderPitch() {
   const pitch=$("gamePitch");
-
-  pitch.querySelectorAll(".game-player").forEach(el=>{
-    el.remove();
-  });
+  pitch.querySelectorAll(".game-player").forEach(el=>el.remove());
 
   const positionsA=[
     {x:50,y:91,role:"دروازه‌بان"},
-    {x:28,y:76,role:"دفاع"},
-    {x:72,y:76,role:"دفاع"},
-    {x:34,y:62,role:"حمله"},
-    {x:66,y:62,role:"حمله"}
+    {x:25,y:77,role:"دفاع"},
+    {x:75,y:77,role:"دفاع"},
+    {x:25,y:62,role:"هافبک"},
+    {x:75,y:62,role:"هافبک"},
+    {x:50,y:55,role:"مهاجم"}
   ];
 
   const positionsB=[
     {x:50,y:9,role:"دروازه‌بان"},
-    {x:28,y:24,role:"دفاع"},
-    {x:72,y:24,role:"دفاع"},
-    {x:34,y:38,role:"حمله"},
-    {x:66,y:38,role:"حمله"}
+    {x:25,y:23,role:"دفاع"},
+    {x:75,y:23,role:"دفاع"},
+    {x:25,y:38,role:"هافبک"},
+    {x:75,y:38,role:"هافبک"},
+    {x:50,y:45,role:"مهاجم"}
   ];
 
-  [
-    ...currentTeamA.map((p,i)=>({
-      p,
-      pos:positionsA[i],
-      team:"تیم ۱"
-    })),
+  const lineup=[
+    ...currentTeamA.map((p,i)=>({p,pos:positionsA[i],team:"تیم ۱"})),
+    ...currentTeamB.map((p,i)=>({p,pos:positionsB[i],team:"تیم ۲"}))
+  ];
 
-    ...currentTeamB.map((p,i)=>({
-      p,
-      pos:positionsB[i],
-      team:"تیم ۲"
-    }))
-  ].forEach(({p,pos})=>{
+  lineup.forEach(({p,pos,team})=>{
     if(!p||!pos)return;
 
     const player=document.createElement("div");
-
     player.className="game-player";
     player.dataset.gamePlayer=p.name;
     player.dataset.person=p.name;
-
     player.style.left=pos.x+"%";
     player.style.top=pos.y+"%";
 
@@ -1537,48 +770,47 @@ function renderPitch(){
       <div class="game-player-role">${pos.role}</div>
     `;
 
+    player.title=team;
     pitch.appendChild(player);
   });
 }
 
-/* نمایش بازیکنان ذخیره */
-function renderBench(){
+function renderBench() {
   $("benchList").innerHTML=currentBench.length
-    ? currentBench.map(p=>`
-      <div
-        class="bench-player ${selectedSubstitute===p.name?"selected-substitute":""}"
-        data-substitute="${escapeHTML(p.name)}"
-        role="button"
-        tabindex="0"
-        aria-label="انتخاب ${escapeHTML(p.name)} برای تعویض"
-      >
+    ?currentBench.map(p=>`
+      <div class="bench-player ${selectedSubstitute===p.name?"selected-substitute":""}"
+        data-substitute="${escapeHTML(p.name)}" role="button" tabindex="0">
         ${imageHTML(p)}
-
         <div>
           <div class="bench-name">${escapeHTML(p.name)}</div>
-
           <div class="bench-role">
-            ${
-              selectedSubstitute===p.name
-                ? "انتخاب شد؛ حالا بازیکن زمین را بزن"
-                : "برای تعویض انتخاب کن"
-            }
+            ${selectedSubstitute===p.name?"انتخاب شد؛ بازیکن زمین را بزن":"برای تعویض انتخاب کن"}
           </div>
         </div>
       </div>
     `).join("")
-    : `<div style="color:var(--muted);font-size:12px">
-        بازیکن ذخیره‌ای وجود ندارد.
+    :`<div style="color:var(--muted);font-size:12px;line-height:1.8">
+        همه بازیکنان داخل زمین هستند؛ بازیکن ذخیره‌ای وجود ندارد.
       </div>`;
 }
 
 $("shuffleTeams").addEventListener("click",buildGameTeams);
 
-/* کلیک‌ها: انتخاب ذخیره، تعویض و باز کردن پروفایل */
+/* تعامل‌ها */
 document.addEventListener("click",event=>{
+  const birthdayRow=event.target.closest("[data-birthday]");
+
+  if(birthdayRow) {
+    const name=birthdayRow.dataset.birthday;
+    if(expandedBirthdays.has(name))expandedBirthdays.delete(name);
+    else expandedBirthdays.add(name);
+    renderBirthdays();
+    return;
+  }
+
   const subElement=event.target.closest("[data-substitute]");
 
-  if(subElement){
+  if(subElement) {
     selectedSubstitute=subElement.dataset.substitute;
     renderBench();
     return;
@@ -1586,37 +818,23 @@ document.addEventListener("click",event=>{
 
   const fieldElement=event.target.closest("[data-game-player]");
 
-  if(fieldElement && selectedSubstitute){
+  if(fieldElement&&selectedSubstitute) {
     const sub=findPerson(selectedSubstitute);
     const outgoing=findPerson(fieldElement.dataset.gamePlayer);
-
     if(!sub||!outgoing)return;
 
-    const teamAIndex=currentTeamA.findIndex(p=>
-      p.name===outgoing.name
-    );
-
-    const teamBIndex=currentTeamB.findIndex(p=>
-      p.name===outgoing.name
-    );
-
-    const benchIndex=currentBench.findIndex(p=>
-      p.name===sub.name
-    );
+    const aIndex=currentTeamA.findIndex(p=>p.name===outgoing.name);
+    const bIndex=currentTeamB.findIndex(p=>p.name===outgoing.name);
+    const benchIndex=currentBench.findIndex(p=>p.name===sub.name);
 
     if(benchIndex<0)return;
 
-    if(teamAIndex>=0){
-      currentTeamA[teamAIndex]=sub;
-    }else if(teamBIndex>=0){
-      currentTeamB[teamBIndex]=sub;
-    }else{
-      return;
-    }
+    if(aIndex>=0)currentTeamA[aIndex]=sub;
+    else if(bIndex>=0)currentTeamB[bIndex]=sub;
+    else return;
 
     currentBench[benchIndex]=outgoing;
     selectedSubstitute=null;
-
     renderPitch();
     renderBench();
     return;
@@ -1624,22 +842,35 @@ document.addEventListener("click",event=>{
 
   const personElement=event.target.closest("[data-person]");
 
-  if(personElement){
-    showProfile(personElement.dataset.person);
+  if(personElement)showProfile(personElement.dataset.person);
+});
+
+document.addEventListener("keydown",event=>{
+  if(event.key==="Escape")closeProfile();
+
+  if(event.key==="Enter"||event.key===" ") {
+    const active=document.activeElement;
+
+    if(active?.matches("[data-substitute]")) {
+      event.preventDefault();
+      active.click();
+    }
+
+    if(active?.matches("[data-birthday]")) {
+      event.preventDefault();
+      active.click();
+    }
   }
 });
 
-/* باز و بسته کردن فهرست تولدها */
+/* فهرست تولدها */
 $("birthdayToggle").addEventListener("click",()=>{
   $("birthdaySection").classList.toggle("open");
-
   $("birthdayArrow").textContent=
-    $("birthdaySection").classList.contains("open")
-      ?"⌃"
-      :"⌄";
+    $("birthdaySection").classList.contains("open")?"⌃":"⌄";
 });
 
-/* جست‌وجوی بچه‌ها */
+/* جست‌وجو */
 $("searchInput").addEventListener("input",event=>{
   renderPeople(event.target.value);
 });
@@ -1648,56 +879,30 @@ $("searchInput").addEventListener("input",event=>{
 $("closeModal").addEventListener("click",closeProfile);
 
 $("profileModal").addEventListener("click",event=>{
-  if(event.target===$("profileModal")){
-    closeProfile();
-  }
+  if(event.target===$("profileModal"))closeProfile();
 });
 
-document.addEventListener("keydown",event=>{
-  if(event.key==="Escape"){
-    closeProfile();
-  }
-
-  /* انتخاب ذخیره با صفحه‌کلید */
-  if(
-    (event.key==="Enter"||event.key===" ") &&
-    document.activeElement?.matches("[data-substitute]")
-  ){
-    event.preventDefault();
-    document.activeElement.click();
-  }
-});
-
-/* تغییر حالت روشن و تاریک */
+/* روشن و تاریک */
 $("themeToggle").addEventListener("click",()=>{
   document.body.classList.toggle("light");
-
   $("themeToggle").textContent=
-    document.body.classList.contains("light")
-      ?"🌙"
-      :"☀️";
+    document.body.classList.contains("light")?"🌙":"☀️";
 });
 
-/* اجرای اولیه */
+/* شروع سایت */
 renderPeople();
 renderBirthdays();
 
-/* به‌روزرسانی شمارش معکوس هر ثانیه */
+/* به‌روزرسانی ثانیه‌ای تولدها و تایمر پروفایل */
 setInterval(()=>{
   renderBirthdays();
 
-  const modal=$("profileModal");
-
-  if(modal.classList.contains("show")){
-    const name=$("profileContent")
-      .querySelector(".profile-name")?.textContent;
-
+  if($("profileModal").classList.contains("show")) {
+    const name=$("profileContent").querySelector(".profile-name")?.textContent;
     const person=findPerson(name);
     const timer=$("profileBirthdayCountdown");
 
-    if(person&&timer){
-      timer.textContent=birthdayInfo(person).text;
-    }
+    if(person&&timer)timer.textContent=birthdayInfo(person).text;
   }
 },1000);
 </script>
